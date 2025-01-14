@@ -1,3 +1,9 @@
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 ============
 Installation
 ============
@@ -79,26 +85,26 @@ issue.
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
          [1] Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.2    tools_4.2.2      
-          [5] digest_0.6.30     jsonlite_1.8.3    evaluate_0.20     lifecycle_1.0.3  
-          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   pkgconfig_2.0.3  
-         [13] rlang_1.1.0       Matrix_1.5-1      cli_3.4.1         rstudioapi_0.14  
-         [17] parallel_4.2.2    yaml_2.3.7        xfun_0.38         fastmap_1.1.0    
-         [21] terra_1.7-18      dplyr_1.1.1       knitr_1.42        generics_0.1.3   
-         [25] vctrs_0.6.1       grid_4.2.2        tidyselect_1.2.0  glue_1.6.2       
-         [29] data.table_1.14.6 R6_2.5.1          fansi_1.0.4       rmarkdown_2.21   
-         [33] ggplot2_3.4.1     magrittr_2.0.3    scales_1.2.1      codetools_0.2-18 
-         [37] htmltools_0.5.4   colorspace_2.1-0  utf8_1.2.3        munsell_0.5.0    
+          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.2    tools_4.2.2
+          [5] digest_0.6.30     jsonlite_1.8.3    evaluate_0.20     lifecycle_1.0.3
+          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   pkgconfig_2.0.3
+         [13] rlang_1.1.0       Matrix_1.5-1      cli_3.4.1         rstudioapi_0.14
+         [17] parallel_4.2.2    yaml_2.3.7        xfun_0.38         fastmap_1.1.0
+         [21] terra_1.7-18      dplyr_1.1.1       knitr_1.42        generics_0.1.3
+         [25] vctrs_0.6.1       grid_4.2.2        tidyselect_1.2.0  glue_1.6.2
+         [29] data.table_1.14.6 R6_2.5.1          fansi_1.0.4       rmarkdown_2.21
+         [33] ggplot2_3.4.1     magrittr_2.0.3    scales_1.2.1      codetools_0.2-18
+         [37] htmltools_0.5.4   colorspace_2.1-0  utf8_1.2.3        munsell_0.5.0

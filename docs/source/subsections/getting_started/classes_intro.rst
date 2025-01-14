@@ -1,3 +1,9 @@
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 ===========================================
 An introduction to the Giotto Suite classes
 ===========================================
@@ -79,12 +85,12 @@ directly returning it.
 
       ::
 
-         An object of class giotto 
-         >Active spat_unit:  z0 
-         >Active feat_type:  rna 
+         An object of class giotto
+         >Active spat_unit:  z0
+         >Active feat_type:  rna
          [SUBCELLULAR INFO]
-         polygons      : z0 z1 aggregate 
-         features      : rna 
+         polygons      : z0 z1 aggregate
+         features      : rna
          [AGGREGATE INFO]
          expression -----------------------
            [z0][rna] raw
@@ -229,7 +235,7 @@ information exists within each of these slots and its nesting.
 
          ├──Spatial unit "z0"
          │  └──S4 spatLocsObj "raw" coordinates:   (498 rows)
-         │        An object of class spatLocsObj 
+         │        An object of class spatLocsObj
          │        provenance: z0
          │            ------------------------
          │              sdimx     sdimy                                 cell_ID
@@ -237,17 +243,17 @@ information exists within each of these slots and its nesting.
          │        2: 6426.020 -4972.519 240649020551054330404932383065726870513
          │        3: 6428.456 -4799.158 274176126496863898679934791272921588227
          │        4: 6408.155 -4816.583 323754550002953984063006506310071917306
-         │        
+         │
          │        ranges:
          │                sdimx     sdimy
          │        [1,] 6402.438 -5146.726
          │        [2,] 6899.203 -4700.157
-         │        
-         │        
-         │     
+         │
+         │
+         │
          ├──Spatial unit "z1"
          │  └──S4 spatLocsObj "raw" coordinates:   (504 rows)
-         │        An object of class spatLocsObj 
+         │        An object of class spatLocsObj
          │        provenance: z1
          │            ------------------------
          │              sdimx     sdimy                                 cell_ID
@@ -255,17 +261,17 @@ information exists within each of these slots and its nesting.
          │        2: 6408.296 -4970.794  17685062374745280598492217386845129350
          │        3: 6401.148 -4991.061 223553142498364321238189328942498473503
          │        4: 6430.153 -4971.251 240649020551054330404932383065726870513
-         │        
+         │
          │        ranges:
          │                sdimx     sdimy
          │        [1,] 6401.148 -5147.193
          │        [2,] 6899.323 -4700.410
-         │        
-         │        
-         │     
+         │
+         │
+         │
          └──Spatial unit "aggregate"
             └──S4 spatLocsObj "raw" coordinates:   (461 rows)
-                  An object of class spatLocsObj 
+                  An object of class spatLocsObj
                   provenance: z0 z1
                       ------------------------
                         sdimx     sdimy                                 cell_ID
@@ -273,14 +279,14 @@ information exists within each of these slots and its nesting.
                   2: 6471.978 -4883.541 101161259912191124732236989250178928032
                   3: 6801.610 -4968.685 101488859781016188084173008420811094152
                   4: 6789.055 -5105.338 101523780333017320796881555775415156847
-                  
+
                   ranges:
                           sdimx     sdimy
                   [1,] 6401.412 -5146.747
                   [2,] 6899.108 -4700.326
-                  
-                  
-               
+
+
+
 
 -  ``list`` functions are (internal) functions that return a
    ``data.table`` of the available information and nesting.
@@ -459,7 +465,7 @@ constructors
 
          An object of class spatLocsObj : "test"
          spat_unit : "cell"
-         provenance: cell 
+         provenance: cell
             ------------------------
 
          preview:
@@ -571,7 +577,7 @@ readers
          [[1]]
          An object of class spatLocsObj : "test1"
          spat_unit : "cell2"
-         provenance: cell2 
+         provenance: cell2
             ------------------------
 
          preview:
@@ -590,7 +596,7 @@ readers
          [[2]]
          An object of class spatLocsObj : "test2"
          spat_unit : "cell2"
-         provenance: cell2 
+         provenance: cell2
             ------------------------
 
          preview:
@@ -688,17 +694,17 @@ setters
          An object of class exprObj : "raw"
          spat_unit : "z0"
          feat_type : "rna"
-         provenance: z0 
+         provenance: z0
 
          contains:
          336 x 498 sparse Matrix of class "dgCMatrix"
-                                                
+
          Adora1 . . . . . . . . . . 1 . . ......
          Adgrb1 . . . . 1 . . . . . . . . ......
          Adgrb3 . . . . . . . . . . 1 3 . ......
 
-          ........suppressing 485 columns and 330 rows 
-                                                   
+          ........suppressing 485 columns and 330 rows
+
          Blank-128 . . . . . . . . . . . . . ......
          Blank-145 . . . . . . . . . . . . . ......
          Gpr101    . . . . . . . . . . . . . ......
@@ -707,7 +713,7 @@ setters
           40951783403982682273285375368232495429
           240649020551054330404932383065726870513
           274176126496863898679934791272921588227
-          323754550002953984063006506310071917306 
+          323754550002953984063006506310071917306
 
 3.3 Get and set S4 spat_unit, feat_type, provenance
 ---------------------------------------------------
@@ -848,7 +854,7 @@ objects could be.
 
          An object of class spatLocsObj : "raw"
          spat_unit : "z0"
-         provenance: z0 
+         provenance: z0
             ------------------------
 
          preview:
@@ -858,7 +864,7 @@ objects could be.
            3: 6428.456 -4799.158 274176126496863898679934791272921588227
            4: 6408.155 -4816.583 323754550002953984063006506310071917306
            5: 6425.894 -4862.808  87260224659312905497866017323180367450
-          ---                                                           
+          ---
          494: 6863.376 -4764.372 264234489423886906860498828392801290668
          495: 6833.515 -4724.922 328891726607418454659643302361160567789
          496: 6829.474 -4755.392   6380671372744430258754116433861320161
@@ -883,7 +889,7 @@ objects could be.
 
          An object of class spatLocsObj : "raw"
          spat_unit : "z0"
-         provenance: z0 
+         provenance: z0
             ------------------------
 
          preview:
@@ -922,24 +928,24 @@ objects could be.
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] data.table_1.14.8 GiottoData_0.2.2  Giotto_3.3.1     
+         [1] data.table_1.14.8 GiottoData_0.2.2  Giotto_3.3.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.11      pillar_1.9.0     compiler_4.2.1   tools_4.2.1     
-          [5] digest_0.6.31    jsonlite_1.8.4   evaluate_0.21    lifecycle_1.0.3 
-          [9] tibble_3.2.1     gtable_0.3.3     lattice_0.20-45  png_0.1-8       
-         [13] pkgconfig_2.0.3  rlang_1.1.1      igraph_1.4.2     Matrix_1.5-4    
-         [17] cli_3.6.1        rstudioapi_0.14  parallel_4.2.1   yaml_2.3.7      
-         [21] xfun_0.39        fastmap_1.1.1    terra_1.7-39     withr_2.5.0     
-         [25] dplyr_1.1.2      knitr_1.42       generics_0.1.3   vctrs_0.6.2     
-         [29] rprojroot_2.0.3  grid_4.2.1       tidyselect_1.2.0 here_1.0.1      
-         [33] reticulate_1.28  glue_1.6.2       R6_2.5.1         fansi_1.0.4     
-         [37] rmarkdown_2.21   ggplot2_3.4.2    magrittr_2.0.3   scales_1.2.1    
-         [41] codetools_0.2-18 htmltools_0.5.5  colorspace_2.1-0 utf8_1.2.3      
-         [45] munsell_0.5.0   
+          [1] Rcpp_1.0.11      pillar_1.9.0     compiler_4.2.1   tools_4.2.1
+          [5] digest_0.6.31    jsonlite_1.8.4   evaluate_0.21    lifecycle_1.0.3
+          [9] tibble_3.2.1     gtable_0.3.3     lattice_0.20-45  png_0.1-8
+         [13] pkgconfig_2.0.3  rlang_1.1.1      igraph_1.4.2     Matrix_1.5-4
+         [17] cli_3.6.1        rstudioapi_0.14  parallel_4.2.1   yaml_2.3.7
+         [21] xfun_0.39        fastmap_1.1.1    terra_1.7-39     withr_2.5.0
+         [25] dplyr_1.1.2      knitr_1.42       generics_0.1.3   vctrs_0.6.2
+         [29] rprojroot_2.0.3  grid_4.2.1       tidyselect_1.2.0 here_1.0.1
+         [33] reticulate_1.28  glue_1.6.2       R6_2.5.1         fansi_1.0.4
+         [37] rmarkdown_2.21   ggplot2_3.4.2    magrittr_2.0.3   scales_1.2.1
+         [41] codetools_0.2-18 htmltools_0.5.5  colorspace_2.1-0 utf8_1.2.3
+         [45] munsell_0.5.0
 
 .. |image1| image:: /images/images_pkgdown/getting_started_figs/getting_started_gobject/Giotto_suite_object-01.svg
    :width: 100.0%

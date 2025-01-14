@@ -1,12 +1,13 @@
-##################################
-Solutions to Installation Errors
-##################################
-
 **********************************************
 WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
 **********************************************
 
 This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
+##################################
+Solutions to Installation Errors
+##################################
+
 
 .. _error_on_mac:
 

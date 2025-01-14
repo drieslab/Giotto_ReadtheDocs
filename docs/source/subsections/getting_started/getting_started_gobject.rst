@@ -1,3 +1,9 @@
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 ======================
 Giotto Object Creation
 ======================
@@ -33,7 +39,7 @@ To download this data, please ensure that
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_results/') 
+      results_directory = paste0(getwd(),'/gobject_results/')
       # alternatively, "/path/to/store/the/results/"
 
       # Download osmFISH dataset to data_directory
@@ -54,7 +60,7 @@ code block.
    .. code:: r
 
       # Example 1.
-      # Create a Giotto object using data directly from file paths 
+      # Create a Giotto object using data directly from file paths
       osm_exprs = paste0(data_directory, "osmFISH_prep_expression.txt")
       osm_locs = paste0(data_directory, "osmFISH_prep_cell_coordinates.txt")
 
@@ -92,10 +98,10 @@ Expression file formatting
 == ======= ====== ====== ====== =
 \  feat_ID Cell_1 Cell_2 Cell_3 …
 == ======= ====== ====== ====== =
-1  Gene1                        
-2  Gene2                        
-3  Gene3                        
-\  …                            
+1  Gene1
+2  Gene2
+3  Gene3
+\  …
 == ======= ====== ====== ====== =
 
 **matrix** and **DelayedMatrix** objects should have **feature IDs**
@@ -104,10 +110,10 @@ already incorporated as the rownames.
 ===== ====== ====== ====== =
 \     Cell_1 Cell_2 Cell_3 …
 ===== ====== ====== ====== =
-Gene1                      
-Gene2                      
-Gene3                      
-…                          
+Gene1
+Gene2
+Gene3
+…
 ===== ====== ====== ====== =
 
 .. raw:: html
@@ -135,10 +141,10 @@ IDs**
 == ===== ===== ===== =======
 \  sdimx sdimy sdimz cell_ID
 == ===== ===== ===== =======
-1                    
-2                    
-3                    
-\                    
+1
+2
+3
+\
 == ===== ===== ===== =======
 
 .. raw:: html
@@ -204,14 +210,14 @@ Here is an example of a more customized Giotto object.
 
    .. code:: r
 
-      # Specify data with file paths 
+      # Specify data with file paths
       osm_exprs = paste0(data_directory, "osmFISH_prep_expression.txt")
       osm_locs = paste0(data_directory, "osmFISH_prep_cell_coordinates.txt")
       meta_path = paste0(data_directory, "osmFISH_prep_cell_metadata.txt")
 
       # Create instructions
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -225,7 +231,7 @@ Here is an example of a more customized Giotto object.
 
       # Create Giotto object
       custom_gobject = createGiottoObject(expression = osm_exprs,
-                                          spatial_locs = osm_locs,                                      
+                                          spatial_locs = osm_locs,
                                           instructions = instrs)
 
       # Add field annotations as cell metadata
@@ -329,14 +335,14 @@ alternative methods to save plots.
       spatPlot(custom_gobject)
 
       # Plot clusters, create, and save to a new subdirectory, all while overwriting formatting
-      spatPlot(custom_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(custom_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE,
                return_plot = TRUE,
                show_plot = TRUE,
                save_param = list(save_folder = 'plots/', # Create subdirectory
-                                 save_name = 'cell_clusters', 
-                                 save_format = 'png', 
+                                 save_name = 'cell_clusters',
+                                 save_format = 'png',
                                  units = 'in',
                                  base_height = 9,
                                  base_width = 9))
@@ -371,10 +377,10 @@ at the `introduction to giotto classes <./classes_intro.html>`__
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          loaded via a namespace (and not attached):
-          [1] compiler_4.2.1  fastmap_1.1.1   cli_3.6.1       tools_4.2.1    
-          [5] htmltools_0.5.5 rstudioapi_0.14 yaml_2.3.7      rmarkdown_2.21 
-          [9] knitr_1.42      xfun_0.39       digest_0.6.31   jsonlite_1.8.4 
-         [13] rlang_1.1.1     evaluate_0.21  
+          [1] compiler_4.2.1  fastmap_1.1.1   cli_3.6.1       tools_4.2.1
+          [5] htmltools_0.5.5 rstudioapi_0.14 yaml_2.3.7      rmarkdown_2.21
+          [9] knitr_1.42      xfun_0.39       digest_0.6.31   jsonlite_1.8.4
+         [13] rlang_1.1.1     evaluate_0.21

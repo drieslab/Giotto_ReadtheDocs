@@ -1,3 +1,8 @@
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
 
 ##########################
 Branches
@@ -8,7 +13,7 @@ Branches
     :hidden:
     Giotto Master <branches.rst>
     Giotto Suite <branches.rst>
-    
+
 
 =================
 Giotto Suite
@@ -30,5 +35,5 @@ The Master branch of Giotto is the original Giotto R package published in 2021 b
 .. image:: images/GiottoLogoMaster.png
    :target: https://giottosuite.readthedocs.io/en/master/
    :width: 200
-   
+
 

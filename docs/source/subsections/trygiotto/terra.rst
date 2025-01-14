@@ -1,5 +1,11 @@
 .. _terrainformation:
 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 ##########
 Terra
 ##########
