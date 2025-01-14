@@ -2,7 +2,13 @@
 Solutions to Installation Errors
 ##################################
 
-.. _error_on_mac: 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
+.. _error_on_mac:
 
 ************************
 Errors on MacOS
@@ -114,25 +120,25 @@ provided here.
 Errors on Windows
 ************************
 
-.. _openSSL_error: 
+.. _openSSL_error:
 
 Windows 11 OpenSSL Error
 ============================================
 
 *Please note that this troubleshooting workflow is for a Windows 11 64-bit machine.*
 
-Unfortunately, it is known that installing miniconda on Windows 11 can sometimes result in an 
-`OpenSSL error <https://github.com/drieslab/Giotto/issues/425#issuecomment-1320499840>`_. It should be noted 
+Unfortunately, it is known that installing miniconda on Windows 11 can sometimes result in an
+`OpenSSL error <https://github.com/drieslab/Giotto/issues/425#issuecomment-1320499840>`_. It should be noted
 that Conda developers are aware of this, and that this particular issue does not have to do with
 the configuration of the Giotto package. One workaround for this error is described below and on the conda repository,
 `here <https://github.com/conda/conda/issues/8273#issue-409800067>`__.
 
-First, open a terminal and navigate to the folder in which miniconda lives on the machine. 
+First, open a terminal and navigate to the folder in which miniconda lives on the machine.
 To find this, press the Windows Key and search for "Anaconda Prompt". If anaconda3 is installed
-on the machine, there may be multiple options for this terminal; choose the Anaconda Prompt with 
-"R-MINI~1" in parenthesis. 
+on the machine, there may be multiple options for this terminal; choose the Anaconda Prompt with
+"R-MINI~1" in parenthesis.
 
-Output from the following commands will be provided as a comparative guide. 
+Output from the following commands will be provided as a comparative guide.
 Once the terminal is open, identify the Conda environments on the machine by running the following:
 
 .. container:: cell
@@ -150,7 +156,7 @@ Once the terminal is open, identify the Conda environments on the machine by run
 
 Change your current directory to the R-MINI~1 subdirectory. Then, navigate to the Library/bin/ subdirectory within.
 Use the dir command to search bin for two groups of files. These files will be moved to a different directory, and should
-fix the issue. There may be more than two files per group here, and that is okay. All of the files with these names will be moved, 
+fix the issue. There may be more than two files per group here, and that is okay. All of the files with these names will be moved,
 regardless of the extension.
 
 .. container:: cell
@@ -186,11 +192,11 @@ Once these files are located, they may be moved to R-MINI~1/DLLs/, the proper di
    .. code:: powershell
 
       (base) PS > pwd
-      
+
       # Path
       # ----
       # C:\Users\matth\AppData\Local\r-miniconda\Library\bin
-      
+
       (base) PS > mv libssl-1_1-x64.* ..\..\DLLs\
       (base) PS > mv libcrypto-1_1-x64.* ..\..\DLLs\
 
@@ -202,7 +208,7 @@ Finally, change to the DLLs directory within R-MINI~1 and verify that the files 
 
       (base) PS > cd C:\Users\matth\AppData\Local\r-miniconda\DLLs\
       (base) PS > dir libssl-1_1-x64.*
-      
+
       #     Directory: C:\Users\matth\AppData\Local\r-miniconda\DLLs
 
 
@@ -251,14 +257,14 @@ to test a package import. The OpenSSL error should no longer occur.
 UnsatisfiableError
 ************************
 
-This error results from conflicts within the anaconda and miniconda environment. This error presents itself when conflicting versions 
+This error results from conflicts within the anaconda and miniconda environment. This error presents itself when conflicting versions
 of conda live on the same machine; conda environments can only be so isolated from each other. To begin the troubleshooting workflow,
 open a terminal (macOS, Linux) or an Anaconda Prompt (Windows), and identify the environments on the machine. If anaconda3 is installed
 on the Windows machine, there may be multiple options for this terminal; choose the Anaconda Prompt with "anaconda3" in parenthesis.
 
-NOTE: *The following commands will be shown as if within an Anaconda Prompt to emphasize the difference for Windows users; for these purposes, 
-the only difference between terminals is the appearance of the message* (i.e., (active_env) PS >) *preceding the textual entry. No output will be shown here as 
-differences in OS, environments, and versions will vary.* 
+NOTE: *The following commands will be shown as if within an Anaconda Prompt to emphasize the difference for Windows users; for these purposes,
+the only difference between terminals is the appearance of the message* (i.e., (active_env) PS >) *preceding the textual entry. No output will be shown here as
+differences in OS, environments, and versions will vary.*
 
 First, identify the environments on the machine:
 
@@ -269,9 +275,9 @@ First, identify the environments on the machine:
       (base) PS > conda info --envs
 
 To proceed, any r-miniconda associated environments will be deleted, and the base environment will be updated. If **any** environment
-is frequently used for other analyses and a python version update is undesirable, it may be preserved by cloning the environment. 
-The original environment, however, will be removed or updated, so ensure that files and workflows associated with this environment 
-are redirected to the new, cloned environment. Ensure the path of the cloned environment is not associated with r-miniconda. 
+is frequently used for other analyses and a python version update is undesirable, it may be preserved by cloning the environment.
+The original environment, however, will be removed or updated, so ensure that files and workflows associated with this environment
+are redirected to the new, cloned environment. Ensure the path of the cloned environment is not associated with r-miniconda.
 
 **It is recommended that conda is updated within any cloned environment (see below).**
 
@@ -284,7 +290,7 @@ are redirected to the new, cloned environment. Ensure the path of the cloned env
 Verify that the clone exists to the proper specifications before proceeding by comparing packages and python versions:
 
 .. container:: cell
-    
+
    .. code:: powershell
 
       (base) PS > conda info --envs
@@ -294,9 +300,9 @@ Verify that the clone exists to the proper specifications before proceeding by c
       (my_base_clone) PS > conda list
       (my_base_clone) PS > conda activate base
       (base) PS > python -V
-      (base) PS > conda list 
+      (base) PS > conda list
 
-Ensure the base environment is activated. If the r-miniconda environments are still on the machine, remove them. 
+Ensure the base environment is activated. If the r-miniconda environments are still on the machine, remove them.
 Specify the r-miniconda environments other than giotto_env, as these will be unique to the machine. This may be done at the command line:
 
 .. container:: cell
@@ -316,8 +322,8 @@ Alternatively, in R, reticulate can uninstall miniconda and remove the associate
 
 It is advisable to remove any and all environments which are outdated and/or no longer used.
 
-Recall that by default, Giotto installs a miniconda environment with python v3.10.2 for interfacing with R. Older versions of conda in 
-the base environment cannot handle a python version that high in a different environment. Therefore, the recommended troubleshooting 
+Recall that by default, Giotto installs a miniconda environment with python v3.10.2 for interfacing with R. Older versions of conda in
+the base environment cannot handle a python version that high in a different environment. Therefore, the recommended troubleshooting
 method is to update conda and python within the base environment at a minimum. Updating to python v3.8.5 at a minimum is recommended.
 It is advisable to update conda and python within *each* environment on the machine if feasible.
 
@@ -348,4 +354,4 @@ If the issue persists, please post an issue on the `GitHub <https://github.com/d
    * :ref:`Visualize spatial data with voronoi plots <voronoi-plots>`
    * :ref:`Working with the Giotto class <giotto-class>`
    * :ref:`Adding and Working with Images in Giotto <working-with-giotto-images>`
-    
+

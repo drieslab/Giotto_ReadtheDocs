@@ -4,6 +4,13 @@
 Tools
 ################################
 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
+
 .. toctree::
     :maxdepth: 1
     :caption: Tools
@@ -16,7 +23,7 @@ Tools
     Saving Giotto Objects <subsections/datasets/230414_save_giotto_object_George>
     Saving Giotto Plots </subsections/getting_started/getting_started_saving>
     Interoperability </subsections/datasets/interoperability_04122023>
-            
+
 Spatial Manipulation
 =========================
 .. card-carousel:: 3
@@ -46,7 +53,7 @@ Interactive Selection
         :link-type: doc
 
         .. image:: images/dataset_page/interactive_selection_image_summary.png
-        
+
 Visualizations
 =========================
 .. card-carousel:: 3
@@ -66,13 +73,13 @@ Saving and Loading
         :link-type: doc
 
         .. image:: subsections/datasets/230414_save_giotto_object_George_files/figure-rst/unnamed-chunk-4-1.png
-        
+
     .. card:: Plots
         :link: /subsections/getting_started/getting_started_saving
         :link-type: doc
 
         .. image:: images/getting_started/icons_saving.png
-        
+
 Interoperability
 =========================
 .. card-carousel:: 3

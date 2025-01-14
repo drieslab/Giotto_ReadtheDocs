@@ -1,5 +1,11 @@
 .. _gettingstartedpage:
 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 #######################
 Getting Started
 #######################
@@ -96,7 +102,7 @@ The following tutorials use data which is stored within another package in the G
 
         .. image:: images/getting_started/icons_saving.png
             :target: ./subsections/getting_started/getting_started_saving.html
-	    
+
     .. grid-item-card:: Interactive Selection
 
         .. image:: images/dataset_page/interactive_selection_image_summary.png

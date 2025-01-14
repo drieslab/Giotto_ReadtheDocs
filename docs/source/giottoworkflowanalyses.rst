@@ -1,4 +1,10 @@
-.. _giottoworkflowanalysespage: 
+.. _giottoworkflowanalysespage:
+
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
 
 ############################
 Giotto Workflow
@@ -17,11 +23,11 @@ Workflow Diagram
 .. _install_a_giotto_environment:
 
 *********************************************
-0. *Optional:* Install a Giotto Environment 
+0. *Optional:* Install a Giotto Environment
 *********************************************
 
-To perform all potential steps and analysis in the Giotto spatial toolbox the user needs to have a number of python modules installed. 
-To make this process as flexible and easy as possible **two different strategies can be used.** See the :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` for more detailed information on installing Giotto and all of the 
+To perform all potential steps and analysis in the Giotto spatial toolbox the user needs to have a number of python modules installed.
+To make this process as flexible and easy as possible **two different strategies can be used.** See the :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` for more detailed information on installing Giotto and all of the
 required modules needed to use Giotto succesffully.
 
 The user can **install all the necessary modules** themself and then proivide the path to their python or environment (e.g. Conda) as an instruction.
@@ -31,31 +37,31 @@ The user can **install all the necessary modules** themself and then proivide th
 	library(Giotto)
 	my_instructions = createGiottoInstructions(python_path = 'your/python/path')
 	my_giotto_object = createGiottoObject(raw_exprs = '...',
-                                      spatial_locs = '...', 
+                                      spatial_locs = '...',
                                       instructions = my_instructions)
 
 
-**Alternatively,** the user can just **install a giotto python environment using r-miniconda.** 
-This was the method that was implemented in the reticulate package. In this case the environment will be *automatically* detected and *no specific python path need to be provided.* 
+**Alternatively,** the user can just **install a giotto python environment using r-miniconda.**
+This was the method that was implemented in the reticulate package. In this case the environment will be *automatically* detected and *no specific python path need to be provided.*
 The installation, re-installation and removal is explained in futher detail below.
-		
 
-.. dropdown:: Load Giotto into R 
 
-	.. code-block:: 
+.. dropdown:: Load Giotto into R
+
+	.. code-block::
 
 		library(Giotto)
 
 
 .. dropdown:: Install Giotto Environment
 
-	.. code-block:: 
+	.. code-block::
 
 		installGiottoEnvironment()
 
 .. dropdown:: Re-install the Giotto Environment
 
-	.. code-block:: 
+	.. code-block::
 
 		installGiottoEnvironment(force_environment = TRUE)
 
@@ -67,7 +73,7 @@ The installation, re-installation and removal is explained in futher detail belo
 
 .. dropdown:: Remove Giotto Environment
 
-	.. code-block:: 
+	.. code-block::
 
 		removeGiottoEnvironment()
 
@@ -75,7 +81,7 @@ The installation, re-installation and removal is explained in futher detail belo
 .. _create-a-giotto-object:
 
 **************************
-1. Create a Giotto Object 
+1. Create a Giotto Object
 **************************
 
 *Minimum Requirements*
@@ -119,7 +125,7 @@ Usually specifying your own instructions can be most useful to:
 * Determining the outputs of plots
 * Automatically saving plots to particular directories
 
-.. code-block:: 
+.. code-block::
 
 	library(Giotto)
 
@@ -128,7 +134,7 @@ Usually specifying your own instructions can be most useful to:
 	path_to_locations = system.file("extdata", "seqfish_field_locs.txt", package = 'Giotto')
 
 	# 2. Create your own instructions
-	path_to_python = '/usr/bin/python3' # can be something else 
+	path_to_python = '/usr/bin/python3' # can be something else
 	working_directory = getwd() # this will use your current working directory
 	my_instructions = createGiottoInstructions(python_path = path_to_python,
                                            save_dir = working_directory)
@@ -146,16 +152,16 @@ Usually specifying your own instructions can be most useful to:
 .. _process-and-filter-a-giotto-object:
 
 ****************************************
-2. Process and Filter a Giotto Object 
+2. Process and Filter a Giotto Object
 ****************************************
 
 .. dropdown:: Load Giotto into R
 
 	.. code-block::
-		
+
 		library(Giotto)
 
-2.1 Create a Giotto object 
+2.1 Create a Giotto object
 ===========================
 .. code-block::
 
@@ -163,18 +169,18 @@ Usually specifying your own instructions can be most useful to:
 	path_to_locations = system.file("extdata", "seqfish_field_locs.txt", package = 'Giotto')
 	my_giotto_object = createGiottoObject(raw_exprs = path_to_matrix,
                                       spatial_locs = path_to_locations)
-	
-2.2 Filter Giotto object based on gene and cell coverage 
+
+2.2 Filter Giotto object based on gene and cell coverage
 ==========================================================================================================
 
 .. code-block::
-	
-	my_giotto_object <- filterGiotto(gobject = my_giotto_object, 
-                                 expression_threshold = 1, 
-                                 gene_det_in_min_cells = 10, 
+
+	my_giotto_object <- filterGiotto(gobject = my_giotto_object,
+                                 expression_threshold = 1,
+                                 gene_det_in_min_cells = 10,
                                  min_det_genes_per_cell = 5)
 
-2.3 Normalize Giotto object 
+2.3 Normalize Giotto object
 ===========================
 
 .. code-block::
@@ -187,7 +193,7 @@ Usually specifying your own instructions can be most useful to:
 .. code-block::
 
 	my_giotto_object <- addStatistics(gobject = my_giotto_object)
-	my_giotto_object <- adjustGiottoMatrix(gobject = my_giotto_object, 
+	my_giotto_object <- adjustGiottoMatrix(gobject = my_giotto_object,
                                        expression_values = c('normalized'),
                                        covariate_columns = c('nr_genes', 'total_expr'))
 
@@ -200,12 +206,12 @@ Usually specifying your own instructions can be most useful to:
 **************************
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-3.1 Create and process Giotto object 
+3.1 Create and process Giotto object
 ========================================================================
 
 .. code-block::
@@ -217,7 +223,7 @@ Usually specifying your own instructions can be most useful to:
 	my_giotto_object <- filterGiotto(gobject = my_giotto_object)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
-3.2 Highly variable genes 
+3.2 Highly variable genes
 ========================================================================
 
 .. code-block::
@@ -258,13 +264,13 @@ Usually specifying your own instructions can be most useful to:
 4. Cluster cells or spots
 *************************************
 
-4.1 Processing steps 
+4.1 Processing steps
 ===============================================================================================
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 .. code-block::
@@ -276,9 +282,9 @@ Usually specifying your own instructions can be most useful to:
                                       spatial_locs = path_to_locations)
 
 	# processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -287,10 +293,10 @@ Usually specifying your own instructions can be most useful to:
 	my_giotto_object <- runPCA(gobject = my_giotto_object)
 	my_giotto_object <- runUMAP(my_giotto_object, dimensions_to_use = 1:5)
 
-4.2 Clustering 
+4.2 Clustering
 ====================
 
-4.2.1 Clustering algorithms 
+4.2.1 Clustering algorithms
 --------------------------------
 *Giotto provides a number of different clustering algorithms, here we show some of the most popular.*
 
@@ -313,7 +319,7 @@ Usually specifying your own instructions can be most useful to:
 	plotUMAP_2D(my_giotto_object, cell_color = 'hier_clus', point_size = 3)
 
 
-4.2.2 Clustering similarity and merging 
+4.2.2 Clustering similarity and merging
 -----------------------------------------
 *To fine-tune clustering results Giotto provides methods to calculate similarities between clusters and merge clusters based on correlation and size parameters.*
 
@@ -324,16 +330,16 @@ Usually specifying your own instructions can be most useful to:
                                             cluster_column = 'leiden_clus')
 
 	# Merge similar clusters based on correlation and size parameters
-	mini_giotto_single_cell = mergeClusters(my_giotto_object, 
-                                        cluster_column = 'leiden_clus', 
-                                        min_cor_score = 0.7, 
+	mini_giotto_single_cell = mergeClusters(my_giotto_object,
+                                        cluster_column = 'leiden_clus',
+                                        min_cor_score = 0.7,
                                         force_min_group_size = 4)
 
 	# Visualize
 	pDataDT(my_giotto_object)
 	plotUMAP_2D(my_giotto_object, cell_color = 'merged_cluster', point_size = 3)
 
-4.3 Dendrogram splits 
+4.3 Dendrogram splits
 ===============================================================================================
 *A dendrogram can be created from the clustering results. This may for example help in identifying genes that are most differentially expressed between branches.*
 
@@ -341,8 +347,8 @@ Usually specifying your own instructions can be most useful to:
 
 	splits = getDendrogramSplits(my_giotto_object, cluster_column = 'merged_cluster')
 
-4.4 Subclustering 
-See seqfish+ clustering example. 
+4.4 Subclustering
+See seqfish+ clustering example.
 
 .. _identify-differentially-expressed-genes:
 
@@ -350,13 +356,13 @@ See seqfish+ clustering example.
 5. Identify differentially expressed genes
 **********************************************
 
-Marker Gene Detection 
+Marker Gene Detection
 ============================
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 .. code-block::
@@ -426,16 +432,16 @@ A general wrapper has also been created which covers all three methods. See **fi
 6. Annotate clusters
 ********************************
 
-Giotto Annotation Tools 
+Giotto Annotation Tools
 =======================================================================================
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-.. code-block:: 
+.. code-block::
 
 	data("mini_giotto_single_cell")
 
@@ -457,7 +463,7 @@ Giotto Annotation Tools
 	# Convert cluster results into annotations and add to cell metadata
 	mini_giotto_single_cell = annotateGiotto(gobject = mini_giotto_single_cell,
                                          annotation_vector = clusters_cell_types,
-                                         cluster_column = 'leiden_clus', 
+                                         cluster_column = 'leiden_clus',
                                          name = 'cell_types2')
 	# Inspect new annotation column
 	pDataDT(mini_giotto_single_cell)
@@ -468,7 +474,7 @@ Giotto Annotation Tools
             cell_color = 'cell_types2',
             spat_point_size = 3, dim_point_size = 3)
 
-6.2 Remove cell annotation 
+6.2 Remove cell annotation
 =======================================================================================
 
 .. code-block::
@@ -480,7 +486,7 @@ Giotto Annotation Tools
 	mini_giotto_single_cell = removeCellAnnotation(mini_giotto_single_cell,
                                                columns = 'cell_types')
 
-6.3 Remove gene annotation 
+6.3 Remove gene annotation
 =======================================================================================
 .. code-block::
 
@@ -501,13 +507,13 @@ Giotto spot enrichment tools
 ==============================================================================================
 *Not yet available. Check out the visium brain datasets for examples.*
 
-7.1 Processing steps 
+7.1 Processing steps
 ==============================================================================================
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 .. code-block::
@@ -523,7 +529,7 @@ Giotto spot enrichment tools
 
 7.2 Run spatial cell type enrichments methods
 ==============================================================================================
-7.2.1 PAGE Enrichment 
+7.2.1 PAGE Enrichment
 ---------------------------
 .. code-block::
 
@@ -533,7 +539,7 @@ Giotto spot enrichment tools
                        "Calml4" , "Aqp4" , "Ppp1r3g" , "1700012B09Rik" , "Hes5")
 
 	gran_markers = c("Nr3c2", "Gabra5", "Tubgcp2", "Ahcyl2",
-                 "Islr2", "Rasl10a", "Tmem114", "Bhlhe22", 
+                 "Islr2", "Rasl10a", "Tmem114", "Bhlhe22",
                  "Ntf3", "C1ql2")
 
 	cortex_hippo_markers = c("6330403A02Rik" , "Tekt5" , "Wipf3" , "1110032F04Rik" , "Lmo3" ,
@@ -544,7 +550,7 @@ Giotto spot enrichment tools
 	oligo_markers = c("Efhd1" , "H2-Ab1" , "Enpp6" , "Ninj2" , "Bmp4" ,
                   "Tnr" , "Hapln2" , "Neu4" , "Wfdc18" , "Ccp110" ,
                   "Gm26834" , "Il23a" , "Arap2" , "Nkx2-9" , "Mal" ,
-                  "Tmem2" , "Birc2" , "Cdkn1c" , "Pak4" , "Tmem88b")        
+                  "Tmem2" , "Birc2" , "Cdkn1c" , "Pak4" , "Tmem88b")
 
 
 	signature_matrix = makeSignMatrixPAGE(sign_names = c('Astro_ependymal',
@@ -561,12 +567,12 @@ Giotto spot enrichment tools
                                  sign_matrix = signature_matrix,
                                  min_overlap_genes = 2)
 	cell_types_subset = colnames(signature_matrix)
-	spatCellPlot(gobject = my_giotto_object, 
+	spatCellPlot(gobject = my_giotto_object,
              spat_enr_names = 'PAGE',
              cell_annotation_values = cell_types_subset,
              cow_n_col = 2,coord_fix_ratio = NULL, point_size = 2.75)
 
-7.2.2 RANK Enrichment 
+7.2.2 RANK Enrichment
 -------------------------
 .. code-block::
 
@@ -592,7 +598,7 @@ Giotto spot enrichment tools
 	my_giotto_object = runRankEnrich(gobject = my_giotto_object, sign_matrix = rank_matrix)
 
 	cell_types_subset = c("Astro_ependymal", "Oligo_dendrocyte" , "Cortex_hippocampus" , "Granule_neurons" )
-	spatCellPlot(gobject = my_giotto_object, 
+	spatCellPlot(gobject = my_giotto_object,
              spat_enr_names = 'rank',
              cell_annotation_values = cell_types_subset,
              cow_n_col = 3,coord_fix_ratio = NULL, point_size = 1.75)
@@ -600,17 +606,17 @@ Giotto spot enrichment tools
 7.2.3 Hypergeometric enrichment
 -----------------------------------------
 .. code-block::
-	
+
 	my_giotto_object = runHyperGeometricEnrich(gobject = my_giotto_object,
                                            sign_matrix = signature_matrix)
 
 	cell_types_subset = colnames(signature_matrix)
-	spatCellPlot(gobject = my_giotto_object, 
+	spatCellPlot(gobject = my_giotto_object,
              spat_enr_names = 'hypergeometric',
              cell_annotation_values = cell_types_subset,
              cow_n_col = 2,coord_fix_ratio = NULL, point_size = 2.75)
 
-7.2.4 Deconvolution 
+7.2.4 Deconvolution
 --------------------------------------------
 .. code-block::
 
@@ -624,19 +630,19 @@ Giotto spot enrichment tools
 ******************************************
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 .. code-block::
 
 	data("mini_giotto_single_cell")
 
-8.1 Create a spatial grid 
+8.1 Create a spatial grid
 ================================
 .. code-block::
-	
+
 	mini_giotto_single_cell <- createSpatialGrid(gobject = mini_giotto_single_cell,
                                             sdimx_stepsize = 250,
                                             sdimy_stepsize = 250,
@@ -648,17 +654,17 @@ Giotto spot enrichment tools
 	mini_giotto_single_cell <- createSpatialGrid(gobject = mini_giotto_single_cell,
                                             sdimx_stepsize = 350,
                                             sdimy_stepsize = 350,
-                                            minimum_padding = 50, 
+                                            minimum_padding = 50,
                                             name = 'large_grid')
 
 	# Show available grids
 	showGrids(mini_giotto_single_cell)
 
 	# Visualize other grid
-	spatPlot2D(gobject = mini_giotto_single_cell, point_size = 1.5, 
+	spatPlot2D(gobject = mini_giotto_single_cell, point_size = 1.5,
            show_grid = T, spatial_grid_name = 'large_grid')
 
-8.2 Create a spatial network 
+8.2 Create a spatial network
 ==============================
 .. code-block::
 
@@ -667,24 +673,24 @@ Giotto spot enrichment tools
 
 	# Create a spatial network, the Delaunay network is the default network
 	# Default name = 'Delaunay_network'
-	mini_giotto_single_cell = createSpatialNetwork(gobject = mini_giotto_single_cell, minimum_k = 2, 
+	mini_giotto_single_cell = createSpatialNetwork(gobject = mini_giotto_single_cell, minimum_k = 2,
                                     maximum_distance_delaunay = 400)
 
 	# Create a kNN network with 4 spatial neighbors
 	# Default name = 'kNN_network'
-	mini_giotto_single_cell = createSpatialNetwork(gobject = mini_giotto_single_cell, minimum_k = 2, 
+	mini_giotto_single_cell = createSpatialNetwork(gobject = mini_giotto_single_cell, minimum_k = 2,
                                     method = 'kNN', k = 4)
 
 	# Show available networks
 	showNetworks(mini_giotto_single_cell)
 
-	# Visualize the two different spatial networks  
+	# Visualize the two different spatial networks
 	spatPlot(gobject = mini_giotto_single_cell, show_network = T,
 	 network_color = 'blue', spatial_network_name = 'Delaunay_network',
 	 point_size = 2.5, cell_color = 'cell_types')
 
 	spatPlot(gobject = mini_giotto_single_cell, show_network = T,
-	 network_color = 'blue', spatial_network_name = 'kNN_network', 
+	 network_color = 'blue', spatial_network_name = 'kNN_network',
 	 point_size = 2.5, cell_color = 'cell_types')
 
 
@@ -696,12 +702,12 @@ Giotto spot enrichment tools
 *Spatial Gene Detection Tools*
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-9.1 Processing steps 
+9.1 Processing steps
 ========================
 .. code-block::
 
@@ -712,9 +718,9 @@ Giotto spot enrichment tools
                                       spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -728,21 +734,21 @@ Giotto spot enrichment tools
 	# binSpect kmeans method
 	km_spatialgenes = binSpect(my_giotto_object, bin_method = 'kmeans')
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = km_spatialgenes[1:2]$genes, point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
 	# binSpect rank method
 	rnk_spatialgenes = binSpect(my_giotto_object, bin_method = 'rank')
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = rnk_spatialgenes[1:2]$genes, point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
 	# silhouetteRank method
 	silh_spatialgenes = silhouetteRank(my_giotto_object)
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = silh_spatialgenes[1:2]$genes,  point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
@@ -751,7 +757,7 @@ Giotto spot enrichment tools
 	results = data.table::as.data.table(spatDE_spatialgenes$results)
 	setorder(results, -LLR)
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = results$g[1:2],  point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
@@ -759,7 +765,7 @@ Giotto spot enrichment tools
 	spark_spatialgenes = spark(my_giotto_object)
 	setorder(spark_spatialgenes, adjusted_pvalue, combined_pvalue)
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = spark_spatialgenes[1:2]$genes,  point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
@@ -767,7 +773,7 @@ Giotto spot enrichment tools
 	trendsc_spatialgenes = trendSceek(my_giotto_object)
 	trendsc_spatialgenes = data.table::as.data.table(trendsc_spatialgenes)
 
-	spatGenePlot(my_giotto_object, expression_values = 'scaled', 
+	spatGenePlot(my_giotto_object, expression_values = 'scaled',
              genes = trendsc_spatialgenes[1:2]$gene,  point_size = 3,
              point_shape = 'border', point_border_stroke = 0.1, cow_n_col = 2)
 
@@ -779,15 +785,15 @@ Giotto spot enrichment tools
 10.  Identify genes that are spatially co-expressed
 ***************************************************
 
-*Spatial Gene Co-Expression* 
+*Spatial Gene Co-Expression*
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-10.1 Processing steps 
+10.1 Processing steps
 ======================================================================================
 
 .. code-block::
@@ -799,29 +805,29 @@ Giotto spot enrichment tools
                                       spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
-	
+
 	# Create network (required for binSpect methods)
 	my_giotto_object = createSpatialNetwork(gobject = my_giotto_object, minimum_k = 2)
 
 	# Identify genes with a spatial coherent expression profile
 	km_spatialgenes = binSpect(my_giotto_object, bin_method = 'kmeans')
 
-10.2 Run spatial gene co-expression method 
+10.2 Run spatial gene co-expression method
 ============================================
 
 
-10.2.1 Calculate spatial correlation scores 
+10.2.1 Calculate spatial correlation scores
 --------------------------------------------
 .. code-block::
 
 	ext_spatial_genes = km_spatialgenes[1:500]$genes
 	spat_cor_netw_DT = detectSpatialCorGenes(my_giotto_object,
-                                         method = 'network', 
+                                         method = 'network',
                                          spatial_network_name = 'Delaunay_network',
                                          subset_genes = ext_spatial_genes)
 
@@ -830,26 +836,26 @@ Giotto spot enrichment tools
 
 .. code-block::
 
-	spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT, 
+	spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT,
                                           name = 'spat_netw_clus', k = 8)
-	heatmSpatialCorGenes(my_giotto_object, spatCorObject = spat_cor_netw_DT, 
+	heatmSpatialCorGenes(my_giotto_object, spatCorObject = spat_cor_netw_DT,
                      use_clus_name = 'spat_netw_clus')
 
 
 					 .. code-block::
 
 	# Rank spatial correlation clusters based on how similar they are
-	netw_ranks = rankSpatialCorGroups(my_giotto_object, 
-                                  spatCorObject = spat_cor_netw_DT, 
+	netw_ranks = rankSpatialCorGroups(my_giotto_object,
+                                  spatCorObject = spat_cor_netw_DT,
                                   use_clus_name = 'spat_netw_clus')
 
 	# Extract information about clusters
-	top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT, 
+	top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT,
                                             use_clus_name = 'spat_netw_clus',
-                                            selected_clusters = 6, 
+                                            selected_clusters = 6,
                                             show_top_genes = 1)
 
-	cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT, 
+	cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT,
                                        use_clus_name = 'spat_netw_clus',
                                        show_top_genes = 1)
 
@@ -872,9 +878,9 @@ Giotto spot enrichment tools
 *HMRF*
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 11.1 Processing steps
@@ -889,9 +895,9 @@ Giotto spot enrichment tools
                                       spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -946,12 +952,12 @@ Giotto spot enrichment tools
 *Cell-cell interaction analysis and visualization*
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-12.1 Processing steps 
+12.1 Processing steps
 ===========================
 
 .. code-block::
@@ -963,9 +969,9 @@ Giotto spot enrichment tools
                                       spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -984,9 +990,9 @@ Giotto spot enrichment tools
 	clusters_cell_types = paste0('cell ', LETTERS[1:uniq_clusters])
 	names(clusters_cell_types) = 1:uniq_clusters
 
-	my_giotto_object = annotateGiotto(gobject = my_giotto_object, 
-                              annotation_vector = clusters_cell_types, 
-                              cluster_column = 'leiden_clus', 
+	my_giotto_object = annotateGiotto(gobject = my_giotto_object,
+                              annotation_vector = clusters_cell_types,
+                              cluster_column = 'leiden_clus',
                               name = 'cell_types')
 
 	# Create network (required for binSpect methods)
@@ -995,7 +1001,7 @@ Giotto spot enrichment tools
 	# Identify genes with a spatial coherent expression profile
 	km_spatialgenes = binSpect(my_giotto_object, bin_method = 'kmeans')
 
-12.2 Run cell-cell interactions 
+12.2 Run cell-cell interactions
 =================================
 
 .. code-block::
@@ -1007,31 +1013,31 @@ Giotto spot enrichment tools
                                            adjust_method = 'fdr',
                                            number_of_simulations = 1000)
 
-12.3 Visualize cell-cell interactions 
+12.3 Visualize cell-cell interactions
 ========================================
 
 .. code-block::
 
 	#Barplot
-	cellProximityBarplot(gobject = my_giotto_object, 
-                     CPscore = cell_proximities, 
+	cellProximityBarplot(gobject = my_giotto_object,
+                     CPscore = cell_proximities,
                      min_orig_ints = 3, min_sim_ints = 3)
 
 	# Heatmap
-	cellProximityHeatmap(gobject = my_giotto_object, 
-                     CPscore = cell_proximities, 
+	cellProximityHeatmap(gobject = my_giotto_object,
+                     CPscore = cell_proximities,
                      order_cell_types = T, scale = T,
-                     color_breaks = c(-1.5, 0, 1.5), 
+                     color_breaks = c(-1.5, 0, 1.5),
                      color_names = c('blue', 'white', 'red'))
 
 	# Network
-	cellProximityNetwork(gobject = my_giotto_object, 
-                     CPscore = cell_proximities, 
+	cellProximityNetwork(gobject = my_giotto_object,
+                     CPscore = cell_proximities,
                      remove_self_edges = T, only_show_enrichment_edges = T)
 
 
 	# Network with self-edges
-	cellProximityNetwork(gobject = my_giotto_object, 
+	cellProximityNetwork(gobject = my_giotto_object,
                      CPscore = cell_proximities,
                      remove_self_edges = F, self_loop_strength = 0.3,
                      only_show_enrichment_edges = F,
@@ -1073,12 +1079,12 @@ Giotto spot enrichment tools
 *Interaction changed genes*
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
-13.1 Processing steps 
+13.1 Processing steps
 ============================
 
 .. code-block::
@@ -1090,9 +1096,9 @@ Giotto spot enrichment tools
                                       spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = seqfish_mini, 
-                             expression_threshold = 0.5, 
-                             gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = seqfish_mini,
+                             expression_threshold = 0.5,
+                             gene_det_in_min_cells = 20,
                              min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -1111,9 +1117,9 @@ Giotto spot enrichment tools
 	clusters_cell_types = paste0('cell ', LETTERS[1:uniq_clusters])
 	names(clusters_cell_types) = 1:uniq_clusters
 
-	my_giotto_object = annotateGiotto(gobject = my_giotto_object, 
-	                              annotation_vector = clusters_cell_types, 
-	                              cluster_column = 'leiden_clus', 
+	my_giotto_object = annotateGiotto(gobject = my_giotto_object,
+	                              annotation_vector = clusters_cell_types,
+	                              cluster_column = 'leiden_clus',
 	                              name = 'cell_types')
 
 	# Create network (required for binSpect methods)
@@ -1150,14 +1156,14 @@ Giotto spot enrichment tools
 13.3 Filter ICGs
 =====================
 .. code-block::
-	
+
 	# Filter genes
-	ICGscoresFilt = filterICG(ICGscoresHighGenes, 
+	ICGscoresFilt = filterICG(ICGscoresHighGenes,
                         	  min_cells = 2, min_int_cells = 2, min_fdr = 0.1,
                        	   min_spat_diff = 0.1, min_log2_fc = 0.1, min_zscore = 1)
 
 13.4 Visualize selected ICG
-=================================	
+=================================
 .. code-block::
 
 	# Visualize subset of interaction changed genes (ICGs)
@@ -1180,9 +1186,9 @@ Giotto spot enrichment tools
 **********************************************************************************************************
 
 .. dropdown:: Load Giotto into R
-	
+
 	.. code-block::
-		
+
 		library(Giotto)
 
 14.1 Processing steps
@@ -1198,9 +1204,9 @@ Giotto spot enrichment tools
         	                              spatial_locs = path_to_locations)
 
 	# Processing
-	my_giotto_object <- filterGiotto(gobject = my_giotto_object, 
-	                             expression_threshold = 0.5, 
- 	                            gene_det_in_min_cells = 20, 
+	my_giotto_object <- filterGiotto(gobject = my_giotto_object,
+	                             expression_threshold = 0.5,
+ 	                            gene_det_in_min_cells = 20,
 	                             min_det_genes_per_cell = 0)
 	my_giotto_object <- normalizeGiotto(gobject = my_giotto_object)
 
@@ -1219,9 +1225,9 @@ Giotto spot enrichment tools
 	clusters_cell_types = paste0('cell ', LETTERS[1:uniq_clusters])
 	names(clusters_cell_types) = 1:uniq_clusters
 
-	my_giotto_object = annotateGiotto(gobject = my_giotto_object, 
-	                              annotation_vector = clusters_cell_types, 
-	                              cluster_column = 'leiden_clus', 
+	my_giotto_object = annotateGiotto(gobject = my_giotto_object,
+	                              annotation_vector = clusters_cell_types,
+	                              cluster_column = 'leiden_clus',
 	                              name = 'cell_types')
 
 	# Create network (required for binSpect methods)
@@ -1278,7 +1284,7 @@ Giotto spot enrichment tools
 	plotCCcomHeatmap(gobject = my_giotto_object,
 		comScores = spatial_all_scores,
 		selected_LR = top_LR_ints,
-		selected_cell_LR = top_LR_cell_ints, 
+		selected_cell_LR = top_LR_cell_ints,
 		show = 'LR_expr')
 
 	plotCCcomDotplot(gobject = my_giotto_object,

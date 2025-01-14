@@ -65,8 +65,7 @@ Giotto Suite
 WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
 **********************************************
 
-With Giotto version 4.0, we updated the website at http://giottosuite.com, you can still find the previous website at https://giottosuite.readthedocs.io/en/latest/
-
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
 
 An open-source and technology-agnostic spatial multi-omics analysis platform
 ============================================================================

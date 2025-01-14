@@ -1,8 +1,14 @@
 #########################
-Function Documentation 
+Function Documentation
 #########################
 
-Giotto Environment 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
+Giotto Environment
 =======================
 
 *Install and work with Giotto Python Environment*
@@ -16,12 +22,12 @@ Giotto Environment
 	checkGiottoEnvironment </subsections/md_rst/checkGiottoEnvironment.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
-	* - Function 
-	  - Description 
+	* - Function
+	  - Description
 	* - :doc:`installGiottoEnvironment </subsections/md_rst/installGiottoEnvironment>`
 	  - installGiottoEnvironment
 	* - :doc:`removeGiottoEnvironment </subsections/md_rst/removeGiottoEnvironment>`
@@ -30,7 +36,7 @@ Giotto Environment
  	  - checkGiottoEnvironment
 
 
-Giotto Instructions 
+Giotto Instructions
 ========================
 
 *Create or change Giotto instructions*
@@ -46,11 +52,11 @@ Giotto Instructions
 	replaceGiottoInstructions </subsections/md_rst/replaceGiottoInstructions.rst>
 
 .. list-table::
-	:widths: 100 100 
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`createGiottoInstructions </subsections/md_rst/createGiottoInstructions>`
 	  - createGiottoInstructions
 	* - :doc:`readGiottoInstructions </subsections/md_rst/readGiottoInstructions>`
@@ -61,9 +67,9 @@ Giotto Instructions
 	  - changeGiottoInstructions
 	* - :doc:`replaceGiottoInstructions </subsections/md_rst/replaceGiottoInstructions>`
 	  - replaceGiottoInstructions
- 
-	  
-Import Raw Data  
+
+
+Import Raw Data
 =====================
 
 *Functions to help to import raw spatial datat*
@@ -82,11 +88,11 @@ Import Raw Data
 	readPolygonFilesVizgenHDF5 </subsections/md_rst/readPolygonFilesVizgenHDF5.rst>
 
 .. list-table::
-	:widths: 100 100 
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`getSpatialDataset </subsections/md_rst/getSpatialDataset>`
 	  - getSpatialDataset
 	* - :doc:`readExprMatrix </subsections/md_rst/readExprMatrix>`
@@ -94,17 +100,17 @@ Import Raw Data
 	* - :doc:`get10Xmatrix </subsections/md_rst/get10Xmatrix>`
 	  - get10Xmatrix
 	* - :doc:`get10Xmatrix_h5 </subsections/md_rst/get10Xmatrix_h5>`
-	  - get10Xmatrix_h5 
+	  - get10Xmatrix_h5
 	* - :doc:`stitchFieldCoordinates </subsections/md_rst/stitchFieldCoordinates>`
-	  - stitchFieldCoordinates 
+	  - stitchFieldCoordinates
 	* - :doc:`stitchTileCoordinates </subsections/md_rst/stitchTileCoordinates>`
-	  - stitchTileCoordinates 
+	  - stitchTileCoordinates
 	* - :doc:`readPolygonFilesVizgen </subsections/md_rst/readPolygonFilesVizgen>`
 	  - readPolygonFilesVizgen
 	* - :doc:`readPolygonFilesVizgenHDF5 </subsections/md_rst/readPolygonFilesVizgenHDF5>`
 	  - readPolygonFilesVizgenHDF5
 
-  
+
 Images
 ========
 *Functions to work with images for a Giotto object.*
@@ -138,12 +144,12 @@ Images
 	registerImagesFIJI </subsections/md_rst/registerImagesFIJI.rst>
 	registerGiottoObjectList </subsections/md_rst/registerGiottoObjectList.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
-	
-	* - Function 
-	  - Description 
+
+	* - Function
+	  - Description
 	* - :doc:`estimateImageBg </subsections/md_rst/estimateImageBg>`
 	  - estimateImageBg
 	* - :doc:`changeImageBg </subsections/md_rst/changeImageBg>`
@@ -151,7 +157,7 @@ Images
 	* - :doc:`createGiottoImage </subsections/md_rst/createGiottoImage>`
 	  - createGiottoImage
 	* - :doc:`addGiottoImage </subsections/md_rst/addGiottoImage>`
-	  - addGiottoImage 
+	  - addGiottoImage
 	* - :doc:`addGiottoImageToSpatPlot </subsections/md_rst/addGiottoImageToSpatPlot>`
 	  - addGiottoImageToSpatPlot
 	* - :doc:`showGiottoImageNames </subsections/md_rst/showGiottoImageNames>`
@@ -209,8 +215,8 @@ Giotto Object
 	createGiottoObjectSubcellular </subsections/md_rst/createGiottoObjectSubcellular.rst>
 	createGiottoCosMxObject </subsections/md_rst/createGiottoCosMxObject.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -225,7 +231,7 @@ Giotto Object
 	  - createGiottoCosMxObject
 
 
-Giotto Helper Functions 
+Giotto Helper Functions
 ===========================
 
 *Common functions to help working with Giotto objects*
@@ -245,12 +251,12 @@ Giotto Helper Functions
 	objHistory </subsections/md_rst/objHistory.rst>
 	fiji </subsections/md_rst/fiji.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
-	* - Function 
-	  - Description 
+	* - Function
+	  - Description
 	* - :doc:`pDataDT </subsections/md_rst/pDataDT>`
 	  - pDataDT
 	* - :doc:`fDataDT </subsections/md_rst/fDataDT>`
@@ -270,9 +276,9 @@ Giotto Helper Functions
 	* - :doc:`objHistory </subsections/md_rst/objHistory>`
 	  - objHistory
 	* - :doc:`fiji </subsections/md_rst/fiji>`
-	  - fiji 
+	  - fiji
 
-Giotto Getters & Setters 
+Giotto Getters & Setters
 ===========================
 
 *Low level functions to get, set and show Giotto slots*
@@ -300,12 +306,12 @@ Giotto Getters & Setters
 	get_spatial_enrichment </subsections/md_rst/get_spatial_enrichment.rst>
 	set_spatial_enrichment </subsections/md_rst/set_spatial_enrichment.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
-	* - Function 
-	  - Description 
+	* - Function
+	  - Description
 	* - :doc:`get_expression_values </subsections/md_rst/get_expression_values>`
 	  - get_expression_values
 	* - :doc:`set_expression_values </subsections/md_rst/set_expression_values>`
@@ -365,12 +371,12 @@ Giotto Show Slots
 	showGrids </subsections/md_rst/showGrids.rst>
 	showNetworks </subsections/md_rst/showNetworks.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
-	* - Function 
-	  - Description 
+	* - Function
+	  - Description
 	* - :doc:`showGiottoExpression </subsections/md_rst/showGiottoExpression>`
 	  - showGiottoExpression
 	* - :doc:`showGiottoSpatLocs </subsections/md_rst/showGiottoSpatLocs>`
@@ -424,12 +430,12 @@ Modify Giotto Object
 	addCellIntMetadata </subsections/md_rst/addCellIntMetadata.rst>
 	processGiotto </subsections/md_rst/processGiotto.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
-	* - Function 
-	  - Description 
+	* - Function
+	  - Description
 	* - :doc:`filterGiotto </subsections/md_rst/filterGiotto>`
 	  - filterGiotto
 	* - :doc:`filterCombinations </subsections/md_rst/filterCombinations>`
@@ -492,12 +498,12 @@ Dimension Reduction
 	runWNN </subsections/md_rst/runWNN.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`calculateHVF </subsections/md_rst/calculateHVF>`
 	  - calculateHVF
 	* - :doc:`signPCA </subsections/md_rst/signPCA>`
@@ -543,14 +549,14 @@ Clustering
 	mergeClusters </subsections/md_rst/mergeClusters.rst>
 	getDendrogramSplits </subsections/md_rst/getDendrogramSplits.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 	
+	  - Description
 	* - :doc:`createNearestNetwork </subsections/md_rst/createNearestNetwork>`
-	  - Create NN Network 
+	  - Create NN Network
 	* - :doc:`addNetworkLayout </subsections/md_rst/addNetworkLayout>`
 	  - addNetworkLayout
 	* - :doc:`clusterCells </subsections/md_rst/clusterCells>`
@@ -578,11 +584,11 @@ Clustering
 	* - :doc:`mergeClusters </subsections/md_rst/mergeClusters>`
 	  - mergeClusters
 	* - :doc:`getDendrogramSplits </subsections/md_rst/getDendrogramSplits>`
-	  - getDendrogramSplits 
+	  - getDendrogramSplits
 
 
 *************************
-Marker Genes 
+Marker Genes
 *************************
 *Functions to detect cell type / cluster specific marker genes.*
 
@@ -599,13 +605,13 @@ Marker Genes
 	findMastMarkers </subsections/md_rst/findMastMarkers.rst>
 	findMastMarkers_one_vs_all </subsections/md_rst/findMastMarkers_one_vs_all.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`findMarkers </subsections/md_rst/findMarkers>`
 	  - findMarkers
 	* - :doc:`findMarkers_one_vs_all </subsections/md_rst/findMarkers_one_vs_all>`
@@ -640,12 +646,12 @@ Auxiliary Visualizations
 	plotMetaDataCellsHeatmap </subsections/md_rst/plotMetaDataCellsHeatmap.rst>
 	violinPlot </subsections/md_rst/violinPlot.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`showClusterHeatmap </subsections/md_rst/showClusterHeatmap>`
 	  - showClusterHeatmap
 	* - :doc:`showClusterDendrogram </subsections/md_rst/showClusterDendrogram>`
@@ -657,7 +663,7 @@ Auxiliary Visualizations
 	* - :doc:`plotMetaDataCellsHeatmap </subsections/md_rst/plotMetaDataCellsHeatmap>`
 	  - plotMetaDataCellsHeatmap
 	* - :doc:`violinPlot </subsections/md_rst/violinPlot>`
-	  - violinPlot 
+	  - violinPlot
 
 ***********
 Spatial
@@ -677,13 +683,13 @@ Spatial Enrichment
 	runPAGEEnrich </subsections/md_rst/runPAGEEnrich.rst>
 	runRankEnrich </subsections/md_rst/runRankEnrich.rst>
 	runHyperGeometricEnrich </subsections/md_rst/runHyperGeometricEnrich.rst>
-	
-.. list-table:: 
-	:widths: 100 100 
+
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`makeSignMatrixPAGE </subsections/md_rst/makeSignMatrixPAGE>`
 	  - makeSignMatrixPAGE
 	* - :doc:`makeSignMatrixRank </subsections/md_rst/makeSignMatrixRank>`
@@ -710,13 +716,13 @@ Spatial Deconvolution
 	runSpatialDeconv </subsections/md_rst/runSpatialDeconv.rst>
 	runDWLSDeconv </subsections/md_rst/runDWLSDeconv.rst>
 	spatDeconvPlot </subsections/md_rst/spatDeconvPlot.rst>
-	
-.. list-table:: 
-	:widths: 100 100 
+
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`makeSignMatrixDWLSfromMatrix </subsections/md_rst/makeSignMatrixDWLSfromMatrix>`
 	  - makeSignMatrixDWLSfromMatrix
 	* - :doc:`makeSignMatrixDWLS </subsections/md_rst/makeSignMatrixDWLS>`
@@ -750,12 +756,12 @@ Spatial Network or Grid
 	createSpatialDefaultGrid </subsections/md_rst/createSpatialDefaultGrid.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`spatNetwDistributionsDistance </subsections/md_rst/spatNetwDistributionsDistance>`
 	  - spatNetwDistributionsDistance
 	* - :doc:`spatNetwDistributionsKneighbors </subsections/md_rst/spatNetwDistributionsKneighbors>`
@@ -780,7 +786,7 @@ Spatial Network or Grid
 	  - createSpatialGrid
 	* - :doc:`createSpatialDefaultGrid </subsections/md_rst/createSpatialDefaultGrid>`
 	  - createSpatialDefaultGrid
-	
+
 Spatial Expression Patterns
 =============================
 *Methods to detect spatially coherent expression patterns.*
@@ -799,12 +805,12 @@ Spatial Expression Patterns
 	trendSceek </subsections/md_rst/trendSceek.rst>
 	spark </subsections/md_rst/spark.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`binSpectSingleMatrix </subsections/md_rst/binSpectSingleMatrix>`
 	  - binSpectSingleMatrix
 	* - :doc:`binSpectMultiMatrix </subsections/md_rst/binSpectMultiMatrix>`
@@ -837,12 +843,12 @@ Simulate Spatial Expression Patterns
 	runPatternSimulation </subsections/md_rst/runPatternSimulation.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`simulateOneGenePatternGiottoObject </subsections/md_rst/simulateOneGenePatternGiottoObject>`
 	  - simulateOneGenePatternGiottoObject
 	* - :doc:`runPatternSimulation </subsections/md_rst/runPatternSimulation>`
@@ -868,12 +874,12 @@ Spatial Co-Expression Modules
 	rankSpatialCorGroups </subsections/md_rst/rankSpatialCorGroups.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`clusterSpatialCorFeats </subsections/md_rst/clusterSpatialCorFeats>`
 	  - clusterSpatialCorFeats
 	* - :doc:`detectSpatialCorFeats </subsections/md_rst/detectSpatialCorFeats>`
@@ -903,8 +909,8 @@ Spatial Data Handling
 	combineSpatialCellMetadataInfo </subsections/md_rst/combineSpatialCellMetadataInfo.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -916,7 +922,7 @@ Spatial Data Handling
 
 
 
-Hidden Markov Random Field (HMRF) 
+Hidden Markov Random Field (HMRF)
 ======================================
 *Functions to identify spatial domains with HMRF.*
 
@@ -932,12 +938,12 @@ Hidden Markov Random Field (HMRF)
 	viewHMRFresults2D </subsections/md_rst/viewHMRFresults2D.rst>
 	viewHMRFresults3D </subsections/md_rst/viewHMRFresults3D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`doHMRF </subsections/md_rst/doHMRF>`
 	  - doHMRF
 	* - :doc:`loadHMRF </subsections/md_rst/loadHMRF>`
@@ -969,8 +975,8 @@ General Plotting
 	getDistinctColors </subsections/md_rst/getDistinctColors.rst>
 	showSaveParameters </subsections/md_rst/showSaveParameters.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1001,12 +1007,12 @@ General Plotting
 	dimFeatPlot2D </subsections/md_rst/dimFeatPlot2D.rst>
 	dimCellPlot2D </subsections/md_rst/dimCellPlot2D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`dimPlot </subsections/md_rst/dimPlot>`
 	  - dimPlot
 	* - :doc:`dimPlot2D </subsections/md_rst/dimPlot2D>`
@@ -1041,12 +1047,12 @@ General Plotting
 	spatCellPlot2D </subsections/md_rst/spatCellPlot2D.rst>
 	spatFeatPlot2D </subsections/md_rst/spatFeatPlot2D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`spatPlot2D </subsections/md_rst/spatPlot2D>`
 	  - spatPlot2D
 	* - :doc:`spatCellPlot2D </subsections/md_rst/spatCellPlot2D>`
@@ -1067,12 +1073,12 @@ General Plotting
 	spatDimCellPlot2D </subsections/md_rst/spatDimCellPlot2D.rst>
 	spatDimFeatPlot2D </subsections/md_rst/spatDimFeatPlot2D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`spatDimPlot2D </subsections/md_rst/spatDimPlot2D>`
 	  - spatDimPlot2D
 	* - :doc:`spatDimCellPlot2D </subsections/md_rst/spatDimCellPlot2D>`
@@ -1086,7 +1092,7 @@ General Plotting
 3D Visualization
 ****************************************************
 
-3D Visualization Dimension Reduction 
+3D Visualization Dimension Reduction
 =====================================
 
 *Visualization of expression space (e.g. UMAP) in 3D*
@@ -1100,8 +1106,8 @@ General Plotting
 	plotTSNE_3D </subsections/md_rst/plotTSNE_3D.rst>
 	plotPCA_3D </subsections/md_rst/plotPCA_3D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1126,16 +1132,16 @@ General Plotting
 
 	spatPlot3D </subsections/md_rst/spatPlot3D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`spatPlot3D </subsections/md_rst/spatPlot3D>`
 	  - spatPlot3D
 
-3D visualization in Spatial and Expression Space 
+3D visualization in Spatial and Expression Space
 ===================================================
 *Visualization in 3D spatial space.*
 
@@ -1145,12 +1151,12 @@ General Plotting
 
 	spatDimPlot3D </subsections/md_rst/spatDimPlot3D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`spatDimPlot3D </subsections/md_rst/spatDimPlot3D>`
 	  - spatDimPlot3D
 
@@ -1171,14 +1177,14 @@ In Silico Cross Sections
 	insertCrossSectionSpatPlot3D </subsections/md_rst/insertCrossSectionSpatPlot3D.rst>
 	insertCrossSectionGenePlot3D </subsections/md_rst/insertCrossSectionGenePlot3D.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`createCrossSection </subsections/md_rst/createCrossSection>`
-	  - createCrossSection 
+	  - createCrossSection
 	* - :doc:`crossSectionGenePlot </subsections/md_rst/crossSectionGenePlot>`
 	  - crossSectionGenePlot
 	* - :doc:`crossSectionPlot </subsections/md_rst/crossSectionPlot>`
@@ -1214,12 +1220,12 @@ Cell Neighborhood: Cell-Type/Cell-Type Enrichment
 	specificCellCellcommunicationScores </subsections/md_rst/specificCellCellcommunicationScores.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`cellProximityEnrichment </subsections/md_rst/cellProximityEnrichment>`
 	  - cellProximityEnrichment
 	* - :doc:`cellProximityBarplot </subsections/md_rst/cellProximityBarplot>`
@@ -1257,12 +1263,12 @@ Cell Neighborhood: Spatial Interaction Changed Features (ICF)
 	plotCombineInteractionChangedFeats </subsections/md_rst/plotCombineInteractionChangedFeats.rst>
 	plotCombineICF </subsections/md_rst/plotCombineICF.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`findInteractionChangedFeats </subsections/md_rst/findInteractionChangedFeats>`
 	  - findInteractionChangedFeats
 	* - :doc:`findICF </subsections/md_rst/findICF>`
@@ -1308,14 +1314,14 @@ Cell Neighborhood: Ligand-Receptor Cell Communication
 	plotCombineCCcom </subsections/md_rst/plotCombineCCcom.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`combCCcom </subsections/md_rst/combCCcom>`
-	  - combCCcom 
+	  - combCCcom
 	* - :doc:`exprCellCellcom </subsections/md_rst/exprCellCellcom>`
 	  - exprCellCellcom
 	* - :doc:`spatCellCellcom </subsections/md_rst/spatCellCellcom>`
@@ -1327,9 +1333,9 @@ Cell Neighborhood: Ligand-Receptor Cell Communication
 	* - :doc:`plotRecovery </subsections/md_rst/plotRecovery>`
 	  - plotRecovery
 	* - :doc:`plotCCcomHeatmap </subsections/md_rst/plotCCcomHeatmap>`
-	  - plotCCcomHeatmap 
+	  - plotCCcomHeatmap
 	* - :doc:`plotCombineCellCellCommunication </subsections/md_rst/plotCombineCellCellCommunication>`
-	  - plotCombineCellCellCommunication 
+	  - plotCombineCellCellCommunication
 	* - :doc:`plotCombineCCcom </subsections/md_rst/plotCombineCCcom>`
 	  - plotCombineCCcom
 
@@ -1342,7 +1348,7 @@ Subcellular
 .. toctree::
 	:maxdepth: 2
 	:hidden:
-	
+
 	addCellsFromPolygon </subsections/md_rst/addCellsFromPolygon.rst>
 	addGiottoPoints </subsections/md_rst/addGiottoPoints.rst>
 	addGiottoPoints3D </subsections/md_rst/addGiottoPoints3D.rst>
@@ -1368,8 +1374,8 @@ Subcellular
 	spatInSituPlotPoints </subsections/md_rst/spatInSituPlotPoints.rst>
 
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1433,8 +1439,8 @@ Segmentation
 
 	doCellSegmentation </subsections/md_rst/doCellSegmentation.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1454,8 +1460,8 @@ Doublet Detection
 
 	doScrubletDetect </subsections/md_rst/doScrubletDetect.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1479,8 +1485,8 @@ Interactive Visualizations
 	getCellsFromPolygon </subsections/md_rst/getCellsFromPolygon.rst>
 	plotInteractivePolygons </subsections/md_rst/plotInteractivePolygons.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
@@ -1510,12 +1516,12 @@ Interoperability
 	giottoToSeurat </subsections/md_rst/giottoToSeurat.rst>
 	giottoToSpatialExperiment </subsections/md_rst/giottoToSpatialExperiment.rst>
 
-.. list-table:: 
-	:widths: 100 100 
+.. list-table::
+	:widths: 100 100
 	:header-rows: 1
 
 	* - Function
-	  - Description 
+	  - Description
 	* - :doc:`seuratToGiotto </subsections/md_rst/seuratToGiotto>`
 	  - seuratToGiotto
 	* - :doc:`giottoToSeurat </subsections/md_rst/giottoToSeurat>`

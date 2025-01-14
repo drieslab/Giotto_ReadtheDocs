@@ -1,10 +1,16 @@
 .. _howtosection:
 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 ##########################
 HowTos
 ##########################
 
-This section has various HowTo tutorials that aim to spotlight some of the ways in which Giotto can be used. 
+This section has various HowTo tutorials that aim to spotlight some of the ways in which Giotto can be used.
 
 .. toctree::
     :maxdepth: 2

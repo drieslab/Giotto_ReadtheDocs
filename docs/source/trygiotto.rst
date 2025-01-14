@@ -4,6 +4,12 @@
 Try Giotto
 ###############
 
+**********************************************
+WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
+**********************************************
+
+This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+
 .. toctree::
     :maxdepth: 2
     :caption: Try Giotto
@@ -12,7 +18,7 @@ Try Giotto
     Binder <subsections/trygiotto/binder.rst>
     Docker <subsections/trygiotto/docker.rst>
 
-There are three methods through which users may try Giotto, either via :bdg-ref-warning-line:`Docker <DockerInformation>` or :bdg-ref-primary-line:`Binder. <BinderInformation>`. 
+There are three methods through which users may try Giotto, either via :bdg-ref-warning-line:`Docker <DockerInformation>` or :bdg-ref-primary-line:`Binder. <BinderInformation>`.
 
 Click the buttons above to learn more about the models or test them out!
 
@@ -28,24 +34,24 @@ Below is an example of running :bdg-ref-primary-line:`Binder. <BinderInformation
 
       .. card:: Step 1
          :text-align: center
-         
+
          .. image:: /images/trygiotto/Binder_1.png
-            :width: 600 
+            :width: 600
 
       .. card:: Step 2
          :text-align: center
 
          .. image:: /images/trygiotto/Binder_2.png
-            :width: 600 
+            :width: 600
 
       .. card:: Step 3
          :text-align: center
-         
+
          .. image:: /images/trygiotto/Binder_3.png
-            :width: 400 
+            :width: 400
 
       .. card:: Step 4
          :text-align: center
 
          .. image:: /images/trygiotto/Binder_4.png
-            :width: 400 
+            :width: 400
