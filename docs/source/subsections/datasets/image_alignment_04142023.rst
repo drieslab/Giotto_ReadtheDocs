@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/affine_registration.html');
+    }
+    </script>
+
 ===============
 Image Alignment
 ===============
@@ -106,7 +115,7 @@ the **images** slot, as described below.
   been given.
 |  **giottoImage Structure**
 | - name - *name of the giottoImage, does not need to match the name of
-  the variable which stores the giotto image. Default is ‘image’.* 
+  the variable which stores the giotto image. Default is ‘image’.*
 |  - mg_object - *image loaded in as magick object (pointer)*
 | - minmax - *x and y minimum and maximum values found from spatial
   locations\**
@@ -169,36 +178,36 @@ been created:
       GImage
 
       ## R TERMINAL OUTPUT:
-      # 
-      # An object of class ' giottoImage ' with name  image 
-      #  
-      # Min and max values are: 
-      #  Max on x-axis:  23520 
-      #  Min on x-axis:  5066 
-      #  Max on y-axis:  -3682 
-      #  Min on y-axis:  -23148 
-      #  
-      # Boundary adjustment are: 
-      #  Max adjustment on x-axis:  3949.001 
-      #  Min adjustment on x-axis:  5066 
-      #  Max adjustment on y-axis:  3682 
-      #  Min adjustment on y-axis:  2082.277 
-      #  
-      # Boundaries are: 
-      #  Image x-axis max boundary:  27469 
-      #  Image x-axis min boundary:  0 
-      #  Image y-axis max boundary:  0 
-      #  Image y-axis min boundary:  -25230.28 
       #
-      # Scale factor: 
-      #          x          y 
-      # 0.07280935 0.07280935 
-      # 
-      #  Resolution: 
-      #        x        y 
-      #  13.7345  13.7345 
+      # An object of class ' giottoImage ' with name  image
       #
-      # File Path: 
+      # Min and max values are:
+      #  Max on x-axis:  23520
+      #  Min on x-axis:  5066
+      #  Max on y-axis:  -3682
+      #  Min on y-axis:  -23148
+      #
+      # Boundary adjustment are:
+      #  Max adjustment on x-axis:  3949.001
+      #  Min adjustment on x-axis:  5066
+      #  Max adjustment on y-axis:  3682
+      #  Min adjustment on y-axis:  2082.277
+      #
+      # Boundaries are:
+      #  Image x-axis max boundary:  27469
+      #  Image x-axis min boundary:  0
+      #  Image y-axis max boundary:  0
+      #  Image y-axis min boundary:  -25230.28
+      #
+      # Scale factor:
+      #          x          y
+      # 0.07280935 0.07280935
+      #
+      #  Resolution:
+      #        x        y
+      #  13.7345  13.7345
+      #
+      # File Path:
       # [1] "/path/to/directory/tissue_image.png"
 
 Further intuition for defining these parameters in this way is detailed
@@ -451,35 +460,35 @@ Alignment values:
 
       ::
 
-         An object of class ' giottoImage ' with name  low_res 
-          
-         Min and max values are: 
-          Max on x-axis:  23520 
-          Min on x-axis:  5066 
-          Max on y-axis:  -3682 
-          Min on y-axis:  -23148 
-          
-         Boundary adjustment are: 
-          Max adjustment on x-axis:  3949.001 
-          Min adjustment on x-axis:  5066 
-          Max adjustment on y-axis:  3682 
-          Min adjustment on y-axis:  2077.699 
-          
-         Boundaries are: 
-          Image x-axis max boundary:  27469 
-          Image x-axis min boundary:  0 
-          Image y-axis max boundary:  4.547474e-13 
-          Image y-axis min boundary:  -25225.7 
-          
-         Scale factor: 
-                 x         y 
-         0.0218428 0.0218428 
+         An object of class ' giottoImage ' with name  low_res
 
-          Resolution: 
-                x        y 
-         45.78167 45.78167 
+         Min and max values are:
+          Max on x-axis:  23520
+          Min on x-axis:  5066
+          Max on y-axis:  -3682
+          Min on y-axis:  -23148
 
-          File Path: 
+         Boundary adjustment are:
+          Max adjustment on x-axis:  3949.001
+          Min adjustment on x-axis:  5066
+          Max adjustment on y-axis:  3682
+          Min adjustment on y-axis:  2077.699
+
+         Boundaries are:
+          Image x-axis max boundary:  27469
+          Image x-axis min boundary:  0
+          Image y-axis max boundary:  4.547474e-13
+          Image y-axis min boundary:  -25225.7
+
+         Scale factor:
+                 x         y
+         0.0218428 0.0218428
+
+          Resolution:
+                x        y
+         45.78167 45.78167
+
+          File Path:
          [1] "~/Visium_FFPE_Human_Normal_Prostate/Spatial/tissue_lowres_image.png"
 
 
@@ -521,35 +530,35 @@ Alignment values:
 
       ::
 
-         An object of class ' giottoImage ' with name  low_res_no_locs 
-          
-         Min and max values are: 
-          Max on x-axis:  10 
-          Min on x-axis:  0 
-          Max on y-axis:  10 
-          Min on y-axis:  0 
-          
-         Boundary adjustment are: 
-          Max adjustment on x-axis:  0 
-          Min adjustment on x-axis:  0 
-          Max adjustment on y-axis:  0 
-          Min adjustment on y-axis:  0 
-          
-         Boundaries are: 
-          Image x-axis max boundary:  10 
-          Image x-axis min boundary:  0 
-          Image y-axis max boundary:  10 
-          Image y-axis min boundary:  0 
-          
-         Scale factor: 
-                 x         y 
-         0.0218428 0.0218428 
+         An object of class ' giottoImage ' with name  low_res_no_locs
 
-          Resolution: 
-                x        y 
-         45.78167 45.78167 
+         Min and max values are:
+          Max on x-axis:  10
+          Min on x-axis:  0
+          Max on y-axis:  10
+          Min on y-axis:  0
 
-          File Path: 
+         Boundary adjustment are:
+          Max adjustment on x-axis:  0
+          Min adjustment on x-axis:  0
+          Max adjustment on y-axis:  0
+          Min adjustment on y-axis:  0
+
+         Boundaries are:
+          Image x-axis max boundary:  10
+          Image x-axis min boundary:  0
+          Image y-axis max boundary:  10
+          Image y-axis min boundary:  0
+
+         Scale factor:
+                 x         y
+         0.0218428 0.0218428
+
+          Resolution:
+                x        y
+         45.78167 45.78167
+
+          File Path:
          [1] "~/Visium_FFPE_Human_Normal_Prostate/Spatial/tissue_lowres_image.png"
 
 *Note that only default values are given to minmax and boundaries in
@@ -569,7 +578,7 @@ this case.*
   auto-align the image with the spatial locations. The auto-alignment
   can be bypassed by using **do_manual_adj = TRUE** and only the minmax
   slot will be populated.
-| 
+|
 
 .. raw:: html
 
@@ -615,35 +624,35 @@ Alignment values:
 
       ::
 
-         An object of class ' giottoImage ' with name  low_res_manual 
-          
-         Min and max values are: 
-          Max on x-axis:  23520 
-          Min on x-axis:  5066 
-          Max on y-axis:  -3682 
-          Min on y-axis:  -23148 
-          
-         Boundary adjustment are: 
-          Max adjustment on x-axis:  0 
-          Min adjustment on x-axis:  0 
-          Max adjustment on y-axis:  0 
-          Min adjustment on y-axis:  0 
-          
-         Boundaries are: 
-          Image x-axis max boundary:  23520 
-          Image x-axis min boundary:  5066 
-          Image y-axis max boundary:  -3682 
-          Image y-axis min boundary:  -23148 
-          
-         Scale factor: 
-                 x         y 
-         0.0218428 0.0218428 
+         An object of class ' giottoImage ' with name  low_res_manual
 
-          Resolution: 
-                x        y 
-         45.78167 45.78167 
+         Min and max values are:
+          Max on x-axis:  23520
+          Min on x-axis:  5066
+          Max on y-axis:  -3682
+          Min on y-axis:  -23148
 
-          File Path: 
+         Boundary adjustment are:
+          Max adjustment on x-axis:  0
+          Min adjustment on x-axis:  0
+          Max adjustment on y-axis:  0
+          Min adjustment on y-axis:  0
+
+         Boundaries are:
+          Image x-axis max boundary:  23520
+          Image x-axis min boundary:  5066
+          Image y-axis max boundary:  -3682
+          Image y-axis min boundary:  -23148
+
+         Scale factor:
+                 x         y
+         0.0218428 0.0218428
+
+          Resolution:
+                x        y
+         45.78167 45.78167
+
+          File Path:
          [1] "~/Visium_FFPE_Human_Normal_Prostate/Spatial/tissue_lowres_image.png"
 
 
@@ -658,7 +667,7 @@ Alignment values:
 |  *When* **do_manual_adj = TRUE**\ *, automatic alignment is bypassed
   in favor of the four manual adjustment values.*
 | *These values (Boundary adjustment) default to 0.*
-| 
+|
 
 5.3 Add giottoImage to giottoObject and Visualize
 -------------------------------------------------
@@ -669,7 +678,7 @@ Alignment values:
 
        # Since lowResG_img_no_locs is not associated with the gobject FFPE_prostate, it
       # may not be added to the gobject.
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img))
 
       spatPlot2D(gobject = FFPE_prostate,
@@ -702,7 +711,7 @@ Alignment values:
 
       # createGiottoImage with manually defined adjustment values
       lowResG_img_update_manual <- createGiottoImage(gobject = FFPE_prostate,
-                                                     mg_object = lowResPath, 
+                                                     mg_object = lowResPath,
                                                      name = "low_res_update_manual",
                                                      do_manual_adj = TRUE,
                                                      xmin_adj = 5066,
@@ -713,7 +722,7 @@ Alignment values:
 
    .. code:: r
 
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img_update_manual))
 
       spatPlot2D(gobject = FFPE_prostate,
@@ -747,7 +756,7 @@ Alignment values:
 
    .. code:: r
 
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img_to_update))
 
       spatPlot2D(gobject = FFPE_prostate,
@@ -803,34 +812,34 @@ Alignment values:
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.1.0 Giotto_3.2.1    
+         [1] GiottoData_0.1.0 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] reticulate_1.26    tidyselect_1.2.0   terra_1.7-18       xfun_0.38         
-          [5] lattice_0.20-45    colorspace_2.1-0   vctrs_0.6.1        generics_0.1.3    
-          [9] htmltools_0.5.4    yaml_2.3.7         utf8_1.2.3         rlang_1.1.0       
-         [13] R.oo_1.25.0        pillar_1.9.0       glue_1.6.2         withr_2.5.0       
-         [17] R.utils_2.12.2     rappdirs_0.3.3     RColorBrewer_1.1-3 lifecycle_1.0.3   
-         [21] munsell_0.5.0      gtable_0.3.3       ragg_1.2.4         R.methodsS3_1.8.2 
-         [25] codetools_0.2-18   evaluate_0.20      labeling_0.4.2     knitr_1.42        
-         [29] fastmap_1.1.0      parallel_4.2.2     fansi_1.0.4        Rcpp_1.0.10       
-         [33] scales_1.2.1       magick_2.7.4       jsonlite_1.8.3     systemfonts_1.0.4 
-         [37] farver_2.1.1       textshaping_0.3.6  ggplot2_3.4.1      png_0.1-7         
-         [41] digest_0.6.30      dplyr_1.1.1        grid_4.2.2         rprojroot_2.0.3   
-         [45] cowplot_1.1.1      here_1.0.1         cli_3.4.1          tools_4.2.2       
-         [49] magrittr_2.0.3     tibble_3.2.1       pkgconfig_2.0.3    Matrix_1.5-1      
-         [53] data.table_1.14.6  rmarkdown_2.21     rstudioapi_0.14    R6_2.5.1          
-         [57] compiler_4.2.2    
+          [1] reticulate_1.26    tidyselect_1.2.0   terra_1.7-18       xfun_0.38
+          [5] lattice_0.20-45    colorspace_2.1-0   vctrs_0.6.1        generics_0.1.3
+          [9] htmltools_0.5.4    yaml_2.3.7         utf8_1.2.3         rlang_1.1.0
+         [13] R.oo_1.25.0        pillar_1.9.0       glue_1.6.2         withr_2.5.0
+         [17] R.utils_2.12.2     rappdirs_0.3.3     RColorBrewer_1.1-3 lifecycle_1.0.3
+         [21] munsell_0.5.0      gtable_0.3.3       ragg_1.2.4         R.methodsS3_1.8.2
+         [25] codetools_0.2-18   evaluate_0.20      labeling_0.4.2     knitr_1.42
+         [29] fastmap_1.1.0      parallel_4.2.2     fansi_1.0.4        Rcpp_1.0.10
+         [33] scales_1.2.1       magick_2.7.4       jsonlite_1.8.3     systemfonts_1.0.4
+         [37] farver_2.1.1       textshaping_0.3.6  ggplot2_3.4.1      png_0.1-7
+         [41] digest_0.6.30      dplyr_1.1.1        grid_4.2.2         rprojroot_2.0.3
+         [45] cowplot_1.1.1      here_1.0.1         cli_3.4.1          tools_4.2.2
+         [49] magrittr_2.0.3     tibble_3.2.1       pkgconfig_2.0.3    Matrix_1.5-1
+         [53] data.table_1.14.6  rmarkdown_2.21     rstudioapi_0.14    R6_2.5.1
+         [57] compiler_4.2.2
 
 .. |image1| image:: /images/images_pkgdown/getting_started_figs/getting_started_images/images_adjust.png
    :width: 60.0%

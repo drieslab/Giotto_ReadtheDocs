@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/github_issues.html');
+    }
+    </script>
+
 =============
 github_issues
 =============
@@ -55,8 +64,8 @@ information.
 
    .. code:: bash
 
-      giotto environment found at 
-       /Users/natalie_dr/Library/r-miniconda/envs/giotto_env/bin/pythonw 
+      giotto environment found at
+       /Users/natalie_dr/Library/r-miniconda/envs/giotto_env/bin/pythonw
 
 **Show sequential processing steps/commands in the Giotto object**
 
@@ -70,10 +79,10 @@ information.
 
    .. code:: bash
 
-      Processing steps: 
-       
+      Processing steps:
 
-       0_normalize 
+
+       0_normalize
 
 **Show the structure of the Giotto object**
 
@@ -93,14 +102,14 @@ information.
         ..@ expression_feat    : chr "rna"
         ..@ spatial_locs       :List of 1
         .. ..$ raw:Classes ‘data.table’ and 'data.frame': 73655 obs. of  4 variables:
-        .. .. ..- attr(*, ".internal.selfref")=<externalptr> 
+        .. .. ..- attr(*, ".internal.selfref")=<externalptr>
         ..@ spatial_info       : NULL
         ..@ cell_metadata      :List of 1
         .. ..$ rna:Classes ‘data.table’ and 'data.frame': 73655 obs. of  1 variable:
-        .. .. ..- attr(*, ".internal.selfref")=<externalptr> 
+        .. .. ..- attr(*, ".internal.selfref")=<externalptr>
         ..@ feat_metadata      :List of 1
         .. ..$ rna:Classes ‘data.table’ and 'data.frame': 161 obs. of  1 variable:
-        .. .. ..- attr(*, ".internal.selfref")=<externalptr> 
+        .. .. ..- attr(*, ".internal.selfref")=<externalptr>
         ..@ feat_info          : NULL
         ..@ cell_ID            : chr [1:73655] "cell_1" "cell_2" "cell_3" "cell_4" ...
         ..@ feat_ID            :List of 1
@@ -149,7 +158,7 @@ Deprecation warning
 
       Warning message:
       In createGiottoObject(raw_exprs = "/Users/username/path/to/data",  :
-        raw_exprs argument is deprecated, use expression argument in the future 
+        raw_exprs argument is deprecated, use expression argument in the future
 
 *Solution*: The code has still run and your object has been created, but
 in the future use the following command:
@@ -171,7 +180,7 @@ Is this an error from Giotto?
 
    .. code:: bash
 
-      Error in adjustGiottoMatrix(gobject = my_giotto_object, expression_values = c("normalized"): covariate column name(s) were not found in the cell metadata 
+      Error in adjustGiottoMatrix(gobject = my_giotto_object, expression_values = c("normalized"): covariate column name(s) were not found in the cell metadata
 
 *Solution*: In this case, you would need to check your cell metadata
 (``my_giotto_object@cell_metadata``) and make appropriate adjustments.
@@ -183,7 +192,7 @@ Is this an error from an external package?
 
    .. code:: bash
 
-      Error in methods::as(as.matrix(x[, -1]), "Matrix") : 
+      Error in methods::as(as.matrix(x[, -1]), "Matrix") :
         no method or default for coercing "matrix" to "Matrix"
 
 *Solution*: Ensure that the Matrix library is loaded:
@@ -250,7 +259,7 @@ Good example of a GitHub issue:
 
    .. code:: r
 
-      my_giotto_object <- adjustGiottoMatrix(gobject = my_giotto_object, 
+      my_giotto_object <- adjustGiottoMatrix(gobject = my_giotto_object,
                                              expression_values = c('normalized'),
                                              covariate_columns = c('nr_genes',
                                                                    'total_expr'))
@@ -264,7 +273,7 @@ Good example of a GitHub issue:
 
    .. code:: bash
 
-      Error in adjustGiottoMatrix(gobject = my_giotto_object, expression_values = c("normalized"): covariate column name(s) were not found in the cell metadata 
+      Error in adjustGiottoMatrix(gobject = my_giotto_object, expression_values = c("normalized"): covariate column name(s) were not found in the cell metadata
 
 ..
 

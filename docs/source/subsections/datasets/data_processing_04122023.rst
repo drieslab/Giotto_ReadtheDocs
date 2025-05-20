@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/process_giotto.html');
+    }
+    </script>
+
 ===============
 Data Processing
 ===============
@@ -14,7 +23,7 @@ well as high efficiency options for data processing.
 
 This tutorial uses a SeqFISH+ dataset of a murine cortex and
 subventrical zone. A complete walkthrough of that dataset can be found
-`here <./seqFISH_cortex.html>`_. 
+`here <./seqFISH_cortex.html>`_.
 **To download the data used to create the Giotto Object below, please ensure that**
 `wget <https://www.gnu.org/software/wget/?>`_  **is installed locally.**
 
@@ -60,10 +69,10 @@ subset of the Giotto Object is taken to analyze the cortex.
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_processing_results/') 
+      results_directory = paste0(getwd(),'/gobject_processing_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -73,9 +82,9 @@ subset of the Giotto Object is taken to analyze the cortex.
    .. code:: r
 
       # Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = FALSE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
    .. code:: r
@@ -221,9 +230,9 @@ data by cells or genes, specified by scale_order.
    .. code:: r
 
       # normalize to scale expression values of the Giotto object using the standard method, z-scoring feats over cells
-      testobj <- normalizeGiotto(gobject = testobj, 
-                                 norm_methods = 'standard', 
-                                 scale_feats = TRUE, 
+      testobj <- normalizeGiotto(gobject = testobj,
+                                 norm_methods = 'standard',
+                                 scale_feats = TRUE,
                                  scalefactor = 6000,
                                  scale_order = 'first_feats', # Default, alternatively 'first_cells'
                                  verbose = T)
@@ -238,11 +247,11 @@ expression slot, NOT the “normalized” slot.*
 
    .. code:: r
 
-      # normalize to scale expression values of the Giotto object using the pearson residual method 
-      testobj <- normalizeGiotto(gobject = testobj, 
-                                 norm_methods = 'pearson_resid', 
-                                 scale_feats = TRUE, 
-                                 scalefactor = 6000, 
+      # normalize to scale expression values of the Giotto object using the pearson residual method
+      testobj <- normalizeGiotto(gobject = testobj,
+                                 norm_methods = 'pearson_resid',
+                                 scale_feats = TRUE,
+                                 scalefactor = 6000,
                                  verbose = T)
 
 The 'osmFISH' method is intended for in-situ RNA data and uses the
@@ -311,9 +320,9 @@ genes)
 
       #Calculate the percentage of BMP genes per cell
       bmp_genes = grep('Bmp', x = feature_metadata_cortex$feat_ID, value = TRUE)
-      testobj <- addFeatsPerc(testobj, 
-                              expression_values = 'normalized', 
-                              feats = bmp_genes, 
+      testobj <- addFeatsPerc(testobj,
+                              expression_values = 'normalized',
+                              feats = bmp_genes,
                               vector_name = "perc_bmp")
 
 7 Adjust Expression Matrix
@@ -329,7 +338,7 @@ covariates.
       # Since there are no known batch effects, the number of features detected per cell
       # will be regressed out so that covariates will not effect further analyses.
 
-      testobj <- adjustGiottoMatrix(gobject = testobj, 
+      testobj <- adjustGiottoMatrix(gobject = testobj,
                                   expression_values = c('normalized'),
                                   covariate_columns = 'nr_feats')
 
@@ -351,13 +360,13 @@ arguments are provided.
 
       testobj <- processGiotto(testobj,
                                filter_params = list(expression_threshold = 1,
-                                                    feat_det_in_min_cells = 100, 
+                                                    feat_det_in_min_cells = 100,
                                                     min_det_feats_per_cell = 10),
-                               norm_params = list(norm_methods = 'standard', 
-                                                  scale_feats = TRUE, 
+                               norm_params = list(norm_methods = 'standard',
+                                                  scale_feats = TRUE,
                                                   scalefactor = 6000),
                                stat_params = list(expression_values = 'normalized'),
-                               adjust_params = list(expression_values = c('normalized'), 
+                               adjust_params = list(expression_values = c('normalized'),
                                                     covariate_columns = 'nr_feats'))
 
 9 Session Info
@@ -380,30 +389,30 @@ arguments are provided.
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.1.0 Giotto_3.2.1    
+         [1] GiottoData_0.1.0 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] reticulate_1.26   tidyselect_1.2.0  terra_1.7-18      xfun_0.38        
-          [5] lattice_0.20-45   colorspace_2.1-0  vctrs_0.6.1       generics_0.1.3   
-          [9] htmltools_0.5.4   yaml_2.3.7        utf8_1.2.3        rlang_1.1.0      
-         [13] pillar_1.9.0      glue_1.6.2        withr_2.5.0       rappdirs_0.3.3   
-         [17] lifecycle_1.0.3   munsell_0.5.0     gtable_0.3.3      ragg_1.2.4       
-         [21] codetools_0.2-18  evaluate_0.20     labeling_0.4.2    knitr_1.42       
-         [25] fastmap_1.1.0     parallel_4.2.2    fansi_1.0.4       Rcpp_1.0.10      
-         [29] scales_1.2.1      limma_3.54.2      jsonlite_1.8.3    farver_2.1.1     
-         [33] systemfonts_1.0.4 textshaping_0.3.6 ggplot2_3.4.1     png_0.1-7        
-         [37] digest_0.6.30     dplyr_1.1.1       ggrepel_0.9.2     grid_4.2.2       
-         [41] rprojroot_2.0.3   cowplot_1.1.1     here_1.0.1        cli_3.4.1        
-         [45] tools_4.2.2       magrittr_2.0.3    tibble_3.2.1      pkgconfig_2.0.3  
-         [49] Matrix_1.5-1      data.table_1.14.6 rmarkdown_2.21    rstudioapi_0.14  
-         [53] R6_2.5.1          compiler_4.2.2   
+          [1] reticulate_1.26   tidyselect_1.2.0  terra_1.7-18      xfun_0.38
+          [5] lattice_0.20-45   colorspace_2.1-0  vctrs_0.6.1       generics_0.1.3
+          [9] htmltools_0.5.4   yaml_2.3.7        utf8_1.2.3        rlang_1.1.0
+         [13] pillar_1.9.0      glue_1.6.2        withr_2.5.0       rappdirs_0.3.3
+         [17] lifecycle_1.0.3   munsell_0.5.0     gtable_0.3.3      ragg_1.2.4
+         [21] codetools_0.2-18  evaluate_0.20     labeling_0.4.2    knitr_1.42
+         [25] fastmap_1.1.0     parallel_4.2.2    fansi_1.0.4       Rcpp_1.0.10
+         [29] scales_1.2.1      limma_3.54.2      jsonlite_1.8.3    farver_2.1.1
+         [33] systemfonts_1.0.4 textshaping_0.3.6 ggplot2_3.4.1     png_0.1-7
+         [37] digest_0.6.30     dplyr_1.1.1       ggrepel_0.9.2     grid_4.2.2
+         [41] rprojroot_2.0.3   cowplot_1.1.1     here_1.0.1        cli_3.4.1
+         [45] tools_4.2.2       magrittr_2.0.3    tibble_3.2.1      pkgconfig_2.0.3
+         [49] Matrix_1.5-1      data.table_1.14.6 rmarkdown_2.21    rstudioapi_0.14
+         [53] R6_2.5.1          compiler_4.2.2

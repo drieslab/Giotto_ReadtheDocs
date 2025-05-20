@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/seqscope_mouse_liver.html');
+    }
+    </script>
+
 ================================================
 Single cell and subcellular analysis on Seqscope
 ================================================
@@ -13,15 +22,15 @@ Lab <https://lee.lab.medicine.umich.edu/seq-scope>`__. The basic
 strategy is to use illumina sequencing by synthesis to generate the
 spatial barcodes and use the barcodes to capture mRNAs in tissue.
 
-Example Raw Data needed for seqscope: 
+Example Raw Data needed for seqscope:
 --------------------------------------
-1st-seq data (single-ended, for generating spatial barcodes) 
+1st-seq data (single-ended, for generating spatial barcodes)
 
-- SeqScope_1st.fastq.gz 
-2nd-seq data (pair-ended, for generating count matrix) 
+- SeqScope_1st.fastq.gz
+2nd-seq data (pair-ended, for generating count matrix)
 
 - SeqScope_2nd_R1.fastq.gz
-- SeqScope_2nd_R2.fastq.gz 
+- SeqScope_2nd_R2.fastq.gz
 
 Image (for seqmentation)
 
@@ -132,21 +141,21 @@ typically have more than one subcellular point.
    * - HDMI
      - Feat_ID
      - Count
-     - sdimX 
+     - sdimX
      - sdimY
    * - HDMI1
      - GeneA
-     - 
-     -   
-     - 
+     -
+     -
+     -
    * - HDMI1
      - GeneB
-     - 
+     -
      -
      -
    * - HDMI2
      - GeneA
-     - 
+     -
      -
      -
    * - HDMI3
@@ -224,7 +233,7 @@ Read polygon mask file
 
       segmentation_mask = "/path/to/segmentation.tif"
       final_polygons = createGiottoPolygonsFromMask(segmentation_mask,
-                                     flip_vertical = FALSE, 
+                                     flip_vertical = FALSE,
                                      flip_horizontal = FALSE)
       plot(final_polygons)
 

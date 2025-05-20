@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/dimension_reduction.html');
+    }
+    </script>
+
 ==========
 Clustering
 ==========
@@ -17,7 +26,7 @@ this tutorial.
 
 This tutorial uses a SeqFISH+ dataset of a murine cortex and
 subventrical zone. A complete walkthrough of that dataset can be found
-`here <./seqFISH_cortex.html>`_. 
+`here <./seqFISH_cortex.html>`_.
 **To download the data used to create the Giotto Object below, please ensure that**
 `wget <https://www.gnu.org/software/wget/?>`_  **is installed locally.**
 
@@ -59,10 +68,10 @@ subventrical zone. A complete walkthrough of that dataset can be found
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_clustering_results/') 
+      results_directory = paste0(getwd(),'/gobject_clustering_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -72,9 +81,9 @@ subventrical zone. A complete walkthrough of that dataset can be found
    .. code:: r
 
       # Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
    .. code:: r
@@ -135,13 +144,13 @@ subventrical zone. A complete walkthrough of that dataset can be found
       # Process the Giotto object, filtering, normalization, adding statistics and correcting for covariates
       testobj <- processGiotto(testobj,
                               filter_params = list(expression_threshold = 1,
-                                                   feat_det_in_min_cells = 100, 
+                                                   feat_det_in_min_cells = 100,
                                                    min_det_feats_per_cell = 10),
-                              norm_params = list(norm_methods = 'standard', 
-                                                 scale_feats = TRUE, 
+                              norm_params = list(norm_methods = 'standard',
+                                                 scale_feats = TRUE,
                                                  scalefactor = 6000),
                               stat_params = list(expression_values = 'normalized'),
-                              adjust_params = list(expression_values = c('normalized'), 
+                              adjust_params = list(expression_values = c('normalized'),
                                                    covariate_columns = 'nr_feats'))
 
 
@@ -294,22 +303,22 @@ as an argument to cell_color within plotUMAP for enhanced visualization.
       testobj <- doKmeans(gobject = testobj, dim_reduction_to_use = 'pca')
 
       ## Leiden clustering - increase the resolution to increase the number of clusters
-      testobj <- doLeidenCluster(gobject = testobj, 
-                                  resolution = 0.4, 
+      testobj <- doLeidenCluster(gobject = testobj,
+                                  resolution = 0.4,
                                   n_iterations = 1000,
                                   name = 'leiden_0.4_1000')
 
       ## Louvain clustering - increase the resolution to increase the number of clusters
-      # The version argument may be changed to 'multinet' to run a Louvain algorithm 
+      # The version argument may be changed to 'multinet' to run a Louvain algorithm
       # from the multinet package in R.
-      testobj <- doLouvainCluster(gobject = testobj, 
-                                  version = 'community', 
+      testobj <- doLouvainCluster(gobject = testobj,
+                                  version = 'community',
                                   resolution = 0.4)
 
       #Plot UMAP post-clustering to visualize Leiden clusters
       plotUMAP(gobject = testobj,
-               cell_color = 'leiden_0.4_1000', 
-               show_NN_network = T, 
+               cell_color = 'leiden_0.4_1000',
+               show_NN_network = T,
                point_size = 2.5)
 
    .. container:: cell-output-display
@@ -326,14 +335,14 @@ consistent sub-clustering.
    .. code:: r
 
       ## Leiden subclustering for specified clusters
-      testobj = doLeidenSubCluster(gobject = testobj, 
+      testobj = doLeidenSubCluster(gobject = testobj,
                                    cluster_column = 'leiden_0.4_1000',
-                                   resolution = 0.2, 
+                                   resolution = 0.2,
                                    k_neighbors = 10,
-                                   hvf_param = list(method = 'cov_loess', 
+                                   hvf_param = list(method = 'cov_loess',
                                                     difference_in_cov = 0.1),
-                                   pca_param = list(expression_values = 'normalized', 
-                                                    scale_unit = F, 
+                                   pca_param = list(expression_values = 'normalized',
+                                                    scale_unit = F,
                                                     center = F),
                                    nn_param = list(dimensions_to_use = 1:5),
                                    selected_clusters = c(5, 6, 7),
@@ -373,41 +382,41 @@ consistent sub-clustering.
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.1.0 Giotto_3.2.1    
+         [1] GiottoData_0.1.0 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] ggrepel_0.9.2         rsvd_1.0.5            Rcpp_1.0.10          
-          [4] here_1.0.1            lattice_0.20-45       FNN_1.1.3.2          
-          [7] png_0.1-7             rprojroot_2.0.3       digest_0.6.30        
-         [10] utf8_1.2.3            R6_2.5.1              stats4_4.2.2         
-         [13] evaluate_0.20         ggplot2_3.4.1         pillar_1.9.0         
-         [16] rlang_1.1.0           rstudioapi_0.14       data.table_1.14.6    
-         [19] irlba_2.3.5.1         S4Vectors_0.36.2      Matrix_1.5-1         
-         [22] reticulate_1.26       rmarkdown_2.21        textshaping_0.3.6    
-         [25] labeling_0.4.2        BiocParallel_1.32.6   Rtsne_0.16           
-         [28] igraph_1.4.1          uwot_0.1.14           munsell_0.5.0        
-         [31] beachmat_2.14.0       DelayedArray_0.24.0   compiler_4.2.2       
-         [34] BiocSingular_1.14.0   xfun_0.38             pkgconfig_2.0.3      
-         [37] systemfonts_1.0.4     BiocGenerics_0.44.0   htmltools_0.5.4      
-         [40] tidyselect_1.2.0      tibble_3.2.1          IRanges_2.32.0       
-         [43] codetools_0.2-18      matrixStats_0.63.0    fansi_1.0.4          
-         [46] dplyr_1.1.1           withr_2.5.0           rappdirs_0.3.3       
-         [49] grid_4.2.2            jsonlite_1.8.3        gtable_0.3.3         
-         [52] lifecycle_1.0.3       magrittr_2.0.3        scales_1.2.1         
-         [55] ScaledMatrix_1.6.0    cli_3.4.1             dbscan_1.1-11        
-         [58] farver_2.1.1          limma_3.54.2          ragg_1.2.4           
-         [61] generics_0.1.3        vctrs_0.6.1           cowplot_1.1.1        
-         [64] RColorBrewer_1.1-3    tools_4.2.2           glue_1.6.2           
-         [67] MatrixGenerics_1.10.0 parallel_4.2.2        fastmap_1.1.0        
-         [70] yaml_2.3.7            colorspace_2.1-0      terra_1.7-18         
-         [73] knitr_1.42           
+          [1] ggrepel_0.9.2         rsvd_1.0.5            Rcpp_1.0.10
+          [4] here_1.0.1            lattice_0.20-45       FNN_1.1.3.2
+          [7] png_0.1-7             rprojroot_2.0.3       digest_0.6.30
+         [10] utf8_1.2.3            R6_2.5.1              stats4_4.2.2
+         [13] evaluate_0.20         ggplot2_3.4.1         pillar_1.9.0
+         [16] rlang_1.1.0           rstudioapi_0.14       data.table_1.14.6
+         [19] irlba_2.3.5.1         S4Vectors_0.36.2      Matrix_1.5-1
+         [22] reticulate_1.26       rmarkdown_2.21        textshaping_0.3.6
+         [25] labeling_0.4.2        BiocParallel_1.32.6   Rtsne_0.16
+         [28] igraph_1.4.1          uwot_0.1.14           munsell_0.5.0
+         [31] beachmat_2.14.0       DelayedArray_0.24.0   compiler_4.2.2
+         [34] BiocSingular_1.14.0   xfun_0.38             pkgconfig_2.0.3
+         [37] systemfonts_1.0.4     BiocGenerics_0.44.0   htmltools_0.5.4
+         [40] tidyselect_1.2.0      tibble_3.2.1          IRanges_2.32.0
+         [43] codetools_0.2-18      matrixStats_0.63.0    fansi_1.0.4
+         [46] dplyr_1.1.1           withr_2.5.0           rappdirs_0.3.3
+         [49] grid_4.2.2            jsonlite_1.8.3        gtable_0.3.3
+         [52] lifecycle_1.0.3       magrittr_2.0.3        scales_1.2.1
+         [55] ScaledMatrix_1.6.0    cli_3.4.1             dbscan_1.1-11
+         [58] farver_2.1.1          limma_3.54.2          ragg_1.2.4
+         [61] generics_0.1.3        vctrs_0.6.1           cowplot_1.1.1
+         [64] RColorBrewer_1.1-3    tools_4.2.2           glue_1.6.2
+         [67] MatrixGenerics_1.10.0 parallel_4.2.2        fastmap_1.1.0
+         [70] yaml_2.3.7            colorspace_2.1-0      terra_1.7-18
+         [73] knitr_1.42

@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visualizations.html');
+    }
+    </script>
+
 ==============
 Visualizations
 ==============
@@ -21,7 +30,7 @@ locally.
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -54,10 +63,10 @@ locally.
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_visual_results/') 
+      results_directory = paste0(getwd(),'/gobject_visual_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -67,12 +76,12 @@ locally.
 
       ### Giotto instructions and data preparation
       # Optional: Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
-      # Create file paths to feed data into Giotto object 
+      # Create file paths to feed data into Giotto object
       expr_path = paste0(data_directory, "merFISH_3D_data_expression.txt.gz")
       loc_path = paste0(data_directory, "merFISH_3D_data_cell_locations.txt")
       meta_path = paste0(data_directory, "merFISH_3D_metadata.txt")
@@ -86,25 +95,25 @@ locally.
       # Add additional metadata
       metadata = data.table::fread(meta_path)
 
-      testobj = addCellMetadata(testobj, 
-                                new_metadata = metadata$layer_ID, 
+      testobj = addCellMetadata(testobj,
+                                new_metadata = metadata$layer_ID,
                                 vector_name = 'layer_ID')
 
-      testobj = addCellMetadata(testobj, 
-                                new_metadata = metadata$orig_cell_types, 
+      testobj = addCellMetadata(testobj,
+                                new_metadata = metadata$orig_cell_types,
                                 vector_name = 'orig_cell_types')
 
       ### Process the Giotto Object
-      # Note that for the purposes of this tutorial, the entire dataset will be visualized. 
+      # Note that for the purposes of this tutorial, the entire dataset will be visualized.
       # Thus, filter parameters are set to 0, so as to not remove any cells.
       # Note that since adjustment is not required, adjust_params is set to NULL.
 
       testobj <- processGiotto(testobj,
                                filter_params = list(expression_threshold = 0,
-                                                    feat_det_in_min_cells = 0, 
+                                                    feat_det_in_min_cells = 0,
                                                     min_det_feats_per_cell = 0),
-                               norm_params = list(norm_methods = 'standard', 
-                                                  scale_feats = TRUE, 
+                               norm_params = list(norm_methods = 'standard',
+                                                  scale_feats = TRUE,
                                                   scalefactor = 1000),
                                stat_params = list(expression_values = 'normalized'),
                                adjust_params = NULL)
@@ -152,7 +161,7 @@ plotted in 2D and 3D.
       # Run UMAP
       testobj <- runUMAP(gobject = testobj, dimensions_to_use = 1:8, n_components = 3, n_threads = 4)
       # Plot UMAP in 2D
-      plotUMAP_2D(gobject = testobj, point_size = 1.5) 
+      plotUMAP_2D(gobject = testobj, point_size = 1.5)
 
 .. image:: /images/images_pkgdown/getting_started_figs/visualizations/2-UMAP_2D.png
    :width: 50.0%
@@ -162,7 +171,7 @@ plotted in 2D and 3D.
    .. code:: r
 
       # Plot UMAP 3D
-      plotUMAP_3D(gobject = testobj, point_size = 1.5) 
+      plotUMAP_3D(gobject = testobj, point_size = 1.5)
 
 |image2| Now, the data may be clustered. Create a nearest network, and
 then create Leiden clusters. The clusters may be visualized in 2D or 3D,
@@ -176,9 +185,9 @@ as well as upon the UMAP and within the tissue.
       testobj <- createNearestNetwork(gobject = testobj, dimensions_to_use = 1:8, k = 10)
 
       # Preform Leiden clustering
-      testobj <- doLeidenCluster(gobject = testobj, 
-                                 resolution = 0.25, 
-                                 n_iterations = 200, 
+      testobj <- doLeidenCluster(gobject = testobj,
+                                 resolution = 0.25,
+                                 n_iterations = 200,
                                  name = 'leiden_0.25.200')
 
       # Plot the clusters upon the UMAP
@@ -194,11 +203,11 @@ grouping by layer_ID.
 
    .. code:: r
 
-      spatPlot2D(gobject = testobj, 
-                 point_size = 1.0, 
-                 cell_color = 'leiden_0.25.200', 
-                 group_by = 'layer_ID', 
-                 cow_n_col = 2, 
+      spatPlot2D(gobject = testobj,
+                 point_size = 1.0,
+                 cell_color = 'leiden_0.25.200',
+                 group_by = 'layer_ID',
+                 cow_n_col = 2,
                  group_by_subset = c(260, 160, 60, -40, -140, -240))
 
 .. image:: /images/images_pkgdown/getting_started_figs/visualizations/4-spatPlot2D.png
@@ -213,7 +222,7 @@ features detected per cell.
    .. code:: r
 
       # Plot cell_color as a representation of the number of features/ cell ("nr_feats")
-      spatPlot2D(gobject = testobj, point_size = 1.5, 
+      spatPlot2D(gobject = testobj, point_size = 1.5,
                  cell_color = 'nr_feats', color_as_factor = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(260, 160, 60, -40, -140, -240))
 
@@ -299,9 +308,9 @@ assigned to a cell type, as will be done here.
 
    .. code:: r
 
-      # Plot the UMAP, annotated by cell type. 
-      plotUMAP_3D(testobj, 
-                  cell_color = 'orig_cell_types', 
+      # Plot the UMAP, annotated by cell type.
+      plotUMAP_3D(testobj,
+                  cell_color = 'orig_cell_types',
                   save_param = list(save_name = 'Original_Cell_Types_UMAP_3D'))
 
 .. image:: /images/images_pkgdown/getting_started_figs/visualizations/Original_Cell_Types_UMAP_3D.png
@@ -319,29 +328,29 @@ Specifically, the UMAP plots saved as *“leiden_0.25.200_UMAP3D”* and
 
       # Note that cell types were condensed (i.e. "Endothelial 1", "Endothelial 2", ... were
       # combined into one cell type "Endothelial")
-      manual_cluster = c('Inhibitory', 'Excitatory', 'Inhibitory', 'Astrocyte', 'OD Mature', 
+      manual_cluster = c('Inhibitory', 'Excitatory', 'Inhibitory', 'Astrocyte', 'OD Mature',
                          'Endothelial', 'Microglia', 'OD Mature', 'OD Immature', 'Astrocyte',
                          'Ependymal', 'Pericytes', 'Ambiguous', 'Microglia', 'Inhibitory', 'Inhibitory')
 
       names(manual_cluster) = as.character(sort(cluster_range))
 
-      testobj = annotateGiotto(gobject = testobj, 
+      testobj = annotateGiotto(gobject = testobj,
                                annotation_vector = manual_cluster,
-                               cluster_column = 'leiden_0.25.200', 
+                               cluster_column = 'leiden_0.25.200',
                                name = 'cell_types')
 
-      cell_types_in_plot = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature', 
+      cell_types_in_plot = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature',
                              'Astrocyte', 'Microglia', 'Ependymal','Endothelial',
                              'Pericytes', 'Ambiguous')
 
-      # This Giotto function will provide a distinct color palette. Colors 
-      # may change each time the function is run. 
+      # This Giotto function will provide a distinct color palette. Colors
+      # may change each time the function is run.
       mycolorcode = getDistinctColors(length(cell_types_in_plot))
 
       names(mycolorcode) = cell_types_in_plot
 
       # Visualize the assigned types in the UMAP
-      plotUMAP_3D(testobj, cell_color = 'cell_types', point_size = 1.5, 
+      plotUMAP_3D(testobj, cell_color = 'cell_types', point_size = 1.5,
                   cell_color_code = mycolorcode,
                   save_param = list(save_name = 'manual_cluster_typing_UMAP_3D'))
 
@@ -356,8 +365,8 @@ the *cell_color* parameter as the name of the annotation, ‘cell_types’.
    .. code:: r
 
        spatPlot2D(gobject = testobj, point_size = 1.0,
-                 cell_color = 'cell_types', group_by = 'layer_ID', 
-                 cell_color_code = mycolorcode, cow_n_col = 2, 
+                 cell_color = 'cell_types', group_by = 'layer_ID',
+                 cell_color_code = mycolorcode, cow_n_col = 2,
                  group_by_subset = c(seq(260, -290, -100)))
 
 .. image:: /images/images_pkgdown/getting_started_figs/visualizations/10-spatPlot2D.png
@@ -380,7 +389,7 @@ The plots may be subset by cell type in 2D and 3D.
 
    .. code:: r
 
-      spatPlot2D(gobject = testobj, point_size = 1.0, 
+      spatPlot2D(gobject = testobj, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = c('Microglia', 'Ependymal', 'Endothelial'), show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))
@@ -416,37 +425,37 @@ k-nearest networks, will be shown.
    .. code:: r
 
       ### Spatial Networks
-      # The following fuction provides insight to the Delaunay Network. It has been 
+      # The following fuction provides insight to the Delaunay Network. It has been
       # omitted graphically for the sake of this tutorial, but will be shown in-console
       # if this command is run.
-      plotStatDelaunayNetwork(gobject= testobj, 
-                              method = 'delaunayn_geometry', 
-                              maximum_distance = 50, 
-                              show_plot = T, 
+      plotStatDelaunayNetwork(gobject= testobj,
+                              method = 'delaunayn_geometry',
+                              maximum_distance = 50,
+                              show_plot = T,
                               save_plot = F)
 
       # Create Spatial Network using Delaunay geometry
-      testobj = createSpatialNetwork(gobject = testobj, 
-                                     delaunay_method = 'delaunayn_geometry', 
-                                     minimum_k = 2, 
+      testobj = createSpatialNetwork(gobject = testobj,
+                                     delaunay_method = 'delaunayn_geometry',
+                                     minimum_k = 2,
                                      maximum_distance_delaunay = 50)
 
       # Create Spatial Networks using k-nearest neighbor with varying specifications
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 5, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 5,
                                       name = 'spatial_network')
 
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 10, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 10,
                                       name = 'large_network')
 
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 100, 
-                                      maximum_distance_knn = 200, 
-                                      minimum_k = 2, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 100,
+                                      maximum_distance_knn = 200,
+                                      minimum_k = 2,
                                       name = 'distance_network')
 
       # Now, visualize the different spatial networks in one layer of the dataset
@@ -456,9 +465,9 @@ k-nearest networks, will be shown.
       subtestobj = subsetGiotto(testobj, cell_ids = highexp_ids)
 
       # Re-annotate the subset Giotto Object
-      subtestobj = annotateGiotto(gobject = subtestobj, 
+      subtestobj = annotateGiotto(gobject = subtestobj,
                                   annotation_vector = manual_cluster,
-                                  cluster_column = 'leiden_0.25.200', 
+                                  cluster_column = 'leiden_0.25.200',
                                   name = 'cell_types')
 
       spatPlot(gobject = subtestobj, show_network = T,

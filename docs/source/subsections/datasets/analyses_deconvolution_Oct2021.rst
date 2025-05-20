@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/deconvolution.html');
+    }
+    </script>
+
 ==============================
 analyses_deconvolution_Oct2021
 ==============================
@@ -45,7 +54,7 @@ analyses_deconvolution_Oct2021
         instructions = instrs
       )
 
-      giotto_SC <- addCellMetadata(giotto_SC, 
+      giotto_SC <- addCellMetadata(giotto_SC,
                                    new_metadata = data.table::fread(sc_metadata))
 
       giotto_SC<- normalizeGiotto(giotto_SC)
@@ -63,12 +72,12 @@ PAGE enrichment
       # 1.1 create binary matrix of cell signature genes
       # small example #
       gran_markers = c("Nr3c2", "Gabra5", "Tubgcp2", "Ahcyl2",
-                       "Islr2", "Rasl10a", "Tmem114", "Bhlhe22", 
+                       "Islr2", "Rasl10a", "Tmem114", "Bhlhe22",
                        "Ntf3", "C1ql2")
 
       oligo_markers = c("Efhd1", "H2-Ab1", "Enpp6", "Ninj2",
                         "Bmp4", "Tnr", "Hapln2", "Neu4",
-                        "Wfdc18", "Ccp110")        
+                        "Wfdc18", "Ccp110")
 
       di_mesench_markers = c("Cartpt", "Scn1a", "Lypd6b",  "Drd5",
                              "Gpr88", "Plcxd2", "Cpne7", "Pou4f1",
@@ -87,7 +96,7 @@ PAGE enrichment
 
       # 1.2 [shortcut] fully pre-prepared matrix for all cell types
       sign_matrix_path = system.file("extdata", "sig_matrix.txt", package = 'Giotto')
-      brain_sc_markers = data.table::fread(sign_matrix_path) 
+      brain_sc_markers = data.table::fread(sign_matrix_path)
       PAGE_matrix_2 = as.matrix(brain_sc_markers[,-1])
       rownames(PAGE_matrix_2) = brain_sc_markers$Event
 
@@ -98,7 +107,7 @@ PAGE enrichment
       markers_scran = findMarkers_one_vs_all(gobject=giotto_SC, method="scran",
                                              expression_values="normalized", cluster_column = "Class", min_feats=3)
       top_markers <- markers_scran[, head(.SD, 10), by="cluster"]
-      celltypes<-levels(factor(markers_scran$cluster)) 
+      celltypes<-levels(factor(markers_scran$cluster))
       sign_list<-list()
       for (i in 1:length(celltypes)){
         sign_list[[i]]<-top_markers[which(top_markers$cluster == celltypes[i]),]$feats

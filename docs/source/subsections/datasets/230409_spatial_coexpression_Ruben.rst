@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/spatial_coexpression_modules.html');
+    }
+    </script>
+
+
 =====================
 Spatial co-expression
 =====================
@@ -112,7 +122,7 @@ processed and is easily available through the **GiottoData** package.
             │     2:     -4244 137.5573 0.007269700
             │     3:     -4244 137.5573 0.007269700
             │     4:     -4125 138.0000 0.007246377
-            │  
+            │
             └──S4 spatialNetworkObj "spatial_network"   (3288 rows)
                                    from                 to sdimx_begin sdimy_begin sdimx_end
                   1: AAAGGGATGTAGCAAG-1 TCAAACAACCGCGTCG-1        5477       -4125      5340
@@ -124,7 +134,7 @@ processed and is easily available through the **GiottoData** package.
                   2:     -4244 137.5573 0.007217233
                   3:     -4244 137.5573 0.007217233
                   4:     -4125 138.0000 0.007194245
-               
+
 
    .. code:: r
 
@@ -138,13 +148,13 @@ processed and is easily available through the **GiottoData** package.
 
 
           This is the single parameter version of binSpect
-          1. matrix binarization complete 
+          1. matrix binarization complete
 
-          2. spatial enrichment test completed 
+          2. spatial enrichment test completed
 
-          3. (optional) average expression of high expressing cells calculated 
+          3. (optional) average expression of high expressing cells calculated
 
-          4. (optional) number of high expressing cells calculated 
+          4. (optional) number of high expressing cells calculated
 
    .. code:: r
 
@@ -265,7 +275,7 @@ processed and is easily available through the **GiottoData** package.
       ::
 
 
-           cluster_metagene  has already been used, will be overwritten 
+           cluster_metagene  has already been used, will be overwritten
 
    .. container:: cell-output cell-output-stderr
 
@@ -312,7 +322,7 @@ clusters).
 
       ::
 
-         class of selected matrix:  dgCMatrix 
+         class of selected matrix:  dgCMatrix
 
    .. container:: cell-output cell-output-stderr
 
@@ -327,7 +337,7 @@ clusters).
       ::
 
 
-           custom_pca  has already been used, will be overwritten 
+           custom_pca  has already been used, will be overwritten
 
    .. container:: cell-output cell-output-stderr
 
@@ -348,7 +358,7 @@ clusters).
       ::
 
 
-          custom_umap has already been used, will be overwritten 
+          custom_umap has already been used, will be overwritten
 
    .. container:: cell-output cell-output-stderr
 
@@ -368,7 +378,7 @@ clusters).
 
       ::
 
-         IGRAPH dbea2e8 DNW- 624 1872 -- 
+         IGRAPH dbea2e8 DNW- 624 1872 --
          + attr: name (v/c), weight (e/n), distance (e/n), shared (e/n), rank
          | (e/n)
          + edges from dbea2e8 (vertex names):
@@ -400,7 +410,7 @@ clusters).
       ::
 
 
-           custom_leiden  has already been used, will be overwritten 
+           custom_leiden  has already been used, will be overwritten
 
    .. code:: r
 
@@ -436,37 +446,37 @@ clusters).
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2.1    
+         [1] GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] rsvd_1.0.5            Rcpp_1.0.10           here_1.0.1           
-          [4] lattice_0.20-45       circlize_0.4.15       FNN_1.1.3.1          
-          [7] png_0.1-8             rprojroot_2.0.3       digest_0.6.31        
-         [10] foreach_1.5.2         utf8_1.2.3            R6_2.5.1             
-         [13] stats4_4.2.2          evaluate_0.20         ggplot2_3.4.1        
-         [16] pillar_1.8.1          GlobalOptions_0.1.2   zlibbioc_1.44.0      
-         [19] rlang_1.0.6           irlba_2.3.5.1         rstudioapi_0.14      
-         [22] data.table_1.14.8     magick_2.7.3          S4Vectors_0.36.1     
-         [25] GetoptLong_1.0.5      Matrix_1.5-3          reticulate_1.28      
-         [28] rmarkdown_2.20        labeling_0.4.2        BiocParallel_1.32.5  
-         [31] uwot_0.1.14           beachmat_2.14.0       igraph_1.4.0         
-         [34] munsell_0.5.0         DelayedArray_0.24.0   BiocSingular_1.14.0  
-         [37] compiler_4.2.2        xfun_0.37             pkgconfig_2.0.3      
-         [40] BiocGenerics_0.44.0   shape_1.4.6           htmltools_0.5.4      
-         [43] tidyselect_1.2.0      tibble_3.1.8          IRanges_2.32.0       
-         [46] codetools_0.2-19      matrixStats_0.63.0    fansi_1.0.4          
-         [49] crayon_1.5.2          dplyr_1.1.0           withr_2.5.0          
-         [52] grid_4.2.2            jsonlite_1.8.4        gtable_0.3.1         
-         [55] lifecycle_1.0.3       magrittr_2.0.3        scales_1.2.1         
-         [58] ScaledMatrix_1.6.0    cli_3.6.0             dbscan_1.1-11        
-         [61] farver_2.1.1          XVector_0.38.0        doParallel_1.0.17    
-         [64] generics_0.1.3        vctrs_0.5.2           cowplot_1.1.1        
-         [67] rjson_0.2.21          RColorBrewer_1.1-3    iterators_1.0.14     
-         [70] tools_4.2.2           Biobase_2.58.0        glue_1.6.2           
-         [73] MatrixGenerics_1.10.0 parallel_4.2.2        fastmap_1.1.0        
-         [76] yaml_2.3.7            clue_0.3-64           colorspace_2.1-0     
+          [1] rsvd_1.0.5            Rcpp_1.0.10           here_1.0.1
+          [4] lattice_0.20-45       circlize_0.4.15       FNN_1.1.3.1
+          [7] png_0.1-8             rprojroot_2.0.3       digest_0.6.31
+         [10] foreach_1.5.2         utf8_1.2.3            R6_2.5.1
+         [13] stats4_4.2.2          evaluate_0.20         ggplot2_3.4.1
+         [16] pillar_1.8.1          GlobalOptions_0.1.2   zlibbioc_1.44.0
+         [19] rlang_1.0.6           irlba_2.3.5.1         rstudioapi_0.14
+         [22] data.table_1.14.8     magick_2.7.3          S4Vectors_0.36.1
+         [25] GetoptLong_1.0.5      Matrix_1.5-3          reticulate_1.28
+         [28] rmarkdown_2.20        labeling_0.4.2        BiocParallel_1.32.5
+         [31] uwot_0.1.14           beachmat_2.14.0       igraph_1.4.0
+         [34] munsell_0.5.0         DelayedArray_0.24.0   BiocSingular_1.14.0
+         [37] compiler_4.2.2        xfun_0.37             pkgconfig_2.0.3
+         [40] BiocGenerics_0.44.0   shape_1.4.6           htmltools_0.5.4
+         [43] tidyselect_1.2.0      tibble_3.1.8          IRanges_2.32.0
+         [46] codetools_0.2-19      matrixStats_0.63.0    fansi_1.0.4
+         [49] crayon_1.5.2          dplyr_1.1.0           withr_2.5.0
+         [52] grid_4.2.2            jsonlite_1.8.4        gtable_0.3.1
+         [55] lifecycle_1.0.3       magrittr_2.0.3        scales_1.2.1
+         [58] ScaledMatrix_1.6.0    cli_3.6.0             dbscan_1.1-11
+         [61] farver_2.1.1          XVector_0.38.0        doParallel_1.0.17
+         [64] generics_0.1.3        vctrs_0.5.2           cowplot_1.1.1
+         [67] rjson_0.2.21          RColorBrewer_1.1-3    iterators_1.0.14
+         [70] tools_4.2.2           Biobase_2.58.0        glue_1.6.2
+         [73] MatrixGenerics_1.10.0 parallel_4.2.2        fastmap_1.1.0
+         [76] yaml_2.3.7            clue_0.3-64           colorspace_2.1-0
          [79] terra_1.7-18          cluster_2.1.4         ComplexHeatmap_2.14.0
-         [82] knitr_1.42           
+         [82] knitr_1.42

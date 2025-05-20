@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/LICENSE.html');
+    }
+    </script>
+
 ################################
 GNU General Public License
 ################################
@@ -236,7 +245,7 @@ If you develop a new program, and you want it to be of the greatest possible use
 
 To do so, attach the following notices to the program. It is safest to attach them to the start of each source file to most effectively state the exclusion of warranty; and each file should have at least the “copyright” line and a pointer to where the full notice is found.
 
-.. code-block:: 
+.. code-block::
 
     <one line to give the program's name and a brief idea of what it does.>
     Copyright (C) <year>  <name of author>
@@ -253,13 +262,13 @@ To do so, attach the following notices to the program. It is safest to attach th
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see `licenses <http://www.gnu.org/licenses/>`__.
-    
+
 Also add information on how to contact you by electronic and paper mail.
 
 If the program does terminal interaction, make it output a short notice like this when it starts in an interactive mode:
 
-.. code-block:: 
-    
+.. code-block::
+
     <program>  Copyright (C) <year>  <name of author>
     This program comes with ABSOLUTELY NO WARRANTY; for details type 'show w'.
     This is free software, and you are welcome to redistribute it

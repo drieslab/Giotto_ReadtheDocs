@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/troubleshooting.html');
+    }
+    </script>
+
 ===================
 installation_issues
 ===================
@@ -106,7 +115,7 @@ for windows:
 
    .. code:: r
 
-      remotes::install_github("drieslab/Giotto@cless") 
+      remotes::install_github("drieslab/Giotto@cless")
 
 2.1 issue 1: clang error
 ------------------------
@@ -161,7 +170,7 @@ If you see this error on your MacOS:
 
    .. code:: bash
 
-      Error message: 
+      Error message:
       ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
       ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
       ld: library not found for -lgfortran

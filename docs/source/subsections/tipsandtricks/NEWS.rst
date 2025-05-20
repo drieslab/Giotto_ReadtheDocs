@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/news/index.html');
+    }
+    </script>
+
 .. _news:
 
 #################
@@ -8,7 +17,7 @@ NEWS
 Giotto Suite 2.0.0
 ********************
 * First release coming soon
- 
+
 ***********************
 Giotto Suite 2.0.0.xxx
 ***********************

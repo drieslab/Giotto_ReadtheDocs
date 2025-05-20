@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visium_prostate_integration.html');
+    }
+    </script>
+
 ===========================
 Visium Prostate Integration
 ===========================
@@ -50,7 +59,7 @@ Visium Prostate Integration
       ::
 
 
-          giotto environment found at 
+          giotto environment found at
          my/path/r-miniconda\envs\giotto_env\python.exe
 
    .. container:: cell-output cell-output-stderr
@@ -117,7 +126,7 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         A structured visium directory will be used 
+         A structured visium directory will be used
 
    .. container:: cell-output cell-output-stderr
 
@@ -156,7 +165,7 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         A structured visium directory will be used 
+         A structured visium directory will be used
 
    .. container:: cell-output cell-output-stderr
 
@@ -248,7 +257,7 @@ The Visium Normal Prostate data to run this tutorial can be found
              3:                      NOC2L
              4:                     KLHL17
              5:                    PLEKHN1
-            ---                           
+            ---
          18753: DEPRECATED_ENSG00000164220
          18754: DEPRECATED_ENSG00000178287
          18755: DEPRECATED_ENSG00000198203
@@ -269,7 +278,7 @@ The Visium Normal Prostate data to run this tutorial can be found
             3: NP-AAACAATCTACTAGCA-1         1         3        43      NP
             4: NP-AAACACCAATAACTGC-1         0        59        19      NP
             5: NP-AAACAGAGCGACTCCT-1         1        14        94      NP
-           ---                                                            
+           ---
          9979: CP-TTGTTTCACATCCAGG-1         1        58        42      CP
          9980: CP-TTGTTTCATTAGTCTA-1         1        60        30      CP
          9981: CP-TTGTTTCCATACAACT-1         1        45        27      CP
@@ -284,10 +293,10 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         Image type: image 
+         Image type: image
 
-         --> Name: NP-image 
-         --> Name: CP-image 
+         --> Name: NP-image
+         --> Name: CP-image
 
    .. code:: r
 
@@ -299,7 +308,7 @@ The Visium Normal Prostate data to run this tutorial can be found
 
          └──Spatial unit "cell"
             └──S4 spatLocsObj "raw" coordinates:   (9983 rows)
-                  An object of class spatLocsObj 
+                  An object of class spatLocsObj
                   provenance: cell
                       ------------------------
                      sdimx  sdimy               cell_ID
@@ -307,14 +316,14 @@ The Visium Normal Prostate data to run this tutorial can be found
                   2: 19873 -16327 NP-AAACAAGTATCTCCCA-1
                   3: 11334  -4450 NP-AAACAATCTACTAGCA-1
                   4:  7829 -18579 NP-AAACACCAATAACTGC-1
-                  
+
                   ranges:
                        sdimx  sdimy
                   [1,]  5066 -23288
                   [2,] 52011  -3682
-                  
-                  
-               
+
+
+
 
    .. code:: r
 
@@ -327,29 +336,29 @@ The Visium Normal Prostate data to run this tutorial can be found
          └──Spatial unit "cell"
             └──Feature type "rna"
                └──Expression data "raw" values:
-                     An object of class exprObj 
-                     for spatial unit: "cell" and feature type: "rna" 
-                       Provenance:  cell 
-                     
+                     An object of class exprObj
+                     for spatial unit: "cell" and feature type: "rna"
+                       Provenance:  cell
+
                      contains:
                      18757 x 9983 sparse Matrix of class "dgCMatrix"
-                                                         
+
                      A1BG . . . .  . . . . . . . . ......
                      A1CF . . . .  . . . . . . . . ......
                      A2M  2 8 . . 15 4 2 . . . 2 3 ......
-                     
-                      ........suppressing 9971 columns and 18751 rows 
-                                                          
+
+                      ........suppressing 9971 columns and 18751 rows
+
                      ZYG11B . 1 . . . . . . . . . . ......
                      ZYX    . 1 1 . 5 2 . . . . . 1 ......
                      ZZEF1  . 1 . . 3 . . . . . . . ......
-                     
+
                       First four colnames:
                       NP-AAACAACGAATAGTTC-1
                       NP-AAACAAGTATCTCCCA-1
                       NP-AAACAATCTACTAGCA-1
-                      NP-AAACACCAATAACTGC-1 
-                  
+                      NP-AAACACCAATAACTGC-1
+
 
 .. container:: cell
 
@@ -420,24 +429,24 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         completed 1: preparation 
-         completed 2: subset expression data 
-         completed 3: subset spatial locations 
-         completed 4: subset cell (spatial units) and feature IDs 
-         completed 5: subset cell metadata 
-         completed 6: subset feature metadata 
-         completed 7: subset spatial network(s) 
-         completed 8: subsetted dimension reductions 
-         completed 9: subsetted nearest network(s) 
-         completed 10: subsetted spatial enrichment results 
-         number of frames:  25 
-         sys parent:  24 
+         completed 1: preparation
+         completed 2: subset expression data
+         completed 3: subset spatial locations
+         completed 4: subset cell (spatial units) and feature IDs
+         completed 5: subset cell metadata
+         completed 6: subset feature metadata
+         completed 7: subset spatial network(s)
+         completed 8: subsetted dimension reductions
+         completed 9: subsetted nearest network(s)
+         completed 10: subsetted spatial enrichment results
+         number of frames:  25
+         sys parent:  24
          NULL
          $cell
          $cell$raw
-         An object of class spatLocsObj 
+         An object of class spatLocsObj
          for spatial unit: "cell"
-         provenance: cell 
+         provenance: cell
             ------------------------
 
          preview:
@@ -447,7 +456,7 @@ The Visium Normal Prostate data to run this tutorial can be found
             3: 18728  -7239 NP-AAACAGAGCGACTCCT-1
             4:  6385 -14538 NP-AAACAGCTTTCAGAAG-1
             5: 21761 -15069 NP-AAACCCGAACGAAATC-1
-           ---                                   
+           ---
          6907: 44746 -11665 CP-TTGTTGTGTGTCAAGA-1
          6908: 39658 -18473 CP-TTGTTTCACATCCAGG-1
          6909: 37916 -18975 CP-TTGTTTCATTAGTCTA-1
@@ -463,9 +472,9 @@ The Visium Normal Prostate data to run this tutorial can be found
 
 
 
-         Feature type:  rna 
-         Number of cells removed:  3  out of  6914 
-         Number of feats removed:  3591  out of  18757 
+         Feature type:  rna
+         Number of cells removed:  3  out of  6914
+         Number of feats removed:  3591  out of  18757
 
    .. code:: r
 
@@ -477,7 +486,7 @@ The Visium Normal Prostate data to run this tutorial can be found
       ::
 
 
-          first scale feats and then cells 
+          first scale feats and then cells
 
    .. code:: r
 
@@ -530,9 +539,9 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         return_plot = TRUE and return_gobject = TRUE 
+         return_plot = TRUE and return_gobject = TRUE
 
-                   plot will not be returned to object, but can still be saved with save_plot = TRUE or manually 
+                   plot will not be returned to object, but can still be saved with save_plot = TRUE or manually
 
    .. code:: r
 
@@ -549,7 +558,7 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         class of selected matrix:  dgCMatrix 
+         class of selected matrix:  dgCMatrix
 
    .. code:: r
 
@@ -559,7 +568,7 @@ The Visium Normal Prostate data to run this tutorial can be found
 
       ::
 
-         PCA with name:  pca  already exists and will be used for the screeplot 
+         PCA with name:  pca  already exists and will be used for the screeplot
 
    .. container:: cell-output-display
 
@@ -664,12 +673,12 @@ spatial datasets.
 
       ::
 
-         using 'Harmony' to integrate different datasets. If used in published research, please cite: 
+         using 'Harmony' to integrate different datasets. If used in published research, please cite:
 
            Korsunsky, I., Millard, N., Fan, J. et al.
                                Fast, sensitive and accurate integration of single-cell data with Harmony.
                                Nat Methods 16, 1289-1296 (2019).
-                               https://doi.org/10.1038/s41592-019-0619-0 
+                               https://doi.org/10.1038/s41592-019-0619-0
 
    .. container:: cell-output cell-output-stderr
 
@@ -718,8 +727,8 @@ spatial datasets.
 
       plotUMAP(gobject = testcombo,
           dim_reduction_name = 'umap_harmony',
-          cell_color = 'leiden_harmony', 
-          show_NN_network = F, 
+          cell_color = 'leiden_harmony',
+          show_NN_network = F,
           point_size = 1.5,
           save_param = list(save_name = "4.2a_plot"))
 
@@ -764,7 +773,7 @@ spatial datasets.
 
       # compare to previous results
       spatPlot2D(gobject = testcombo,
-          cell_color = 'leiden_clus', 
+          cell_color = 'leiden_clus',
           save_param = list(save_name = "4_w_o_integration_plot"))
 
    .. container:: cell-output-display
@@ -824,7 +833,7 @@ getSpatialDataset
       ::
 
                    dataset spatial_locs
-         1: scRNA_prostate             
+         1: scRNA_prostate
                                                                                                                                             expr_matrix
          1: https://github.com/drieslab/spatial-datasets/raw/master/data/2022_scRNAseq_human_prostate/count_matrix/prostate_sc_expression_matrix.csv.gz
                                                                                                                                     metadata
@@ -898,7 +907,7 @@ getSpatialDataset
 
    .. code:: r
 
-      giotto_SC <- addCellMetadata(giotto_SC, 
+      giotto_SC <- addCellMetadata(giotto_SC,
                                    new_metadata = data.table::fread(sc_metadata))
 
       giotto_SC<- normalizeGiotto(giotto_SC)
@@ -908,7 +917,7 @@ getSpatialDataset
       ::
 
 
-          first scale feats and then cells 
+          first scale feats and then cells
 
 7.1 PAGE enrichment
 -------------------
@@ -920,9 +929,9 @@ getSpatialDataset
       # Create PAGE matrix
       # PAGE matrix should be a binary matrix with each row represent a gene marker and each column represent a cell type
       # markers_scran is generated from single cell analysis ()
-      markers_scran = findMarkers_one_vs_all(gobject=giotto_SC, 
+      markers_scran = findMarkers_one_vs_all(gobject=giotto_SC,
                                              method="scran",
-                                             expression_values="normalized", 
+                                             expression_values="normalized",
                                              cluster_column='prostate_labels',
                                              min_feats=3)
 
@@ -933,32 +942,32 @@ getSpatialDataset
          using 'Scran' to detect marker feats. If used in published research, please cite:
            Lun ATL, McCarthy DJ, Marioni JC (2016).
            'A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor.'
-           F1000Res., 5, 2122. doi: 10.12688/f1000research.9501.2. 
+           F1000Res., 5, 2122. doi: 10.12688/f1000research.9501.2.
 
    .. container:: cell-output cell-output-stdout
 
       ::
 
 
-          start with cluster  Endothelial cells 
+          start with cluster  Endothelial cells
 
-          start with cluster  Epithelial_basal 
+          start with cluster  Epithelial_basal
 
-          start with cluster  Epithelial_luminal 
+          start with cluster  Epithelial_luminal
 
-          start with cluster  Fibroblasts 
+          start with cluster  Fibroblasts
 
-          start with cluster  Macrophage & B cells 
+          start with cluster  Macrophage & B cells
 
-          start with cluster  Mast cells 
+          start with cluster  Mast cells
 
-          start with cluster  Mesenchymal cells 
+          start with cluster  Mesenchymal cells
 
-          start with cluster  Neural Progenitor cells 
+          start with cluster  Neural Progenitor cells
 
-          start with cluster  Smooth muscle cells 
+          start with cluster  Smooth muscle cells
 
-          start with cluster  T cells 
+          start with cluster  T cells
 
    .. code:: r
 
@@ -1005,7 +1014,7 @@ getSpatialDataset
                                           expression_values = "normalized",
                                           sign_matrix = PAGE_matrix)
       cell_types_subset = colnames(PAGE_matrix)
-      spatCellPlot(gobject = testcombo, 
+      spatCellPlot(gobject = testcombo,
                    spat_enr_names = 'hypergeometric',
                    cell_annotation_values = cell_types_subset[1:4],
                    cow_n_col = 2,coord_fix_ratio = NULL, point_size = 1.75,
@@ -1092,93 +1101,93 @@ getSpatialDataset
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] harmony_0.1.1    Rcpp_1.0.10      GiottoData_0.2.1 Giotto_3.3.0    
-         [5] testthat_3.1.5  
+         [1] harmony_0.1.1    Rcpp_1.0.10      GiottoData_0.2.1 Giotto_3.3.0
+         [5] testthat_3.1.5
 
          loaded via a namespace (and not attached):
-           [1] systemfonts_1.0.4           plyr_1.8.8                 
-           [3] igraph_1.4.1                lazyeval_0.2.2             
-           [5] sp_1.6-0                    BiocParallel_1.32.6        
-           [7] listenv_0.9.0               usethis_2.1.6              
-           [9] GenomeInfoDb_1.34.6         ggplot2_3.4.2              
-          [11] digest_0.6.30               htmltools_0.5.4            
-          [13] magick_2.7.4                fansi_1.0.4                
-          [15] magrittr_2.0.3              memoise_2.0.1              
-          [17] ScaledMatrix_1.6.0          cluster_2.1.4              
-          [19] limma_3.54.2                remotes_2.4.2              
-          [21] globals_0.16.2              matrixStats_0.63.0         
-          [23] R.utils_2.12.2              prettyunits_1.1.1          
-          [25] colorspace_2.1-0            rappdirs_0.3.3             
-          [27] ggrepel_0.9.2               textshaping_0.3.6          
-          [29] xfun_0.38                   dplyr_1.1.1                
-          [31] callr_3.7.3                 crayon_1.5.2               
-          [33] RCurl_1.98-1.9              jsonlite_1.8.3             
-          [35] progressr_0.13.0            glue_1.6.2                 
-          [37] gtable_0.3.3                zlibbioc_1.44.0            
-          [39] XVector_0.38.0              DelayedArray_0.24.0        
-          [41] pkgbuild_1.4.0              BiocSingular_1.14.0        
-          [43] RcppZiggurat_0.1.6          future.apply_1.10.0        
-          [45] SingleCellExperiment_1.20.0 BiocGenerics_0.44.0        
-          [47] scales_1.2.1                edgeR_3.40.1               
-          [49] miniUI_0.1.1.1              viridisLite_0.4.2          
-          [51] xtable_1.8-4                dqrng_0.3.0                
-          [53] reticulate_1.26             rsvd_1.0.5                 
-          [55] stats4_4.2.2                profvis_0.3.7              
-          [57] metapod_1.6.0               htmlwidgets_1.6.2          
-          [59] httr_1.4.5                  RColorBrewer_1.1-3         
-          [61] ellipsis_0.3.2              scuttle_1.8.3              
-          [63] urlchecker_1.0.1            pkgconfig_2.0.3            
-          [65] R.methodsS3_1.8.2           farver_2.1.1               
-          [67] uwot_0.1.14                 deldir_1.0-6               
-          [69] locfit_1.5-9.7              utf8_1.2.3                 
-          [71] here_1.0.1                  tidyselect_1.2.0           
-          [73] labeling_0.4.2              rlang_1.1.0                
-          [75] reshape2_1.4.4              later_1.3.0                
-          [77] munsell_0.5.0               tools_4.2.2                
-          [79] cachem_1.0.6                cli_3.4.1                  
-          [81] dbscan_1.1-11               generics_0.1.3             
-          [83] devtools_2.4.5              evaluate_0.20              
-          [85] stringr_1.5.0               fastmap_1.1.0              
-          [87] yaml_2.3.7                  ragg_1.2.4                 
-          [89] processx_3.8.0              knitr_1.42                 
-          [91] fs_1.5.2                    purrr_1.0.1                
-          [93] future_1.32.0               sparseMatrixStats_1.10.0   
-          [95] mime_0.12                   scran_1.26.1               
-          [97] R.oo_1.25.0                 brio_1.1.3                 
-          [99] compiler_4.2.2              rstudioapi_0.14            
-         [101] plotly_4.10.1               png_0.1-7                  
-         [103] statmod_1.4.37              tibble_3.2.1               
-         [105] stringi_1.7.8               ps_1.7.2                   
-         [107] desc_1.4.2                  bluster_1.8.0              
-         [109] lattice_0.20-45             Matrix_1.5-1               
-         [111] vctrs_0.6.1                 pillar_1.9.0               
-         [113] lifecycle_1.0.3             BiocNeighbors_1.16.0       
-         [115] RcppAnnoy_0.0.20            data.table_1.14.6          
-         [117] cowplot_1.1.1               bitops_1.0-7               
-         [119] irlba_2.3.5.1               httpuv_1.6.6               
-         [121] GenomicRanges_1.50.2        R6_2.5.1                   
-         [123] promises_1.2.0.1            IRanges_2.32.0             
-         [125] parallelly_1.35.0           sessioninfo_1.2.2          
-         [127] codetools_0.2-18            pkgload_1.3.2              
-         [129] SummarizedExperiment_1.28.0 rprojroot_2.0.3            
-         [131] withr_2.5.0                 S4Vectors_0.36.2           
-         [133] GenomeInfoDbData_1.2.9      parallel_4.2.2             
-         [135] terra_1.7-18                quadprog_1.5-8             
-         [137] grid_4.2.2                  beachmat_2.14.0            
-         [139] tidyr_1.3.0                 Rfast_2.0.6                
-         [141] DelayedMatrixStats_1.20.0   rmarkdown_2.21             
-         [143] MatrixGenerics_1.10.0       Rtsne_0.16                 
-         [145] Biobase_2.58.0              shiny_1.7.4                
+           [1] systemfonts_1.0.4           plyr_1.8.8
+           [3] igraph_1.4.1                lazyeval_0.2.2
+           [5] sp_1.6-0                    BiocParallel_1.32.6
+           [7] listenv_0.9.0               usethis_2.1.6
+           [9] GenomeInfoDb_1.34.6         ggplot2_3.4.2
+          [11] digest_0.6.30               htmltools_0.5.4
+          [13] magick_2.7.4                fansi_1.0.4
+          [15] magrittr_2.0.3              memoise_2.0.1
+          [17] ScaledMatrix_1.6.0          cluster_2.1.4
+          [19] limma_3.54.2                remotes_2.4.2
+          [21] globals_0.16.2              matrixStats_0.63.0
+          [23] R.utils_2.12.2              prettyunits_1.1.1
+          [25] colorspace_2.1-0            rappdirs_0.3.3
+          [27] ggrepel_0.9.2               textshaping_0.3.6
+          [29] xfun_0.38                   dplyr_1.1.1
+          [31] callr_3.7.3                 crayon_1.5.2
+          [33] RCurl_1.98-1.9              jsonlite_1.8.3
+          [35] progressr_0.13.0            glue_1.6.2
+          [37] gtable_0.3.3                zlibbioc_1.44.0
+          [39] XVector_0.38.0              DelayedArray_0.24.0
+          [41] pkgbuild_1.4.0              BiocSingular_1.14.0
+          [43] RcppZiggurat_0.1.6          future.apply_1.10.0
+          [45] SingleCellExperiment_1.20.0 BiocGenerics_0.44.0
+          [47] scales_1.2.1                edgeR_3.40.1
+          [49] miniUI_0.1.1.1              viridisLite_0.4.2
+          [51] xtable_1.8-4                dqrng_0.3.0
+          [53] reticulate_1.26             rsvd_1.0.5
+          [55] stats4_4.2.2                profvis_0.3.7
+          [57] metapod_1.6.0               htmlwidgets_1.6.2
+          [59] httr_1.4.5                  RColorBrewer_1.1-3
+          [61] ellipsis_0.3.2              scuttle_1.8.3
+          [63] urlchecker_1.0.1            pkgconfig_2.0.3
+          [65] R.methodsS3_1.8.2           farver_2.1.1
+          [67] uwot_0.1.14                 deldir_1.0-6
+          [69] locfit_1.5-9.7              utf8_1.2.3
+          [71] here_1.0.1                  tidyselect_1.2.0
+          [73] labeling_0.4.2              rlang_1.1.0
+          [75] reshape2_1.4.4              later_1.3.0
+          [77] munsell_0.5.0               tools_4.2.2
+          [79] cachem_1.0.6                cli_3.4.1
+          [81] dbscan_1.1-11               generics_0.1.3
+          [83] devtools_2.4.5              evaluate_0.20
+          [85] stringr_1.5.0               fastmap_1.1.0
+          [87] yaml_2.3.7                  ragg_1.2.4
+          [89] processx_3.8.0              knitr_1.42
+          [91] fs_1.5.2                    purrr_1.0.1
+          [93] future_1.32.0               sparseMatrixStats_1.10.0
+          [95] mime_0.12                   scran_1.26.1
+          [97] R.oo_1.25.0                 brio_1.1.3
+          [99] compiler_4.2.2              rstudioapi_0.14
+         [101] plotly_4.10.1               png_0.1-7
+         [103] statmod_1.4.37              tibble_3.2.1
+         [105] stringi_1.7.8               ps_1.7.2
+         [107] desc_1.4.2                  bluster_1.8.0
+         [109] lattice_0.20-45             Matrix_1.5-1
+         [111] vctrs_0.6.1                 pillar_1.9.0
+         [113] lifecycle_1.0.3             BiocNeighbors_1.16.0
+         [115] RcppAnnoy_0.0.20            data.table_1.14.6
+         [117] cowplot_1.1.1               bitops_1.0-7
+         [119] irlba_2.3.5.1               httpuv_1.6.6
+         [121] GenomicRanges_1.50.2        R6_2.5.1
+         [123] promises_1.2.0.1            IRanges_2.32.0
+         [125] parallelly_1.35.0           sessioninfo_1.2.2
+         [127] codetools_0.2-18            pkgload_1.3.2
+         [129] SummarizedExperiment_1.28.0 rprojroot_2.0.3
+         [131] withr_2.5.0                 S4Vectors_0.36.2
+         [133] GenomeInfoDbData_1.2.9      parallel_4.2.2
+         [135] terra_1.7-18                quadprog_1.5-8
+         [137] grid_4.2.2                  beachmat_2.14.0
+         [139] tidyr_1.3.0                 Rfast_2.0.6
+         [141] DelayedMatrixStats_1.20.0   rmarkdown_2.21
+         [143] MatrixGenerics_1.10.0       Rtsne_0.16
+         [145] Biobase_2.58.0              shiny_1.7.4
 
 .. |image1| image:: /images/images_pkgdown/general_figs/visium_technology.png
    :width: 50.0%

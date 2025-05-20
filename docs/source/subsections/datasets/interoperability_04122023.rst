@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/interoperability_anndata.html');
+    }
+    </script>
+
 =========================
 Interoperability: AnnData
 =========================
@@ -47,14 +56,14 @@ either squidpy or anndata are possible.
    .. code:: r
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/giotto_anndata_conversion/') 
+      results_directory = paste0(getwd(),'/giotto_anndata_conversion/')
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
 
-      mini_gobject = loadGiottoMini(dataset = 'vizgen', 
+      mini_gobject = loadGiottoMini(dataset = 'vizgen',
                                     python_path = my_python_path)
 
       instrs = showGiottoInstructions(mini_gobject)
@@ -170,28 +179,28 @@ by ``giottoToAnnData()`` may be provided to these arguments as well.
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2.1    
+         [1] GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.2    tools_4.2.2      
-          [5] digest_0.6.30     jsonlite_1.8.3    evaluate_0.20     lifecycle_1.0.3  
-          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   png_0.1-7        
-         [13] pkgconfig_2.0.3   rlang_1.1.0       igraph_1.4.1      Matrix_1.5-1     
-         [17] cli_3.4.1         rstudioapi_0.14   parallel_4.2.2    yaml_2.3.7       
-         [21] xfun_0.38         fastmap_1.1.0     terra_1.7-18      dplyr_1.1.1      
-         [25] knitr_1.42        rappdirs_0.3.3    generics_0.1.3    vctrs_0.6.1      
-         [29] rprojroot_2.0.3   grid_4.2.2        tidyselect_1.2.0  here_1.0.1       
-         [33] reticulate_1.26   glue_1.6.2        data.table_1.14.6 R6_2.5.1         
-         [37] fansi_1.0.4       rmarkdown_2.21    ggplot2_3.4.1     magrittr_2.0.3   
-         [41] scales_1.2.1      codetools_0.2-18  htmltools_0.5.4   colorspace_2.1-0 
-         [45] utf8_1.2.3        munsell_0.5.0     dbscan_1.1-11    
+          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.2    tools_4.2.2
+          [5] digest_0.6.30     jsonlite_1.8.3    evaluate_0.20     lifecycle_1.0.3
+          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   png_0.1-7
+         [13] pkgconfig_2.0.3   rlang_1.1.0       igraph_1.4.1      Matrix_1.5-1
+         [17] cli_3.4.1         rstudioapi_0.14   parallel_4.2.2    yaml_2.3.7
+         [21] xfun_0.38         fastmap_1.1.0     terra_1.7-18      dplyr_1.1.1
+         [25] knitr_1.42        rappdirs_0.3.3    generics_0.1.3    vctrs_0.6.1
+         [29] rprojroot_2.0.3   grid_4.2.2        tidyselect_1.2.0  here_1.0.1
+         [33] reticulate_1.26   glue_1.6.2        data.table_1.14.6 R6_2.5.1
+         [37] fansi_1.0.4       rmarkdown_2.21    ggplot2_3.4.1     magrittr_2.0.3
+         [41] scales_1.2.1      codetools_0.2-18  htmltools_0.5.4   colorspace_2.1-0
+         [45] utf8_1.2.3        munsell_0.5.0     dbscan_1.1-11

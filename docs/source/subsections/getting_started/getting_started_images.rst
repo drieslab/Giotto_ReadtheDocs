@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/affine_registration.html');
+    }
+    </script>
+
 ======================
 Image Alignment
 ======================
@@ -27,7 +36,7 @@ data
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -160,36 +169,36 @@ been created:
       GImage
 
       ## R TERMINAL OUTPUT:
-      # 
-      # An object of class ' giottoImage ' with name  image 
-      #  
-      # Min and max values are: 
-      #  Max on x-axis:  23520 
-      #  Min on x-axis:  5066 
-      #  Max on y-axis:  -3682 
-      #  Min on y-axis:  -23148 
-      #  
-      # Boundary adjustment are: 
-      #  Max adjustment on x-axis:  3949.001 
-      #  Min adjustment on x-axis:  5066 
-      #  Max adjustment on y-axis:  3682 
-      #  Min adjustment on y-axis:  2082.277 
-      #  
-      # Boundaries are: 
-      #  Image x-axis max boundary:  27469 
-      #  Image x-axis min boundary:  0 
-      #  Image y-axis max boundary:  0 
-      #  Image y-axis min boundary:  -25230.28 
       #
-      # Scale factor: 
-      #          x          y 
-      # 0.07280935 0.07280935 
-      # 
-      #  Resolution: 
-      #        x        y 
-      #  13.7345  13.7345 
+      # An object of class ' giottoImage ' with name  image
       #
-      # File Path: 
+      # Min and max values are:
+      #  Max on x-axis:  23520
+      #  Min on x-axis:  5066
+      #  Max on y-axis:  -3682
+      #  Min on y-axis:  -23148
+      #
+      # Boundary adjustment are:
+      #  Max adjustment on x-axis:  3949.001
+      #  Min adjustment on x-axis:  5066
+      #  Max adjustment on y-axis:  3682
+      #  Min adjustment on y-axis:  2082.277
+      #
+      # Boundaries are:
+      #  Image x-axis max boundary:  27469
+      #  Image x-axis min boundary:  0
+      #  Image y-axis max boundary:  0
+      #  Image y-axis min boundary:  -25230.28
+      #
+      # Scale factor:
+      #          x          y
+      # 0.07280935 0.07280935
+      #
+      #  Resolution:
+      #        x        y
+      #  13.7345  13.7345
+      #
+      # File Path:
       # [1] "/path/to/directory/tissue_image.png"
 
 Further intuition for defining these parameters in this way is detailed
@@ -272,15 +281,15 @@ In this example, the hires image will be plotted.
       VisiumDir = '/path/to/visium/directory/'
       results_directory = paste0(getwd(),'/gobject_imaging_results/')
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
 
       # Optional: Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
       # Create a Giotto Object using Visium Data
@@ -290,13 +299,13 @@ In this example, the hires image will be plotted.
                                                 instructions = instrs)
 
       # visualize spots that are in tissue
-      spatPlot2D(FFPE_prostate, 
+      spatPlot2D(FFPE_prostate,
                  show_image = TRUE,
                  cell_color = 'in_tissue',
                  save_param = list(save_name = 'high_res_IT'))
 
 | |image2|
-| 
+|
 
 4 Standard Workflow
 ===================
@@ -429,34 +438,34 @@ Alignment values:
       ## R TERMINAL OUTPUT:
 
       # An object of class ' giottoImage ' with name  low_res
-      #  
-      # Min and max values are: 
-      #  Max on x-axis:  23520 
-      #  Min on x-axis:  5066 
-      #  Max on y-axis:  -3682 
-      #  Min on y-axis:  -23148 
-      #  
-      # Boundary adjustment are: 
-      #  Max adjustment on x-axis:  3949.001 
-      #  Min adjustment on x-axis:  5066 
-      #  Max adjustment on y-axis:  3682 
-      #  Min adjustment on y-axis:  2077.699 
-      #  
-      # Boundaries are: 
-      #  Image x-axis max boundary:  27469 
-      #  Image x-axis min boundary:  0 
-      #  Image y-axis max boundary:  4.547474e-13 
-      #  Image y-axis min boundary:  -25225.7 
-      #  
-      # Scale factor: 
-      #         x         y 
-      # 0.0218428 0.0218428 
-      # 
-      #  Resolution: 
-      #        x        y 
-      # 45.78167 45.78167 
       #
-      # File Path: 
+      # Min and max values are:
+      #  Max on x-axis:  23520
+      #  Min on x-axis:  5066
+      #  Max on y-axis:  -3682
+      #  Min on y-axis:  -23148
+      #
+      # Boundary adjustment are:
+      #  Max adjustment on x-axis:  3949.001
+      #  Min adjustment on x-axis:  5066
+      #  Max adjustment on y-axis:  3682
+      #  Min adjustment on y-axis:  2077.699
+      #
+      # Boundaries are:
+      #  Image x-axis max boundary:  27469
+      #  Image x-axis min boundary:  0
+      #  Image y-axis max boundary:  4.547474e-13
+      #  Image y-axis min boundary:  -25225.7
+      #
+      # Scale factor:
+      #         x         y
+      # 0.0218428 0.0218428
+      #
+      #  Resolution:
+      #        x        y
+      # 45.78167 45.78167
+      #
+      # File Path:
       # [1] "/path/to/visium/directory/Spatial/tissue_lowres_image.png"
 
 .. raw:: html
@@ -495,35 +504,35 @@ Alignment values:
 
       ## R TERMINAL OUTPUT:
 
-      # An object of class ' giottoImage ' with name  low_res_no_locs 
-      #  
-      # Min and max values are: 
-      #  Max on x-axis:  10 
-      #  Min on x-axis:  0 
-      #  Max on y-axis:  10 
-      #  Min on y-axis:  0 
-      #  
-      # Boundary adjustment are: 
-      #  Max adjustment on x-axis:  0 
-      #  Min adjustment on x-axis:  0 
-      #  Max adjustment on y-axis:  0 
-      #  Min adjustment on y-axis:  0 
-      #  
-      # Boundaries are: 
-      #  Image x-axis max boundary:  10 
-      #  Image x-axis min boundary:  0 
-      #  Image y-axis max boundary:  10 
-      #  Image y-axis min boundary:  0 
-      #  
-      # Scale factor: 
-      #         x         y 
-      # 0.0218428 0.0218428 
-      # 
-      #  Resolution: 
-      #        x        y 
-      # 45.78167 45.78167 
+      # An object of class ' giottoImage ' with name  low_res_no_locs
       #
-      # File Path: 
+      # Min and max values are:
+      #  Max on x-axis:  10
+      #  Min on x-axis:  0
+      #  Max on y-axis:  10
+      #  Min on y-axis:  0
+      #
+      # Boundary adjustment are:
+      #  Max adjustment on x-axis:  0
+      #  Min adjustment on x-axis:  0
+      #  Max adjustment on y-axis:  0
+      #  Min adjustment on y-axis:  0
+      #
+      # Boundaries are:
+      #  Image x-axis max boundary:  10
+      #  Image x-axis min boundary:  0
+      #  Image y-axis max boundary:  10
+      #  Image y-axis min boundary:  0
+      #
+      # Scale factor:
+      #         x         y
+      # 0.0218428 0.0218428
+      #
+      #  Resolution:
+      #        x        y
+      # 45.78167 45.78167
+      #
+      # File Path:
       # [1] "/path/to/visium/directory/Spatial/tissue_lowres_image.png"
 
 *Note that only default values are given to minmax and boundaries in
@@ -543,7 +552,7 @@ this case.*
   auto-align the image with the spatial locations. The auto-alignment
   can be bypassed by using **do_manual_adj = TRUE** and only the minmax
   slot will be populated.
-| 
+|
 
 .. raw:: html
 
@@ -587,35 +596,35 @@ Alignment values:
 
       ## R TERMINAL OUTPUT:
       #
-      # An object of class ' giottoImage ' with name  low_res_manual 
-      #  
-      # Min and max values are: 
-      #  Max on x-axis:  23520 
-      #  Min on x-axis:  5066 
-      #  Max on y-axis:  -3682 
-      #  Min on y-axis:  -23148 
-      #  
-      # Boundary adjustment are: 
-      #  Max adjustment on x-axis:  0 
-      #  Min adjustment on x-axis:  0 
-      #  Max adjustment on y-axis:  0 
-      #  Min adjustment on y-axis:  0 
-      #  
-      # Boundaries are: 
-      #  Image x-axis max boundary:  23520 
-      #  Image x-axis min boundary:  5066 
-      #  Image y-axis max boundary:  -3682 
-      #  Image y-axis min boundary:  -23148 
-      #  
-      # Scale factor: 
-      #         x         y 
-      # 0.0218428 0.0218428 
-      # 
-      #  Resolution: 
-      #        x        y 
+      # An object of class ' giottoImage ' with name  low_res_manual
+      #
+      # Min and max values are:
+      #  Max on x-axis:  23520
+      #  Min on x-axis:  5066
+      #  Max on y-axis:  -3682
+      #  Min on y-axis:  -23148
+      #
+      # Boundary adjustment are:
+      #  Max adjustment on x-axis:  0
+      #  Min adjustment on x-axis:  0
+      #  Max adjustment on y-axis:  0
+      #  Min adjustment on y-axis:  0
+      #
+      # Boundaries are:
+      #  Image x-axis max boundary:  23520
+      #  Image x-axis min boundary:  5066
+      #  Image y-axis max boundary:  -3682
+      #  Image y-axis min boundary:  -23148
+      #
+      # Scale factor:
+      #         x         y
+      # 0.0218428 0.0218428
+      #
+      #  Resolution:
+      #        x        y
       # 45.78167 45.78167
       #
-      # File Path: 
+      # File Path:
       # [1] "/path/to/visium/directory/Spatial/tissue_lowres_image.png"
 
 .. raw:: html
@@ -629,7 +638,7 @@ Alignment values:
 |  *When* **do_manual_adj = TRUE**\ *, automatic alignment is bypassed
   in favor of the four manual adjustment values.*
 | *These values (Boundary adjustment) default to 0.*
-| 
+|
 
 4.3 Step 3: Add giottoImage to giottoObject and Visualize
 ---------------------------------------------------------
@@ -645,7 +654,7 @@ specified. The name that the image is referred to as within the
 
       # Since lowResG_img_no_locs is not associated with the gobject FFPE_prostate, it
       # may not be added to the gobject.
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img))
 
       spatPlot2D(gobject = FFPE_prostate,
@@ -677,7 +686,7 @@ specified. The name that the image is referred to as within the
 
       # createGiottoImage with manually defined adjustment values
       lowResG_img_update_manual <- createGiottoImage(gobject = FFPE_prostate,
-                                                     mg_object = lowResPath, 
+                                                     mg_object = lowResPath,
                                                      name = "low_res_update_manual",
                                                      do_manual_adj = TRUE,
                                                      xmin_adj = 5066,
@@ -686,7 +695,7 @@ specified. The name that the image is referred to as within the
                                                      ymax_adj = 3682,
                                                      scale_factor = 0.021842804)
 
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img_update_manual))
 
       spatPlot2D(gobject = FFPE_prostate,
@@ -716,7 +725,7 @@ specified. The name that the image is referred to as within the
                                                  ymax_adj = 0,
                                                  scale_factor = 0.021842804)
 
-      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate, 
+      FFPE_prostate = addGiottoImage(gobject = FFPE_prostate,
                                      images = list(lowResG_img_to_update))
 
       spatPlot2D(gobject = FFPE_prostate,

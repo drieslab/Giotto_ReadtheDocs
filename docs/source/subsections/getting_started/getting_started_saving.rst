@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/saving_plots.html');
+    }
+    </script>
+
 ======================
 Saving Giotto Plots
 ======================
@@ -21,7 +30,7 @@ here. Note that for plotting functions, all parameters available to the
 .. container:: cell
 
    .. code:: r
-    
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -56,7 +65,7 @@ working with a **giottoObject** that has been provided instructions.
 
       data_directory = paste0(getwd(),'/')
 
-      # Download dataset 
+      # Download dataset
       getSpatialDataset(dataset = 'osmfish_SS_cortex', directory = data_directory, method = 'wget')
 
       # Specify path to files
@@ -89,7 +98,7 @@ may be saved or further manipulated.
       save_path = paste0(getwd(),'/first_plot.pdf')
 
       # This function serves only to ensure the following lines run consecutively.
-      save_pdf_plot <- function(){ 
+      save_pdf_plot <- function(){
         pdf(file = save_path, width = 7, height = 7)
         pl = spatPlot(my_gobject)
         dev.off()
@@ -98,7 +107,7 @@ may be saved or further manipulated.
       save_pdf_plot()
 
       ### Plot clusters, edit plot object, then save using the ggplot add-on, cowplot:
-      mypl = spatPlot(gobject = my_gobject, 
+      mypl = spatPlot(gobject = my_gobject,
                       cell_color = 'ClusterName')
 
       # Add a black background
@@ -110,11 +119,11 @@ may be saved or further manipulated.
 
       # Save in the current working directory
       cowplot::save_plot(plot = mypl,
-                         filename = 'clusters_black.png', 
+                         filename = 'clusters_black.png',
                          path = getwd(),
                          device = png(),
-                         dpi = 300, 
-                         base_height = 10, 
+                         dpi = 300,
+                         base_height = 10,
                          base_width = 10)
 
 .. image:: /images/images_pkgdown/getting_started_figs/getting_started_saving/clusters_black.png
@@ -125,7 +134,7 @@ may be saved or further manipulated.
 The default save folder is the current working directory. This will be
 the case if instructions are not provided, or if a *save_dir* is not
 specified within **giottoInstructions**. See the
-`createGiottoInstructions <../md_rst/createGiottoInstructions.html>`__ documentation 
+`createGiottoInstructions <../md_rst/createGiottoInstructions.html>`__ documentation
 and `Giotto Object <./getting_started_gobject.html>`__ for default
 arguments and more details.
 
@@ -134,8 +143,8 @@ arguments and more details.
    .. code:: r
 
       # Plot clusters and save to default folder
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE)
 
 .. image:: /images/images_pkgdown/getting_started_figs/getting_started_saving/-spatPlot2D.png
@@ -162,13 +171,13 @@ with the file name “my_name”
       results_directory =  'my_subfolder/'
 
       # Plot clusters, create, and save to a new subdirectory with specifications above.
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE,
                return_plot = FALSE,
                save_param = list(save_folder = results_directory, # Create subdirectory
-                                 save_name = 'my_name', 
-                                 save_format = 'png', 
+                                 save_name = 'my_name',
+                                 save_format = 'png',
                                  units = 'in',
                                  base_height = 9,
                                  base_width = 9))
@@ -187,8 +196,8 @@ with the file name “my_name”
    .. code:: r
 
       # Plot without saving
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = FALSE, return_plot = FALSE, show_plot = T)
 
 3.5 Just save the plot (FASTEST for large datasets!)
@@ -203,8 +212,8 @@ with the file name “my_name”
    .. code:: r
 
       # only saves the plot
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE, return_plot = FALSE, show_plot = FALSE,
                save_param = list(save_name = 'only_save'))
 

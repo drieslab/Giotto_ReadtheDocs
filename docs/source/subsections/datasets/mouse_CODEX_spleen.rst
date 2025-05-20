@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
 ===========================
 Codex Mouse Spleen
 ===========================
@@ -7,7 +16,7 @@ Codex Mouse Spleen
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -38,7 +47,7 @@ Set up Giotto environment
       # 1. set working directory
       results_folder = 'path/to/result'
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -103,7 +112,7 @@ Part 2: Create Giotto object & process data
 
 
 
-      ## stitch x.y tile coordinates to global coordinates 
+      ## stitch x.y tile coordinates to global coordinates
       xtilespan = 1344;
       ytilespan = 1008;
       # TODO: expand the documentation and input format of stitchTileCoordinates. Probably not enough information for new users.
@@ -113,7 +122,7 @@ Part 2: Create Giotto object & process data
       codex_locations = stitch_file[,.(Xcoord, Ycoord)]
 
       # create Giotto object
-      codex_test <- createGiottoObject(expression = codex_expression, 
+      codex_test <- createGiottoObject(expression = codex_expression,
                                        spatial_locs = codex_locations,
                                        instructions = instrs)
       codex_metadata$cell_ID<- as.character(codex_metadata$cellID)
@@ -146,15 +155,15 @@ Part 2: Create Giotto object & process data
       codex_test <- addStatistics(gobject = codex_test,expression_values = "normalized")
 
       ## adjust expression matrix for technical or known variables
-      codex_test <- adjustGiottoMatrix(gobject = codex_test, 
+      codex_test <- adjustGiottoMatrix(gobject = codex_test,
                                        expression_values = c('normalized'),
-                                       batch_columns = 'sample_Xtile_Ytile', 
+                                       batch_columns = 'sample_Xtile_Ytile',
                                        covariate_columns = NULL,
                                        return_gobject = TRUE,
                                        update_slot = c('custom'))
 
       ## visualize
-      spatPlot(gobject = codex_test,point_size = 0.1, 
+      spatPlot(gobject = codex_test,point_size = 0.1,
                coord_fix_ratio = NULL,point_shape = 'no_border',
                save_param = list(save_name = '2_a_spatPlot'))
 
@@ -251,7 +260,7 @@ Part 4: Cluster
       leiden_colors = Giotto:::getDistinctColors(length(unique(codex_metadata$leiden)))
       names(leiden_colors) = unique(codex_metadata$leiden)
 
-      plotUMAP(gobject = codex_test, 
+      plotUMAP(gobject = codex_test,
                cell_color = 'leiden',
                point_shape = 'no_border',
                point_size = 0.2,
@@ -268,7 +277,7 @@ Part 4: Cluster
       spatPlot(gobject = codex_test,
                cell_color = 'leiden',
                point_shape = 'no_border',
-               point_size = 0.2, 
+               point_size = 0.2,
                cell_color_code = leiden_colors,
                coord_fix_ratio = 1,
                label_size =2,
@@ -288,10 +297,10 @@ Part 5: Co-visualize
 
       spatDimPlot2D(gobject = codex_test,
                     cell_color = 'leiden',
-                    spat_point_shape = 'no_border', 
+                    spat_point_shape = 'no_border',
                     spat_point_size = 0.2,
                     dim_point_shape = 'no_border',
-                    dim_point_size = 0.2, 
+                    dim_point_size = 0.2,
                     cell_color_code = leiden_colors,
                     plot_alignment = c("horizontal"),
                     save_param = list(save_name = '5_a_spatdimplot'))
@@ -316,7 +325,7 @@ Part 6: Differential expression
 
       plotMetaDataHeatmap(codex_test,
                           expression_values = "normalized",
-                          metadata_cols = c(cluster_column), 
+                          metadata_cols = c(cluster_column),
                           selected_feats = markergenes_scran,
                           y_text_size = 8,
                           show_values = 'zscores_rescaled',
@@ -354,7 +363,7 @@ Part 6: Differential expression
       markergenes_gini = unique(markers_gini[, head(.SD, 5), by = "cluster"][["feats"]])
 
       plotMetaDataHeatmap(codex_test,
-                          expression_values = "normalized", 
+                          expression_values = "normalized",
                           metadata_cols = c(cluster_column),
                           selected_feats = markergenes_gini,
                           show_values = 'zscores_rescaled',
@@ -435,7 +444,7 @@ Or, this dataset comes with the imaging phenotype annotation
       spatPlot(gobject = codex_test,
                cell_color = 'Imaging_phenotype_cell_type',
                point_shape = 'no_border',
-               point_size = 0.2, 
+               point_size = 0.2,
                coord_fix_ratio = 1,
                label_size = 2,
                legend_text = 5,
@@ -458,7 +467,7 @@ Part 8: Visualize cell types and gene expression in selected zones
       codex_test_zone1 = subsetGiotto(codex_test,
                                       cell_ids = subset_cell_ids)
 
-      plotUMAP(gobject = codex_test_zone1, 
+      plotUMAP(gobject = codex_test_zone1,
                cell_color = 'Imaging_phenotype_cell_type',
                point_shape = 'no_border',
                point_size = 1,
@@ -475,10 +484,10 @@ Part 8: Visualize cell types and gene expression in selected zones
 
    .. code:: r
 
-      spatPlot(gobject = codex_test_zone1, 
+      spatPlot(gobject = codex_test_zone1,
                cell_color = 'Imaging_phenotype_cell_type',
                point_shape = 'no_border',
-               point_size = 1, 
+               point_size = 1,
                coord_fix_ratio = 1,
                label_size = 2,
                legend_text = 5,
@@ -492,7 +501,7 @@ Part 8: Visualize cell types and gene expression in selected zones
 
    .. code:: r
 
-      spatDimFeatPlot2D(codex_test_zone1, 
+      spatDimFeatPlot2D(codex_test_zone1,
                       expression_values = 'scaled',
                       feats = c("CD8a","CD19"),
                       spat_point_shape = 'no_border',
@@ -534,7 +543,7 @@ Test on another region:
       spatPlot(gobject = codex_test_zone2,
                cell_color = 'Imaging_phenotype_cell_type',
                point_shape = 'no_border',
-               point_size = 1, 
+               point_size = 1,
                coord_fix_ratio = 1,
                label_size = 2,
                legend_text = 5,
@@ -548,7 +557,7 @@ Test on another region:
 
    .. code:: r
 
-      spatDimFeatPlot2D(codex_test_zone2, 
+      spatDimFeatPlot2D(codex_test_zone2,
                       expression_values = 'scaled',
                       feats = c("CD4", "CD106"),
                       spat_point_shape = 'no_border',

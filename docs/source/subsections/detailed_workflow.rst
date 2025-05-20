@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
 .. _detailed_workflow:
 
 ##########################
@@ -10,7 +19,7 @@ Giotto Suite Workflow
          :text-align: center
 
          .. image:: ../images/detailed_workflow/giotto_ip.png
-            :width: 200 
+            :width: 200
 
       .. card:: Data Structure
          :text-align: center
@@ -20,15 +29,15 @@ Giotto Suite Workflow
 
       .. card:: Analysis
          :text-align: center
-         
+
          .. image:: ../images/detailed_workflow/giotto_analysis.png
-            :width: 300 
+            :width: 300
 
       .. card:: Visualization
          :text-align: center
 
          .. image:: ../images/detailed_workflow/giotto_viz.png
-            :width: 200 
+            :width: 200
 
 Input
 ==========

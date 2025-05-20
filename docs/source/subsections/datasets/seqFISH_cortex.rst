@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/seqfish_cortex.html');
+    }
+    </script>
+
 =============================
 SeqFish+ Mouse Cortex Example
 =============================
@@ -10,7 +19,7 @@ Start Giotto
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -37,7 +46,7 @@ cells within each field are independent of each other, so in order to
 visualize and process all cells together imaging fields will be stitched
 together by providing x and y-offset values specific to each field.
 These offset values are known or estimates based on the original raw
-image: 
+image:
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/cortex_svz_location_fields.png
    :width: 50.0%
@@ -48,7 +57,7 @@ Download Data
 .. container:: cell
 
    .. code:: r
-      
+
       library(GiottoData)
 
       my_working_dir = '/path/to/directory/'
@@ -62,9 +71,9 @@ Part 1. Giotto Instructions and Preparation
    .. code:: r
 
       #  set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = FALSE, 
+      instrs = createGiottoInstructions(save_plot = FALSE,
                                         show_plot = TRUE,
-                                        save_dir = my_working_dir, 
+                                        save_dir = my_working_dir,
                                         python_path = NULL)
 
       # create giotto object from provided paths ####
@@ -221,7 +230,7 @@ Part 4: Cluster
    .. code:: r
 
       ## Leiden subclustering for specified clusters
-      SS_seqfish = doLeidenSubCluster(gobject = SS_seqfish, 
+      SS_seqfish = doLeidenSubCluster(gobject = SS_seqfish,
                                       cluster_column = 'leiden_clus',
                                       resolution = 0.2, k_neighbors = 10,
                                       pca_param = list(expression_values = 'normalized', scale_unit = F),
@@ -229,13 +238,13 @@ Part 4: Cluster
                                       selected_clusters = c(5, 6, 7),
                                       name = 'sub_leiden_clus_select')
       ## set colors for clusters
-      subleiden_order = c( 1.1, 2.1, 3.1, 4.1, 5.1, 5.2, 
+      subleiden_order = c( 1.1, 2.1, 3.1, 4.1, 5.1, 5.2,
                            6.1, 6.2, 7.1,  7.2, 8.1, 9.1)
-      subleiden_colors = Giotto:::getDistinctColors(length(subleiden_order)) 
+      subleiden_colors = Giotto:::getDistinctColors(length(subleiden_order))
       names(subleiden_colors) = subleiden_order
       plotUMAP(gobject = SS_seqfish,
                cell_color = 'sub_leiden_clus_select', cell_color_code = subleiden_colors,
-               show_NN_network = T, point_size = 2.5, show_center_label = F, 
+               show_NN_network = T, point_size = 2.5, show_center_label = F,
                legend_text = 12, legend_symbol_size = 3)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/10-UMAP.png
@@ -273,7 +282,7 @@ Part 5: Visualize Spatial and Expression Space
    .. code:: r
 
       # expression and spatial
-      spatDimPlot(gobject = SS_seqfish, cell_color = 'sub_leiden_clus_select', 
+      spatDimPlot(gobject = SS_seqfish, cell_color = 'sub_leiden_clus_select',
                   cell_color_code = subleiden_colors,
                   dim_point_size = 2, spat_point_size = 2)
 
@@ -287,7 +296,7 @@ Part 5: Visualize Spatial and Expression Space
       # selected groups and provide new colors
       groups_of_interest = c(6.1, 6.2, 7.1, 7.2)
       group_colors = c('red', 'green', 'blue', 'purple'); names(group_colors) = groups_of_interest
-      spatDimPlot(gobject = SS_seqfish, cell_color = 'sub_leiden_clus_select', 
+      spatDimPlot(gobject = SS_seqfish, cell_color = 'sub_leiden_clus_select',
                   dim_point_size = 2, spat_point_size = 2,
                   select_cell_groups = groups_of_interest, cell_color_code = group_colors)
 
@@ -301,7 +310,7 @@ Part 6: Cell Type Marker Gene Detection
 
    .. code:: r
 
-      ## gini 
+      ## gini
       gini_markers_subclusters = findMarkers_one_vs_all(gobject = SS_seqfish,
                                                         method = 'gini',
                                                         expression_values = 'normalized',
@@ -323,7 +332,7 @@ Part 6: Cell Type Marker Gene Detection
 
       # cluster heatmap
       topgenes_gini2 = gini_markers_subclusters[, head(.SD, 6), by = 'cluster']
-      plotMetaDataHeatmap(SS_seqfish, selected_feats = unique(topgenes_gini2$feats), 
+      plotMetaDataHeatmap(SS_seqfish, selected_feats = unique(topgenes_gini2$feats),
                           custom_feat_order = unique(topgenes_gini2$feats),
                           custom_cluster_order = unique(topgenes_gini2$cluster),
                           metadata_cols = c('sub_leiden_clus_select'), x_text_size = 10, y_text_size = 10)
@@ -340,14 +349,14 @@ Part 7: Cell Type Annotation
 
       ## general cell types
       ## create vector with names
-      clusters_cell_types_cortex = c('L6 eNeuron', 'L4 eNeuron', 'L2/3 eNeuron', 'L5 eNeuron', 
-                                     'Lhx6 iNeuron', 'Adarb2 iNeuron', 
+      clusters_cell_types_cortex = c('L6 eNeuron', 'L4 eNeuron', 'L2/3 eNeuron', 'L5 eNeuron',
+                                     'Lhx6 iNeuron', 'Adarb2 iNeuron',
                                      'endothelial', 'mural',
                                      'OPC','Olig',
                                      'astrocytes', 'microglia')
       names(clusters_cell_types_cortex) = c(1.1, 2.1, 3.1, 4.1,
                                             5.1, 5.2,
-                                            6.1, 6.2, 
+                                            6.1, 6.2,
                                             7.1, 7.2,
                                             8.1, 9.1)
       SS_seqfish = annotateGiotto(gobject = SS_seqfish, annotation_vector = clusters_cell_types_cortex,
@@ -361,7 +370,7 @@ Part 7: Cell Type Annotation
       cell_type_colors = cell_type_colors[cell_type_order]
       ## violin plot
       violinPlot(gobject = SS_seqfish, feats = unique(topgenes_gini$feats),
-                 strip_text = 7, strip_position = 'right', 
+                 strip_text = 7, strip_position = 'right',
                  cluster_custom_order = cell_type_order,
                  cluster_column = 'cell_types', color_violin = 'cluster')
 
@@ -388,11 +397,11 @@ Part 7: Cell Type Annotation
       gini_markers_subclusters[, cell_types := factor(cell_types, cell_type_order)]
       data.table::setorder(gini_markers_subclusters, cell_types)
       plotHeatmap(gobject = SS_seqfish,
-                  feats = gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$feats, 
+                  feats = gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$feats,
                   feat_order = 'custom',
                   feat_custom_order = unique(gini_markers_subclusters[, head(.SD, 3), by = 'cluster']$feats),
                   cluster_column = 'cell_types', cluster_order = 'custom',
-                  cluster_custom_order = unique(gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$cell_types), 
+                  cluster_custom_order = unique(gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$cell_types),
                   legend_nrows = 2)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/19-plotHeatmap.png
@@ -409,7 +418,7 @@ Part 7: Cell Type Annotation
                   feat_label_selection = gini_markers_subclusters[, head(.SD, 2), by = 'cluster']$feats,
                   feat_custom_order = unique(gini_markers_subclusters[, head(.SD, 6), by = 'cluster']$feats),
                   cluster_column = 'cell_types', cluster_order = 'custom',
-                  cluster_custom_order = unique(gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$cell_types), 
+                  cluster_custom_order = unique(gini_markers_subclusters[, head(.SD, 3), by = 'cell_types']$cell_types),
                   legend_nrows = 2)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/20-plotHeatmap.png
@@ -504,7 +513,7 @@ Individual spatial genes
       km_spatialfeats = binSpect(SS_seqfish)
       spatGenePlot(SS_seqfish, expression_values = 'scaled', genes = km_spatialfeats[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
-                   show_network = F, network_color = 'lightgrey', point_size = 2.5, 
+                   show_network = F, network_color = 'lightgrey', point_size = 2.5,
                    cow_n_col = 2)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/26-spatGenePlot2D.png
@@ -519,17 +528,17 @@ Spatial Genes Co-Expression Modules
 
       ## spatial co-expression patterns ##
       ext_spatial_genes = km_spatialfeats[1:500]$feats
-      ## 1. calculate gene spatial correlation and single-cell correlation 
+      ## 1. calculate gene spatial correlation and single-cell correlation
       ## create spatial correlation object
-      spat_cor_netw_DT = detectSpatialCorFeats(SS_seqfish, 
+      spat_cor_netw_DT = detectSpatialCorFeats(SS_seqfish,
                                                method = 'network',
                                                spatial_network_name = 'Delaunay_network',
                                                subset_feats = ext_spatial_genes)
       ## 2. cluster correlated genes & visualize
-      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
-                                                name = 'spat_netw_clus', 
+      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT,
+                                                name = 'spat_netw_clus',
                                                 k = 8)
-      heatmSpatialCorFeats(SS_seqfish, spatCorObject = spat_cor_netw_DT, use_clus_name = 'spat_netw_clus', 
+      heatmSpatialCorFeats(SS_seqfish, spatCorObject = spat_cor_netw_DT, use_clus_name = 'spat_netw_clus',
                            heatmap_legend_param = list(title = NULL))
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/27-heatmSpatialCorFeats.png
@@ -540,10 +549,10 @@ Spatial Genes Co-Expression Modules
    .. code:: r
 
       # 3. rank spatial correlated clusters and show genes for selected clusters
-      netw_ranks = rankSpatialCorGroups(SS_seqfish, 
+      netw_ranks = rankSpatialCorGroups(SS_seqfish,
                                         spatCorObject = spat_cor_netw_DT,
                                         use_clus_name = 'spat_netw_clus')
-      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT, 
+      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT,
                                                   use_clus_name = 'spat_netw_clus',
                                                   selected_clusters = 6,
                                                   show_top_feats = 1)
@@ -556,12 +565,12 @@ Spatial Genes Co-Expression Modules
    .. code:: r
 
       # 4. create metagene enrichment score for clusters
-      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
+      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT,
                                              use_clus_name = 'spat_netw_clus',
                                              show_top_feats = 1)
       cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$feat_ID
-      SS_seqfish = createMetafeats(SS_seqfish, 
-                                   feat_clusters = cluster_genes, 
+      SS_seqfish = createMetafeats(SS_seqfish,
+                                   feat_clusters = cluster_genes,
                                    name = 'cluster_metagene')
       spatCellPlot(SS_seqfish,
                    spat_enr_names = 'cluster_metagene',
@@ -582,12 +591,12 @@ Part 11: HMRF Spatial Domains
       if(!file.exists(hmrf_folder)) dir.create(hmrf_folder, recursive = T)
       my_spatial_genes = km_spatialfeats[1:100]$feats
       # do HMRF with different betas
-      HMRF_spatial_genes = doHMRF(gobject = SS_seqfish, 
+      HMRF_spatial_genes = doHMRF(gobject = SS_seqfish,
                                   expression_values = 'scaled',
                                   spatial_genes = my_spatial_genes,
                                   spatial_network_name = 'Delaunay_network',
                                   k = 9,
-                                  betas = c(28,2,3), 
+                                  betas = c(28,2,3),
                                   output_folder = paste0(hmrf_folder, '/', 'Spatial_genes/SG_top100_k9_scaled'))
       ## view results of HMRF
       for(i in seq(28, 32, by = 2)) {
@@ -602,9 +611,9 @@ Part 11: HMRF Spatial Domains
                            k = 9, betas_to_add = c(28),
                            hmrf_name = 'HMRF_2')
       ## visualize
-      spatPlot(gobject = SS_seqfish, 
-               cell_color = 'HMRF_2_k9_b.28', 
-               point_size = 3, 
+      spatPlot(gobject = SS_seqfish,
+               cell_color = 'HMRF_2_k9_b.28',
+               point_size = 3,
                coord_fix_ratio = 1)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/30-spatPlot2D.png
@@ -624,7 +633,7 @@ Part 12: Cell Neighborhood: Cell-Type/Cell-Type Interactions
                                                  number_of_simulations = 2000)
       ## barplot
       cellProximityBarplot(gobject = SS_seqfish,
-                           CPscore = cell_proximities, 
+                           CPscore = cell_proximities,
                            min_orig_ints = 5, min_sim_ints = 5)
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/31-cellProximityBarplot.png
@@ -635,10 +644,10 @@ Part 12: Cell Neighborhood: Cell-Type/Cell-Type Interactions
    .. code:: r
 
       ## heatmap
-      cellProximityHeatmap(gobject = SS_seqfish, 
-                           CPscore = cell_proximities, 
+      cellProximityHeatmap(gobject = SS_seqfish,
+                           CPscore = cell_proximities,
                            order_cell_types = T, scale = T,
-                           color_breaks = c(-1.5, 0, 1.5), 
+                           color_breaks = c(-1.5, 0, 1.5),
                            color_names = c('blue', 'white', 'red'))
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/32-cellProximityHeatmap.png
@@ -649,7 +658,7 @@ Part 12: Cell Neighborhood: Cell-Type/Cell-Type Interactions
    .. code:: r
 
       ## network
-      cellProximityNetwork(gobject = SS_seqfish, 
+      cellProximityNetwork(gobject = SS_seqfish,
                            CPscore = cell_proximities, remove_self_edges = T,
                            only_show_enrichment_edges = T)
 
@@ -695,7 +704,7 @@ Part 12: Cell Neighborhood: Cell-Type/Cell-Type Interactions
    .. code:: r
 
       # Option 2: create additional metadata
-      SS_seqfish = addCellIntMetadata(SS_seqfish, 
+      SS_seqfish = addCellIntMetadata(SS_seqfish,
                                       spatial_network = 'spatial_network',
                                       cluster_column = 'cell_types',
                                       cell_interaction = spec_interaction,
@@ -729,10 +738,10 @@ Part 13: Cell Neighborhood: Interaction Changed Features
                                     cluster_column = 'cell_types',
                                     diff_test = 'permutation',
                                     adjust_method = 'fdr',
-                                    nr_permutations = 2000, 
+                                    nr_permutations = 2000,
                                     do_parallel = T)
       ## visualize all genes
-      plotCellProximityFeats(SS_seqfish, icfObject = ICFscoresHighGenes, 
+      plotCellProximityFeats(SS_seqfish, icfObject = ICFscoresHighGenes,
                              method = 'dotplot')
 
 .. image:: /images/images_pkgdown/SeqFish_mouse_cortex/36-plotCellProximityGenes.png
@@ -774,15 +783,15 @@ Part 14: Cell Neighborhood: Ligand-Receptor Cell-Cell Communication
       select_receptors = LR_data_det$mouseReceptor
       ## get statistical significance of gene pair expression changes based on expression
       expr_only_scores = exprCellCellcom(gobject = SS_seqfish,
-                                         cluster_column = 'cell_types', 
+                                         cluster_column = 'cell_types',
                                          random_iter = 1000,
                                          feat_set_1 = select_ligands,
-                                         feat_set_2 = select_receptors, 
+                                         feat_set_2 = select_receptors,
                                          verbose = FALSE)
       ## get statistical significance of gene pair expression changes upon cell-cell interaction
       spatial_all_scores = spatCellCellcom(SS_seqfish,
                                            spatial_network_name = 'spatial_network',
-                                           cluster_column = 'cell_types', 
+                                           cluster_column = 'cell_types',
                                            random_iter = 1000,
                                            feat_set_1 = select_ligands,
                                            feat_set_2 = select_receptors,

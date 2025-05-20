@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/harmony.html');
+    }
+    </script>
+
 ===================================
 Integration of single cell datasets
 ===================================
@@ -7,7 +16,7 @@ Integration of single cell datasets
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -38,7 +47,7 @@ Set up Giotto Environment
       # 1. set working directory
       results_folder = 'path/to/result'
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -66,15 +75,15 @@ Part 1: Create Giotto object from 10X dataset and join
 
    .. code:: r
 
-      giotto_P1<-createGiottoObject(expression = get10Xmatrix("path/to/P1_result/outs/filtered_feature_bc_matrix", 
+      giotto_P1<-createGiottoObject(expression = get10Xmatrix("path/to/P1_result/outs/filtered_feature_bc_matrix",
           gene_column_index = 2,
           remove_zero_rows = TRUE),
-          instructions = instrs) 
+          instructions = instrs)
 
-      giotto_P2<-createGiottoObject(expression = get10Xmatrix("path/to/P2_result/outs/filtered_feature_bc_matrix", 
+      giotto_P2<-createGiottoObject(expression = get10Xmatrix("path/to/P2_result/outs/filtered_feature_bc_matrix",
           gene_column_index = 2,
           remove_zero_rows = TRUE),
-          instructions = instrs) 
+          instructions = instrs)
 
       giotto_SC_join = joinGiottoObjects(gobject_list = list(giotto_P1, giotto_P2),
                                          gobject_names = c('P1', 'P2'),
@@ -156,7 +165,7 @@ Part 3: Dimension reduction and clustering
                 cell_color = "leiden_clus",
                 group_by = "list_ID",
                 show_NN_network = F,
-                point_size = 0.5, 
+                point_size = 0.5,
                 show_center_label = F,
                 show_legend =F,
                 save_param = list(save_name = "4_list_without_integration"))
@@ -232,7 +241,7 @@ spatial datasets.
                 cell_color = "leiden_harmony",
                 group_by = "list_ID",
                 show_NN_network = F,
-                point_size = 0.5, 
+                point_size = 0.5,
                 show_center_label = F,
                 show_legend =F ,
                 save_param = list(save_name = "4_list_with_integration"))

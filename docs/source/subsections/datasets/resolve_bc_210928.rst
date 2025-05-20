@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/resolve_biosciences.html');
+    }
+    </script>
+
 ################################################
 Resolve Bioscience Breast Cancer Subcellular
 ################################################
@@ -24,27 +33,27 @@ Resolve Bioscience Breast Cancer Subcellular
       }
 
 *****************
-Start Giotto 
+Start Giotto
 *****************
 
-.. code-block:: 
-    
+.. code-block::
+
     library(Giotto)
     library(GiottoData)
 
     # 1. set working directory
     my_working_dir = '/path/to/directory'
 
-    # Optional: Specify a path to a Python executable within a conda or miniconda 
+    # Optional: Specify a path to a Python executable within a conda or miniconda
     # environment. If set to NULL (default), the Python executable within the previously
     # installed Giotto environment will be used.
     my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
 
 *****************
-Input Files 
+Input Files
 *****************
 
-.. code-block:: 
+.. code-block::
 
     ## provide path to resolve bioscience folder
     data_path = '/path/to/Resolve_bioscience_cancer'
@@ -68,7 +77,7 @@ Input Files
 Part 1: Create Subcellular Giotto Object
 ******************************************
 
-.. code-block:: 
+.. code-block::
 
     testobj = createGiottoObjectSubcellular(gpoints = list('rna' = tx_coord),
                                         gpolygons = list('cell' = segmentation_mask),
@@ -80,7 +89,7 @@ Part 1: Create Subcellular Giotto Object
 Part 2: Create Spatial Locations
 *****************************************
 
-.. code-block:: 
+.. code-block::
 
     # centroids are now used to provide the spatial locations (centroid of each cell)
     # needed for certain downstream spatial analyses
@@ -91,7 +100,7 @@ Part 2: Create Spatial Locations
 Part 3: Add Image Information
 *******************************
 
-.. code-block:: 
+.. code-block::
 
     # create Giotto images
     DAPI_image = createGiottoImage(gobject = testobj,
@@ -121,16 +130,16 @@ Part 3: Add Image Information
 Part 4: Visualize Original Images
 *************************************
 
-.. code-block:: 
+.. code-block::
 
    # visualize overlay of calculated cell centroid with original image and segmentation mask file
     # by setting show_plot to FALSE and save_plot to TRUE you can save quite some time when creating plots
     # with big images it sometimes takes quite long for R/Rstudio to render them
-    spatPlot2D(gobject = testobj, image_name = 'DAPI', point_size = 1.5) 
+    spatPlot2D(gobject = testobj, image_name = 'DAPI', point_size = 1.5)
 
 .. image:: /images/other/resolve_bc_subcellular/0-spatPlot2D.png
 
-.. code-block:: 
+.. code-block::
 
     spatPlot2D(gobject = testobj, image_name = 'segmentation', point_size = 1.5)
 
@@ -140,7 +149,7 @@ Part 4: Visualize Original Images
 Part 5: Calculate Cell Shape Overlap
 ****************************************
 
-.. code-block:: 
+.. code-block::
 
     tictoc::tic()
     testobj = calculateOverlap(testobj,
@@ -150,7 +159,7 @@ Part 5: Calculate Cell Shape Overlap
                             poly_info = 'cell',
                             feat_info = 'rna')
     tictoc::toc()
-    #convert overlap to matrix 
+    #convert overlap to matrix
     testobj = overlapToMatrix(testobj,
                             poly_info = 'cell',
                             feat_info = 'rna',
@@ -160,7 +169,7 @@ Part 5: Calculate Cell Shape Overlap
 Part 6: Filter Data
 *********************
 
-.. code-block:: 
+.. code-block::
 
     # features can be filtered individually
     # cells will be filtered across features
@@ -176,12 +185,12 @@ Part 6: Filter Data
             point_size = 1.5)
 
 .. image:: /images/other/resolve_bc_subcellular/69-spatPlot2D.png
-    
+
 ********************************
 Part 7: Process Giotto Object
 *********************************
 
-.. code-block:: 
+.. code-block::
 
    # rna data, default.
     # other feature modalities can be processed and filtered in an anologous manner
@@ -192,13 +201,13 @@ Part 7: Process Giotto Object
                                     covariate_columns = c('nr_feats', 'total_expr'))
 
     subc_test <- normalizeGiotto(gobject = subc_test, norm_methods = 'pearson_resid', update_slot = 'pearson')
-    showGiottoExpression(subc_test) 
+    showGiottoExpression(subc_test)
 
 *******************************
 Part 8: Dimension Reduction
 *******************************
 
-.. code-block:: 
+.. code-block::
 
     # Find highly valuable Features
 
@@ -207,7 +216,7 @@ Part 8: Dimension Reduction
 
 .. image:: /images/other/resolve_bc_subcellular/4-HVFplot.png
 
-.. code-block:: 
+.. code-block::
 
     # new method based on variance of pearson residuals for each gene
     subc_test <- calculateHVF(gobject = subc_test,
@@ -217,7 +226,7 @@ Part 8: Dimension Reduction
 .. image:: /images/other/resolve_bc_subcellular/5-HVFplot.png
 
 
-.. code-block:: 
+.. code-block::
 
     #run PCA
     subc_test <- runPCA(gobject = subc_test,
@@ -228,7 +237,7 @@ Part 8: Dimension Reduction
 
 .. image:: /images/other/resolve_bc_subcellular/6-screePlot.png
 
-.. code-block:: 
+.. code-block::
 
     plotPCA(subc_test,
         dim1_to_use = 1,
@@ -236,19 +245,19 @@ Part 8: Dimension Reduction
 
 .. image:: /images/other/resolve_bc_subcellular/7-PCA.png
 
-.. code-block:: 
+.. code-block::
 
     # run UMAP
     subc_test <- runUMAP(subc_test, dimensions_to_use = 1:5, n_threads = 2)
     plotUMAP(gobject = subc_test)
 
 .. image:: /images/other/resolve_bc_subcellular/8-UMAP.png
-    
+
 ************************
 Part 9: Cluster
 ************************
 
-.. code-block:: 
+.. code-block::
 
     subc_test <- createNearestNetwork(gobject = subc_test, dimensions_to_use = 1:5, k = 5)
     subc_test <- doLeidenCluster(gobject = subc_test, resolution = 0.05, n_iterations = 1000, name = 'leiden_0.05')
@@ -264,7 +273,7 @@ Part 9: Cluster
 
 .. image:: /images/other/resolve_bc_subcellular/39-UMAP.png
 
-.. code-block:: 
+.. code-block::
 
     # visualize UMAP and spatial results
     spatDimPlot2D(gobject = subc_test,
@@ -275,7 +284,7 @@ Part 9: Cluster
 .. image:: /images/other/resolve_bc_subcellular/51-spatDimPlot2D.png
 
 
-.. code-block:: 
+.. code-block::
 
     # Plot a cluster heatmap
     showClusterHeatmap(gobject = subc_test, cluster_column = 'leiden_clus',
@@ -283,7 +292,7 @@ Part 9: Cluster
 
 .. image:: /images/other/resolve_bc_subcellular/72-Heatmap.png
 
-.. code-block:: 
+.. code-block::
 
     # See cluster relationships in a dendogram
     showClusterDendrogram(subc_test, h = 0.5, rotate = T, cluster_column = 'leiden_clus')
@@ -294,7 +303,7 @@ Part 9: Cluster
 Part 10: Create a Spatial Network
 *************************************
 
-.. code-block:: 
+.. code-block::
 
     subc_test = createSpatialNetwork(gobject = subc_test,
                                  spat_loc_name = 'cell',
@@ -311,7 +320,7 @@ Part 10: Create a Spatial Network
 Part 11: Visualize SubCellular Data
 *************************************
 
-.. code-block:: 
+.. code-block::
 
     # Visualize clustered cells
     spatInSituPlotPoints(subc_test,
@@ -320,12 +329,12 @@ Part 11: Visualize SubCellular Data
                         polygon_color = 'white',
                         polygon_line_size = 0.1,
                         polygon_fill = 'leiden_clus',
-                        polygon_fill_as_factor = T , 
+                        polygon_fill_as_factor = T ,
                         polygon_fill_code = colorcode)
 
 .. image:: /images/other/resolve_bc_subcellular/54-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # individual plotting of transcripts and polygon information
 
@@ -340,7 +349,7 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/16-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # filtered cells
     spatInSituPlotPoints(subc_test,
@@ -353,7 +362,7 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/17-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # faster plotting method if you have many points
     spatInSituPlotPoints(subc_test,
@@ -367,10 +376,10 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/18-spatInSituPlotPoints.png
 
-11.1 Subset by Location 
+11.1 Subset by Location
 ==========================
 
-.. code-block:: 
+.. code-block::
 
     # can be used to focus on specific spatial structures
     # to zoom in on niche environments
@@ -391,7 +400,7 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/19-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # show subset of genes and color cells according to clusters
     spatInSituPlotPoints(subloc,
@@ -402,13 +411,13 @@ Part 11: Visualize SubCellular Data
                         polygon_color = 'white',
                         polygon_line_size = 0.1,
                         polygon_fill = 'leiden_clus',
-                        polygon_fill_as_factor = T, 
+                        polygon_fill_as_factor = T,
                         polygon_fill_code = colorcode,
                         feats_color_code = featcolor)
 
 .. image:: /images/other/resolve_bc_subcellular/21-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # show subset of genes and color cells according to total expression
     # use a faster and more efficient point plotting method = scattermore
@@ -425,7 +434,7 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/61-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # show cells and color them according to total expression
     spatInSituPlotPoints(subloc,
@@ -438,7 +447,7 @@ Part 11: Visualize SubCellular Data
 
 .. image:: /images/other/resolve_bc_subcellular/22-spatInSituPlotPoints.png
 
-.. code-block:: 
+.. code-block::
 
     # show cells and color them according to total cluster information
     spatInSituPlotPoints(subloc,
@@ -447,17 +456,17 @@ Part 11: Visualize SubCellular Data
                         polygon_color = 'white',
                         polygon_line_size = 0.1,
                         polygon_fill = 'leiden_clus',
-                        polygon_fill_as_factor = T, 
+                        polygon_fill_as_factor = T,
                         polygon_fill_code = colorcode)
 
 .. image:: /images/other/resolve_bc_subcellular/66-spatInSituPlotPoints.png
-    
+
 
 ******************************************
 Part 12: Find Interaction Changed Features
 ******************************************
 
-.. code-block:: 
+.. code-block::
 
     # find interaction changed Features
     # In this case, features are genes whose expression difference is associated with a neighboring cell type

@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visualizations.html');
+    }
+    </script>
+
 .. _visualize-data:
 
 ##################################################
@@ -35,7 +44,7 @@ In addition, for each plot the parameters can always be manually overwritten wit
 
 We also specify some other plotting parameters for the automatic saving functionality, such as the save_dir whose default is the current working directory.
 
-.. code-block:: 
+.. code-block::
 
     library(Giotto)
 
@@ -44,7 +53,7 @@ We also specify some other plotting parameters for the automatic saving function
     my_python_path = "/your/python/path/" # set to NULL to use previously installed giotto environment
     results_folder = '/path/to/your/results/'
     instrs = createGiottoInstructions(python_path = my_python_path,
-                                  show_plot = FALSE,  
+                                  show_plot = FALSE,
                                   return_plot = TRUE,
                                   save_plot = TRUE,
                                   save_dir = results_folder,
@@ -61,11 +70,11 @@ We also specify some other plotting parameters for the automatic saving function
 * Provide the cell locations
 * Provide the previously generated instructions file (named list)
 
-.. code-block:: 
+.. code-block::
 
   ## PREPARE osmFISH DATA ####
 
-    # download dataset 
+    # download dataset
     getSpatialDataset(dataset = 'osmfish_SS_cortex', directory = results_folder, method = 'wget')
 
     # path to files
@@ -87,10 +96,10 @@ We also specify some other plotting parameters for the automatic saving function
     osm_test <- normalizeGiotto(gobject = osm_test)
 
 **************************************************
-3. Working with Giotto Instructions 
+3. Working with Giotto Instructions
 **************************************************
 
-.. code-block:: 
+.. code-block::
 
     # show the provided Giotto instructions
     showGiottoInstructions(osm_test)
@@ -107,8 +116,8 @@ We also specify some other plotting parameters for the automatic saving function
 * Changing default parameters by by providing a named list to save_param parameter (2 & 3)
 * Block automatic saving, but modify the created ggplot object and save that one (4)
 
-.. code-block:: 
-    
+.. code-block::
+
     # 1. default instructions from Giotto object
     spatPlot(gobject = osm_test, cell_color = 'ClusterName')
 
@@ -123,7 +132,7 @@ We also specify some other plotting parameters for the automatic saving function
 
     # 4. do not save, but return as object, modify and save
     # for example to create a black background:
-    # we can change the parameter 'background_color' to black in the spatPlot function 
+    # we can change the parameter 'background_color' to black in the spatPlot function
     # OR return the ggplot object and change the panel.background to black within theme
 
     mypl = spatPlot(gobject = osm_test, cell_color = 'ClusterName', save_plot = F)

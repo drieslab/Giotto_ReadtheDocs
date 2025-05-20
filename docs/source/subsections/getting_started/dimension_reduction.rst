@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/dimension_reduction.html');
+    }
+    </script>
+
 ==================================
 Dimension Reduction and Clustering
 ==================================
@@ -20,7 +29,7 @@ create the Giotto Object below, please ensure that
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -53,10 +62,10 @@ create the Giotto Object below, please ensure that
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_clustering_results/') 
+      results_directory = paste0(getwd(),'/gobject_clustering_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -64,9 +73,9 @@ create the Giotto Object below, please ensure that
       getSpatialDataset(dataset = 'seqfish_SS_cortex', directory = data_directory, method = 'wget')
 
       # Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
       # Create giotto object from provided paths
@@ -121,13 +130,13 @@ create the Giotto Object below, please ensure that
       # Process the Giotto object, filtering, normalization, adding statistics and correcting for covariates
       testobj <- processGiotto(testobj,
                                filter_params = list(expression_threshold = 1,
-                                                    feat_det_in_min_cells = 100, 
+                                                    feat_det_in_min_cells = 100,
                                                     min_det_feats_per_cell = 10),
-                               norm_params = list(norm_methods = 'standard', 
-                                                  scale_feats = TRUE, 
+                               norm_params = list(norm_methods = 'standard',
+                                                  scale_feats = TRUE,
                                                   scalefactor = 6000),
                                stat_params = list(expression_values = 'normalized'),
-                               adjust_params = list(expression_values = c('normalized'), 
+                               adjust_params = list(expression_values = c('normalized'),
                                                     covariate_columns = 'nr_feats'))
 
 2. Dimension Reduction and PCA
@@ -257,22 +266,22 @@ as an argument to cell_color within plotUMAP for enhanced visualization.
       testobj <- doKmeans(gobject = testobj, dim_reduction_to_use = 'pca')
 
       ## Leiden clustering - increase the resolution to increase the number of clusters
-      testobj <- doLeidenCluster(gobject = testobj, 
-                                 resolution = 0.4, 
+      testobj <- doLeidenCluster(gobject = testobj,
+                                 resolution = 0.4,
                                  n_iterations = 1000,
                                  name = 'leiden_0.4_1000')
 
       ## Louvain clustering - increase the resolution to increase the number of clusters
-      # The version argument may be changed to 'multinet' to run a Louvain algorithm 
+      # The version argument may be changed to 'multinet' to run a Louvain algorithm
       # from the multinet package in R.
-      testobj <- doLouvainCluster(gobject = testobj, 
-                                  version = 'community', 
+      testobj <- doLouvainCluster(gobject = testobj,
+                                  version = 'community',
                                   resolution = 0.4)
 
       #Plot UMAP post-clustering to visualize Leiden clusters
       plotUMAP(gobject = testobj,
-               cell_color = 'leiden_0.4_1000', 
-               show_NN_network = T, 
+               cell_color = 'leiden_0.4_1000',
+               show_NN_network = T,
                point_size = 2.5)
 
 .. image:: /images/images_pkgdown/getting_started_figs/dimension_reduction/7-UMAP.png
@@ -288,14 +297,14 @@ consistent sub-clustering.
    .. code:: r
 
       ## Leiden subclustering for specified clusters
-      testobj = doLeidenSubCluster(gobject = testobj, 
+      testobj = doLeidenSubCluster(gobject = testobj,
                                    cluster_column = 'leiden_0.4_1000',
-                                   resolution = 0.2, 
+                                   resolution = 0.2,
                                    k_neighbors = 10,
-                                   hvf_param = list(method = 'cov_loess', 
+                                   hvf_param = list(method = 'cov_loess',
                                                     difference_in_cov = 0.1),
-                                   pca_param = list(expression_values = 'normalized', 
-                                                    scale_unit = F, 
+                                   pca_param = list(expression_values = 'normalized',
+                                                    scale_unit = F,
                                                     center = F),
                                    nn_param = list(dimensions_to_use = 1:5),
                                    selected_clusters = c(5, 6, 7),

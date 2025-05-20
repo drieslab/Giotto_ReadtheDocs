@@ -1,3 +1,11 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
 
 .. _working-with-giotto-images:
 
@@ -5,7 +13,7 @@
 Adding and Working with Images in Giotto: *How to Work with Background Images?*
 #################################################################################
 
-All spatial visualization functions in the Giotto toolbox can be overlaid on a background image. This allows you to visualize your results on top of the original tissue image. We provide multiple ways of adding and modifying figures in Giotto. 
+All spatial visualization functions in the Giotto toolbox can be overlaid on a background image. This allows you to visualize your results on top of the original tissue image. We provide multiple ways of adding and modifying figures in Giotto.
 
 **There are 3 things to consider:**
 
@@ -47,7 +55,7 @@ Here we process the Visium Kidney dataset to illustrate all of the different and
 Here we use the wrapper function **createGiottoVisiumObject** to create a Giotto object for a 10X Visium dataset, which includes a png image.
 
 .. code-block::
-    
+
     library(Giotto)
 
     visium_kidney = createGiottoVisiumObject(visium_dir = '/path/to/Visium_data/Kidney_data',
@@ -64,9 +72,9 @@ The image plot and the Giotto results are not always perfectly aligned. This ste
     # output from Giotto
     spatPlot(gobject = visium_kidney, cell_color = 'in_tissue', point_alpha = 0.5)
 
-.. image:: /images/howtos/giotto_images/vignette_1/2_a_spatplot.png  
+.. image:: /images/howtos/giotto_images/vignette_1/2_a_spatplot.png
 	:width: 400
-	:alt: 2_a_spatplot.png  
+	:alt: 2_a_spatplot.png
 
 
 .. code-block::
@@ -74,9 +82,9 @@ The image plot and the Giotto results are not always perfectly aligned. This ste
 	# problem: image is not perfectly aligned
 	spatPlot(gobject = visium_kidney, cell_color = 'in_tissue', show_image = T, point_alpha = 0.5)
 
-.. image:: /images/howtos/giotto_images/vignette_1/2_b_spatplot_image.png 
+.. image:: /images/howtos/giotto_images/vignette_1/2_b_spatplot_image.png
 	:width: 400
-	:alt: 2_b_spatplot_image.png   
+	:alt: 2_b_spatplot_image.png
 
 
 Adjust the x and y minima and maxima to align the image and the giotto output results:
@@ -107,7 +115,7 @@ Without adjustment:
 
 .. image:: /images/howtos/giotto_images/vignette_1/2_c_spatplot_image_adjusted_1.png
 	:width: 400
-	:alt: 2_c_spatplot_image_adjusted_1.png 
+	:alt: 2_c_spatplot_image_adjusted_1.png
 
 Right Adjustment –> with xmax_adj:
 ======================================
@@ -122,9 +130,9 @@ Right Adjustment –> with xmax_adj:
 	spatPlot(gobject = visium_kidney, cell_color = 'in_tissue', show_image = T, point_alpha = 0.5)
 
 
-.. image:: /images/howtos/giotto_images/vignette_1/2_c_spatplot_image_adjusted_2.png 
+.. image:: /images/howtos/giotto_images/vignette_1/2_c_spatplot_image_adjusted_2.png
 	:width: 400
-	:alt: 2_c_spatplot_image_adjusted_2.png 
+	:alt: 2_c_spatplot_image_adjusted_2.png
 
 
 Left Adjustment <– with xmin_adj:
@@ -285,9 +293,9 @@ A Good Alignment
 	# plot original image
 	plotGiottoImage(visium_kidney, 'image')
 
-.. image:: /images/howtos/giotto_images/vignette_1/2_d_original_plot.png 
+.. image:: /images/howtos/giotto_images/vignette_1/2_d_original_plot.png
 	:width: 400
-	:alt: 2_d_original_plot.png 
+	:alt: 2_d_original_plot.png
 
 *******************************************************
 3. Change Background of a Giotto or Magick Image
@@ -304,7 +312,7 @@ Extract the giotto image from your giotto object and then estimate the backgroun
 	:width: 400
 	:alt: 3_a_background_colors.png
 
-.. code-block:: 
+.. code-block::
 
 	## create and test black background
 	orig_black_png = changeImageBg(mg_object = myimage, bg_color = '#949594', perc_range = 10, new_color = '#000000', new_name = 'black_bg')
@@ -331,7 +339,7 @@ Extract the giotto image from your giotto object and then estimate the backgroun
 	:alt: 3_c_white_background.png
 
 *******************************************************
-4. Add Image From Scratch 
+4. Add Image From Scratch
 *******************************************************
 
 .. code-block::
@@ -386,7 +394,7 @@ Add multiple new images to your giotto object
 	showGiottoImageNames(visium_kidney) # shows which Giotto images are attached to you Giotto object
 
 **********************************
-5. Example: Kidney Analysis 
+5. Example: Kidney Analysis
 **********************************
 
 5.1 Processing
@@ -414,9 +422,9 @@ Add multiple new images to your giotto object
 	## visualize
 	spatPlot(gobject = visium_kidney)
 
-.. image:: /images/howtos/giotto_images/vignette_1/5_1_a_spatial_locations.png 
+.. image:: /images/howtos/giotto_images/vignette_1/5_1_a_spatial_locations.png
 	:width: 400
-	:alt: 5_1_a_spatial_locations.png 
+	:alt: 5_1_a_spatial_locations.png
 
 .. code-block::
 
@@ -432,9 +440,9 @@ Add multiple new images to your giotto object
 	spatPlot(gobject = visium_kidney, show_image = T, image_name = "black_bg",
            	cell_color = 'nr_genes', color_as_factor = F, point_alpha = 0.5)
 
-.. image:: /images/howtos/giotto_images/vignette_1/5_1_c_nr_genes_black_bg.png 
+.. image:: /images/howtos/giotto_images/vignette_1/5_1_c_nr_genes_black_bg.png
 			   :width: 400
-			   :alt: 5_1_c_nr_genes_black_bg.png 
+			   :alt: 5_1_c_nr_genes_black_bg.png
 
 .. code-block::
 
@@ -442,11 +450,11 @@ Add multiple new images to your giotto object
 	spatPlot(gobject = visium_kidney, show_image = T, gimage = orig_charc_png,
            	cell_color = 'nr_genes', color_as_factor = F, point_alpha = 0.8)
 
-.. image:: /images/howtos/giotto_images/vignette_1/5_1_d_nr_genes_charc_bg.png  
+.. image:: /images/howtos/giotto_images/vignette_1/5_1_d_nr_genes_charc_bg.png
 			   :width: 400
-			   :alt: 5_1_d_nr_genes_charc_bg.png  
+			   :alt: 5_1_d_nr_genes_charc_bg.png
 
-5.2 Dimension Reduction 
+5.2 Dimension Reduction
 ===========================
 
 .. code-block::
@@ -465,15 +473,15 @@ Add multiple new images to your giotto object
 	visium_kidney <- runUMAP(visium_kidney, dimensions_to_use = 1:10)
 	plotUMAP(gobject = visium_kidney)
 
-.. image:: /images/howtos/giotto_images/vignette_1/5_2_a_UMAP_reduction.png  
+.. image:: /images/howtos/giotto_images/vignette_1/5_2_a_UMAP_reduction.png
 	:width: 400
-	:alt: 5_2_a_UMAP_reduction.png  
+	:alt: 5_2_a_UMAP_reduction.png
 
 5.3 Cluster
 ==============
 
 .. code-block::
-	
+
 	## sNN network (default)
 	visium_kidney <- createNearestNetwork(gobject = visium_kidney, dimensions_to_use = 1:10, k = 15)
 	## Leiden clustering
@@ -532,8 +540,8 @@ Add multiple new images to your giotto object
 
 	## gene plots ##
 	spatGenePlot(visium_kidney, show_image = T, image_name = 'image_charc',
-             	expression_values = 'scaled', point_size = 2, 
-             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2, 
+             	expression_values = 'scaled', point_size = 2,
+             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2,
              	cell_color_gradient = c('darkblue', 'white', 'red'), gradient_midpoint = 0, point_alpha = 0.8,
              	save_param = list(save_name = '8_a_spatgene_charc'))
 
@@ -545,7 +553,7 @@ Add multiple new images to your giotto object
 
 	spatGenePlot(visium_kidney, show_image = T, image_name = 'image_charc',
              	expression_values = 'scaled', point_size = 2, point_shape = 'voronoi',
-             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2, 
+             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2,
              	cell_color_gradient = c('darkblue', 'white', 'red'), gradient_midpoint = 0, vor_alpha = 0.8,
              	save_param = list(save_name = '8_b_spatgene_charc_vor'))
 
@@ -561,8 +569,8 @@ Add multiple new images to your giotto object
 	visium_kidney_subset = subsetGiottoLocs(visium_kidney, x_min = 3000, x_max = 5500, y_min = -10000, y_max = -7000)
 
 	spatGenePlot(visium_kidney_subset, show_image = T, image_name = 'image_charc',
-             	expression_values = 'scaled', point_size = 4, 
-             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2, 
+             	expression_values = 'scaled', point_size = 4,
+             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2,
              	cell_color_gradient = c('darkblue', 'white', 'red'), gradient_midpoint = 0,
              	point_alpha = 0.8,
              	save_param = list(save_name = '9_a_subset_spatgene_charc'))
@@ -575,7 +583,7 @@ Add multiple new images to your giotto object
 
 	spatGenePlot(visium_kidney_subset, show_image = T, image_name = 'image_charc',
              	expression_values = 'scaled', point_size = 4,  point_shape = 'voronoi', vor_alpha = 0.5,
-             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2, 
+             	genes = c('Lrp2', 'Sptssb', 'Slc12a3'),  cow_n_col = 2,
              	cell_color_gradient = c('darkblue', 'white', 'red'), gradient_midpoint = 0,
              	save_param = list(save_name = '9_b_subset_spatgene_charc_vor'))
 
@@ -587,4 +595,3 @@ Add multiple new images to your giotto object
 
 
 
-	

@@ -1,8 +1,11 @@
-**********************************************
-WEBSITE UPDATE! PLEASE USE THE NEW WEBSITE
-**********************************************
+.. raw:: html
 
-This website is outdated and will be terminated on May 1st 2025. Please visit www.giottosuite.com for more information.
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/ecosystem.html');
+    }
+    </script>
 
 ================
 Giotto Ecosystem

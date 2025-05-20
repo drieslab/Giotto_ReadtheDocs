@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/spatial_transformations.html');
+    }
+    </script>
+
 =======================
 Spatial Transformations
 =======================
@@ -307,22 +316,22 @@ object center.
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.3 Giotto_3.3.1    
+         [1] GiottoData_0.2.3 Giotto_3.3.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.11       pillar_1.9.0      compiler_4.2.1    tools_4.2.1      
-          [5] digest_0.6.31     scattermore_0.8   checkmate_2.2.0   jsonlite_1.8.4   
-          [9] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      gtable_0.3.3     
-         [13] lattice_0.20-45   png_0.1-8         pkgconfig_2.0.3   rlang_1.1.1      
-         [17] igraph_1.4.2      Matrix_1.5-4      cli_3.6.1         rstudioapi_0.14  
-         [21] parallel_4.2.1    yaml_2.3.7        xfun_0.39         fastmap_1.1.1    
-         [25] terra_1.7-39      withr_2.5.0       dplyr_1.1.2       knitr_1.42       
-         [29] generics_0.1.3    vctrs_0.6.2       rprojroot_2.0.3   grid_4.2.1       
-         [33] tidyselect_1.2.0  here_1.0.1        reticulate_1.28   glue_1.6.2       
-         [37] data.table_1.14.8 R6_2.5.1          fansi_1.0.4       rmarkdown_2.21   
-         [41] ggplot2_3.4.2     magrittr_2.0.3    backports_1.4.1   scales_1.2.1     
-         [45] codetools_0.2-18  htmltools_0.5.5   colorspace_2.1-0  utf8_1.2.3       
-         [49] munsell_0.5.0    
+          [1] Rcpp_1.0.11       pillar_1.9.0      compiler_4.2.1    tools_4.2.1
+          [5] digest_0.6.31     scattermore_0.8   checkmate_2.2.0   jsonlite_1.8.4
+          [9] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      gtable_0.3.3
+         [13] lattice_0.20-45   png_0.1-8         pkgconfig_2.0.3   rlang_1.1.1
+         [17] igraph_1.4.2      Matrix_1.5-4      cli_3.6.1         rstudioapi_0.14
+         [21] parallel_4.2.1    yaml_2.3.7        xfun_0.39         fastmap_1.1.1
+         [25] terra_1.7-39      withr_2.5.0       dplyr_1.1.2       knitr_1.42
+         [29] generics_0.1.3    vctrs_0.6.2       rprojroot_2.0.3   grid_4.2.1
+         [33] tidyselect_1.2.0  here_1.0.1        reticulate_1.28   glue_1.6.2
+         [37] data.table_1.14.8 R6_2.5.1          fansi_1.0.4       rmarkdown_2.21
+         [41] ggplot2_3.4.2     magrittr_2.0.3    backports_1.4.1   scales_1.2.1
+         [45] codetools_0.2-18  htmltools_0.5.5   colorspace_2.1-0  utf8_1.2.3
+         [49] munsell_0.5.0

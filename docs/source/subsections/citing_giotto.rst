@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/authors.html#citation');
+    }
+    </script>
+
 .. _citing_giotto:
 #############
 Authors
@@ -25,7 +34,7 @@ Authors
 
 
 
-Citation 
+Citation
 =============
 Dries et al. Giotto, a toolbox for integrative analysis and visualization of spatial expression data. bioRxiv (2020).
 

@@ -1,10 +1,20 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
+
 .. _mini_3D_STARmap:
 
 ####################
-mini3D STARmap 
+mini3D STARmap
 ####################
 
-.. code-block:: 
+.. code-block::
 
     library(Giotto)
 
@@ -12,13 +22,13 @@ mini3D STARmap
 Install Python Modules
 ************************
 
-To run this vignette you need to install **all** of the necessary Python modules. 
+To run this vignette you need to install **all** of the necessary Python modules.
 
 .. important::
-	
-	Python module installation can be done either **automatically** via our installation tool (from within R) (see step 2.2A) or **manually** (see step 2.2B). 
 
-	:octicon:`eye` See :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` of our Giotto Installation section for step-by-step instructions. 
+	Python module installation can be done either **automatically** via our installation tool (from within R) (see step 2.2A) or **manually** (see step 2.2B).
+
+	:octicon:`eye` See :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` of our Giotto Installation section for step-by-step instructions.
 
 ***************************************
 *Optional: Set Giotto Instructions*
@@ -30,21 +40,21 @@ To run this vignette you need to install **all** of the necessary Python modules
     temp_dir = getwd()
     temp_dir = '~/Temp/'
     myinstructions = createGiottoInstructions(save_dir = temp_dir,
-                                          save_plot = TRUE, 
+                                          save_plot = TRUE,
                                           show_plot = FALSE)
 
 *******************************
-1. Giotto Object 
+1. Giotto Object
 *******************************
 
-Minimum Requirements: 
+Minimum Requirements:
 ======================
 - Matrix with expression information (or path to)
 - x,y(,z) coordinates for cells or spots (or path to)
 
-.. code-block:: 
+.. code-block::
 
-	# giotto object 
+	# giotto object
 	expr_path = system.file("extdata", "starmap_expr.txt.gz", package = 'Giotto')
 	loc_path = system.file("extdata", "starmap_cell_loc.txt", package = 'Giotto')
 	starmap_mini <- createGiottoObject(raw_exprs = expr_path,
@@ -122,7 +132,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 
 
 *************************************
-3. Dimension Reduction 
+3. Dimension Reduction
 *************************************
 
 * Identify highly variable genes (HVG)
@@ -133,7 +143,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 .. code-block::
 
 	starmap_mini <- runPCA(gobject = starmap_mini, method = 'factominer')
-	screePlot(starmap_mini, ncp = 30, 
+	screePlot(starmap_mini, ncp = 30,
           save_param = list(save_name = '3_a_screeplot'))
 
 .. image:: /images/other/mini_datasets/mini_starmap/vignette_200922/3_a_screeplot.png
@@ -183,7 +193,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 	:alt: 3_e_TSNE.png
 
 *********************************
-4. Clustering 
+4. Clustering
 *********************************
 
 * Create a shared (default) nearest network in PCA space (or directly on matrix)
@@ -255,7 +265,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 
 
 *********************************
-5. Differential Expression 
+5. Differential Expression
 *********************************
 
 .. code-block::
@@ -303,15 +313,15 @@ How to work with Giotto instructions that are part of your Giotto object:
 	clusters_cell_types = c('cell A', 'cell B', 'cell C', 'cell D',
                         'cell E', 'cell F', 'cell G', 'cell H')
 	names(clusters_cell_types) = 1:8
-	starmap_mini = annotateGiotto(gobject = starmap_mini, 
-                              annotation_vector = clusters_cell_types, 
-                              cluster_column = 'leiden_clus', 
+	starmap_mini = annotateGiotto(gobject = starmap_mini,
+                              annotation_vector = clusters_cell_types,
+                              cluster_column = 'leiden_clus',
                               name = 'cell_types')
 	# check new cell metadata
 	pDataDT(starmap_mini)
 
 	# visualize annotations
-	spatDimPlot(gobject = starmap_mini, cell_color = 'cell_types', 
+	spatDimPlot(gobject = starmap_mini, cell_color = 'cell_types',
             	spat_point_size = 2, dim_point_size = 2,
             	save_param = list(save_name = '6_a_spatdimplot'))
 
@@ -319,7 +329,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 	:width: 400
 	:alt: 6_a_spatdimplot.png
 
-6.2 Cell Type Gene Expression 
+6.2 Cell Type Gene Expression
 ================================
 
 .. code-block::
@@ -351,7 +361,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 
 
 *****************
-7. Spatial Grid 
+7. Spatial Grid
 *****************
 
 *Create a grid based on defined stepsizes in the x,y(,z) axes.*
@@ -375,7 +385,7 @@ How to work with Giotto instructions that are part of your Giotto object:
 
 
 *******************************
-8. Spatial Network 
+8. Spatial Network
 *******************************
 
 Only the **method = delaunayn_geometry** can make 3D Delaunay networks. This requires the package geometry to be installed.
@@ -387,7 +397,7 @@ Only the **method = delaunayn_geometry** can make 3D Delaunay networks. This req
 .. code-block::
 
 
-	plotStatDelaunayNetwork(gobject = starmap_mini, maximum_distance = 200, 
+	plotStatDelaunayNetwork(gobject = starmap_mini, maximum_distance = 200,
                         method = 'delaunayn_geometry',
                         save_param = list(save_name = '8_aa_delnetwork'))
 
@@ -397,15 +407,15 @@ Only the **method = delaunayn_geometry** can make 3D Delaunay networks. This req
 
 .. code-block::
 
-	starmap_mini = createSpatialNetwork(gobject = starmap_mini, minimum_k = 2, 
-                                    maximum_distance_delaunay = 200, 
-                                    method = 'Delaunay', 
+	starmap_mini = createSpatialNetwork(gobject = starmap_mini, minimum_k = 2,
+                                    maximum_distance_delaunay = 200,
+                                    method = 'Delaunay',
                                     delaunay_method = 'delaunayn_geometry')
-	starmap_mini = createSpatialNetwork(gobject = starmap_mini, minimum_k = 2, 
+	starmap_mini = createSpatialNetwork(gobject = starmap_mini, minimum_k = 2,
                                     method = 'kNN', k = 10)
 	showNetworks(starmap_mini)
 
-	# visualize the two different spatial networks  
+	# visualize the two different spatial networks
 	spatPlot(gobject = starmap_mini, show_network = T,
          	network_color = 'blue', spatial_network_name = 'Delaunay_network',
          	point_size = 2.5, cell_color = 'leiden_clus',
@@ -427,7 +437,7 @@ Only the **method = delaunayn_geometry** can make 3D Delaunay networks. This req
 	:alt: 8_c_spatplot.png
 
 *************************
-9. Spatial Genes 
+9. Spatial Genes
 *************************
 Identify spatial genes with 3 different methods:
 
@@ -440,7 +450,7 @@ Visualize top 4 genes per method.
 .. code-block::
 
 	km_spatialgenes = binSpect(starmap_mini)
-	spatGenePlot(starmap_mini, expression_values = 'scaled', 
+	spatGenePlot(starmap_mini, expression_values = 'scaled',
              	genes = km_spatialgenes[1:4]$genes,
              	point_shape = 'border', point_border_stroke = 0.1,
              	show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -454,7 +464,7 @@ Visualize top 4 genes per method.
 .. code-block::
 
 	rank_spatialgenes = binSpect(starmap_mini, bin_method = 'rank')
-	spatGenePlot(starmap_mini, expression_values = 'scaled', 
+	spatGenePlot(starmap_mini, expression_values = 'scaled',
              	genes = rank_spatialgenes[1:4]$genes,
              	point_shape = 'border', point_border_stroke = 0.1,
              	show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -469,7 +479,7 @@ Visualize top 4 genes per method.
 .. code-block::
 
 	silh_spatialgenes = silhouetteRank(gobject = starmap_mini) # TODO: suppress print output
-	spatGenePlot(starmap_mini, expression_values = 'scaled', 
+	spatGenePlot(starmap_mini, expression_values = 'scaled',
              	genes = silh_spatialgenes[1:4]$genes,
              	point_shape = 'border', point_border_stroke = 0.1,
              	show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -488,11 +498,11 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 .. code-block::
 
 
-	
-	# 1. calculate spatial correlation scores 
+
+	# 1. calculate spatial correlation scores
 	ext_spatial_genes = km_spatialgenes[1:20]$genes
 	spat_cor_netw_DT = detectSpatialCorGenes(starmap_mini,
-                                         method = 'network', 
+                                         method = 'network',
                                          spatial_network_name = 'Delaunay_network',
                                          subset_genes = ext_spatial_genes)
 
@@ -503,9 +513,9 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 .. code-block::
 
 	# 2. cluster correlation scores
-	spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT, 
+	spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT,
                                           name = 'spat_netw_clus', k = 6)
-	heatmSpatialCorGenes(starmap_mini, spatCorObject = spat_cor_netw_DT, 
+	heatmSpatialCorGenes(starmap_mini, spatCorObject = spat_cor_netw_DT,
                      use_clus_name = 'spat_netw_clus',
                      save_param = list(save_name = '10_a_heatmspatcor', units = 'in'))
 
@@ -515,8 +525,8 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 
 .. code-block::
 
-	netw_ranks = rankSpatialCorGroups(starmap_mini, 
-                                  spatCorObject = spat_cor_netw_DT, 
+	netw_ranks = rankSpatialCorGroups(starmap_mini,
+                                  spatCorObject = spat_cor_netw_DT,
                                   use_clus_name = 'spat_netw_clus',
                                   save_param = list(save_name = '10_b_rankcorgroup'))
 
@@ -526,12 +536,12 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 
 .. code-block::
 
-	top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT, 
+	top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT,
                                             use_clus_name = 'spat_netw_clus',
-                                            selected_clusters = 6, 
+                                            selected_clusters = 6,
                                             show_top_genes = 1)
 
-	cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT, 
+	cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT,
                                        use_clus_name = 'spat_netw_clus',
                                        show_top_genes = 1)
 	cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$gene_ID
@@ -590,7 +600,7 @@ Identify robust spatial co-expression patterns using the spatial network or grid
          	save_param = list(save_name = '11_a_spatplot'))
 
 ***********************************************************
-12. Cell Neighborhood: Cell-Type / Cell-Type Interactions 
+12. Cell Neighborhood: Cell-Type / Cell-Type Interactions
 ***********************************************************
 
 .. code-block::
@@ -602,8 +612,8 @@ Identify robust spatial co-expression patterns using the spatial network or grid
                                            adjust_method = 'fdr',
                                            number_of_simulations = 1000)
 	# barplot
-	cellProximityBarplot(gobject = starmap_mini, 
-                     CPscore = cell_proximities, 
+	cellProximityBarplot(gobject = starmap_mini,
+                     CPscore = cell_proximities,
                      min_orig_ints = 2, min_sim_ints = 2, p_val = 0.5,
                      save_param = list(save_name = '12_a_barplot'))
 
@@ -615,9 +625,9 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 .. code-block::
 
 	## heatmap
-	cellProximityHeatmap(gobject = starmap_mini, CPscore = cell_proximities, 
+	cellProximityHeatmap(gobject = starmap_mini, CPscore = cell_proximities,
                      order_cell_types = T, scale = T,
-                     color_breaks = c(-1.5, 0, 1.5), 
+                     color_breaks = c(-1.5, 0, 1.5),
                      color_names = c('blue', 'white', 'red'),
                      save_param = list(save_name = '12_b_heatmap', units = 'in'))
 
@@ -630,7 +640,7 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 .. code-block::
 
 	# network
-	cellProximityNetwork(gobject = starmap_mini, CPscore = cell_proximities, 
+	cellProximityNetwork(gobject = starmap_mini, CPscore = cell_proximities,
                      remove_self_edges = T, only_show_enrichment_edges = T,
                      save_param = list(save_name = '12_c_network'))
 
@@ -654,7 +664,7 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 	:width: 400
 	:alt: 12_d_network.png
 
-12.1 Visualization of Specific Cell Types 
+12.1 Visualization of Specific Cell Types
 ============================================
 Option 1
 -------------
@@ -704,7 +714,7 @@ Option 2
 .. code-block::
 
 
-	
+
 	# create cross section
 	starmap_mini = createCrossSection(starmap_mini,
                                 method="equation",
@@ -726,7 +736,7 @@ Option 2
 
 .. image:: /images/other/mini_datasets/mini_starmap/vignette_200922/13_a_insert.png
 	:width: 400
-	:alt: 13_a_insert.png	
+	:alt: 13_a_insert.png
 
 .. code-block::
 
@@ -747,9 +757,9 @@ Option 2
                    axis_scale = "cube",
                    save_param = list(save_name = '13_c_crossplot3D'))
 
-.. image:: /images/other/mini_datasets/mini_starmap/vignette_200922/13_c_cross.png	
+.. image:: /images/other/mini_datasets/mini_starmap/vignette_200922/13_c_cross.png
 	:width: 400
-	:alt: 13_c_cross.png	
+	:alt: 13_c_cross.png
 
 .. code-block::
 
@@ -800,4 +810,3 @@ Option 2
                    overwrite_dir = T)
 
 
-	

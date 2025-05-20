@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/general_workflow.html');
+    }
+    </script>
+
 ===============
 Data Processing
 ===============
@@ -22,7 +31,7 @@ subset of the Giotto Object is taken to analyze the cortex.
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -55,10 +64,10 @@ subset of the Giotto Object is taken to analyze the cortex.
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_processing_results/') 
+      results_directory = paste0(getwd(),'/gobject_processing_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -66,9 +75,9 @@ subset of the Giotto Object is taken to analyze the cortex.
       getSpatialDataset(dataset = 'seqfish_SS_cortex', directory = data_directory, method = 'wget')
 
       # Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = FALSE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
       # Create Giotto object by providing paths
@@ -206,9 +215,9 @@ data by cells or genes, specified by scale_order.
    .. code:: r
 
       # normalize to scale expression values of the Giotto object using the standard method, z-scoring feats over cells
-      testobj <- normalizeGiotto(gobject = testobj, 
-                                 norm_methods = 'standard', 
-                                 scale_feats = TRUE, 
+      testobj <- normalizeGiotto(gobject = testobj,
+                                 norm_methods = 'standard',
+                                 scale_feats = TRUE,
                                  scalefactor = 6000,
                                  scale_order = 'first_feats', # Default, alternatively 'first_cells'
                                  verbose = T)
@@ -223,11 +232,11 @@ expression slot, NOT the “normalized” slot.*
 
    .. code:: r
 
-      # normalize to scale expression values of the Giotto object using the pearson residual method 
-      testobj <- normalizeGiotto(gobject = testobj, 
-                                 norm_methods = 'pearson_resid', 
-                                 scale_feats = TRUE, 
-                                 scalefactor = 6000, 
+      # normalize to scale expression values of the Giotto object using the pearson residual method
+      testobj <- normalizeGiotto(gobject = testobj,
+                                 norm_methods = 'pearson_resid',
+                                 scale_feats = TRUE,
+                                 scalefactor = 6000,
                                  verbose = T)
 
 The ‘osmFISH’ method is intended for in-situ RNA data and uses the
@@ -291,9 +300,9 @@ genes)
 
       #Calculate the percentage of BMP genes per cell
       bmp_genes = grep('Bmp', x = feature_metadata_cortex$feat_ID, value = TRUE)
-      testobj <- addFeatsPerc(testobj, 
-                              expression_values = 'normalized', 
-                              feats = bmp_genes, 
+      testobj <- addFeatsPerc(testobj,
+                              expression_values = 'normalized',
+                              feats = bmp_genes,
                               vector_name = "perc_bmp")
 
 5 Adjust Expression Matrix
@@ -309,7 +318,7 @@ covariates
       # Since there are no known batch effects, the number of features detected per cell
       # will be regressed out so that covariates will not effect further analyses.
 
-      testobj <- adjustGiottoMatrix(gobject = testobj, 
+      testobj <- adjustGiottoMatrix(gobject = testobj,
                                     expression_values = c('normalized'),
                                     covariate_columns = 'nr_feats')
 
@@ -331,11 +340,11 @@ arguments are provided.
 
       testobj <- processGiotto(testobj,
                                filter_params = list(expression_threshold = 1,
-                                                    feat_det_in_min_cells = 100, 
+                                                    feat_det_in_min_cells = 100,
                                                     min_det_feats_per_cell = 10),
-                               norm_params = list(norm_methods = 'standard', 
-                                                  scale_feats = TRUE, 
+                               norm_params = list(norm_methods = 'standard',
+                                                  scale_feats = TRUE,
                                                   scalefactor = 6000),
                                stat_params = list(expression_values = 'normalized'),
-                               adjust_params = list(expression_values = c('normalized'), 
+                               adjust_params = list(expression_values = c('normalized'),
                                                     covariate_columns = 'nr_feats'))

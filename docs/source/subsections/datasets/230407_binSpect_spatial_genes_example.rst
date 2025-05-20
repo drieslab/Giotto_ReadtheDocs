@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/spatial_genes.html');
+    }
+    </script>
+
+
 =====================================
 Spatial genes detection with binSpect
 =====================================
@@ -117,7 +127,7 @@ neighbors) and / or maximum distance.
             │     2:     -4244 137.5573 0.007269700
             │     3:     -4244 137.5573 0.007269700
             │     4:     -4125 138.0000 0.007246377
-            │  
+            │
             └──S4 spatialNetworkObj "spatial_network"   (3288 rows)
                                    from                 to sdimx_begin sdimy_begin sdimx_end
                   1: AAAGGGATGTAGCAAG-1 TCAAACAACCGCGTCG-1        5477       -4125      5340
@@ -129,7 +139,7 @@ neighbors) and / or maximum distance.
                   2:     -4244 137.5573 0.007217233
                   3:     -4244 137.5573 0.007217233
                   4:     -4125 138.0000 0.007194245
-               
+
 
 3.1 Use kNN network
 -------------------
@@ -148,13 +158,13 @@ neighbors) and / or maximum distance.
 
 
           This is the single parameter version of binSpect
-          1. matrix binarization complete 
+          1. matrix binarization complete
 
-          2. spatial enrichment test completed 
+          2. spatial enrichment test completed
 
-          3. (optional) average expression of high expressing cells calculated 
+          3. (optional) average expression of high expressing cells calculated
 
-          4. (optional) number of high expressing cells calculated 
+          4. (optional) number of high expressing cells calculated
 
    .. code:: r
 
@@ -183,13 +193,13 @@ neighbors) and / or maximum distance.
 
 
           This is the single parameter version of binSpect
-          1. matrix binarization complete 
+          1. matrix binarization complete
 
-          2. spatial enrichment test completed 
+          2. spatial enrichment test completed
 
-          3. (optional) average expression of high expressing cells calculated 
+          3. (optional) average expression of high expressing cells calculated
 
-          4. (optional) number of high expressing cells calculated 
+          4. (optional) number of high expressing cells calculated
 
    .. code:: r
 
@@ -242,22 +252,22 @@ Session Info
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2      
+         [1] GiottoData_0.2.1 Giotto_3.2
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.1    tools_4.2.1      
-          [5] digest_0.6.31     jsonlite_1.8.4    evaluate_0.20     lifecycle_1.0.3  
-          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   png_0.1-8        
-         [13] pkgconfig_2.0.3   rlang_1.1.0       igraph_1.4.1      Matrix_1.5-3     
-         [17] cli_3.6.1         rstudioapi_0.14   parallel_4.2.1    yaml_2.3.7       
-         [21] xfun_0.37         fastmap_1.1.1     terra_1.7-3       withr_2.5.0      
-         [25] dplyr_1.1.1       knitr_1.42        generics_0.1.3    vctrs_0.6.1      
-         [29] cowplot_1.1.1     grid_4.2.1        tidyselect_1.2.0  reticulate_1.28  
-         [33] glue_1.6.2        data.table_1.14.8 R6_2.5.1          fansi_1.0.4      
-         [37] rmarkdown_2.20    farver_2.1.1      deldir_1.0-6      ggplot2_3.4.1    
-         [41] magrittr_2.0.3    scales_1.2.1      codetools_0.2-19  htmltools_0.5.4  
-         [45] colorspace_2.1-0  labeling_0.4.2    utf8_1.2.3        munsell_0.5.0    
-         [49] dbscan_1.1-11    
+          [1] Rcpp_1.0.10       pillar_1.9.0      compiler_4.2.1    tools_4.2.1
+          [5] digest_0.6.31     jsonlite_1.8.4    evaluate_0.20     lifecycle_1.0.3
+          [9] tibble_3.2.1      gtable_0.3.3      lattice_0.20-45   png_0.1-8
+         [13] pkgconfig_2.0.3   rlang_1.1.0       igraph_1.4.1      Matrix_1.5-3
+         [17] cli_3.6.1         rstudioapi_0.14   parallel_4.2.1    yaml_2.3.7
+         [21] xfun_0.37         fastmap_1.1.1     terra_1.7-3       withr_2.5.0
+         [25] dplyr_1.1.1       knitr_1.42        generics_0.1.3    vctrs_0.6.1
+         [29] cowplot_1.1.1     grid_4.2.1        tidyselect_1.2.0  reticulate_1.28
+         [33] glue_1.6.2        data.table_1.14.8 R6_2.5.1          fansi_1.0.4
+         [37] rmarkdown_2.20    farver_2.1.1      deldir_1.0-6      ggplot2_3.4.1
+         [41] magrittr_2.0.3    scales_1.2.1      codetools_0.2-19  htmltools_0.5.4
+         [45] colorspace_2.1-0  labeling_0.4.2    utf8_1.2.3        munsell_0.5.0
+         [49] dbscan_1.1-11

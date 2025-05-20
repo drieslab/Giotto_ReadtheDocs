@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/installation.html');
+    }
+    </script>
+
 =============
 Configuration
 =============
@@ -21,7 +30,7 @@ environment.
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -87,8 +96,8 @@ will identify the OS in use and install/not install packages
    .. code:: r
 
       ### Note that the following code has been provided to indicate how to install
-      ### Giotto with customized Python and Python package versions. It has been 
-      ### intentionally commented out so that it will not run and overwrite the 
+      ### Giotto with customized Python and Python package versions. It has been
+      ### intentionally commented out so that it will not run and overwrite the
       ### default versions unless deliberately edited.
 
       ### new_pkg_versions <- c('pandas==1.4.4',
@@ -98,7 +107,7 @@ will identify the OS in use and install/not install packages
       ###                       'python-louvain==0.15',
       ###                       'scikit-learn==0.24.2',
       ###                       'python.app==2')
-      ### 
+      ###
       ### ############################
       ### # If altering the original Giotto Installation is not desired, DO NOT
       ### # run the following command as written.
@@ -149,8 +158,8 @@ Here is a brief troubleshooting workflow to investigate if
 
    .. code:: r
 
-      # Creating Giotto Instructions without specifying a Python path will make 
-      # reticulate activate the default Giotto environment. 
+      # Creating Giotto Instructions without specifying a Python path will make
+      # reticulate activate the default Giotto environment.
       default_instrs <- createGiottoInstructions()
 
       # Extract python path information
@@ -161,7 +170,7 @@ Here is a brief troubleshooting workflow to investigate if
         py_pkgs = c('pandas','networkx', 'igraph', 'leidenalg','community','sklearn','python.app')
         py_pkg_error = character()
         test_availability = TRUE
-        
+
         for (i in py_pkgs){
           if(i == 'python.app' & Sys.info()[['sysname']] != "Darwin"){
             # If the machine OS is not OSX (Mac), break out of the loop
@@ -171,13 +180,13 @@ Here is a brief troubleshooting workflow to investigate if
           test_availability <- reticulate::py_module_available(i)
           if(!test_availability) {py_pkg_error <- c(py_pkg_error,i)}
         }
-        
+
         if(test_availability){
           cat('All Python packages for Giotto are accessible at environment:\n', default_python_path)
         }else{
           for (x in py_pkg_error) cat(x,'was not found within environment:\n',default_python_path,'\n\n')
         }
-        
+
         return(py_pkg_error)
       }
 

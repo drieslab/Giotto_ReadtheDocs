@@ -1,33 +1,42 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/starmap_mouse_cortex.html');
+    }
+    </script>
+
 #################################
 STARmap Mouse Cortex
 #################################
 
 .. warning::
 
-	This tutorial was written with **Giotto version 0.3.6.9046**, your version is **1.0.4**. This is a more recent version and results should be reproducible. 
+	This tutorial was written with **Giotto version 0.3.6.9046**, your version is **1.0.4**. This is a more recent version and results should be reproducible.
 
 
 *******************************************
 Install Giotto and Python Modules
 *******************************************
 
-To run this vignette you need to install **all** of the necessary Python modules. 
+To run this vignette you need to install **all** of the necessary Python modules.
 
 .. important::
-	
-	Python module installation can be done either **automatically** via our installation tool (from within R) (see step 2.2A) or **manually** (see step 2.2B). 
 
-	:octicon:`eye` See :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` of our Giotto Installation section for step-by-step instructions. 
+	Python module installation can be done either **automatically** via our installation tool (from within R) (see step 2.2A) or **manually** (see step 2.2B).
+
+	:octicon:`eye` See :ref:`Part 2.2 Giotto-Specific Python Packages <part2_python_giotto_requirements>` of our Giotto Installation section for step-by-step instructions.
 
 ***************************
-Set-Up Giotto 
+Set-Up Giotto
 ***************************
 
-.. code-block:: 
+.. code-block::
 
 	library(Giotto)
 
-Set A Working Directory 
+Set A Working Directory
 ========================
 .. code-block::
 
@@ -41,7 +50,7 @@ Set A Giotto Python Path
 
 	# set python path to your preferred python version path
 	# set python path to NULL if you want to automatically install (only the 1st time) and use the giotto miniconda environment
-	python_path = NULL 
+	python_path = NULL
 	if(is.null(python_path)) {
   		installGiottoEnvironment()
 	}
@@ -73,7 +82,7 @@ Download Datasest
 
 	## instructions allow us to automatically save all plots into a chosen results folder
 	instrs = createGiottoInstructions(show_plot = FALSE,
-                                  save_plot = TRUE, 
+                                  save_plot = TRUE,
                                   save_dir = results_folder,
                                   python_path = python_path)
 
@@ -81,11 +90,11 @@ Download Datasest
 	loc_path = paste0(results_folder, "STARmap_3D_data_cell_locations.txt")
 
 *******************************************
-2. Create Giotto Object and Process Data 
+2. Create Giotto Object and Process Data
 *******************************************
 
 .. code-block::
-	
+
 	## create
 	STAR_test <- createGiottoObject(raw_exprs = expr_path,
                                 spatial_locs = loc_path,
@@ -96,16 +105,16 @@ Download Datasest
 	filterDistributions(STAR_test, detection = 'genes',
                     save_param = list(save_name = '2_a_distribution_genes'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_a_distribution_genes.png 
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_a_distribution_genes.png
 			:width: 400
-			:alt: 2_a_distribution_genes.png 
+			:alt: 2_a_distribution_genes.png
 
 .. code-block::
 
 	filterDistributions(STAR_test, detection = 'cells',
                     save_param = list(save_name = '2_b_distribution_cells'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_b_distribution_cells.png 
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_b_distribution_cells.png
 			:width: 400
 			:alt: 2_b_distribution_cells.png
 
@@ -116,9 +125,9 @@ Download Datasest
                    min_det_genes_per_cell = c(10, 20, 25),
                    save_param = list(save_name = '2_c_distribution_filters'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_c_distribution_filters.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_c_distribution_filters.png
 			:width: 400
-			:alt: 2_c_distribution_filters.png 
+			:alt: 2_c_distribution_filters.png
 
 .. code-block::
 
@@ -139,23 +148,23 @@ Download Datasest
            save_param = list(save_name = '2_d_spatplot_3D'))
 
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_d_spatial_locations.png 
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/2_d_spatial_locations.png
 			:width: 400
-			:alt: 2_d_spatial_locations.png 
+			:alt: 2_d_spatial_locations.png
 
 ****************************
-3. Dimension Reduction 
+3. Dimension Reduction
 ****************************
 
 .. code-block::
 
-	STAR_test <- calculateHVG(gobject = STAR_test, method = 'cov_groups', 
+	STAR_test <- calculateHVG(gobject = STAR_test, method = 'cov_groups',
                           zscore_threshold = 0.5, nr_expression_groups = 3,
                           save_param = list(save_name = '3_a_HVGplot', base_height = 5, base_width = 5))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_a_hvg.png   
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_a_hvg.png
 			:width: 400
-			:alt: 3_a_hvg.png   
+			:alt: 3_a_hvg.png
 
 .. code-block::
 
@@ -165,9 +174,9 @@ Download Datasest
 	signPCA(STAR_test,
         save_param = list(save_name = '3_b_signPCs'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_b_signPCs.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_b_signPCs.png
 			:width: 400
-			:alt: 3_b_signPCs.png  
+			:alt: 3_b_signPCs.png
 
 .. code-block::
 
@@ -175,9 +184,9 @@ Download Datasest
 	plotUMAP_3D(gobject = STAR_test,
 	            save_param = list(save_name = '3_c_UMAP'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_c_umap.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/3_c_umap.png
 			:width: 400
-			:alt: 3_c_umap.png  
+			:alt: 3_c_umap.png
 
 ***********************
 4. Clustering
@@ -196,9 +205,9 @@ Download Datasest
 	            save_param = list(save_name = '4_a_UMAP'))
 
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/4_leiden_0.2.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/4_leiden_0.2.png
 			:width: 400
-			:alt: 4_leiden_0.2.png  
+			:alt: 4_leiden_0.2.png
 
 ***********************
 5. Co-Visualization
@@ -210,12 +219,12 @@ Download Datasest
               cell_color = 'leiden_0.2',
               save_param = list(save_name = '5_a_spatDimPlot'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/5_a_covisualize_leiden_0.2.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/5_a_covisualize_leiden_0.2.png
 			:width: 400
-			:alt: 5_a_covisualize_leiden_0.2.png 
+			:alt: 5_a_covisualize_leiden_0.2.png
 
 ****************************
-6. Differential Expression 
+6. Differential Expression
 ****************************
 
 .. code-block::
@@ -233,9 +242,9 @@ Download Datasest
 	violinPlot(STAR_test, genes = unique(markers$genes), cluster_column = 'leiden_0.2',
 	           strip_position = "right", save_param = list(save_name = '6_a_violinplot'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/6_a_violinplot.png   
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/6_a_violinplot.png
 			:width: 400
-			:alt: 6_a_violinplot.png  
+			:alt: 6_a_violinplot.png
 
 .. code-block::
 
@@ -244,12 +253,12 @@ Download Datasest
                     metadata_cols = c('leiden_0.2'),
                     save_param = list(save_name = '6_b_metaheatmap'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/6_b_heatmap_leiden_0.2.png  
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/6_b_heatmap_leiden_0.2.png
 			:width: 400
 			:alt: 6_b_heatmap_leiden_0.2.png
 
 ************************************
-7. Cell-Type Annotation 
+7. Cell-Type Annotation
 ************************************
 
 .. code-block::
@@ -297,7 +306,7 @@ Download Datasest
 			:alt: 7_c_cluster_annotation_heatmap.png
 
 ***********************************
-8. Cell Type Co-Visualization 
+8. Cell Type Co-Visualization
 ***********************************
 
 .. code-block::
@@ -317,7 +326,7 @@ Download Datasest
 			:alt: 8_cell_type_co_vis.png
 
 ***********************************
-9. Gene Expression Visualization 
+9. Gene Expression Visualization
 ***********************************
 
 .. code-block::
@@ -330,11 +339,11 @@ Download Datasest
 
 .. image:: /images/other/mouse_starmap_cortex/vignette_200917/9_a_Rorb_dim_plot.png
 			:width: 400
-			:alt: 9_a_Rorb_dim_plot.png 
+			:alt: 9_a_Rorb_dim_plot.png
 
 .. code-block::
 
-	spatGenePlot3D(STAR_test, 
+	spatGenePlot3D(STAR_test,
                expression_values = 'scaled',
                genes = "Rorb",
                show_other_cells = F,
@@ -358,7 +367,7 @@ Download Datasest
 
 .. code-block::
 
-	spatGenePlot3D(STAR_test, 
+	spatGenePlot3D(STAR_test,
                expression_values = 'scaled',
                genes = "Pcp4",
                show_other_cells = F,
@@ -382,7 +391,7 @@ Download Datasest
 
 .. code-block::
 
-	spatGenePlot3D(STAR_test, 
+	spatGenePlot3D(STAR_test,
                expression_values = 'scaled',
                genes = "Cux2",
                show_other_cells = F,
@@ -406,7 +415,7 @@ Download Datasest
 
 .. code-block::
 
-	spatGenePlot3D(STAR_test, 
+	spatGenePlot3D(STAR_test,
                expression_values = 'scaled',
                genes = "Ctgf",
                show_other_cells = F,
@@ -431,9 +440,9 @@ Download Datasest
                              point_size = 2,
                              cell_color_code = mycolorcode)
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/10_a_insert_cross_section_cell_types.png 
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/10_a_insert_cross_section_cell_types.png
 			:width: 400
-			:alt: 10_a_insert_cross_section_cell_types.png 
+			:alt: 10_a_insert_cross_section_cell_types.png
 
 .. code-block::
 
@@ -451,21 +460,21 @@ Download Datasest
                  cell_color = "cell_types",cell_color_code = mycolorcode,
                  save_param = list(save_name = '10_a_crossSectionPlot'))
 
-.. image:: /images/other/mouse_starmap_cortex/vignette_200917/10_c_cross_section_spat.png 
+.. image:: /images/other/mouse_starmap_cortex/vignette_200917/10_c_cross_section_spat.png
 			:width: 400
 			:alt: 10_c_cross_section_spat.png
-	
+
 .. code-block::
 
 	crossSectionPlot3D(STAR_test,
-                   point_size = 2, cell_color = "cell_types", 
+                   point_size = 2, cell_color = "cell_types",
                    cell_color_code = mycolorcode,axis_scale = "cube",
                    save_param = list(save_name = '10_b_crossSectionPlot3D'))
 
 .. image:: /images/other/mouse_starmap_cortex/vignette_200917/10_d_cross_section_spat3d.png
 			:width: 400
 			:alt: 10_d_cross_section_spat3d.png
-			
+
 .. code-block::
 
 	crossSectionGenePlot(STAR_test,

@@ -1,4 +1,11 @@
-:orphan:
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
 
 ################################
 10X Single Cell RNA Sequencing
@@ -7,7 +14,7 @@
 .. container:: cell
 
    .. code:: r
-	
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -29,7 +36,7 @@
 Set up Giotto Environment
 ****************************
 
-.. code-block:: 
+.. code-block::
 
 	library(Giotto)
 	library(GiottoData)
@@ -37,7 +44,7 @@ Set up Giotto Environment
 	# 1. set working directory
 	results_folder = 'path/to/result'
 
-    # Optional: Specify a path to a Python executable within a conda or miniconda 
+    # Optional: Specify a path to a Python executable within a conda or miniconda
     # environment. If set to NULL (default), the Python executable within the previously
     # installed Giotto environment will be used.
     my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -48,7 +55,7 @@ Set up Giotto Environment
 									show_plot = FALSE,
 									python_path = my_python_path)
 
-*********************							
+*********************
 Dataset Explanation
 *********************
 
@@ -60,9 +67,9 @@ Part 1: Create Giotto object from 10X dataset
 
 Note that you will need an input directory for `barcodes.tsv(.gz)` `features.tsv(.gz)` `matrix.mtx(.gz)`
 
-.. code-block:: 
+.. code-block::
 
-	giotto_SC<-createGiottoObject(expression = get10Xmatrix("/path/to/filtered_feature_bc_matrix", 
+	giotto_SC<-createGiottoObject(expression = get10Xmatrix("/path/to/filtered_feature_bc_matrix",
                               gene_column_index = 2, remove_zero_rows = TRUE),
                               instructions = instrs)
 
@@ -70,7 +77,7 @@ Note that you will need an input directory for `barcodes.tsv(.gz)` `features.tsv
 Part 2: Process Giotto Object
 **********************************
 
-.. code-block:: 
+.. code-block::
 
 	giotto_SC<-filterGiotto(gobject = giotto_SC,
     expression_threshold = 1,
@@ -104,9 +111,9 @@ Part 2: Process Giotto Object
 
 ********************************
 Part 3: Dimention Reduction
-******************************** 
+********************************
 
-.. code-block:: 
+.. code-block::
 
 	## PCA ##
 	giotto_SC <- calculateHVF(gobject = giotto_SC)
@@ -119,7 +126,7 @@ Part 3: Dimention Reduction
 Part 4: Cluster
 **************************
 
-.. code-block:: 
+.. code-block::
 
 	## cluster and run UMAP ##
 	# sNN network (default)
@@ -145,13 +152,13 @@ Part 4: Cluster
 Part 5: Differential Expression
 ************************************
 
-.. code-block:: 
+.. code-block::
 
 	markers_scran = findMarkers_one_vs_all(gobject=giotto_SC, method="scran",
                                        expression_values="normalized", cluster_column='leiden_clus', min_feats=3)
 	markergenes_scran = unique(markers_scran[, head(.SD, 3), by="cluster"][["feats"]])
 
-	plotMetaDataHeatmap(giotto_SC, expression_values = "normalized", metadata_cols = 'leiden_clus', 
+	plotMetaDataHeatmap(giotto_SC, expression_values = "normalized", metadata_cols = 'leiden_clus',
 						selected_feats = markergenes_scran,
 						y_text_size = 8, show_values = 'zscores_rescaled',
 						save_param = list(save_name = '5_a_metaheatmap'))
@@ -159,7 +166,7 @@ Part 5: Differential Expression
 
 .. image:: /images/other/singlecell_rna_seq/5_a_metaheatmap.png
 
-.. code-block:: 
+.. code-block::
 
 	topgenes_scran = markers_scran[, head(.SD, 1), by = 'cluster']$feats
 	# violinplot
@@ -173,19 +180,19 @@ Part 5: Differential Expression
 Part 6: FeaturePlot
 **********************
 
-.. code-block:: 
+.. code-block::
 
-	# Plot known marker genes across different cell types. EPCAM for epithelial cells, 
+	# Plot known marker genes across different cell types. EPCAM for epithelial cells,
 	# DPP4(CD26) for Epithelial luminal cells, PECAM1(CD31) for Endothelial cells and CD3D for T cells
 	dimFeatPlot2D(giotto_SC, feats = c("EPCAM","DPP4","PECAM1","CD3D"), cow_n_col = 2, save_param = list(save_name = "6_featureplot"))
 
 .. image:: /images/other/singlecell_rna_seq/6_featureplot.png
 
 ********************************
-Part 7: Cell type Annotation 
+Part 7: Cell type Annotation
 ********************************
 
-.. code-block:: 
+.. code-block::
 
 	prostate_labels<-c("Endothelial cells",#1
                    "T cells",#2
@@ -213,7 +220,7 @@ Part 7: Cell type Annotation
 Part 8: Subset and Recluster
 ******************************
 
-.. code-block:: 
+.. code-block::
 
 	Subset_giotto_T<-subsetGiotto(giotto_SC,
   cell_ids = pDataDT(giotto_SC)[which(pDataDT(giotto_SC)$prostate_labels == "T cells"),]$cell_ID)
@@ -225,7 +232,7 @@ Part 8: Subset and Recluster
 
 .. image:: /images/other/singlecell_rna_seq/8a_scree_plot.png
 
-.. code-block:: 
+.. code-block::
 
 	Subset_giotto_T <- createNearestNetwork(gobject = Subset_giotto_T,
     dim_reduction_to_use = 'pca', dim_reduction_name = 'pca',
@@ -244,20 +251,20 @@ Part 8: Subset and Recluster
 
 .. image:: /images/other/singlecell_rna_seq/8b_Cluster.png
 
-.. code-block:: 
+.. code-block::
 
 	markers_scran_T = findMarkers_one_vs_all(gobject=Subset_giotto_T, method="scran",
                                          expression_values="normalized", cluster_column='leiden_clus', min_feats=3)
 	markergenes_scran_T = unique(markers_scran_T[, head(.SD, 5), by="cluster"][["feats"]])
 
-	plotMetaDataHeatmap(Subset_giotto_T, expression_values = "normalized", metadata_cols = 'leiden_clus', 
+	plotMetaDataHeatmap(Subset_giotto_T, expression_values = "normalized", metadata_cols = 'leiden_clus',
 						selected_feats = markergenes_scran_T,
 						y_text_size = 8, show_values = 'zscores_rescaled',
 						save_param = list(save_name = '8_c_metaheatmap'))
 
 .. image:: /images/other/singlecell_rna_seq/8_c_metaheatmap.png
 
-.. code-block:: 
+.. code-block::
 
 	T_labels<-c("Naive T cells",#1
             "Tfh cells",#2
@@ -270,5 +277,5 @@ Part 8: Subset and Recluster
 	dimPlot2D(gobject = Subset_giotto_T,     dim_reduction_name = 'umap',
 		cell_color = "subset_labels", show_NN_network = T, point_size = 1.5,
 		save_param = list(save_name = "8d_Annotation"))
-	
+
 .. image:: /images/other/singlecell_rna_seq/8d_Annotation.png

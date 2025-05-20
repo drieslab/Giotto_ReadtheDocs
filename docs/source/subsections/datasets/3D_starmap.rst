@@ -1,5 +1,14 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/starmap_mouse_cortex.html');
+    }
+    </script>
+
 ==========
-3D Starmap 
+3D Starmap
 ==========
 
 :Date: 2023-04-14
@@ -12,17 +21,17 @@ To run the current vignette you need to install the Giotto Suite branch and the 
 .. container:: cell
 
    .. code:: r
-   
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         remotes::install_github("drieslab/Giotto@suite")
       }
 
       library(Giotto)
-      
+
       remotes::install_github("drieslab/GiottoData")
       library(GiottoData)
-      
+
 Create Giotto object
 ====================
 
@@ -33,8 +42,8 @@ Minimum requirements:
 
 .. container:: cell
 
-   .. code:: r 
-      
+   .. code:: r
+
       ## provide path to 3D starmap folder
       data_path = system.file('/Mini_datasets/3D_starmap', package = 'GiottoData')
 
@@ -55,7 +64,7 @@ Minimum requirements:
       showGiottoSpatLocs(mini_starmap)
       showGiottoExpression(mini_starmap)
 
-      
+
 Processing steps
 ================
 
@@ -70,27 +79,27 @@ Processing steps
 .. container:: cell
 
    .. code:: r
-   
+
       filterDistributions(mini_starmap, detection = 'feats',
                           save_param = list(save_name = '2_a_filtergenes'))
-                          
+
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/2_a_filtergenes.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       filterDistributions(mini_starmap, detection = 'cells',
                           save_param = list(save_name = '2_b_filtercells'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/2_b_filtercells.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       filterCombinations(mini_starmap,
                          expression_thresholds = c(1),
                          feat_det_in_min_cells = c(50, 100, 200),
@@ -99,11 +108,11 @@ Processing steps
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/2_c_filtercombos.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       # Filtering and normalization
       mini_starmap <- filterGiotto(gobject = mini_starmap,
                                    expression_threshold = 1,
@@ -113,8 +122,8 @@ Processing steps
                                    verbose = T)
       mini_starmap <- normalizeGiotto(gobject = mini_starmap,
                                       scalefactor = 6000, verbose = T)
-      mini_starmap <- addStatistics(gobject = mini_starmap) 
-      
+      mini_starmap <- addStatistics(gobject = mini_starmap)
+
 Dimension Reduction
 ===================
 
@@ -129,28 +138,28 @@ Dimension Reduction
 .. container:: cell
 
    .. code:: r
-   
+
       mini_starmap <- runPCA(gobject = mini_starmap, method = 'factominer')
-      screePlot(mini_starmap, ncp = 30, 
+      screePlot(mini_starmap, ncp = 30,
                 save_param = list(save_name = '3_a_screeplot'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/3_a_screeplot.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       plotPCA(gobject = mini_starmap,
               save_param = list(save_name = '3_b_PCA'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/3_b_PCA.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       # 2D umap
       mini_starmap <- runUMAP(mini_starmap, dimensions_to_use = 1:8)
       plotUMAP(gobject = mini_starmap,
@@ -158,19 +167,19 @@ Dimension Reduction
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/3_c_UMAP.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       # 2D tSNE
       mini_starmap <- runtSNE(mini_starmap, dimensions_to_use = 1:8)
       plotTSNE(gobject = mini_starmap, save_param = list(save_name = '3_d_TSNE'))
-      
+
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/3_d_TSNE.png?raw=true
    :width: 50.0%
-   
-  
+
+
 Clustering
 ==========
 
@@ -181,7 +190,7 @@ Clustering
 .. container:: cell
 
    .. code:: r
-   
+
       ## sNN network (default)
       mini_starmap <- createNearestNetwork(gobject = mini_starmap, dimensions_to_use = 1:8, k = 25)
 
@@ -192,11 +201,11 @@ Clustering
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/4_a_UMAP.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       # 2D umap + coordinates
       spatDimPlot(gobject = mini_starmap, cell_color = 'leiden_clus',
                   dim_point_size = 2, spat_point_size = 2.5,
@@ -204,7 +213,7 @@ Clustering
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/4_b_spatdimplot.png?raw=true
    :width: 50.0%
-   
+
 Spatial Grids
 =============
 
@@ -213,22 +222,22 @@ Create a grid based on defined stepsizes in the x,y(,z) axes.
 .. container:: cell
 
    .. code:: r
-   
+
       mini_starmap <- createSpatialGrid(gobject = mini_starmap,
                                   sdimx_stepsize = 200,
                                   sdimy_stepsize = 200,
                                   sdimz_stepsize = 20,
                                   minimum_padding = 10)
-                                  
+
       showGiottoSpatGrids(mini_starmap)
-      
+
       # visualize grid
       spatPlot2D(gobject = mini_starmap, show_grid = T, point_size = 1.5,
                  save_param = list(save_name = '5_a_spatplot'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/5_a_spatplot.png?raw=true
    :width: 50.0%
-   
+
 Spatial Network
 ===============
 
@@ -243,26 +252,26 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
 .. container:: cell
 
    .. code:: r
-   
-      plotStatDelaunayNetwork(gobject = mini_starmap, maximum_distance = 200, 
+
+      plotStatDelaunayNetwork(gobject = mini_starmap, maximum_distance = 200,
                               method = 'delaunayn_geometry',
                               save_param = list(save_name = '6_a_delnetwork'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/6_a_delnetwork.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2, 
-                                          maximum_distance_delaunay = 200, 
-                                          method = 'Delaunay', 
+      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2,
+                                          maximum_distance_delaunay = 200,
+                                          method = 'Delaunay',
                                           delaunay_method = 'delaunayn_geometry')
-      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2, 
+      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2,
                                           method = 'kNN', k = 10)
       showGiottoSpatNetworks(mini_starmap)
 
-      # visualize the two different spatial networks  
+      # visualize the two different spatial networks
       spatPlot(gobject = mini_starmap, show_network = T,
                network_color = 'blue', spatial_network_name = 'Delaunay_network',
                point_size = 2.5, cell_color = 'leiden_clus',
@@ -270,11 +279,11 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/6_b_spatplot.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       spatPlot(gobject = mini_starmap, show_network = T,
                network_color = 'blue', spatial_network_name = 'kNN_network',
                point_size = 2.5, cell_color = 'leiden_clus',
@@ -282,7 +291,7 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/6_c_spatplot.png?raw=true
    :width: 50.0%
-   
+
 Spatial Genes
 =============
 
@@ -296,9 +305,9 @@ Visualize top 4 genes per method.
 .. container:: cell
 
    .. code:: r
-   
+
       km_spatialgenes = binSpect(mini_starmap)
-      spatFeatPlot2D(mini_starmap, expression_values = 'scaled', 
+      spatFeatPlot2D(mini_starmap, expression_values = 'scaled',
                   feats = km_spatialgenes[1:4]$feats,
                   point_shape = 'border', point_border_stroke = 0.1,
                   show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -307,13 +316,13 @@ Visualize top 4 genes per method.
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/7_a_spatgeneplot.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
        rank_spatialgenes = binSpect(mini_starmap, bin_method = 'rank')
-       spatFeatPlot2D(mini_starmap, expression_values = 'scaled', 
+       spatFeatPlot2D(mini_starmap, expression_values = 'scaled',
                       feats = rank_spatialgenes[1:4]$feats,
                       point_shape = 'border', point_border_stroke = 0.1,
                       show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -329,46 +338,46 @@ Visualize top 4 genes per method.
 .. container:: cell
 
    .. code:: r
-   
-      # 1. calculate spatial correlation scores 
+
+      # 1. calculate spatial correlation scores
       ext_spatial_genes = km_spatialgenes[1:20]$feats
       spat_cor_netw_DT = detectSpatialCorFeats(mini_starmap,
-                                               method = 'network', 
+                                               method = 'network',
                                                spatial_network_name = 'Delaunay_network',
                                                subset_feats = ext_spatial_genes)
 
       # 2. cluster correlation scores
-      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
+      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT,
                                                  name = 'spat_netw_clus', k = 6)
-      heatmSpatialCorFeats(mini_starmap, spatCorObject = spat_cor_netw_DT, 
+      heatmSpatialCorFeats(mini_starmap, spatCorObject = spat_cor_netw_DT,
                            use_clus_name = 'spat_netw_clus',
                            save_param = list(save_name = '8_a_heatmspatcor', units = 'in'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/8_a_heatmspatcor.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
-      netw_ranks = rankSpatialCorGroups(mini_starmap, 
-                                        spatCorObject = spat_cor_netw_DT, 
+
+      netw_ranks = rankSpatialCorGroups(mini_starmap,
+                                        spatCorObject = spat_cor_netw_DT,
                                         use_clus_name = 'spat_netw_clus',
                                   save_param = list(save_name = '8_b_rankcorgroup'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/8_b_rankcorgroup.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
-      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT, 
+
+      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT,
                                                   use_clus_name = 'spat_netw_clus',
-                                                  selected_clusters = 6, 
+                                                  selected_clusters = 6,
                                                   show_top_feats = 1)
 
-      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
+      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT,
                                              use_clus_name = 'spat_netw_clus',
                                              show_top_feats = 1)
       cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$feat_ID
@@ -383,8 +392,8 @@ Visualize top 4 genes per method.
                    save_param = list(save_name = '8_c_spatcellplot'))
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/8_c_spatcellplot.png?raw=true
-   :width: 50.0%   
-      
+   :width: 50.0%
+
 3D Slicing
 ==========
 
@@ -403,7 +412,7 @@ The 2D cross section can be created using four different methods (parameter defi
 .. container:: cell
 
    .. code:: r
-   
+
       # create cross section
       mini_starmap = createCrossSection(mini_starmap,
                                         method="equation",
@@ -425,11 +434,11 @@ The 2D cross section can be created using four different methods (parameter defi
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/9_a_insertcross.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       insertCrossSectionGenePlot3D(gobject = mini_starmap,
                                    crossSection_obj = crossSection_obj,
                                    expression_values = 'scaled',
@@ -446,17 +455,17 @@ The 2D cross section can be created using four different methods (parameter defi
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/9_c_crossplot.png?raw=true
    :width: 50.0%
-   
+
 .. container:: cell
 
    .. code:: r
-   
+
       crossSectionPlot3D(gobject = mini_starmap,
                          crossSection_obj = crossSection_obj,
                          point_size = 2, cell_color = "leiden_clus",
                          axis_scale = "cube",
                          save_param = list(save_name = '9_c_crossplot3D'))
-   
+
       # for gene expression
       crossSectionGenePlot(gobject = mini_starmap,
                            crossSection_obj = crossSection_obj,
@@ -469,4 +478,4 @@ The 2D cross section can be created using four different methods (parameter defi
 
 .. image:: https://github.com/PratishthaGuckhool/Giotto_site_suite/blob/master/inst/images/3DStarmap_images/9_d_crossgeneplot.png?raw=true
    :width: 50.0%
-   
+

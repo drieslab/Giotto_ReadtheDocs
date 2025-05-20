@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/mini_seqfish.html');
+    }
+    </script>
+
+
 ============
 mini_seqfish
 ============
@@ -35,14 +45,14 @@ Set Giotto instructions (optional)
 .. container:: cell
 
    .. code:: r
-      
+
       library(Giotto)
       library(GiottoData)
-      
+
       # to automatically save figures in save_dir set save_plot to TRUE
       temp_dir = getwd()
-      myinstructions = createGiottoInstructions(save_dir = temp_dir, 
-                                                save_plot = FALSE, 
+      myinstructions = createGiottoInstructions(save_dir = temp_dir,
+                                                save_plot = FALSE,
                                                 show_plot = TRUE)
 
 1. Create a Giotto object
@@ -60,11 +70,11 @@ The minimum requirements are
       # download data
       data_directory = paste0(temp_dir, '/data/')
       getSpatialDataset(dataset = 'mini_seqFISH', directory = data_directory, method = 'wget')
-      # giotto object 
+      # giotto object
       expr_path = paste0(data_directory, "seqfish_field_expr.txt.gz")
       loc_path = paste0(data_directory, "seqfish_field_locs.txt")
-      seqfish_mini = createGiottoObject(expression = expr_path, 
-                                        spatial_locs = loc_path, 
+      seqfish_mini = createGiottoObject(expression = expr_path,
+                                        spatial_locs = loc_path,
                                         instructions = myinstructions)
 
 How to work with Giotto instructions that are part of your Giotto
@@ -98,14 +108,14 @@ object:
 
    .. code:: r
 
-      seqfish_mini = filterGiotto(gobject = seqfish_mini, 
-                                  expression_threshold = 0.5, 
-                                  feat_det_in_min_cells = 20, 
+      seqfish_mini = filterGiotto(gobject = seqfish_mini,
+                                  expression_threshold = 0.5,
+                                  feat_det_in_min_cells = 20,
                                   min_det_feats_per_cell = 0)
       seqfish_mini = normalizeGiotto(gobject = seqfish_mini, scalefactor = 6000, verbose = T)
       seqfish_mini = addStatistics(gobject = seqfish_mini)
-      seqfish_mini = adjustGiottoMatrix(gobject = seqfish_mini, 
-                                        expression_values = c('normalized'), 
+      seqfish_mini = adjustGiottoMatrix(gobject = seqfish_mini,
+                                        expression_values = c('normalized'),
                                         covariate_columns = c('nr_feats', 'total_expr'))
 
 3. Dimension reduction
@@ -262,14 +272,14 @@ The following step requires the installation of {ggdendro}.
       clusters_cell_types = c('cell A', 'cell B', 'cell C', 'cell D',
                               'cell E', 'cell F', 'cell G', 'cell H')
       names(clusters_cell_types) = 1:8
-      seqfish_mini = annotateGiotto(gobject = seqfish_mini, 
-                                    annotation_vector = clusters_cell_types, 
-                                    cluster_column = 'leiden_clus', 
+      seqfish_mini = annotateGiotto(gobject = seqfish_mini,
+                                    annotation_vector = clusters_cell_types,
+                                    cluster_column = 'leiden_clus',
                                     name = 'cell_types')
       # check new cell metadata
       pDataDT(seqfish_mini)
       # visualize annotations
-      spatDimPlot(gobject = seqfish_mini, cell_color = 'cell_types', 
+      spatDimPlot(gobject = seqfish_mini, cell_color = 'cell_types',
                   spat_point_size = 3, dim_point_size = 3)
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/11-spatDimPlot2D.png?raw=true
@@ -282,7 +292,7 @@ The following step requires the installation of {ggdendro}.
       # heatmap
       topgenes_heatmap = gini_markers[, head(.SD, 4), by = 'cluster']
       plotHeatmap(gobject = seqfish_mini,
-                  feats = topgenes_heatmap$feats, 
+                  feats = topgenes_heatmap$feats,
                   feat_order = 'custom',
                   feat_custom_order = unique(topgenes_heatmap$feats),
                   cluster_column = 'cell_types',
@@ -331,12 +341,12 @@ The following step requires the installation of {ggdendro}.
 
    .. code:: r
 
-      seqfish_mini = createSpatialNetwork(gobject = seqfish_mini, minimum_k = 2, 
+      seqfish_mini = createSpatialNetwork(gobject = seqfish_mini, minimum_k = 2,
                                           maximum_distance_delaunay = 400)
-      seqfish_mini = createSpatialNetwork(gobject = seqfish_mini, minimum_k = 2, 
+      seqfish_mini = createSpatialNetwork(gobject = seqfish_mini, minimum_k = 2,
                                           method = 'kNN', k = 10)
       showGiottoSpatNetworks(seqfish_mini)
-      # visualize the two different spatial networks  
+      # visualize the two different spatial networks
       spatPlot(gobject = seqfish_mini, show_network = T,
                network_color = 'blue', spatial_network_name = 'Delaunay_network',
                point_size = 2.5, cell_color = 'leiden_clus')
@@ -371,7 +381,7 @@ Visualize top 4 genes per method.
    .. code:: r
 
       km_spatialgenes = binSpect(seqfish_mini)
-      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled', 
+      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled',
                      feats = km_spatialgenes[1:4]$feats,
                      point_shape = 'border', point_border_stroke = 0.1,
                      show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -385,7 +395,7 @@ Visualize top 4 genes per method.
    .. code:: r
 
       rank_spatialgenes = binSpect(seqfish_mini, bin_method = 'rank')
-      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled', 
+      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled',
                      feats = rank_spatialgenes[1:4]$feats,
                      point_shape = 'border', point_border_stroke = 0.1,
                      show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -399,7 +409,7 @@ Visualize top 4 genes per method.
    .. code:: r
 
       silh_spatialgenes = silhouetteRank(gobject = seqfish_mini) # TODO: suppress print output
-      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled', 
+      spatFeatPlot2D(seqfish_mini, expression_values = 'scaled',
                      feats = silh_spatialgenes[1:4]$genes,
                      point_shape = 'border', point_border_stroke = 0.1,
                      show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -421,16 +431,16 @@ or grid and a subset of individual spatial genes.
 
    .. code:: r
 
-      # 1. calculate spatial correlation scores 
+      # 1. calculate spatial correlation scores
       ext_spatial_genes = km_spatialgenes[1:500]$feats
       spat_cor_netw_DT = detectSpatialCorFeats(seqfish_mini,
-                                               method = 'network', 
+                                               method = 'network',
                                                spatial_network_name = 'Delaunay_network',
                                                subset_feats = ext_spatial_genes)
       # 2. cluster correlation scores
-      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
+      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT,
                                                 name = 'spat_netw_clus', k = 8)
-      heatmSpatialCorFeats(seqfish_mini, spatCorObject = spat_cor_netw_DT, 
+      heatmSpatialCorFeats(seqfish_mini, spatCorObject = spat_cor_netw_DT,
                            use_clus_name = 'spat_netw_clus')
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/20-heatmSpatialCorFeats.png?raw=true
@@ -440,8 +450,8 @@ or grid and a subset of individual spatial genes.
 
    .. code:: r
 
-      netw_ranks = rankSpatialCorGroups(seqfish_mini, 
-                                        spatCorObject = spat_cor_netw_DT, 
+      netw_ranks = rankSpatialCorGroups(seqfish_mini,
+                                        spatCorObject = spat_cor_netw_DT,
                                         use_clus_name = 'spat_netw_clus')
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/21-rankSpatialCorGroups.png?raw=true
@@ -451,11 +461,11 @@ or grid and a subset of individual spatial genes.
 
    .. code:: r
 
-      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT, 
+      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT,
                                                   use_clus_name = 'spat_netw_clus',
-                                                  selected_clusters = 6, 
+                                                  selected_clusters = 6,
                                                   show_top_feats = 1)
-      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
+      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT,
                                              use_clus_name = 'spat_netw_clus',
                                              show_top_feats = 1)
       cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$feat_ID
@@ -527,8 +537,8 @@ The following HMRF function requires {smfishHmrf} .
                                                  adjust_method = 'fdr',
                                                  number_of_simulations = 1000)
       # barplot
-      cellProximityBarplot(gobject = seqfish_mini, 
-                           CPscore = cell_proximities, 
+      cellProximityBarplot(gobject = seqfish_mini,
+                           CPscore = cell_proximities,
                            min_orig_ints = 5, min_sim_ints = 5, p_val = 0.5)
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/24-cellProximityBarplot.png?raw=true
@@ -539,9 +549,9 @@ The following HMRF function requires {smfishHmrf} .
    .. code:: r
 
       ## heatmap
-      cellProximityHeatmap(gobject = seqfish_mini, CPscore = cell_proximities, 
+      cellProximityHeatmap(gobject = seqfish_mini, CPscore = cell_proximities,
                            order_cell_types = T, scale = T,
-                           color_breaks = c(-1.5, 0, 1.5), 
+                           color_breaks = c(-1.5, 0, 1.5),
                            color_names = c('blue', 'white', 'red'))
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/25-cellProximityHeatmap.png?raw=true
@@ -552,7 +562,7 @@ The following HMRF function requires {smfishHmrf} .
    .. code:: r
 
       # network
-      cellProximityNetwork(gobject = seqfish_mini, CPscore = cell_proximities, 
+      cellProximityNetwork(gobject = seqfish_mini, CPscore = cell_proximities,
                            remove_self_edges = T, only_show_enrichment_edges = T)
 
 .. image:: https://github.com/drieslab/Giotto_site_suite/blob/master/inst/images/mini_seqFISH/220915_results/26-cellProximityNetwork.png?raw=true

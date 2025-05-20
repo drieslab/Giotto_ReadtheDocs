@@ -1,10 +1,19 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/instructions.html');
+    }
+    </script>
+
 .. _test-and-store:
 
 ##########################################################
 How to Test and Store Multiple Parameters or Analyses?
 ##########################################################
 
-The default Giotto workflow is similar to other scRNA-seq workflows and does not require you to provide a custom name for each analysis (e.g. PCA, UMAP, …), but running an analysis twice will overwrite the previous results with a warning. 
+The default Giotto workflow is similar to other scRNA-seq workflows and does not require you to provide a custom name for each analysis (e.g. PCA, UMAP, …), but running an analysis twice will overwrite the previous results with a warning.
 
 However, there are situations where being able to run and store multiple analyses can be advantageous:
 
@@ -13,8 +22,8 @@ However, there are situations where being able to run and store multiple analyse
 * Use different output results as input for downstream analyses (See Example:  **spatial genes**)
 
 .. image:: /images/howtos/work_with_multiple_analyses/ppt_store_multiple_analyses2.png
-	:width: 600 
-	:alt: Multiple Analysis 
+	:width: 600
+	:alt: Multiple Analysis
 	:align: center
 
 We will use the seqFish+ somatosensory cortex as an example dataset after creating and processing a Giotto object.
@@ -23,36 +32,36 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
 1. Calculate Highly Variable Genes *(2 Methods)*
 ***************************************************************
 
-.. code-block:: 
+.. code-block::
 
     # using the loess method
     VC_test <- calculateHVG(gobject = VC_test,
                         method = 'cov_loess', difference_in_cov = 0.1,
                         HVGname = 'loess_hvg')
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_loess_hvg.png	
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_loess_hvg.png
+	:width: 300
 	:alt: Loess
 
-.. code-block:: 
+.. code-block::
 
     # using the expression groups method
     VC_test <- calculateHVG(gobject = VC_test
                         , method = 'cov_group', zscore_threshold = 1,
                         HVGname = 'group_hvg')
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_group_hvg.png		
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_group_hvg.png
+	:width: 300
 	:alt: Group
 
-.. code-block:: 
+.. code-block::
 
     # compare the highly variable genes between two methods
     gene_metadata = fDataDT(VC_test)
     mytable = table(loess = gene_metadata$loess_hvg, group = gene_metadata$group_hvg)
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_hvg_table.png			
-	:width: 200 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/1_hvg_table.png
+	:width: 200
 	:alt: Group
 
 ***************************************************************
@@ -63,7 +72,7 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
 * Store PCA results using custom names (‘pca_loess’ and ‘pca_group’)
 * Plot PCA results
 
-.. code-block:: 
+.. code-block::
 
     ## 2. PCA ##
     # pca with genes from loess
@@ -72,11 +81,11 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
     plotPCA(gobject = VC_test, dim_reduction_name = 'pca_loess')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/2_loess_pca.png				
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/2_loess_pca.png
+	:width: 300
 	:alt: Group
 
-.. code-block:: 
+.. code-block::
 
     # pca with genes from group
     group_genes = gene_metadata[group_hvg == 'yes']$gene_ID
@@ -84,8 +93,8 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
     plotPCA(gobject = VC_test, dim_reduction_name = 'pca_group')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/2_group_pca.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/2_group_pca.png
+	:width: 300
 	:alt: Group
 
 ***************************************************************
@@ -100,11 +109,11 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
   ## 3. UMAP ##
     VC_test <- runUMAP(VC_test, dim_reduction_to_use = 'pca', dim_reduction_name = 'pca_loess',
                    name = 'umap_loess', dimensions_to_use = 1:30)
-    plotUMAP(gobject = VC_test, dim_reduction_name = 'umap_loess')  
+    plotUMAP(gobject = VC_test, dim_reduction_name = 'umap_loess')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/3_loess_umap.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/3_loess_umap.png
+	:width: 300
 	:alt: Group
 
 .. code-block::
@@ -114,8 +123,8 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
     plotUMAP(gobject = VC_test, dim_reduction_name = 'umap_group')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/3_group_umap.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/3_group_umap.png
+	:width: 300
 	:alt: Group
 
 ***************************************************************
@@ -144,45 +153,45 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
            network_color = 'blue', spatial_network_name = 'spatial_network')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_spatial_network.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_spatial_network.png
+	:width: 300
 	:alt: Group
 
-*Large Network* 
+*Large Network*
 ======================
 
-.. code-block:: 
+.. code-block::
 
     spatPlot(gobject = subVC_test, show_network = T,
              network_color = 'blue', spatial_network_name = 'large_network')
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_large_network.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_large_network.png
+	:width: 300
 	:alt: Group
 
-*Distance Network* 
+*Distance Network*
 ======================
 
-.. code-block:: 
+.. code-block::
 
     spatPlot(gobject = subVC_test, show_network = T,
              network_color = 'blue', spatial_network_name = 'distance_network')
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_distance_network.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/4_distance_network.png
+	:width: 300
 	:alt: Group
 
 ***************************************************************
-5. Find Spatial Genes *(Multiple Methods)* 
+5. Find Spatial Genes *(Multiple Methods)*
 ***************************************************************
 
 * Use the different spatial networks as input to identify spatial genes with the rank method
 * Visualize top spatial genes for 2 methods
 
-*Large Network Spatial Genes* 
+*Large Network Spatial Genes*
 ===================================
- 
+
 .. code-block::
 
    ## 5. spatial genes
@@ -193,8 +202,8 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
                               subset_genes = loess_genes,
                               bin_method = 'rank',
                               spatial_network_name = 'large_network')
-                          
-                                  
+
+
     spatGenePlot(VC_test,
                  expression_values = 'scaled',
                  genes = ranktest_large$genes[1:6], cow_n_col = 2, point_size = 1,
@@ -202,8 +211,8 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
 
 
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/5_large_network_genes.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/5_large_network_genes.png
+	:width: 300
 	:alt: Group
 
 
@@ -222,6 +231,6 @@ We will use the seqFish+ somatosensory cortex as an example dataset after creati
                  genes = ranktest_dist$genes[1:6], cow_n_col = 2, point_size = 1,
                  genes_high_color = 'red', genes_mid_color = 'white', genes_low_color = 'darkblue', midpoint = 0)
 
-.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/5_large_distance_network_genes.png			
-	:width: 300 
+.. image:: /images/howtos/work_with_multiple_analyses/vignette_1/5_large_distance_network_genes.png
+	:width: 300
 	:alt: Group

@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/merfish_mouse_hypothalamic.html');
+    }
+    </script>
+
 =====================
 merFISH Mouse Hypothalmic Preoptic Region
 =====================
@@ -14,7 +23,7 @@ using marker genes will be explored in this tutorial.
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -47,10 +56,10 @@ Start Giotto
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_visual_results/') 
+      results_directory = paste0(getwd(),'/gobject_visual_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -71,7 +80,7 @@ Dataset Download
 
    .. code:: r
 
-      # In the event of authentication issues with wget, 
+      # In the event of authentication issues with wget,
       # add ", extra = '--no-check-certificate' " after the method argument.
       # Get the dataset:
       getSpatialDataset(dataset = 'merfish_preoptic', directory = data_directory, method = 'wget')
@@ -86,7 +95,7 @@ Part 1: Create Giotto Instructions & Prepare Data
       # Optional, but encouraged: Set Giotto instructions
       instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
       # Create file paths to feed data into Giotto Object
@@ -109,8 +118,8 @@ Part 2: Create Giotto Object & Process Data
 
       # Add additional metadata
       metadata = data.table::fread(meta_path)
-      merFISH_gobject = addCellMetadata(merFISH_gobject, 
-                                        new_metadata = metadata$layer_ID, 
+      merFISH_gobject = addCellMetadata(merFISH_gobject,
+                                        new_metadata = metadata$layer_ID,
                                         vector_name = 'layer_ID')
       merFISH_gobject = addCellMetadata(merFISH_gobject,
                                         new_metadata = metadata$orig_cell_types,
@@ -161,12 +170,12 @@ Use the previously generated plots to inform filter decisions.
                                       feat_det_in_min_cells = 0,
                                       min_det_feats_per_cell = 0)
       # Normalize data
-      merFISH_gobject <- normalizeGiotto(gobject = merFISH_gobject, 
-                                         scalefactor = 10000, 
+      merFISH_gobject <- normalizeGiotto(gobject = merFISH_gobject,
+                                         scalefactor = 10000,
                                          verbose = T)
 
       # Add statistics to Giotto Object
-      merFISH_gobject <- addStatistics(gobject = merFISH_gobject, 
+      merFISH_gobject <- addStatistics(gobject = merFISH_gobject,
                                        expression_values = 'normalized')
 
       # Adjust for covariates
@@ -206,9 +215,9 @@ within the dimension reduction.
 
    .. code:: r
 
-      merFISH_gobject <- runPCA(gobject = merFISH_gobject, 
-                                feats_to_use = NULL, 
-                                scale_unit = FALSE, 
+      merFISH_gobject <- runPCA(gobject = merFISH_gobject,
+                                feats_to_use = NULL,
+                                scale_unit = FALSE,
                                 center = TRUE)
 
       # View details about the principal components
@@ -224,12 +233,12 @@ visualized upon it.
 
    .. code:: r
 
-      merFISH_gobject <- runUMAP(merFISH_gobject, 
-                                 dimensions_to_use = 1:8, 
-                                 n_components = 3, 
+      merFISH_gobject <- runUMAP(merFISH_gobject,
+                                 dimensions_to_use = 1:8,
+                                 n_components = 3,
                                  n_threads = 4)
 
-      plotUMAP_3D(gobject = merFISH_gobject, point_size = 1.5) 
+      plotUMAP_3D(gobject = merFISH_gobject, point_size = 1.5)
 
 .. image:: /images/images_pkgdown/MerFISH_hypoth/220915_results/6-UMAP_3D.png
 
@@ -244,18 +253,18 @@ may be visualized on a UMAP.
    .. code:: r
 
       # Create a sNN network (default)
-      merFISH_gobject <- createNearestNetwork(gobject = merFISH_gobject, 
-                                              dimensions_to_use = 1:8, 
+      merFISH_gobject <- createNearestNetwork(gobject = merFISH_gobject,
+                                              dimensions_to_use = 1:8,
                                               k = 15)
       # Leiden cluster
-      merFISH_gobject <- doLeidenCluster(gobject = merFISH_gobject, 
-                                         resolution = 0.2, 
+      merFISH_gobject <- doLeidenCluster(gobject = merFISH_gobject,
+                                         resolution = 0.2,
                                          n_iterations = 200,
                                          name = 'leiden_0.2_200')
       # Plot the clusters upon the UMAP
-      plotUMAP_3D(gobject = merFISH_gobject, 
-                  cell_color = 'leiden_0.2_200', 
-                  point_size = 1.5, 
+      plotUMAP_3D(gobject = merFISH_gobject,
+                  cell_color = 'leiden_0.2_200',
+                  point_size = 1.5,
                   show_center_label = F)
 
 .. image:: /images/images_pkgdown/MerFISH_hypoth/220915_results/7-UMAP_3D.png
@@ -269,11 +278,11 @@ View the clusters in-tissue on each layer.
 
    .. code:: r
 
-       spatPlot2D(gobject = merFISH_gobject, 
-                  point_size = 1.5, 
-                  cell_color = 'leiden_0.2_200', 
-                  group_by = 'layer_ID', 
-                  cow_n_col = 2, 
+       spatPlot2D(gobject = merFISH_gobject,
+                  point_size = 1.5,
+                  cell_color = 'leiden_0.2_200',
+                  group_by = 'layer_ID',
+                  cow_n_col = 2,
                   group_by_subset = c(260, 160, 60, -40, -140, -240))
 
 .. image:: /images/images_pkgdown/MerFISH_hypoth/220915_results/8-spatPlot2D.png
@@ -330,8 +339,8 @@ cell type for each cluster.
    .. code:: r
 
       # Known markers and DEGs
-      selected_genes = c('Myh11', 'Klf4', 'Fn1', 'Cd24a', 'Cyr61', 'Nnat', 'Trh', 
-                         'Selplg', 'Pou3f2', 'Aqp4', 'Traf4', 'Pdgfra', 'Opalin', 
+      selected_genes = c('Myh11', 'Klf4', 'Fn1', 'Cd24a', 'Cyr61', 'Nnat', 'Trh',
+                         'Selplg', 'Pou3f2', 'Aqp4', 'Traf4', 'Pdgfra', 'Opalin',
                          'Mbp', 'Ttyh2', 'Fezf1', 'Cbln1', 'Slc17a6', 'Scg2', 'Isl1', 'Gad1')
 
       gobject_cell_metadata = pDataDT(merFISH_gobject)
@@ -363,13 +372,13 @@ appear in *cell_metadata* within the **giottoObject**.
                                    'OD Mature', 'OD Immature',  'Ambiguous','Ependymal', 'Endothelial', 'Microglia', 'OD Mature')
       names(clusters_cell_types_hypo) = as.character(sort(cluster_order))
 
-      merFISH_gobject = annotateGiotto(gobject = merFISH_gobject, 
+      merFISH_gobject = annotateGiotto(gobject = merFISH_gobject,
                                        annotation_vector = clusters_cell_types_hypo,
-                                       cluster_column = 'leiden_0.2_200', 
+                                       cluster_column = 'leiden_0.2_200',
                                        name = 'cell_types')
 
       ## show heatmap
-      plotMetaDataHeatmap(merFISH_gobject, 
+      plotMetaDataHeatmap(merFISH_gobject,
                           expression_values = 'scaled',
                           metadata_cols = c('cell_types'),
                           selected_feats = selected_genes,
@@ -386,15 +395,15 @@ Part 8: Visualize
 
    .. code:: r
 
-      # Assign colors to each cell type 
+      # Assign colors to each cell type
       mycolorcode = c('red', 'lightblue', 'yellowgreen','purple', 'darkred',
                       'magenta', 'mediumblue', 'yellow', 'gray')
-      names(mycolorcode) = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature', 
+      names(mycolorcode) = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature',
                              'Astrocyte', 'Microglia', 'Ependymal','Endothelial', 'Ambiguous')
 
-      plotUMAP_3D(merFISH_gobject, 
-                  cell_color = 'cell_types', 
-                  point_size = 1.5, 
+      plotUMAP_3D(merFISH_gobject,
+                  cell_color = 'cell_types',
+                  point_size = 1.5,
                   cell_color_code = mycolorcode)
 
 .. image:: /images/images_pkgdown/MerFISH_hypoth/220915_results/13-UMAP_3D.png
@@ -440,7 +449,7 @@ Excitatory Cells Only
 
    .. code:: r
 
-      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0, 
+      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = 'Excitatory', show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))
@@ -467,7 +476,7 @@ Inhibitory Cells Only
 
    .. code:: r
 
-      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0, 
+      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = 'Inhibitory', show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))
@@ -494,7 +503,7 @@ OD and Astrocytes Only
 
    .. code:: r
 
-      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0, 
+      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = c('Astrocyte', 'OD Mature', 'OD Immature'), show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))
@@ -521,7 +530,7 @@ Other Cells Only
 
    .. code:: r
 
-      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0, 
+      spatPlot2D(gobject = merFISH_gobject, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = c('Microglia', 'Ependymal', 'Endothelial'), show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))

@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/bento.html');
+    }
+    </script>
+
 ========================
 Integrate Bento Analysis
 ========================
@@ -169,8 +178,8 @@ The data from the first tissue replicate will be worked with.
       # feat_type
       #            Blank Codeword           Gene Expression
       #                       159                       313
-      #            Negative Control Codeword    Negative Control Probe 
-      #                                   41                        28 
+      #            Negative Control Codeword    Negative Control Probe
+      #                                   41                        28
 
 This dataset has 313 probes that are dedicated for gene expression
 transcript detection.
@@ -193,59 +202,59 @@ gene expression IDs
 
    .. code:: r
 
-      #   [1] "ABCC11"   "ACTA2"    "ACTG2"    "ADAM9"    "ADGRE5"   "ADH1B"   
-      #   [7] "ADIPOQ"   "AGR3"     "AHSP"     "AIF1"     "AKR1C1"   "AKR1C3"  
+      #   [1] "ABCC11"   "ACTA2"    "ACTG2"    "ADAM9"    "ADGRE5"   "ADH1B"
+      #   [7] "ADIPOQ"   "AGR3"     "AHSP"     "AIF1"     "AKR1C1"   "AKR1C3"
       #  [13] "ALDH1A3"  "ANGPT2"   "ANKRD28"  "ANKRD29"  "ANKRD30A" "APOBEC3A"
-      #  [19] "APOBEC3B" "APOC1"    "AQP1"     "AQP3"     "AR"       "AVPR1A"  
-      #  [25] "BACE2"    "BANK1"    "BASP1"    "BTNL9"    "C15orf48" "C1QA"    
-      #  [31] "C1QC"     "C2orf42"  "C5orf46"  "C6orf132" "CAV1"     "CAVIN2"  
-      #  [37] "CCDC6"    "CCDC80"   "CCL20"    "CCL5"     "CCL8"     "CCND1"   
-      #  [43] "CCPG1"    "CCR7"     "CD14"     "CD163"    "CD19"     "CD1C"    
-      #  [49] "CD247"    "CD27"     "CD274"    "CD3D"     "CD3E"     "CD3G"    
-      #  [55] "CD4"      "CD68"     "CD69"     "CD79A"    "CD79B"    "CD80"    
-      #  [61] "CD83"     "CD86"     "CD8A"     "CD8B"     "CD9"      "CD93"    
-      #  [67] "CDC42EP1" "CDH1"     "CEACAM6"  "CEACAM8"  "CENPF"    "CLCA2"   
-      #  [73] "CLDN4"    "CLDN5"    "CLEC14A"  "CLEC9A"   "CLECL1"   "CLIC6"   
-      #  [79] "CPA3"     "CRHBP"    "CRISPLD2" "CSF3"     "CTH"      "CTLA4"   
-      #  [85] "CTSG"     "CTTN"     "CX3CR1"   "CXCL12"   "CXCL16"   "CXCL5"   
-      #  [91] "CXCR4"    "CYP1A1"   "CYTIP"    "DAPK3"    "DERL3"    "DMKN"    
-      #  [97] "DNAAF1"   "DNTTIP1"  "DPT"      "DSC2"     "DSP"      "DST"     
-      # [103] "DUSP2"    "DUSP5"    "EDN1"     "EDNRB"    "EGFL7"    "EGFR"    
-      # [109] "EIF4EBP1" "ELF3"     "ELF5"     "ENAH"     "EPCAM"    "ERBB2"   
-      # [115] "ERN1"     "ESM1"     "ESR1"     "FAM107B"  "FAM49A"   "FASN"    
-      # [121] "FBLIM1"   "FBLN1"    "FCER1A"   "FCER1G"   "FCGR3A"   "FGL2"    
-      # [127] "FLNB"     "FOXA1"    "FOXC2"    "FOXP3"    "FSTL3"    "GATA3"   
-      # [133] "GJB2"     "GLIPR1"   "GNLY"     "GPR183"   "GZMA"     "GZMB"    
-      # [139] "GZMK"     "HAVCR2"   "HDC"      "HMGA1"    "HOOK2"    "HOXD8"   
-      # [145] "HOXD9"    "HPX"      "IGF1"     "IGSF6"    "IL2RA"    "IL2RG"   
-      # [151] "IL3RA"    "IL7R"     "ITGAM"    "ITGAX"    "ITM2C"    "JUP"     
-      # [157] "KARS"     "KDR"      "KIT"      "KLF5"     "KLRB1"    "KLRC1"   
-      # [163] "KLRD1"    "KLRF1"    "KRT14"    "KRT15"    "KRT16"    "KRT23"   
-      # [169] "KRT5"     "KRT6B"    "KRT7"     "KRT8"     "LAG3"     "LARS"    
-      # [175] "LDHB"     "LEP"      "LGALSL"   "LIF"      "LILRA4"   "LPL"     
-      # [181] "LPXN"     "LRRC15"   "LTB"      "LUM"      "LY86"     "LYPD3"   
-      # [187] "LYZ"      "MAP3K8"   "MDM2"     "MEDAG"    "MKI67"    "MLPH"    
-      # [193] "MMP1"     "MMP12"    "MMP2"     "MMRN2"    "MNDA"     "MPO"     
-      # [199] "MRC1"     "MS4A1"    "MUC6"     "MYBPC1"   "MYH11"    "MYLK"    
-      # [205] "MYO5B"    "MZB1"     "NARS"     "NCAM1"    "NDUFA4L2" "NKG7"    
-      # [211] "NOSTRIN"  "NPM3"     "OCIAD2"   "OPRPN"    "OXTR"     "PCLAF"   
-      # [217] "PCOLCE"   "PDCD1"    "PDCD1LG2" "PDE4A"    "PDGFRA"   "PDGFRB"  
-      # [223] "PDK4"     "PECAM1"   "PELI1"    "PGR"      "PIGR"     "PIM1"    
-      # [229] "PLD4"     "POLR2J3"  "POSTN"    "PPARG"    "PRDM1"    "PRF1"    
-      # [235] "PTGDS"    "PTN"      "PTPRC"    "PTRHD1"   "QARS"     "RAB30"   
-      # [241] "RAMP2"    "RAPGEF3"  "REXO4"    "RHOH"     "RORC"     "RTKN2"   
-      # [247] "RUNX1"    "S100A14"  "S100A4"   "S100A8"   "SCD"      "SCGB2A1" 
+      #  [19] "APOBEC3B" "APOC1"    "AQP1"     "AQP3"     "AR"       "AVPR1A"
+      #  [25] "BACE2"    "BANK1"    "BASP1"    "BTNL9"    "C15orf48" "C1QA"
+      #  [31] "C1QC"     "C2orf42"  "C5orf46"  "C6orf132" "CAV1"     "CAVIN2"
+      #  [37] "CCDC6"    "CCDC80"   "CCL20"    "CCL5"     "CCL8"     "CCND1"
+      #  [43] "CCPG1"    "CCR7"     "CD14"     "CD163"    "CD19"     "CD1C"
+      #  [49] "CD247"    "CD27"     "CD274"    "CD3D"     "CD3E"     "CD3G"
+      #  [55] "CD4"      "CD68"     "CD69"     "CD79A"    "CD79B"    "CD80"
+      #  [61] "CD83"     "CD86"     "CD8A"     "CD8B"     "CD9"      "CD93"
+      #  [67] "CDC42EP1" "CDH1"     "CEACAM6"  "CEACAM8"  "CENPF"    "CLCA2"
+      #  [73] "CLDN4"    "CLDN5"    "CLEC14A"  "CLEC9A"   "CLECL1"   "CLIC6"
+      #  [79] "CPA3"     "CRHBP"    "CRISPLD2" "CSF3"     "CTH"      "CTLA4"
+      #  [85] "CTSG"     "CTTN"     "CX3CR1"   "CXCL12"   "CXCL16"   "CXCL5"
+      #  [91] "CXCR4"    "CYP1A1"   "CYTIP"    "DAPK3"    "DERL3"    "DMKN"
+      #  [97] "DNAAF1"   "DNTTIP1"  "DPT"      "DSC2"     "DSP"      "DST"
+      # [103] "DUSP2"    "DUSP5"    "EDN1"     "EDNRB"    "EGFL7"    "EGFR"
+      # [109] "EIF4EBP1" "ELF3"     "ELF5"     "ENAH"     "EPCAM"    "ERBB2"
+      # [115] "ERN1"     "ESM1"     "ESR1"     "FAM107B"  "FAM49A"   "FASN"
+      # [121] "FBLIM1"   "FBLN1"    "FCER1A"   "FCER1G"   "FCGR3A"   "FGL2"
+      # [127] "FLNB"     "FOXA1"    "FOXC2"    "FOXP3"    "FSTL3"    "GATA3"
+      # [133] "GJB2"     "GLIPR1"   "GNLY"     "GPR183"   "GZMA"     "GZMB"
+      # [139] "GZMK"     "HAVCR2"   "HDC"      "HMGA1"    "HOOK2"    "HOXD8"
+      # [145] "HOXD9"    "HPX"      "IGF1"     "IGSF6"    "IL2RA"    "IL2RG"
+      # [151] "IL3RA"    "IL7R"     "ITGAM"    "ITGAX"    "ITM2C"    "JUP"
+      # [157] "KARS"     "KDR"      "KIT"      "KLF5"     "KLRB1"    "KLRC1"
+      # [163] "KLRD1"    "KLRF1"    "KRT14"    "KRT15"    "KRT16"    "KRT23"
+      # [169] "KRT5"     "KRT6B"    "KRT7"     "KRT8"     "LAG3"     "LARS"
+      # [175] "LDHB"     "LEP"      "LGALSL"   "LIF"      "LILRA4"   "LPL"
+      # [181] "LPXN"     "LRRC15"   "LTB"      "LUM"      "LY86"     "LYPD3"
+      # [187] "LYZ"      "MAP3K8"   "MDM2"     "MEDAG"    "MKI67"    "MLPH"
+      # [193] "MMP1"     "MMP12"    "MMP2"     "MMRN2"    "MNDA"     "MPO"
+      # [199] "MRC1"     "MS4A1"    "MUC6"     "MYBPC1"   "MYH11"    "MYLK"
+      # [205] "MYO5B"    "MZB1"     "NARS"     "NCAM1"    "NDUFA4L2" "NKG7"
+      # [211] "NOSTRIN"  "NPM3"     "OCIAD2"   "OPRPN"    "OXTR"     "PCLAF"
+      # [217] "PCOLCE"   "PDCD1"    "PDCD1LG2" "PDE4A"    "PDGFRA"   "PDGFRB"
+      # [223] "PDK4"     "PECAM1"   "PELI1"    "PGR"      "PIGR"     "PIM1"
+      # [229] "PLD4"     "POLR2J3"  "POSTN"    "PPARG"    "PRDM1"    "PRF1"
+      # [235] "PTGDS"    "PTN"      "PTPRC"    "PTRHD1"   "QARS"     "RAB30"
+      # [241] "RAMP2"    "RAPGEF3"  "REXO4"    "RHOH"     "RORC"     "RTKN2"
+      # [247] "RUNX1"    "S100A14"  "S100A4"   "S100A8"   "SCD"      "SCGB2A1"
       # [253] "SDC4"     "SEC11C"   "SEC24A"   "SELL"     "SERHL2"   "SERPINA3"
-      # [259] "SERPINB9" "SFRP1"    "SFRP4"    "SH3YL1"   "SLAMF1"   "SLAMF7"  
-      # [265] "SLC25A37" "SLC4A1"   "SLC5A6"   "SMAP2"    "SMS"      "SNAI1"   
-      # [271] "SOX17"    "SOX18"    "SPIB"     "SQLE"     "SRPK1"    "SSTR2"   
-      # [277] "STC1"     "SVIL"     "TAC1"     "TACSTD2"  "TCEAL7"   "TCF15"   
-      # [283] "TCF4"     "TCF7"     "TCIM"     "TCL1A"    "TENT5C"   "TFAP2A"  
+      # [259] "SERPINB9" "SFRP1"    "SFRP4"    "SH3YL1"   "SLAMF1"   "SLAMF7"
+      # [265] "SLC25A37" "SLC4A1"   "SLC5A6"   "SMAP2"    "SMS"      "SNAI1"
+      # [271] "SOX17"    "SOX18"    "SPIB"     "SQLE"     "SRPK1"    "SSTR2"
+      # [277] "STC1"     "SVIL"     "TAC1"     "TACSTD2"  "TCEAL7"   "TCF15"
+      # [283] "TCF4"     "TCF7"     "TCIM"     "TCL1A"    "TENT5C"   "TFAP2A"
       # [289] "THAP2"    "TIFA"     "TIGIT"    "TIMP4"    "TMEM147"  "TNFRSF17"
-      # [295] "TOMM7"    "TOP2A"    "TPD52"    "TPSAB1"   "TRAC"     "TRAF4"   
-      # [301] "TRAPPC3"  "TRIB1"    "TUBA4A"   "TUBB2B"   "TYROBP"   "UCP1"    
-      # [307] "USP53"    "VOPP1"    "VWF"      "WARS"     "ZEB1"     "ZEB2"    
-      # [313] "ZNF562"  
+      # [295] "TOMM7"    "TOP2A"    "TPD52"    "TPSAB1"   "TRAC"     "TRAF4"
+      # [301] "TRAPPC3"  "TRIB1"    "TUBA4A"   "TUBB2B"   "TYROBP"   "UCP1"
+      # [307] "USP53"    "VOPP1"    "VWF"      "WARS"     "ZEB1"     "ZEB2"
+      # [313] "ZNF562"
 
 .. raw:: html
 
@@ -374,10 +383,10 @@ negative control probe IDs
       # [10] "NegControlProbe_00022" "NegControlProbe_00019" "NegControlProbe_00017"
       # [13] "NegControlProbe_00016" "NegControlProbe_00014" "NegControlProbe_00013"
       # [16] "NegControlProbe_00012" "NegControlProbe_00009" "NegControlProbe_00004"
-      # [19] "NegControlProbe_00003" "NegControlProbe_00002" "antisense_PROKR2"     
-      # [22] "antisense_ULK3"        "antisense_SCRIB"       "antisense_TRMU"       
-      # [25] "antisense_MYLIP"       "antisense_LGI3"        "antisense_BCL2L15"    
-      # [28] "antisense_ADCY4"   
+      # [19] "NegControlProbe_00003" "NegControlProbe_00002" "antisense_PROKR2"
+      # [22] "antisense_ULK3"        "antisense_SCRIB"       "antisense_TRMU"
+      # [25] "antisense_MYLIP"       "antisense_LGI3"        "antisense_BCL2L15"
+      # [28] "antisense_ADCY4"
 
 .. raw:: html
 
@@ -429,14 +438,14 @@ contains a QC Phred score for which this tutorial will set a cutoff at
    .. code:: r
 
       # Transcripts info available:
-      #   "transcript_id" "cell_id" "overlaps_nucleus" "feat_ID" "x" "y" "z_location" "qv" 
+      #   "transcript_id" "cell_id" "overlaps_nucleus" "feat_ID" "x" "y" "z_location" "qv"
       #  with 42638083 unfiltered detections
       #  and 34493510 filtered detections
-      # 
-      # Blank Codeword detections: 10166 
-      # Gene Expression detections: 34442716 
-      # Negative Control Codeword detections: 2215 
-      # Negative Control Probe detections: 38413 
+      #
+      # Blank Codeword detections: 10166
+      # Gene Expression detections: 34442716
+      # Negative Control Codeword detections: 2215
+      # Negative Control Probe detections: 38413
 
 | Giotto loads these filtered subcellular detections in as a
   ``giottoPoints`` object and determines the correct columns by looking
@@ -477,8 +486,8 @@ contains a QC Phred score for which this tutorial will set a cutoff at
    .. code:: r
 
       # feat_ID
-      #   KRT8  MS4A1 
-      # 530168  20875 
+      #   KRT8  MS4A1
+      # 530168  20875
 
 |image1| |image2| |image3| |image4|
 
@@ -722,37 +731,37 @@ Large dataset may cause prolonged processing time for Bento.
       # BLAS/LAPACK: /sc/arion/work/wangw32/conda-env/envs/giotto/lib/libopenblasp-r0.3.24.so
       #
       # locale:
-      #  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-      #  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-      #  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-      #  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-      #  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-      # [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+      #  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+      #  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+      #  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+      #  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+      #  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+      # [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
       #
       # attached base packages:
-      # [1] stats     graphics  grDevices utils     datasets  methods   base     
+      # [1] stats     graphics  grDevices utils     datasets  methods   base
       #
       # other attached packages:
-      # [1] Giotto_4.0.0        GiottoVisuals_0.1.0 GiottoClass_0.1.0  
-      # [4] GiottoUtils_0.1.0  
+      # [1] Giotto_4.0.0        GiottoVisuals_0.1.0 GiottoClass_0.1.0
+      # [4] GiottoUtils_0.1.0
       #
       # loaded via a namespace (and not attached):
-      #  [1] reticulate_1.34.0  tidyselect_1.2.0   terra_1.7-55       xfun_0.41         
-      #  [5] sf_1.0-14          lattice_0.22-5     colorspace_2.1-0   vctrs_0.6.5       
-      #  [9] generics_0.1.3     htmltools_0.5.7    yaml_2.3.7         utf8_1.2.4        
-      # [13] rlang_1.1.2        e1071_1.7-13       R.oo_1.25.0        pillar_1.9.0      
-      # [17] glue_1.6.2         withr_2.5.2        DBI_1.1.3          R.utils_2.12.3    
-      # [21] rappdirs_0.3.3     bit64_4.0.5        lifecycle_1.0.4    stringr_1.5.1     
-      # [25] munsell_0.5.0      gtable_0.3.4       R.methodsS3_1.8.2  codetools_0.2-19  
-      # [29] evaluate_0.23      knitr_1.45         fastmap_1.1.1      class_7.3-22      
+      #  [1] reticulate_1.34.0  tidyselect_1.2.0   terra_1.7-55       xfun_0.41
+      #  [5] sf_1.0-14          lattice_0.22-5     colorspace_2.1-0   vctrs_0.6.5
+      #  [9] generics_0.1.3     htmltools_0.5.7    yaml_2.3.7         utf8_1.2.4
+      # [13] rlang_1.1.2        e1071_1.7-13       R.oo_1.25.0        pillar_1.9.0
+      # [17] glue_1.6.2         withr_2.5.2        DBI_1.1.3          R.utils_2.12.3
+      # [21] rappdirs_0.3.3     bit64_4.0.5        lifecycle_1.0.4    stringr_1.5.1
+      # [25] munsell_0.5.0      gtable_0.3.4       R.methodsS3_1.8.2  codetools_0.2-19
+      # [29] evaluate_0.23      knitr_1.45         fastmap_1.1.1      class_7.3-22
       # [33] parallel_4.2.3     fansi_1.0.5        Rcpp_1.0.11        KernSmooth_2.23-22
-      # [37] scales_1.3.0       backports_1.4.1    classInt_0.4-10    checkmate_2.3.1   
-      # [41] jsonlite_1.8.7     bit_4.0.5          ggplot2_3.4.4      png_0.1-8         
-      # [45] digest_0.6.33      stringi_1.8.2      dplyr_1.1.4        grid_4.2.3        
-      # [49] scattermore_1.2    cli_3.6.1          tools_4.2.3        magrittr_2.0.3    
-      # [53] proxy_0.4-27       tibble_3.2.1       colorRamp2_0.1.0   pkgconfig_2.0.3   
-      # [57] Matrix_1.6-4       data.table_1.14.8  rmarkdown_2.25     rstudioapi_0.15.0 
-      # [61] R6_2.5.1           units_0.8-5        compiler_4.2.3   
+      # [37] scales_1.3.0       backports_1.4.1    classInt_0.4-10    checkmate_2.3.1
+      # [41] jsonlite_1.8.7     bit_4.0.5          ggplot2_3.4.4      png_0.1-8
+      # [45] digest_0.6.33      stringi_1.8.2      dplyr_1.1.4        grid_4.2.3
+      # [49] scattermore_1.2    cli_3.6.1          tools_4.2.3        magrittr_2.0.3
+      # [53] proxy_0.4-27       tibble_3.2.1       colorRamp2_0.1.0   pkgconfig_2.0.3
+      # [57] Matrix_1.6-4       data.table_1.14.8  rmarkdown_2.25     rstudioapi_0.15.0
+      # [61] R6_2.5.1           units_0.8-5        compiler_4.2.3
 
 9.2 Python Session Info
 -----------------------

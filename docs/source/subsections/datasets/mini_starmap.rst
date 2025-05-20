@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
+
 ============
 mini_starmap
 ============
@@ -34,7 +44,7 @@ modules.
       # to automatically save figures in save_dir set save_plot to TRUE
       temp_dir = '~/Temp/'
       myinstructions = createGiottoInstructions(save_dir = temp_dir,
-                                                save_plot = FALSE, 
+                                                save_plot = FALSE,
                                                 show_plot = F)
 
 1. Create a Giotto object
@@ -48,7 +58,7 @@ modules.
 
    .. code:: r
 
-      # giotto object 
+      # giotto object
       expr_path = system.file("extdata", "starmap_expr.txt.gz", package = 'Giotto')
       loc_path = system.file("extdata", "starmap_cell_loc.txt", package = 'Giotto')
       starmap_mini <- createGiottoObject(raw_exprs = expr_path,
@@ -198,15 +208,15 @@ modules.
       clusters_cell_types = c('cell A', 'cell B', 'cell C', 'cell D',
                               'cell E', 'cell F', 'cell G', 'cell H')
       names(clusters_cell_types) = 1:8
-      starmap_mini = annotateGiotto(gobject = starmap_mini, 
-                                    annotation_vector = clusters_cell_types, 
-                                    cluster_column = 'leiden_clus', 
+      starmap_mini = annotateGiotto(gobject = starmap_mini,
+                                    annotation_vector = clusters_cell_types,
+                                    cluster_column = 'leiden_clus',
                                     name = 'cell_types')
       # check new cell metadata
       pDataDT(starmap_mini)
 
       # visualize annotations
-      spatDimPlot(gobject = starmap_mini, cell_color = 'cell_types', 
+      spatDimPlot(gobject = starmap_mini, cell_color = 'cell_types',
                   spat_point_size = 2, dim_point_size = 2)
 
 6. B. cell type gene expression
@@ -261,19 +271,19 @@ This requires the package geometry to be installed.
 
    .. code:: r
 
-      plotStatDelaunayNetwork(gobject = starmap_mini, maximum_distance = 200, 
+      plotStatDelaunayNetwork(gobject = starmap_mini, maximum_distance = 200,
                               method = 'delaunayn_geometry')
       starmap_mini = createSpatialNetwork(gobject = starmap_mini,
-                                          minimum_k = 2, 
-                                          maximum_distance_delaunay = 200, 
-                                          method = 'Delaunay', 
+                                          minimum_k = 2,
+                                          maximum_distance_delaunay = 200,
+                                          method = 'Delaunay',
                                           delaunay_method = 'delaunayn_geometry')
       starmap_mini = createSpatialNetwork(gobject = starmap_mini,
-                                          minimum_k = 2, 
+                                          minimum_k = 2,
                                           method = 'kNN', k = 10)
       showNetworks(starmap_mini)
 
-      # visualize the two different spatial networks  
+      # visualize the two different spatial networks
       spatPlot(gobject = starmap_mini, show_network = T,
                network_color = 'blue', spatial_network_name = 'Delaunay_network',
                point_size = 2.5, cell_color = 'leiden_clus')
@@ -297,21 +307,21 @@ Visualize top 4 genes per method.
    .. code:: r
 
       km_spatialgenes = binSpect(starmap_mini)
-      spatGenePlot(starmap_mini, expression_values = 'scaled', 
+      spatGenePlot(starmap_mini, expression_values = 'scaled',
                    genes = km_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
                    cow_n_col = 2)
 
       rank_spatialgenes = binSpect(starmap_mini, bin_method = 'rank')
-      spatGenePlot(starmap_mini, expression_values = 'scaled', 
+      spatGenePlot(starmap_mini, expression_values = 'scaled',
                    genes = rank_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
                    cow_n_col = 2)
 
       silh_spatialgenes = silhouetteRank(gobject = starmap_mini) # TODO: suppress print output
-      spatGenePlot(starmap_mini, expression_values = 'scaled', 
+      spatGenePlot(starmap_mini, expression_values = 'scaled',
                    genes = silh_spatialgenes[1:4]$genes,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -330,30 +340,30 @@ Visualize top 4 genes per method.
    .. code:: r
 
 
-      # 1. calculate spatial correlation scores 
+      # 1. calculate spatial correlation scores
       ext_spatial_genes = km_spatialgenes[1:20]$feats
       spat_cor_netw_DT = detectSpatialCorGenes(starmap_mini,
-                                               method = 'network', 
+                                               method = 'network',
                                                spatial_network_name = 'Delaunay_network',
                                                subset_genes = ext_spatial_genes)
 
       # 2. cluster correlation scores
-      spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT, 
+      spat_cor_netw_DT = clusterSpatialCorGenes(spat_cor_netw_DT,
                                                 name = 'spat_netw_clus',
                                                 k = 6)
       heatmSpatialCorGenes(starmap_mini,
-                           spatCorObject = spat_cor_netw_DT, 
+                           spatCorObject = spat_cor_netw_DT,
                            use_clus_name = 'spat_netw_clus')
 
-      netw_ranks = rankSpatialCorGroups(starmap_mini, 
-                                        spatCorObject = spat_cor_netw_DT, 
+      netw_ranks = rankSpatialCorGroups(starmap_mini,
+                                        spatCorObject = spat_cor_netw_DT,
                                         use_clus_name = 'spat_netw_clus')
-      top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT, 
+      top_netw_spat_cluster = showSpatialCorGenes(spat_cor_netw_DT,
                                                   use_clus_name = 'spat_netw_clus',
-                                                  selected_clusters = 6, 
+                                                  selected_clusters = 6,
                                                   show_top_genes = 1)
 
-      cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT, 
+      cluster_genes_DT = showSpatialCorGenes(spat_cor_netw_DT,
                                              use_clus_name = 'spat_netw_clus',
                                              show_top_genes = 1)
       cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$feat_ID
@@ -418,17 +428,17 @@ Visualize top 4 genes per method.
                                                  adjust_method = 'fdr',
                                                  number_of_simulations = 1000)
       # barplot
-      cellProximityBarplot(gobject = starmap_mini, 
-                           CPscore = cell_proximities, 
+      cellProximityBarplot(gobject = starmap_mini,
+                           CPscore = cell_proximities,
                            min_orig_ints = 5, min_sim_ints = 5)
       ## heatmap
-      cellProximityHeatmap(gobject = starmap_mini, CPscore = cell_proximities, 
+      cellProximityHeatmap(gobject = starmap_mini, CPscore = cell_proximities,
                            order_cell_types = T, scale = T,
-                           color_breaks = c(-1.5, 0, 1.5), 
+                           color_breaks = c(-1.5, 0, 1.5),
                            color_names = c('blue', 'white', 'red'))
 
       # network
-      cellProximityNetwork(gobject = starmap_mini, CPscore = cell_proximities, 
+      cellProximityNetwork(gobject = starmap_mini, CPscore = cell_proximities,
                            remove_self_edges = T, only_show_enrichment_edges = T)
 
       # network with self-edges

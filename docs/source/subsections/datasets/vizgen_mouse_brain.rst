@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/vizgen_mouse_brain.html');
+    }
+    </script>
+
 ===============================
 Vizgen Mouse Brain Receptor Map
 ===============================
@@ -11,7 +20,7 @@ Please check the version you are using to get the same results.
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -42,7 +51,7 @@ Please check the version you are using to get the same results.
       # 1. set working directory where project outputs will be saved to
       results_folder = '/path/to/save/directory/'
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -451,7 +460,7 @@ based on all available genes.
       vizgen <- runPCA(gobject = vizgen,
                        center = TRUE,
                        scale_unit = TRUE)
-      # visualize variance explained per component 
+      # visualize variance explained per component
       screePlot(vizgen,
                 ncp = 30)
 
@@ -529,7 +538,7 @@ Cell Metadata Preview
           3: 164766962839370328502017156371562646881    0 1080.6533           9
           4: 165747897693809971960756442245389760838    0 1652.0007           9
           5: 260943245639750847364278545493286724628    0 1343.3786           9
-         ---                                                                   
+         ---
       78258: 165273009496786595275688065919008183969 1225 1159.6232           9
       78259: 250474226357477911702383283537224741401 1225 1058.0623           9
       78260:  66106840181174834341279408890707577820 1225 1155.3068           9
@@ -611,11 +620,11 @@ Preview km_spatialgenes
 
       ::
 
-          [1] "Slc47a1"   "Chat"      "Th"        "Insrr"     "Slc17a7"   "Pln"      
-          [7] "Lmod1"     "Blank-119" "Hcar1"     "Glp1r"     "Ptgdr"     "Avpr2"    
-         [13] "Gpr20"     "Myh11"     "Glp2r"     "Npy2r"     "Gpr182"    "Chrm1"    
-         [19] "Adgrd1"    "Mrgprf"    "Trhr"      "Gfap"      "Slc17a8"   "Nmbr"     
-         [25] "Pth2r"     "Rxfp1"     "Musk"      "F2rl1"     "Dgkk"      "Chrm5"    
+          [1] "Slc47a1"   "Chat"      "Th"        "Insrr"     "Slc17a7"   "Pln"
+          [7] "Lmod1"     "Blank-119" "Hcar1"     "Glp1r"     "Ptgdr"     "Avpr2"
+         [13] "Gpr20"     "Myh11"     "Glp2r"     "Npy2r"     "Gpr182"    "Chrm1"
+         [19] "Adgrd1"    "Mrgprf"    "Trhr"      "Gfap"      "Slc17a8"   "Nmbr"
+         [25] "Pth2r"     "Rxfp1"     "Musk"      "F2rl1"     "Dgkk"      "Chrm5"
 
 .. raw:: html
 
@@ -736,7 +745,7 @@ Giotto represents single-molecule transcript level spatial data as
       tx_dt_selected$global_y = -tx_dt_selected$global_y
       # (note the inverted y is the same as when spatial locations were loaded)
 
-      # create Giotto points from transcripts 
+      # create Giotto points from transcripts
       gpoints = createGiottoPoints(x = tx_dt_selected[,.(global_x, global_y, gene, global_z)])
 
       # preview the giottoPoints object (Including specific feats to plot is highly recommended)

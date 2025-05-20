@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
 ===========
 mini_visium
 ===========
@@ -34,7 +43,7 @@ modules.
       # to automatically save figures in save_dir set save_plot to TRUE
       temp_dir = '~/Temp/'
       myinstructions = createGiottoInstructions(save_dir = temp_dir,
-                                                save_plot = FALSE, 
+                                                save_plot = FALSE,
                                                 show_plot = F)
 
 1. A. Create a Giotto object
@@ -48,7 +57,7 @@ modules.
 
    .. code:: r
 
-      # giotto object 
+      # giotto object
       expr_path = system.file("extdata", "visium_DG_expr.txt.gz", package = 'Giotto')
       loc_path = system.file("extdata", "visium_DG_locs.txt", package = 'Giotto')
       mini_visium <- createGiottoObject(raw_exprs = expr_path,
@@ -245,8 +254,8 @@ System. Cell 174, 999-1014.e22 (2018).
       sig_matrix = as.matrix(brain_sc_markers[,-1]); rownames(sig_matrix) = brain_sc_markers$Event
 
       ## enrichment tests
-      mini_visium = runSpatialEnrich(mini_visium, 
-                                     sign_matrix = sig_matrix, 
+      mini_visium = runSpatialEnrich(mini_visium,
+                                     sign_matrix = sig_matrix,
                                      enrich_method = 'PAGE') #default = 'PAGE'
 
       ## heatmap of enrichment versus annotation (e.g. clustering result)
@@ -305,7 +314,7 @@ Create a grid based on defined stepsizes in the x,y(,z) axes.
       mini_visium = createSpatialNetwork(gobject = mini_visium, minimum_k = 2, method = 'kNN', k = 10)
       showNetworks(mini_visium)
 
-      # visualize the two different spatial networks  
+      # visualize the two different spatial networks
       spatPlot(gobject = mini_visium, show_network = T,
                network_color = 'blue', spatial_network_name = 'Delaunay_network',
                point_size = 2.5, cell_color = 'leiden_clus')
@@ -329,21 +338,21 @@ Visualize top 4 genes per method.
    .. code:: r
 
       km_spatialgenes = binSpect(mini_visium)
-      spatGenePlot(mini_visium, expression_values = 'scaled', 
+      spatGenePlot(mini_visium, expression_values = 'scaled',
                    genes = km_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
                    cow_n_col = 2)
 
       rank_spatialgenes = binSpect(mini_visium, bin_method = 'rank')
-      spatGenePlot(mini_visium, expression_values = 'scaled', 
+      spatGenePlot(mini_visium, expression_values = 'scaled',
                    genes = rank_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
                    cow_n_col = 2)
 
       silh_spatialgenes = silhouetteRank(gobject = mini_visium) # TODO: suppress print output
-      spatGenePlot(mini_visium, expression_values = 'scaled', 
+      spatGenePlot(mini_visium, expression_values = 'scaled',
                    genes = silh_spatialgenes[1:4]$genes,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -362,7 +371,7 @@ Visualize top 4 genes per method.
    .. code:: r
 
 
-      # 1. calculate spatial correlation scores 
+      # 1. calculate spatial correlation scores
       ext_spatial_genes = km_spatialgenes[1:100]$feats
       spat_cor_netw_DT = detectSpatialCorGenes(mini_visium,
                                                method = 'network', spatial_network_name = 'Delaunay_network',

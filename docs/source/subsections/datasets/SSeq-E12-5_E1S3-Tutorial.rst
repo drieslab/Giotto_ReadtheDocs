@@ -1,8 +1,16 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
 ====================================
 Stereo-Seq MOSTA E12.5_E1S3 analysis
 ====================================
 
-Last Updated: |today|
 
 Dataset explanation
 ===================
@@ -59,14 +67,14 @@ Start Giotto
    .. code:: r
 
       # download E12.5_E1S3_bin200.h5ad output from SAW pipeline (509.4 MB)
-      # alternatively, specify path to *.h5ad output of SAW pipeline 
+      # alternatively, specify path to *.h5ad output of SAW pipeline
       anndata_download = "https://zenodo.org/record/7323947/files/E12.5_E1S3_bin200.h5ad?download=1"
       anndata_file = "E12.5_E1S3_bin_200.h5ad"
       download.file(anndata_download, anndata_file)
-         
+
       # convert anndata file to giotto object
       stereo_go <- Giotto::anndataToGiotto(anndata_file)
-      
+
       # alternatively, specify path to *.gef output of SAW pipeline (requires Giotto v3.2.0 or higher)
       # gef_file = "E12.5_E1S3.gef"
       # stereo_go <- Giotto::gefToGiotto(gef_file, bin_size = "bin200")
@@ -84,7 +92,7 @@ Start Giotto
                                                feat_det_in_min_cells = 5,
                                                min_det_feats_per_cell = 750)
       # normalize
-      stereo_go <- stereo_go %>% normalizeGiotto(scalefactor = 5000, verbose = T) 
+      stereo_go <- stereo_go %>% normalizeGiotto(scalefactor = 5000, verbose = T)
 
       # add statistics
       stereo_go <- stereo_go %>% addStatistics()
@@ -212,11 +220,11 @@ Start Giotto
 
       # select 100 random genes
       set.seed(144)
-      featureMetadata = fDataDT(stereo_go) 
+      featureMetadata = fDataDT(stereo_go)
       gene_list = featureMetadata[sample(length(featureMetadata$feat_ID), 100), "feat_ID"]
 
       # use binSpect method to find spatial genes
-      spat_genes <- stereo_go %>% binSpect(expression_values = "scaled", 
+      spat_genes <- stereo_go %>% binSpect(expression_values = "scaled",
                                            subset_feats = gene_list$feat_ID,
                                            spatial_network_name = "kNN_network")
 
@@ -249,15 +257,15 @@ Start Giotto
       my_polygon_coordinates <- plotInteractivePolygons(my_spatPlot, height = 500)
 
       # create new giotto object from polygon coordinates
-      lasso_polygons <- createGiottoPolygonsFromDfr(my_polygon_coordinates, 
-                                                    name = "cell", 
+      lasso_polygons <- createGiottoPolygonsFromDfr(my_polygon_coordinates,
+                                                    name = "cell",
                                                     calc_centroids = FALSE)
 
       # store the polygons info within the giotto object
       stereo_go <- addGiottoPolygons(gobject = stereo_go,
                                      gpolygons = list(lasso_polygons))
 
-      # find intersection between original giotto object and polygon subset 
+      # find intersection between original giotto object and polygon subset
       my_intersect <- getCellsFromPolygon(stereo_go)
 
       # create new giotto roi subset
@@ -266,11 +274,11 @@ Start Giotto
       # visualize filtered ROI
       # Your plot below will reflect the polygon(s) you constructed above in my_polygon_coordinates
       spatPlot2D(gobject = stereo_go_subset, cell_color = 'leiden_clus',
-                 color_as_factor = T, show_plot = FALSE, 
+                 color_as_factor = T, show_plot = FALSE,
                  point_size = 2,save_plot = FALSE)
 
 .. image:: /images/images_pkgdown/StereoSeq_E12.5_E1S3_MOSTA/9.png
-   
+
 .. container:: cell
 
    .. code:: r
@@ -290,66 +298,66 @@ Start Giotto
          LAPACK: /share/pkg.7/r/4.2.1/install/lib64/R/lib/libRlapack.so
 
          locale:
-          [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
-          [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-          [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                  LC_ADDRESS=C              
-         [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+          [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8
+          [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+          [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                  LC_ADDRESS=C
+         [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] miniUI_0.1.1.1 shiny_1.7.2    Giotto_2.1    
+         [1] miniUI_0.1.1.1 shiny_1.7.2    Giotto_2.1
 
          loaded via a namespace (and not attached):
-           [1] systemfonts_1.0.4     plyr_1.8.8            igraph_1.3.5         
-           [4] lazyeval_0.2.2        sp_1.5-1              splines_4.2.1        
-           [7] BiocParallel_1.32.1   listenv_0.8.0         scattermore_0.8      
-          [10] ggplot2_3.4.0         digest_0.6.30         htmltools_0.5.3      
-          [13] fansi_1.0.3           memoise_2.0.1         magrittr_2.0.3       
-          [16] ScaledMatrix_1.6.0    tensor_1.5            cluster_2.1.3        
-          [19] ROCR_1.0-11           tzdb_0.3.0            remotes_2.4.2        
-          [22] globals_0.16.1        readr_2.1.2           matrixStats_0.62.0   
-          [25] spatstat.sparse_2.1-1 colorspace_2.1-0      rappdirs_0.3.3       
-          [28] ggrepel_0.9.1         textshaping_0.3.6     xfun_0.34            
-          [31] dplyr_1.0.10          crayon_1.5.2          jsonlite_1.8.3       
-          [34] progressr_0.10.1      spatstat.data_2.2-0   survival_3.3-1       
-          [37] zoo_1.8-10            glue_1.6.2            polyclip_1.10-0      
-          [40] gtable_0.3.1          leiden_0.4.2          DelayedArray_0.24.0  
-          [43] BiocSingular_1.14.0   future.apply_1.10.0   BiocGenerics_0.44.0  
-          [46] abind_1.4-7           scales_1.2.1          DBI_1.1.3            
-          [49] spatstat.random_2.2-0 Rcpp_1.0.9            viridisLite_0.4.1    
-          [52] xtable_1.8-6          rsthemes_0.3.1        reticulate_1.26      
-          [55] spatstat.core_2.4-4   rsvd_1.0.5            bit_4.0.4            
-          [58] stats4_4.2.1          htmlwidgets_1.5.4     httr_1.4.4           
-          [61] FNN_1.1.3.1           RColorBrewer_1.1-3    ellipsis_0.3.2       
-          [64] Seurat_4.1.1          ica_1.0-3             pkgconfig_2.0.3      
-          [67] farver_2.1.1          sass_0.4.2.9000       uwot_0.1.14          
-          [70] deldir_1.0-6          utf8_1.2.2            here_1.0.1           
-          [73] tidyselect_1.2.0      labeling_0.4.2        rlang_1.0.6          
-          [76] reshape2_1.4.4        later_1.3.0           cachem_1.0.6         
-          [79] munsell_0.5.0         tools_4.2.1           cli_3.4.1            
-          [82] dbscan_1.1-11         generics_0.1.3        ggridges_0.5.3       
-          [85] evaluate_0.18         stringr_1.4.1         fastmap_1.1.0        
-          [88] ragg_1.2.2            yaml_2.3.6            goftest_1.2-3        
-          [91] knitr_1.40            bit64_4.0.5           fitdistrplus_1.1-8   
-          [94] purrr_0.3.5           RANN_2.6.1            pbapply_1.5-0        
-          [97] future_1.29.0         nlme_3.1-158          mime_0.12            
-         [100] arrow_9.0.0           hdf5r_1.3.5           compiler_4.2.1       
-         [103] rstudioapi_0.14       plotly_4.10.1         png_0.1-7            
-         [106] spatstat.utils_2.3-1  tibble_3.1.8          bslib_0.4.1          
-         [109] stringi_1.7.8         rgeos_0.5-9           lattice_0.20-45      
-         [112] Matrix_1.5-1          SeuratDisk_0.0.0.9020 vctrs_0.5.0          
-         [115] pillar_1.8.1          lifecycle_1.0.3       jquerylib_0.1.4      
-         [118] spatstat.geom_2.4-0   lmtest_0.9-40         RcppAnnoy_0.0.20     
-         [121] data.table_1.14.4     cowplot_1.1.1         irlba_2.3.5.1        
-         [124] httpuv_1.6.6          patchwork_1.1.0.9000  R6_2.5.1             
-         [127] promises_1.2.0.1      KernSmooth_2.23-20    gridExtra_2.3        
-         [130] IRanges_2.32.0        parallelly_1.32.1     codetools_0.2-18     
-         [133] MASS_7.3-57           gtools_3.9.3          assertthat_0.2.1     
-         [136] rprojroot_2.0.3       withr_2.5.0           SeuratObject_4.1.0   
-         [139] sctransform_0.3.3     S4Vectors_0.36.0      mgcv_1.8-40          
-         [142] parallel_4.2.1        hms_1.1.1             terra_1.5-34         
-         [145] beachmat_2.14.0       grid_4.2.1            rpart_4.1.16         
+           [1] systemfonts_1.0.4     plyr_1.8.8            igraph_1.3.5
+           [4] lazyeval_0.2.2        sp_1.5-1              splines_4.2.1
+           [7] BiocParallel_1.32.1   listenv_0.8.0         scattermore_0.8
+          [10] ggplot2_3.4.0         digest_0.6.30         htmltools_0.5.3
+          [13] fansi_1.0.3           memoise_2.0.1         magrittr_2.0.3
+          [16] ScaledMatrix_1.6.0    tensor_1.5            cluster_2.1.3
+          [19] ROCR_1.0-11           tzdb_0.3.0            remotes_2.4.2
+          [22] globals_0.16.1        readr_2.1.2           matrixStats_0.62.0
+          [25] spatstat.sparse_2.1-1 colorspace_2.1-0      rappdirs_0.3.3
+          [28] ggrepel_0.9.1         textshaping_0.3.6     xfun_0.34
+          [31] dplyr_1.0.10          crayon_1.5.2          jsonlite_1.8.3
+          [34] progressr_0.10.1      spatstat.data_2.2-0   survival_3.3-1
+          [37] zoo_1.8-10            glue_1.6.2            polyclip_1.10-0
+          [40] gtable_0.3.1          leiden_0.4.2          DelayedArray_0.24.0
+          [43] BiocSingular_1.14.0   future.apply_1.10.0   BiocGenerics_0.44.0
+          [46] abind_1.4-7           scales_1.2.1          DBI_1.1.3
+          [49] spatstat.random_2.2-0 Rcpp_1.0.9            viridisLite_0.4.1
+          [52] xtable_1.8-6          rsthemes_0.3.1        reticulate_1.26
+          [55] spatstat.core_2.4-4   rsvd_1.0.5            bit_4.0.4
+          [58] stats4_4.2.1          htmlwidgets_1.5.4     httr_1.4.4
+          [61] FNN_1.1.3.1           RColorBrewer_1.1-3    ellipsis_0.3.2
+          [64] Seurat_4.1.1          ica_1.0-3             pkgconfig_2.0.3
+          [67] farver_2.1.1          sass_0.4.2.9000       uwot_0.1.14
+          [70] deldir_1.0-6          utf8_1.2.2            here_1.0.1
+          [73] tidyselect_1.2.0      labeling_0.4.2        rlang_1.0.6
+          [76] reshape2_1.4.4        later_1.3.0           cachem_1.0.6
+          [79] munsell_0.5.0         tools_4.2.1           cli_3.4.1
+          [82] dbscan_1.1-11         generics_0.1.3        ggridges_0.5.3
+          [85] evaluate_0.18         stringr_1.4.1         fastmap_1.1.0
+          [88] ragg_1.2.2            yaml_2.3.6            goftest_1.2-3
+          [91] knitr_1.40            bit64_4.0.5           fitdistrplus_1.1-8
+          [94] purrr_0.3.5           RANN_2.6.1            pbapply_1.5-0
+          [97] future_1.29.0         nlme_3.1-158          mime_0.12
+         [100] arrow_9.0.0           hdf5r_1.3.5           compiler_4.2.1
+         [103] rstudioapi_0.14       plotly_4.10.1         png_0.1-7
+         [106] spatstat.utils_2.3-1  tibble_3.1.8          bslib_0.4.1
+         [109] stringi_1.7.8         rgeos_0.5-9           lattice_0.20-45
+         [112] Matrix_1.5-1          SeuratDisk_0.0.0.9020 vctrs_0.5.0
+         [115] pillar_1.8.1          lifecycle_1.0.3       jquerylib_0.1.4
+         [118] spatstat.geom_2.4-0   lmtest_0.9-40         RcppAnnoy_0.0.20
+         [121] data.table_1.14.4     cowplot_1.1.1         irlba_2.3.5.1
+         [124] httpuv_1.6.6          patchwork_1.1.0.9000  R6_2.5.1
+         [127] promises_1.2.0.1      KernSmooth_2.23-20    gridExtra_2.3
+         [130] IRanges_2.32.0        parallelly_1.32.1     codetools_0.2-18
+         [133] MASS_7.3-57           gtools_3.9.3          assertthat_0.2.1
+         [136] rprojroot_2.0.3       withr_2.5.0           SeuratObject_4.1.0
+         [139] sctransform_0.3.3     S4Vectors_0.36.0      mgcv_1.8-40
+         [142] parallel_4.2.1        hms_1.1.1             terra_1.5-34
+         [145] beachmat_2.14.0       grid_4.2.1            rpart_4.1.16
          [148] tidyr_1.2.1           rmarkdown_2.18        MatrixGenerics_1.10.0
-         [151] Rtsne_0.16       
+         [151] Rtsne_0.16

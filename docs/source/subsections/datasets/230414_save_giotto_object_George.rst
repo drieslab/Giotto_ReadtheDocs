@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/saving_object.html');
+    }
+    </script>
+
 ====================
 Saving your analysis
 ====================
@@ -59,15 +68,15 @@ Saving your analysis
 
          [1] "/Library/Frameworks/R.framework/Versions/4.2/Resources/library/GiottoData//Mini_datasets/Vizgen/VizgenObject//Features/rna_feature_spatVector.shp"
          [1] "rna"
-         [1] "aggregate_spatInfo_spatVector.shp" "z0_spatInfo_spatVector.shp"       
-         [3] "z1_spatInfo_spatVector.shp"       
+         [1] "aggregate_spatInfo_spatVector.shp" "z0_spatInfo_spatVector.shp"
+         [3] "z1_spatInfo_spatVector.shp"
          [1] "aggregate_spatInfo_spatVectorCentroids.shp"
-         [2] "z0_spatInfo_spatVectorCentroids.shp"       
-         [3] "z1_spatInfo_spatVectorCentroids.shp"       
+         [2] "z0_spatInfo_spatVectorCentroids.shp"
+         [3] "z1_spatInfo_spatVectorCentroids.shp"
          [1] "rna_aggregate_spatInfo_spatVectorOverlaps.shp"
-         [2] "rna_z0_spatInfo_spatVectorOverlaps.shp"       
-         [3] "rna_z1_spatInfo_spatVectorOverlaps.shp"       
-         [1] "poly_ID"      "feat_ID"      "feat_ID_uniq" "stack"       
+         [2] "rna_z0_spatInfo_spatVectorOverlaps.shp"
+         [3] "rna_z1_spatInfo_spatVectorOverlaps.shp"
+         [1] "poly_ID"      "feat_ID"      "feat_ID_uniq" "stack"
          [1] "poly_ID"      "feat_ID"      "feat_ID_uniq"
          [1] "poly_ID"      "feat_ID"      "feat_ID_uniq"
 
@@ -88,12 +97,12 @@ an overview of its contents.
 
       ::
 
-         An object of class giotto 
-         >Active spat_unit:  z0 
-         >Active feat_type:  rna 
+         An object of class giotto
+         >Active spat_unit:  z0
+         >Active feat_type:  rna
          [SUBCELLULAR INFO]
-         polygons      : z0 z1 aggregate 
-         features      : rna 
+         polygons      : z0 z1 aggregate
+         features      : rna
          [AGGREGATE INFO]
          expression -----------------------
            [z0][rna] raw
@@ -193,12 +202,12 @@ params of interest are:
 
       ::
 
-         An object of class giotto 
-         >Active spat_unit:  aggregate 
-         >Active feat_type:  rna 
+         An object of class giotto
+         >Active spat_unit:  aggregate
+         >Active feat_type:  rna
          [SUBCELLULAR INFO]
-         polygons      : z0 z1 aggregate 
-         features      : rna 
+         polygons      : z0 z1 aggregate
+         features      : rna
          [AGGREGATE INFO]
          expression -----------------------
            [z0][rna] raw
@@ -260,22 +269,22 @@ params of interest are:
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2.1    
+         [1] GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.10        RColorBrewer_1.1-3 pillar_1.9.0       compiler_4.2.1    
-          [5] tools_4.2.1        digest_0.6.31      jsonlite_1.8.4     evaluate_0.20     
-          [9] lifecycle_1.0.3    tibble_3.2.1       gtable_0.3.3       lattice_0.20-45   
-         [13] png_0.1-8          pkgconfig_2.0.3    rlang_1.1.0        igraph_1.4.1      
-         [17] Matrix_1.5-3       cli_3.6.1          rstudioapi_0.14    parallel_4.2.1    
-         [21] yaml_2.3.7         xfun_0.38          fastmap_1.1.1      terra_1.7-22      
-         [25] withr_2.5.0        dplyr_1.1.1        knitr_1.42         generics_0.1.3    
-         [29] vctrs_0.6.1        rprojroot_2.0.3    grid_4.2.1         tidyselect_1.2.0  
-         [33] here_1.0.1         reticulate_1.28    glue_1.6.2         data.table_1.14.8 
-         [37] R6_2.5.1           fansi_1.0.4        rmarkdown_2.21     farver_2.1.1      
-         [41] ggplot2_3.4.2      magrittr_2.0.3     scales_1.2.1       codetools_0.2-18  
-         [45] htmltools_0.5.5    colorspace_2.1-0   labeling_0.4.2     utf8_1.2.3        
-         [49] munsell_0.5.0     
+          [1] Rcpp_1.0.10        RColorBrewer_1.1-3 pillar_1.9.0       compiler_4.2.1
+          [5] tools_4.2.1        digest_0.6.31      jsonlite_1.8.4     evaluate_0.20
+          [9] lifecycle_1.0.3    tibble_3.2.1       gtable_0.3.3       lattice_0.20-45
+         [13] png_0.1-8          pkgconfig_2.0.3    rlang_1.1.0        igraph_1.4.1
+         [17] Matrix_1.5-3       cli_3.6.1          rstudioapi_0.14    parallel_4.2.1
+         [21] yaml_2.3.7         xfun_0.38          fastmap_1.1.1      terra_1.7-22
+         [25] withr_2.5.0        dplyr_1.1.1        knitr_1.42         generics_0.1.3
+         [29] vctrs_0.6.1        rprojroot_2.0.3    grid_4.2.1         tidyselect_1.2.0
+         [33] here_1.0.1         reticulate_1.28    glue_1.6.2         data.table_1.14.8
+         [37] R6_2.5.1           fansi_1.0.4        rmarkdown_2.21     farver_2.1.1
+         [41] ggplot2_3.4.2      magrittr_2.0.3     scales_1.2.1       codetools_0.2-18
+         [45] htmltools_0.5.5    colorspace_2.1-0   labeling_0.4.2     utf8_1.2.3
+         [49] munsell_0.5.0

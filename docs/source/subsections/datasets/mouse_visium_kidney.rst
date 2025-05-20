@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visium_mouse_kidney.html');
+    }
+    </script>
+
 ==========================
 Mouse Visium Kidney
 ==========================
@@ -14,7 +23,7 @@ Mouse Visium Kidney
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -41,7 +50,7 @@ Mouse Visium Kidney
       # 1. set working directory
       results_folder = '/path/to/directory/'
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -439,7 +448,7 @@ Spatial co-expression patterns
       ## spatially correlated genes ##
       ext_spatial_genes = kmtest[1:500]$feats
 
-      # 1. calculate gene spatial correlation and single-cell correlation 
+      # 1. calculate gene spatial correlation and single-cell correlation
       # create spatial correlation object
       spat_cor_netw_DT = detectSpatialCorFeats(visium_kidney,
                                                method = 'network',

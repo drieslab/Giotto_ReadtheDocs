@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/starmap_mouse_cortex.html');
+    }
+    </script>
+
+
 ===================================
 3D Starmap with 3D slicing examples
 ===================================
@@ -86,7 +96,7 @@ Minimum requirements:
 
          └──Spatial unit "cell"
             └──S4 spatLocsObj "raw" coordinates:   (4000 rows)
-                  An object of class spatLocsObj 
+                  An object of class spatLocsObj
                   provenance: cell
                       ------------------------
                      sdimx sdimy sdimz    cell_ID
@@ -94,14 +104,14 @@ Minimum requirements:
                   2:  1389  1215    54 cell_17523
                   3:  1051   360    89 cell_30080
                   4:   592   777    10   cell_941
-                  
+
                   ranges:
                        sdimx sdimy
                   [1,]     3     1
                   [2,]  1774  1536
-                  
-                  
-               
+
+
+
 
    .. code:: r
 
@@ -114,31 +124,31 @@ Minimum requirements:
          └──Spatial unit "cell"
             └──Feature type "rna"
                └──Expression data "raw" values:
-                     An object of class exprObj 
-                     for spatial unit: "cell" and feature type: "rna" 
-                       Provenance:  cell 
-                     
+                     An object of class exprObj
+                     for spatial unit: "cell" and feature type: "rna"
+                       Provenance:  cell
+
                      contains:
                      28 x 4000 sparse Matrix of class "dgCMatrix"
-                                                                                                        
+
                      Slc17a7 34999 12200 12494 82087 22633 55543 50891 5124 37814 9275 25346 51716 25506
                      Mgp       768  1842   366  2320   503  1311  2329  227   789  448   710  1609   510
                      Gad1      926  3036   215   627   341  1651 12148  190   333 2947  1520  8017   209
-                                   
+
                      Slc17a7 ......
                      Mgp     ......
                      Gad1    ......
-                     
-                      ........suppressing 3987 columns and 22 rows 
-                                                                                                          
+
+                      ........suppressing 3987 columns and 22 rows
+
                      Ctss  6148 7050 1405 15017  698  1723  7807  1833 15769 6041 11558 26615  6655 ......
                      Mbp  18242 8368  640 50069 4783 12600 15076 25495 14903 6912  8176 38820 28268 ......
                      Flt1  9406  551  504  9169  329  1822  4125 13984  1773 8490  2127  5448  5300 ......
-                     
+
                       First four colnames:
                       cell_2944 cell_17523 cell_30080
-                      cell_941 
-                  
+                      cell_941
+
 
 4 Processing
 ============
@@ -224,7 +234,7 @@ Minimum requirements:
             3:  1051   360    89 cell_30080
             4:   592   777    10   cell_941
             5:  1058   223    84 cell_28514
-           ---                             
+           ---
          3901:   348  1383    78 cell_26011
          3902:   674  1080    89 cell_31539
          3903:   919   532    22  cell_4185
@@ -240,16 +250,16 @@ Minimum requirements:
 
 
 
-         Feature type:  rna 
-         Number of cells removed:  95  out of  4000 
-         Number of feats removed:  0  out of  28 
+         Feature type:  rna
+         Number of cells removed:  95  out of  4000
+         Number of feats removed:  0  out of  28
 
    .. code:: r
 
       mini_starmap <- normalizeGiotto(gobject = mini_starmap,
                                       scalefactor = 6000, verbose = T)
 
-      mini_starmap <- addStatistics(gobject = mini_starmap) 
+      mini_starmap <- addStatistics(gobject = mini_starmap)
 
 5 Dimension Reduction
 =====================
@@ -269,7 +279,7 @@ perform PCA
 
       mini_starmap <- runPCA(gobject = mini_starmap, method = 'factominer')
 
-      screePlot(mini_starmap, ncp = 30, 
+      screePlot(mini_starmap, ncp = 30,
                 save_param = list(save_name = '3_a_screeplot'))
 
    .. container:: cell-output-display
@@ -319,7 +329,7 @@ perform PCA
 
       ## sNN network (default)
       mini_starmap <- createNearestNetwork(gobject = mini_starmap, dimensions_to_use = 1:8, k = 25)
-      
+
       ## Leiden clustering
       mini_starmap <- doLeidenCluster(gobject = mini_starmap, resolution = 0.5, n_iterations = 1000)
 
@@ -374,7 +384,7 @@ Create a grid based on defined stepsizes in the x,y(,z) axes.
                      2:    gr_z_1
                      3:    gr_z_1
                      4:    gr_z_1
-                  
+
 
    .. code:: r
 
@@ -401,7 +411,7 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
 
    .. code:: r
 
-      plotStatDelaunayNetwork(gobject = mini_starmap, maximum_distance = 200, 
+      plotStatDelaunayNetwork(gobject = mini_starmap, maximum_distance = 200,
                               method = 'delaunayn_geometry',
                               save_param = list(save_name = '6_a_delnetwork'))
 
@@ -411,11 +421,11 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
 
    .. code:: r
 
-      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2, 
-                                          maximum_distance_delaunay = 200, 
-                                          method = 'Delaunay', 
+      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2,
+                                          maximum_distance_delaunay = 200,
+                                          method = 'Delaunay',
                                           delaunay_method = 'delaunayn_geometry')
-      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2, 
+      mini_starmap = createSpatialNetwork(gobject = mini_starmap, minimum_k = 2,
                                           method = 'kNN', k = 10)
       showGiottoSpatNetworks(mini_starmap)
 
@@ -435,7 +445,7 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
             │     2:      1123        64 43.23193 0.02313105
             │     3:      1119        29 53.11309 0.01882775
             │     4:      1204        20 53.79591 0.01858877
-            │  
+            │
             └──S4 spatialNetworkObj "kNN_network"   (23135 rows)
                            from         to sdimx_begin sdimy_begin sdimz_begin sdimx_end
                   1: cell_10002  cell_9593        1007        1155          38       982
@@ -447,11 +457,11 @@ Only the method = delaunayn_geometry can make 3D Delaunay networks. This require
                   2:      1123        64 43.23193 0.02260810
                   3:      1119        29 53.11309 0.01847982
                   4:      1204        20 53.79591 0.01824954
-               
+
 
    .. code:: r
 
-      # visualize the two different spatial networks  
+      # visualize the two different spatial networks
       spatPlot(gobject = mini_starmap, show_network = T,
                network_color = 'blue', spatial_network_name = 'Delaunay_network',
                point_size = 2.5, cell_color = 'leiden_clus',
@@ -489,7 +499,7 @@ Visualize top 4 genes per method.
 
       km_spatialgenes = binSpect(mini_starmap)
 
-      spatFeatPlot2D(mini_starmap, expression_values = 'scaled', 
+      spatFeatPlot2D(mini_starmap, expression_values = 'scaled',
                    feats = km_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -504,7 +514,7 @@ Visualize top 4 genes per method.
 
       rank_spatialgenes = binSpect(mini_starmap, bin_method = 'rank')
 
-      spatFeatPlot2D(mini_starmap, expression_values = 'scaled', 
+      spatFeatPlot2D(mini_starmap, expression_values = 'scaled',
                    feats = rank_spatialgenes[1:4]$feats,
                    point_shape = 'border', point_border_stroke = 0.1,
                    show_network = F, network_color = 'lightgrey', point_size = 2.5,
@@ -528,17 +538,17 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 
    .. code:: r
 
-      # 1. calculate spatial correlation scores 
+      # 1. calculate spatial correlation scores
       ext_spatial_genes = km_spatialgenes[1:20]$feats
       spat_cor_netw_DT = detectSpatialCorFeats(mini_starmap,
-                                               method = 'network', 
+                                               method = 'network',
                                                spatial_network_name = 'Delaunay_network',
                                                subset_feats = ext_spatial_genes)
 
       # 2. cluster correlation scores
-      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
+      spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT,
                                                 name = 'spat_netw_clus', k = 6)
-      heatmSpatialCorFeats(mini_starmap, spatCorObject = spat_cor_netw_DT, 
+      heatmSpatialCorFeats(mini_starmap, spatCorObject = spat_cor_netw_DT,
                            use_clus_name = 'spat_netw_clus',
                            save_param = list(save_name = '8_a_heatmspatcor', units = 'in'))
 
@@ -548,8 +558,8 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 
    .. code:: r
 
-      netw_ranks = rankSpatialCorGroups(mini_starmap, 
-                                        spatCorObject = spat_cor_netw_DT, 
+      netw_ranks = rankSpatialCorGroups(mini_starmap,
+                                        spatCorObject = spat_cor_netw_DT,
                                         use_clus_name = 'spat_netw_clus',
                                         save_param = list(save_name = '8_b_rankcorgroup'))
 
@@ -559,12 +569,12 @@ Identify robust spatial co-expression patterns using the spatial network or grid
 
    .. code:: r
 
-      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT, 
+      top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT,
                                                   use_clus_name = 'spat_netw_clus',
-                                                  selected_clusters = 6, 
+                                                  selected_clusters = 6,
                                                   show_top_feats = 1)
 
-      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
+      cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT,
                                              use_clus_name = 'spat_netw_clus',
                                              show_top_feats = 1)
       cluster_genes = cluster_genes_DT$clus; names(cluster_genes) = cluster_genes_DT$feat_ID
@@ -678,44 +688,44 @@ Create 2D cross sections from 3D object
          [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2.1    
+         [1] GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-           [1] matrixStats_0.63.0    doParallel_1.0.17     RColorBrewer_1.1-3   
-           [4] httr_1.4.5            rprojroot_2.0.3       tools_4.2.3          
-           [7] utf8_1.2.3            R6_2.5.1              irlba_2.3.5.1        
-          [10] DT_0.27               uwot_0.1.14           BiocGenerics_0.44.0  
-          [13] lazyeval_0.2.2        colorspace_2.1-0      GetoptLong_1.0.5     
-          [16] withr_2.5.0           tidyselect_1.2.0      emmeans_1.8.5        
-          [19] compiler_4.2.3        textshaping_0.3.6     cli_3.6.1            
-          [22] flashClust_1.01-2     plotly_4.10.1         labeling_0.4.2       
-          [25] scales_1.2.1          mvtnorm_1.1-3         multcompView_0.1-8   
-          [28] systemfonts_1.0.4     digest_0.6.31         dbscan_1.1-11        
-          [31] rmarkdown_2.21        R.utils_2.12.2        pkgconfig_2.0.3      
-          [34] htmltools_0.5.5       fastmap_1.1.1         FactoMineR_2.8       
-          [37] htmlwidgets_1.6.2     rlang_1.1.0           GlobalOptions_0.1.2  
-          [40] rstudioapi_0.14       FNN_1.1.3.2           shape_1.4.6          
-          [43] farver_2.1.1          generics_0.1.3        jsonlite_1.8.4       
-          [46] crosstalk_1.2.0       dplyr_1.1.1           R.oo_1.25.0          
-          [49] magrittr_2.0.3        leaps_3.1             Matrix_1.5-4         
-          [52] Rcpp_1.0.10           munsell_0.5.0         S4Vectors_0.36.2     
-          [55] fansi_1.0.4           abind_1.4-5           reticulate_1.28      
-          [58] lifecycle_1.0.3       R.methodsS3_1.8.2     terra_1.7-23         
-          [61] scatterplot3d_0.3-43  yaml_2.3.7            MASS_7.3-58.3        
-          [64] Rtsne_0.16            grid_4.2.3            parallel_4.2.3       
-          [67] ggrepel_0.9.3         crayon_1.5.2          lattice_0.20-45      
-          [70] cowplot_1.1.1         circlize_0.4.15       magick_2.7.4         
-          [73] knitr_1.42            ComplexHeatmap_2.14.0 pillar_1.9.0         
-          [76] igraph_1.4.2          rjson_0.2.21          estimability_1.4.1   
-          [79] codetools_0.2-19      stats4_4.2.3          magic_1.6-1          
-          [82] glue_1.6.2            evaluate_0.20         data.table_1.14.8    
-          [85] png_0.1-8             vctrs_0.6.1           foreach_1.5.2        
-          [88] gtable_0.3.3          purrr_1.0.1           tidyr_1.3.0          
-          [91] clue_0.3-64           ggplot2_3.4.2         xfun_0.38            
-          [94] xtable_1.8-4          viridisLite_0.4.1     ragg_1.2.5           
-          [97] geometry_0.4.7        tibble_3.2.1          iterators_1.0.14     
-         [100] IRanges_2.32.0        cluster_2.1.4         ellipsis_0.3.2       
-         [103] here_1.0.1           
+           [1] matrixStats_0.63.0    doParallel_1.0.17     RColorBrewer_1.1-3
+           [4] httr_1.4.5            rprojroot_2.0.3       tools_4.2.3
+           [7] utf8_1.2.3            R6_2.5.1              irlba_2.3.5.1
+          [10] DT_0.27               uwot_0.1.14           BiocGenerics_0.44.0
+          [13] lazyeval_0.2.2        colorspace_2.1-0      GetoptLong_1.0.5
+          [16] withr_2.5.0           tidyselect_1.2.0      emmeans_1.8.5
+          [19] compiler_4.2.3        textshaping_0.3.6     cli_3.6.1
+          [22] flashClust_1.01-2     plotly_4.10.1         labeling_0.4.2
+          [25] scales_1.2.1          mvtnorm_1.1-3         multcompView_0.1-8
+          [28] systemfonts_1.0.4     digest_0.6.31         dbscan_1.1-11
+          [31] rmarkdown_2.21        R.utils_2.12.2        pkgconfig_2.0.3
+          [34] htmltools_0.5.5       fastmap_1.1.1         FactoMineR_2.8
+          [37] htmlwidgets_1.6.2     rlang_1.1.0           GlobalOptions_0.1.2
+          [40] rstudioapi_0.14       FNN_1.1.3.2           shape_1.4.6
+          [43] farver_2.1.1          generics_0.1.3        jsonlite_1.8.4
+          [46] crosstalk_1.2.0       dplyr_1.1.1           R.oo_1.25.0
+          [49] magrittr_2.0.3        leaps_3.1             Matrix_1.5-4
+          [52] Rcpp_1.0.10           munsell_0.5.0         S4Vectors_0.36.2
+          [55] fansi_1.0.4           abind_1.4-5           reticulate_1.28
+          [58] lifecycle_1.0.3       R.methodsS3_1.8.2     terra_1.7-23
+          [61] scatterplot3d_0.3-43  yaml_2.3.7            MASS_7.3-58.3
+          [64] Rtsne_0.16            grid_4.2.3            parallel_4.2.3
+          [67] ggrepel_0.9.3         crayon_1.5.2          lattice_0.20-45
+          [70] cowplot_1.1.1         circlize_0.4.15       magick_2.7.4
+          [73] knitr_1.42            ComplexHeatmap_2.14.0 pillar_1.9.0
+          [76] igraph_1.4.2          rjson_0.2.21          estimability_1.4.1
+          [79] codetools_0.2-19      stats4_4.2.3          magic_1.6-1
+          [82] glue_1.6.2            evaluate_0.20         data.table_1.14.8
+          [85] png_0.1-8             vctrs_0.6.1           foreach_1.5.2
+          [88] gtable_0.3.3          purrr_1.0.1           tidyr_1.3.0
+          [91] clue_0.3-64           ggplot2_3.4.2         xfun_0.38
+          [94] xtable_1.8-4          viridisLite_0.4.1     ragg_1.2.5
+          [97] geometry_0.4.7        tibble_3.2.1          iterators_1.0.14
+         [100] IRanges_2.32.0        cluster_2.1.4         ellipsis_0.3.2
+         [103] here_1.0.1

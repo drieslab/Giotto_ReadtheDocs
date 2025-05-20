@@ -1,3 +1,13 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/coding_style.html');
+    }
+    </script>
+
+
 ==========
 contribute
 ==========
@@ -174,10 +184,10 @@ algorithm.
       import networkx as nx
 
       def python_leiden(df, partition_type, initial_membership=None, weights=None, n_iterations=2, seed=None, resolution_parameter = 1):
-          
+
           # create networkx object
-          Gx = nx.from_pandas_edgelist(df = df, source = 'from', target =  'to', edge_attr = 'weight')  
-          
+          Gx = nx.from_pandas_edgelist(df = df, source = 'from', target =  'to', edge_attr = 'weight')
+
           # get weight attribute
           myweights = nx.get_edge_attributes(Gx, 'weight')
 
@@ -236,14 +246,14 @@ comments within the code.
         # data.table variables; this is necessary when setting new variables within a data.table
         genes =  adjusted_pvalue = combined_pvalue = NULL
 
-        # test if SPARK is installed 
+        # test if SPARK is installed
         # if false, it will suggest how to install SPARK
         package_check(pkg_name = 'SPARK',
                       repository = c('github'),
                       github_repo = 'xzhoulab/SPARK')
 
 
-        # print message with information and encouraging users to cite the authors their work  
+        # print message with information and encouraging users to cite the authors their work
         message("using 'SPARK' for spatial gene/pattern detection. If used in published research, please cite:
         Sun, Shiquan, Jiaqiang Zhu, and Xiang Zhou. “Statistical Analysis of Spatial Expression Pattern for Spatially Resolved Transcriptomic Studies.”
                 BioRxiv, October 21, 2019, 810903. https://doi.org/10.1101/810903.")
@@ -257,9 +267,9 @@ comments within the code.
         locs = as.data.frame(gobject@spatial_locs)
         rownames(locs) = colnames(expr)
 
-        
-        # Here we implemented spark according to their github example code: 
-        
+
+        # Here we implemented spark according to their github example code:
+
         # create SPARK object for analysis and filter out lowly expressed genes
         sobject = SPARK::CreateSPARKObject(counts = expr,
                                            location = locs[,1:2],
@@ -269,7 +279,7 @@ comments within the code.
         # total counts for each cell
         sobject@lib_size = apply(sobject@counts, 2, sum)
 
-        # extract covariates to adjust for from the cell metadata 
+        # extract covariates to adjust for from the cell metadata
         if(!is.null(covariates)) {
 
           # first filter giotto object based on spark object

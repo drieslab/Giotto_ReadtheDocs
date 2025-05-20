@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visualizations.html');
+    }
+    </script>
+
 ==============
 Visualizations
 ==============
@@ -59,10 +68,10 @@ locally.
       # alternatively, "/path/to/where/the/data/lives/"
 
       # Specify path to which results may be saved
-      results_directory = paste0(getwd(),'/gobject_visual_results/') 
+      results_directory = paste0(getwd(),'/gobject_visual_results/')
       # alternatively, "/path/to/store/the/results/"
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -74,14 +83,14 @@ locally.
 
       ### Giotto instructions and data preparation
       # Optional: Set Giotto instructions
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = TRUE,
-                                        save_dir = results_directory, 
+                                        save_dir = results_directory,
                                         python_path = my_python_path)
 
    .. code:: r
 
-      # Create file paths to feed data into Giotto object 
+      # Create file paths to feed data into Giotto object
       expr_path = paste0(data_directory, "merFISH_3D_data_expression.txt.gz")
       loc_path = paste0(data_directory, "merFISH_3D_data_cell_locations.txt")
       meta_path = paste0(data_directory, "merFISH_3D_metadata.txt")
@@ -97,25 +106,25 @@ locally.
       # Add additional metadata
       metadata = data.table::fread(meta_path)
 
-      testobj = addCellMetadata(testobj, 
-                                new_metadata = metadata$layer_ID, 
+      testobj = addCellMetadata(testobj,
+                                new_metadata = metadata$layer_ID,
                                 vector_name = 'layer_ID')
 
-      testobj = addCellMetadata(testobj, 
-                                new_metadata = metadata$orig_cell_types, 
+      testobj = addCellMetadata(testobj,
+                                new_metadata = metadata$orig_cell_types,
                                 vector_name = 'orig_cell_types')
 
       ### Process the Giotto Object
-      # Note that for the purposes of this tutorial, the entire dataset will be visualized. 
+      # Note that for the purposes of this tutorial, the entire dataset will be visualized.
       # Thus, filter parameters are set to 0, so as to not remove any cells.
       # Note that since adjustment is not required, adjust_params is set to NULL.
 
       testobj <- processGiotto(testobj,
                                filter_params = list(expression_threshold = 0,
-                                                    feat_det_in_min_cells = 0, 
+                                                    feat_det_in_min_cells = 0,
                                                     min_det_feats_per_cell = 0),
-                               norm_params = list(norm_methods = 'standard', 
-                                                  scale_feats = TRUE, 
+                               norm_params = list(norm_methods = 'standard',
+                                                  scale_feats = TRUE,
                                                   scalefactor = 1000),
                                stat_params = list(expression_values = 'normalized'),
                                adjust_params = NULL)
@@ -147,9 +156,9 @@ In 3D:
       spatPlot3D(gobject = testobj, point_size = 1, axis_scale = 'real')
 
    .. container:: cell-output-display
-      
+
       .. image:: visualizations_04142023_files/figure-rst/newplot.png
-      
+
 
 5 Create and Visualize Clusters
 ===============================
@@ -172,7 +181,7 @@ UMAP may also be plotted in 2D and 3D.
       # Run UMAP
       testobj <- runUMAP(gobject = testobj, dimensions_to_use = 1:8, n_components = 3, n_threads = 4)
       # Plot UMAP in 2D
-      plotUMAP_2D(gobject = testobj, point_size = 1.5) 
+      plotUMAP_2D(gobject = testobj, point_size = 1.5)
 
    .. container:: cell-output-display
 
@@ -183,12 +192,12 @@ UMAP may also be plotted in 2D and 3D.
    .. code:: r
 
       # Plot UMAP 3D
-      plotUMAP_3D(gobject = testobj, point_size = 1.5) 
+      plotUMAP_3D(gobject = testobj, point_size = 1.5)
 
    .. container:: cell-output-display
 
       .. image:: visualizations_04142023_files/figure-rst/newplot1.png
-         
+
 
 Now, the data may be clustered. Create a nearest network, and then
 create Leiden clusters. The clusters may be visualized in 2D or 3D, as
@@ -204,9 +213,9 @@ well as upon the UMAP and within the tissue.
    .. code:: r
 
       # Preform Leiden clustering
-      testobj <- doLeidenCluster(gobject = testobj, 
-                                 resolution = 0.25, 
-                                 n_iterations = 200, 
+      testobj <- doLeidenCluster(gobject = testobj,
+                                 resolution = 0.25,
+                                 n_iterations = 200,
                                  name = 'leiden_0.25.200')
 
       # Plot the clusters upon the UMAP
@@ -225,11 +234,11 @@ grouping by layer_ID.
 
    .. code:: r
 
-      spatPlot2D(gobject = testobj, 
-                 point_size = 1.0, 
-                 cell_color = 'leiden_0.25.200', 
-                 group_by = 'layer_ID', 
-                 cow_n_col = 2, 
+      spatPlot2D(gobject = testobj,
+                 point_size = 1.0,
+                 cell_color = 'leiden_0.25.200',
+                 group_by = 'layer_ID',
+                 cow_n_col = 2,
                  group_by_subset = c(260, 160, 60, -40, -140, -240))
 
    .. container:: cell-output-display
@@ -245,10 +254,10 @@ features detected per cell.
    .. code:: r
 
       # Plot cell_color as a representation of the number of features/ cell ("nr_feats")
-      spatPlot2D(gobject = testobj, point_size = 1.5, 
+      spatPlot2D(gobject = testobj, point_size = 1.5,
                  cell_color = 'nr_feats', color_as_factor = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(260, 160, 60, -40, -140, -240))
-   
+
    .. container:: cell-output-display
 
       .. image:: visualizations_04142023_files/figure-rst/unnamed-chunk-9-1.png
@@ -351,9 +360,9 @@ assigned to a cell type, as will be done here.
 
    .. code:: r
 
-      # Plot the UMAP, annotated by cell type. 
-      plotUMAP_3D(testobj, 
-                  cell_color = 'orig_cell_types', 
+      # Plot the UMAP, annotated by cell type.
+      plotUMAP_3D(testobj,
+                  cell_color = 'orig_cell_types',
                   save_param = list(save_name = 'Original_Cell_Types_UMAP_3D'))
 
    .. container:: cell-output-display
@@ -374,29 +383,29 @@ Specifically, the UMAP plots saved as *“leiden_0.25.200_UMAP3D”* and
 
       # Note that cell types were condensed (i.e. "Endothelial 1", "Endothelial 2", ... were
       # combined into one cell type "Endothelial")
-      manual_cluster = c('Inhibitory', 'Excitatory', 'Inhibitory', 'Astrocyte', 'OD Mature', 
+      manual_cluster = c('Inhibitory', 'Excitatory', 'Inhibitory', 'Astrocyte', 'OD Mature',
                          'Endothelial', 'Microglia', 'OD Mature', 'OD Immature', 'Astrocyte',
                          'Ependymal', 'Pericytes', 'Ambiguous', 'Microglia', 'Inhibitory', 'Inhibitory')
 
       names(manual_cluster) = as.character(sort(cluster_range))
 
-      testobj = annotateGiotto(gobject = testobj, 
+      testobj = annotateGiotto(gobject = testobj,
                                annotation_vector = manual_cluster,
-                               cluster_column = 'leiden_0.25.200', 
+                               cluster_column = 'leiden_0.25.200',
                                name = 'cell_types')
 
-      cell_types_in_plot = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature', 
+      cell_types_in_plot = c('Inhibitory', 'Excitatory','OD Mature', 'OD Immature',
                              'Astrocyte', 'Microglia', 'Ependymal','Endothelial',
                              'Pericytes', 'Ambiguous')
 
-      # This Giotto function will provide a distinct color palette. Colors 
-      # may change each time the function is run. 
+      # This Giotto function will provide a distinct color palette. Colors
+      # may change each time the function is run.
       mycolorcode = getDistinctColors(length(cell_types_in_plot))
 
       names(mycolorcode) = cell_types_in_plot
 
       # Visualize the assigned types in the UMAP
-      plotUMAP_3D(testobj, cell_color = 'cell_types', point_size = 1.5, 
+      plotUMAP_3D(testobj, cell_color = 'cell_types', point_size = 1.5,
                   cell_color_code = mycolorcode,
                   save_param = list(save_name = 'manual_cluster_typing_UMAP_3D'))
 
@@ -414,8 +423,8 @@ the *cell_color* parameter as the name of the annotation, ‘cell_types’.
    .. code:: r
 
        spatPlot2D(gobject = testobj, point_size = 1.0,
-                 cell_color = 'cell_types', group_by = 'layer_ID', 
-                 cell_color_code = mycolorcode, cow_n_col = 2, 
+                 cell_color = 'cell_types', group_by = 'layer_ID',
+                 cell_color_code = mycolorcode, cow_n_col = 2,
                  group_by_subset = c(seq(260, -290, -100)))
 
    .. container:: cell-output-display
@@ -442,7 +451,7 @@ The plots may be subset by cell type in 2D and 3D.
 
    .. code:: r
 
-      spatPlot2D(gobject = testobj, point_size = 1.0, 
+      spatPlot2D(gobject = testobj, point_size = 1.0,
                  cell_color = 'cell_types', cell_color_code = mycolorcode,
                  select_cell_groups = c('Microglia', 'Ependymal', 'Endothelial'), show_other_cells = F,
                  group_by = 'layer_ID', cow_n_col = 2, group_by_subset = c(seq(260, -290, -100)))
@@ -485,10 +494,10 @@ k-nearest networks, will be shown.
       ### Spatial Networks
       # The following function provides insight to the Delaunay Network. It will be shown in-console
       # if this command is run as written.
-      plotStatDelaunayNetwork(gobject= testobj, 
-                              method = 'delaunayn_geometry', 
-                              maximum_distance = 50, 
-                              show_plot = T, 
+      plotStatDelaunayNetwork(gobject= testobj,
+                              method = 'delaunayn_geometry',
+                              maximum_distance = 50,
+                              show_plot = T,
                               save_plot = F)
 
    .. container:: cell-output-display
@@ -499,27 +508,27 @@ k-nearest networks, will be shown.
    .. code:: r
 
       # Create Spatial Network using Delaunay geometry
-      testobj = createSpatialNetwork(gobject = testobj, 
-                                     delaunay_method = 'delaunayn_geometry', 
-                                     minimum_k = 2, 
+      testobj = createSpatialNetwork(gobject = testobj,
+                                     delaunay_method = 'delaunayn_geometry',
+                                     minimum_k = 2,
                                      maximum_distance_delaunay = 50)
 
       # Create Spatial Networks using k-nearest neighbor with varying specifications
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 5, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 5,
                                       name = 'spatial_network')
 
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 10, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 10,
                                       name = 'large_network')
 
-      testobj <- createSpatialNetwork(gobject = testobj, 
-                                      method = 'kNN', 
-                                      k = 100, 
-                                      maximum_distance_knn = 200, 
-                                      minimum_k = 2, 
+      testobj <- createSpatialNetwork(gobject = testobj,
+                                      method = 'kNN',
+                                      k = 100,
+                                      maximum_distance_knn = 200,
+                                      minimum_k = 2,
                                       name = 'distance_network')
 
       # Now, visualize the different spatial networks in one layer of the dataset
@@ -531,9 +540,9 @@ k-nearest networks, will be shown.
    .. code:: r
 
       # Re-annotate the subset Giotto Object
-      subtestobj = annotateGiotto(gobject = subtestobj, 
+      subtestobj = annotateGiotto(gobject = subtestobj,
                                   annotation_vector = manual_cluster,
-                                  cluster_column = 'leiden_0.25.200', 
+                                  cluster_column = 'leiden_0.25.200',
                                   name = 'cell_types')
 
    .. code:: r
@@ -606,50 +615,50 @@ k-nearest networks, will be shown.
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] GiottoData_0.2.1 Giotto_3.2.1    
+         [1] GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-           [1] matrixStats_0.63.0    RcppAnnoy_0.0.20      doParallel_1.0.17    
-           [4] RColorBrewer_1.1-3    httr_1.4.5            rprojroot_2.0.3      
-           [7] tools_4.2.2           utf8_1.2.3            R6_2.5.1             
-          [10] irlba_2.3.5.1         uwot_0.1.14           lazyeval_0.2.2       
-          [13] BiocGenerics_0.44.0   colorspace_2.1-0      GetoptLong_1.0.5     
-          [16] withr_2.5.0           tidyselect_1.2.0      compiler_4.2.2       
-          [19] progressr_0.13.0      textshaping_0.3.6     cli_3.4.1            
-          [22] ggdendro_0.1.23       DelayedArray_0.24.0   plotly_4.10.1        
-          [25] labeling_0.4.2        scales_1.2.1          rappdirs_0.3.3       
-          [28] systemfonts_1.0.4     digest_0.6.30         dbscan_1.1-11        
-          [31] rmarkdown_2.21        R.utils_2.12.2        pkgconfig_2.0.3      
-          [34] htmltools_0.5.4       MatrixGenerics_1.10.0 fastmap_1.1.0        
-          [37] htmlwidgets_1.6.2     rlang_1.1.0           GlobalOptions_0.1.2  
-          [40] rstudioapi_0.14       shape_1.4.6           farver_2.1.1         
-          [43] generics_0.1.3        jsonlite_1.8.3        crosstalk_1.2.0      
-          [46] BiocParallel_1.32.6   dplyr_1.1.1           R.oo_1.25.0          
-          [49] magrittr_2.0.3        BiocSingular_1.14.0   Matrix_1.5-1         
-          [52] Rcpp_1.0.10           munsell_0.5.0         S4Vectors_0.36.2     
-          [55] fansi_1.0.4           abind_1.4-5           reticulate_1.26      
-          [58] lifecycle_1.0.3       R.methodsS3_1.8.2     terra_1.7-18         
-          [61] yaml_2.3.7            MASS_7.3-58.1         grid_4.2.2           
-          [64] parallel_4.2.2        crayon_1.5.2          lattice_0.20-45      
-          [67] cowplot_1.1.1         beachmat_2.14.0       circlize_0.4.15      
+           [1] matrixStats_0.63.0    RcppAnnoy_0.0.20      doParallel_1.0.17
+           [4] RColorBrewer_1.1-3    httr_1.4.5            rprojroot_2.0.3
+           [7] tools_4.2.2           utf8_1.2.3            R6_2.5.1
+          [10] irlba_2.3.5.1         uwot_0.1.14           lazyeval_0.2.2
+          [13] BiocGenerics_0.44.0   colorspace_2.1-0      GetoptLong_1.0.5
+          [16] withr_2.5.0           tidyselect_1.2.0      compiler_4.2.2
+          [19] progressr_0.13.0      textshaping_0.3.6     cli_3.4.1
+          [22] ggdendro_0.1.23       DelayedArray_0.24.0   plotly_4.10.1
+          [25] labeling_0.4.2        scales_1.2.1          rappdirs_0.3.3
+          [28] systemfonts_1.0.4     digest_0.6.30         dbscan_1.1-11
+          [31] rmarkdown_2.21        R.utils_2.12.2        pkgconfig_2.0.3
+          [34] htmltools_0.5.4       MatrixGenerics_1.10.0 fastmap_1.1.0
+          [37] htmlwidgets_1.6.2     rlang_1.1.0           GlobalOptions_0.1.2
+          [40] rstudioapi_0.14       shape_1.4.6           farver_2.1.1
+          [43] generics_0.1.3        jsonlite_1.8.3        crosstalk_1.2.0
+          [46] BiocParallel_1.32.6   dplyr_1.1.1           R.oo_1.25.0
+          [49] magrittr_2.0.3        BiocSingular_1.14.0   Matrix_1.5-1
+          [52] Rcpp_1.0.10           munsell_0.5.0         S4Vectors_0.36.2
+          [55] fansi_1.0.4           abind_1.4-5           reticulate_1.26
+          [58] lifecycle_1.0.3       R.methodsS3_1.8.2     terra_1.7-18
+          [61] yaml_2.3.7            MASS_7.3-58.1         grid_4.2.2
+          [64] parallel_4.2.2        crayon_1.5.2          lattice_0.20-45
+          [67] cowplot_1.1.1         beachmat_2.14.0       circlize_0.4.15
           [70] magick_2.7.4          knitr_1.42            ComplexHeatmap_2.14.0
-          [73] pillar_1.9.0          igraph_1.4.1          rjson_0.2.21         
-          [76] codetools_0.2-18      ScaledMatrix_1.6.0    stats4_4.2.2         
-          [79] magic_1.6-1           glue_1.6.2            evaluate_0.20        
-          [82] data.table_1.14.6     png_0.1-7             vctrs_0.6.1          
-          [85] foreach_1.5.2         gtable_0.3.3          purrr_1.0.1          
-          [88] tidyr_1.3.0           clue_0.3-63           ggplot2_3.4.1        
-          [91] xfun_0.38             rsvd_1.0.5            ragg_1.2.4           
-          [94] viridisLite_0.4.1     geometry_0.4.7        tibble_3.2.1         
-          [97] iterators_1.0.14      IRanges_2.32.0        cluster_2.1.4        
-         [100] ellipsis_0.3.2        here_1.0.1           
+          [73] pillar_1.9.0          igraph_1.4.1          rjson_0.2.21
+          [76] codetools_0.2-18      ScaledMatrix_1.6.0    stats4_4.2.2
+          [79] magic_1.6-1           glue_1.6.2            evaluate_0.20
+          [82] data.table_1.14.6     png_0.1-7             vctrs_0.6.1
+          [85] foreach_1.5.2         gtable_0.3.3          purrr_1.0.1
+          [88] tidyr_1.3.0           clue_0.3-63           ggplot2_3.4.1
+          [91] xfun_0.38             rsvd_1.0.5            ragg_1.2.4
+          [94] viridisLite_0.4.1     geometry_0.4.7        tibble_3.2.1
+          [97] iterators_1.0.14      IRanges_2.32.0        cluster_2.1.4
+         [100] ellipsis_0.3.2        here_1.0.1

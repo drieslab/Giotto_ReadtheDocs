@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/osmfish_mouse_ss_cortex.html');
+    }
+    </script>
+
 ===============================
 osmFISH Mouse SS Cortex
 ===============================
@@ -21,7 +30,7 @@ Set up Giotto environment
 .. container:: cell
 
    .. code:: r
-      
+
       # Ensure Giotto Suite is installed.
       if(!"Giotto" %in% installed.packages()) {
         devtools::install_github("drieslab/Giotto@suite")
@@ -49,7 +58,7 @@ Set up Giotto environment
       # 1. set working directory
       results_folder = 'path/to/result'
 
-      # Optional: Specify a path to a Python executable within a conda or miniconda 
+      # Optional: Specify a path to a Python executable within a conda or miniconda
       # environment. If set to NULL (default), the Python executable within the previously
       # installed Giotto environment will be used.
       my_python_path = NULL # alternatively, "/local/python/path/python" if desired.
@@ -80,7 +89,7 @@ Part 1: Giotto global instructions and preparations
    .. code:: r
 
       ## instructions allow us to automatically save all plots into a chosen results folder
-      instrs = createGiottoInstructions(save_plot = TRUE, 
+      instrs = createGiottoInstructions(save_plot = TRUE,
                                         show_plot = FALSE,
                                         save_dir = results_folder,
                                         python_path = python_path)
@@ -251,7 +260,7 @@ Part 4: Cluster
       ## kmeans clustering
       osm_test = doKmeans(gobject = osm_test, expression_values = 'normalized', dim_reduction_to_use = 'pca', dimensions_to_use = 1:20, centers = 36, nstart = 2000)
       plotUMAP(gobject = osm_test, cell_color = 'kmeans',
-               point_size = 2.5, show_NN_network = F, edge_alpha = 0.05, 
+               point_size = 2.5, show_NN_network = F, edge_alpha = 0.05,
                save_param =  list(save_name = '4_b_UMAP_kmeans'))
 
 .. image:: /images/images_pkgdown/osmFISH_mouse_SS_cortex/vignette_sep29_2021/4_b_UMAP_kmeans.png
@@ -351,7 +360,7 @@ Part 5: Co-visualize
 
    .. code:: r
 
-      spatDimPlot2D(gobject = osm_test, cell_color = 'leiden_clus_m', 
+      spatDimPlot2D(gobject = osm_test, cell_color = 'leiden_clus_m',
                     dim_point_size = 2, spat_point_size = 2, select_cell_groups = 'm_8',
                     save_param = list(save_name = '5_c_covis_leiden_merged_selected'))
 
@@ -413,7 +422,7 @@ Part 6: Differential expression
    .. code:: r
 
       plotMetaDataHeatmap(osm_test, expression_values = 'custom',
-                          metadata_cols = c('leiden_clus_m'), 
+                          metadata_cols = c('leiden_clus_m'),
                           save_param = c(save_name = '6_b_metaheatmap'))
 
 .. image:: /images/images_pkgdown/osmFISH_mouse_SS_cortex/vignette_sep29_2021/6_b_metaheatmap.png
@@ -424,7 +433,7 @@ Part 6: Differential expression
    .. code:: r
 
       plotMetaDataHeatmap(osm_test, expression_values = 'custom',
-                          metadata_cols = c('leiden_clus_m'), 
+                          metadata_cols = c('leiden_clus_m'),
                           save_param = c(save_name = '6_e_metaheatmap_all_genes'))
 
 .. image:: /images/images_pkgdown/osmFISH_mouse_SS_cortex/vignette_sep29_2021/6_e_metaheatmap_all_genes.png
@@ -435,7 +444,7 @@ Part 6: Differential expression
    .. code:: r
 
       plotMetaDataHeatmap(osm_test, expression_values = 'custom',
-                          metadata_cols = c('ClusterName'), 
+                          metadata_cols = c('ClusterName'),
                           save_param = c(save_name = '6_f_metaheatmap_all_genes_names'))
 
 .. image:: /images/images_pkgdown/osmFISH_mouse_SS_cortex/vignette_sep29_2021/6_f_metaheatmap_all_genes_names.png
@@ -461,7 +470,7 @@ Part 8: Spatial grid
                                     sdimy_stepsize = 2000,
                                     minimum_padding = 0)
       spatPlot2D(osm_test, cell_color = 'ClusterName', show_grid = T,
-                 
+
                  grid_color = 'lightblue', spatial_grid_name = 'spatial_grid',
                  point_size = 1.5,
                  save_param = c(save_name = '8_grid_det_cell_types'))
@@ -553,7 +562,7 @@ Part 12. cell-cell preferential proximity
       spec_interaction = "Astrocyte_Mfge8--Oligodendrocyte_Precursor_cells"
       cellProximitySpatPlot(gobject = osm_test,
                             interaction_name = spec_interaction,
-                            cluster_column = 'ClusterName', 
+                            cluster_column = 'ClusterName',
                             cell_color = 'ClusterName', cell_color_code = c('Astrocyte_Mfge8' = 'blue', 'Oligodendrocyte_Precursor_cells' = 'red'),
                             coord_fix_ratio = 0.5,  point_size_select = 3, point_size_other = 1.5,
                             save_param = c(save_name = '12_d_cell_cell_enrichment_selected'))

@@ -1,11 +1,20 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/');
+    }
+    </script>
+
 .. _voronoi-plots:
 
 ############################################
 Visualize Spatial Data with Voronoi Plots
 ############################################
 
-Voronoi plots are an attractive way to visualize spatial expression data since it reduces whitespace between single cells or spots, 
-however the voronoi borders do **NOT** necessarily mimic the true cell borders. Nevertheless it has been used to ‘segment’ cells and 
+Voronoi plots are an attractive way to visualize spatial expression data since it reduces whitespace between single cells or spots,
+however the voronoi borders do **NOT** necessarily mimic the true cell borders. Nevertheless it has been used to ‘segment’ cells and
 assign transcripts to individual cells. Here we merely use it as a beautiful visualization alternative to simple ‘points’.
 
 *************************************************************
@@ -42,7 +51,7 @@ assign transcripts to individual cells. Here we merely use it as a beautiful vis
     VC_small = createSpatialGrid(gobject = VC_small, sdimx_stepsize = 500, sdimy_stepsize = 500)
 
 *************************************************************
-2. Example: Voronoi Plot  
+2. Example: Voronoi Plot
 *************************************************************
 
 .. code-block::
@@ -59,7 +68,7 @@ assign transcripts to individual cells. Here we merely use it as a beautiful vis
     # spatial voronoi plot without showing not selected clusters
     spatPlot(VC_small, point_shape = 'voronoi', cell_color ='leiden_clus', select_cell_groups = c(1,2,3), show_other_cells = F)
 
-.. image:: /images/howtos/voronoi_plots/vignette_1/2_voronoi_no_others.png	
+.. image:: /images/howtos/voronoi_plots/vignette_1/2_voronoi_no_others.png
 	:width: 400
 	:alt: voronoi plots
 
@@ -77,7 +86,7 @@ assign transcripts to individual cells. Here we merely use it as a beautiful vis
     # visualization of both dimension reduction and spatial results
     spatDimPlot(gobject = VC_small, cell_color = 'leiden_clus', spat_point_shape = 'voronoi', dim_point_size = 3)
 
-.. image:: /images/howtos/voronoi_plots/vignette_1/4_voronoi_spat_dim.png	
+.. image:: /images/howtos/voronoi_plots/vignette_1/4_voronoi_spat_dim.png
 	:width: 400
 	:alt: voronoi plots
 
@@ -86,20 +95,20 @@ assign transcripts to individual cells. Here we merely use it as a beautiful vis
 *************************************************************
 .. code-block::
 
-    nb_annot = findNetworkNeighbors(VC_small, 
-                                spatial_network_name = 'Delaunay_network', 
+    nb_annot = findNetworkNeighbors(VC_small,
+                                spatial_network_name = 'Delaunay_network',
                                 source_cell_ids = c('cell_1', 'cell_6', 'cell_10', 'cell_91', 'cell_92', 'cell_93'))
     VC_small = addCellMetadata(VC_small, new_metadata = nb_annot, by_column = T, column_cell_ID = 'cell_ID')
 
     spatPlot(VC_small, point_shape = 'voronoi', cell_color ='nb_cells',
              cell_color_code = c(source = 'blue', target = 'red', both = 'yellow', others = 'lightgrey'))
 
-.. image:: /images/howtos/voronoi_plots/vignette_1/5_voronoi_neighbors.png		
+.. image:: /images/howtos/voronoi_plots/vignette_1/5_voronoi_neighbors.png
 	:width: 400
 	:alt: voronoi plots
 
 *************************************************************
-4. Gene Expression and Voronoi Plots 
+4. Gene Expression and Voronoi Plots
 *************************************************************
 .. code-block::
 

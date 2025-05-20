@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/spatial_genomics_mouse_kidney.html');
+    }
+    </script>
+
 =============================
 Spatial Genomics Mouse Kidney
 =============================
@@ -61,9 +70,9 @@ hybridization (seqFISH) to visualize 220 genes directly in the sample.
    .. code:: r
 
       # Create and plot giotto polygons
-      gpoly = createGiottoPolygonsFromMask(mask, shift_vertical_step = F, 
-                                           shift_horizontal_step = F, 
-                                           flip_horizontal = F, 
+      gpoly = createGiottoPolygonsFromMask(mask, shift_vertical_step = F,
+                                           shift_horizontal_step = F,
+                                           flip_horizontal = F,
                                            flip_vertical = F)
       plot(gpoly)
 
@@ -96,7 +105,7 @@ hybridization (seqFISH) to visualize 220 genes directly in the sample.
                                   feat_info = 'rna')
       sg = overlapToMatrix(sg)
       sg = addSpatialCentroidLocations(sg)
-      # Filter and Normalize 
+      # Filter and Normalize
       filterDistributions(sg, detection = 'feats')
       filterDistributions(sg, detection = 'cells')
       sg = filterGiotto(sg, feat_det_in_min_cells = 100, min_det_feats_per_cell = 20, expression_threshold = 1)
@@ -292,7 +301,7 @@ hybridization (seqFISH) to visualize 220 genes directly in the sample.
       km_spatialgenes = binSpect(sg)
       spatFeatPlot2D(sg, expression_values = 'scaled',
                      feats = km_spatialgenes[1:4]$feats,
-                     point_shape = 'no_border', 
+                     point_shape = 'no_border',
                      show_network = F, network_color = 'lightgrey', point_size = 0.5,
                      cow_n_col = 2)
 
@@ -308,7 +317,7 @@ hybridization (seqFISH) to visualize 220 genes directly in the sample.
       rank_spatialgenes = binSpect(sg, bin_method = 'rank')
       spatFeatPlot2D(sg, expression_values = 'scaled',
                      feats = rank_spatialgenes[1:4]$feats,
-                     point_shape = 'no_border', 
+                     point_shape = 'no_border',
                      show_network = F, network_color = 'lightgrey', point_size = 0.5,
                      cow_n_col = 2)
 

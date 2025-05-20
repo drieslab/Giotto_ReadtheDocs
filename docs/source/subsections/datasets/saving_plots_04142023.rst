@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/saving_plots.html');
+    }
+    </script>
+
 ============
 Saving Plots
 ============
@@ -59,7 +68,7 @@ working with a **giottoObject** that has been provided instructions.
 
       data_directory = paste0(getwd(),'/')
 
-      # Download dataset 
+      # Download dataset
       getSpatialDataset(dataset = 'osmfish_SS_cortex', directory = data_directory, method = 'wget')
 
       # Specify path to files
@@ -90,7 +99,7 @@ current working directory:
       library(ggplot2)
 
       # This function serves only to ensure the following lines run consecutively.
-      save_pdf_plot <- function(){ 
+      save_pdf_plot <- function(){
         pdf(file = save_path, width = 7, height = 7)
         pl = spatPlot(my_gobject)
         dev.off()
@@ -99,7 +108,7 @@ current working directory:
       save_pdf_plot()
 
       ### Plot clusters, edit plot object, then save using the ggplot add-on, cowplot:
-      mypl = spatPlot(gobject = my_gobject, 
+      mypl = spatPlot(gobject = my_gobject,
                       cell_color = 'ClusterName')
 
    .. container:: cell-output-display
@@ -117,13 +126,13 @@ current working directory:
 
       # Save in the current working directory
       cowplot::save_plot(plot = mypl,
-                         filename = 'clusters_black.png', 
+                         filename = 'clusters_black.png',
                          path = getwd(),
                          device = png(),
-                         dpi = 300, 
-                         base_height = 10, 
+                         dpi = 300,
+                         base_height = 10,
                          base_width = 10)
-      
+
       .. image:: saving_plots_04142023_files/figure-rst/clusters_black.png
 
 5 Save Plot Directly to the Default Folder
@@ -141,8 +150,8 @@ arguments and more details.
 
    .. code:: r
 
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE)
 
    .. container:: cell-output-display
@@ -171,13 +180,13 @@ with the file name “my_name”
       results_directory =  'my_subfolder/'
 
       # Plot clusters, create, and save to a new subdirectory with specifications above.
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE,
                return_plot = FALSE,
                save_param = list(save_folder = results_directory, # Create subdirectory
-                                 save_name = 'my_name', 
-                                 save_format = 'png', 
+                                 save_name = 'my_name',
+                                 save_format = 'png',
                                  units = 'in',
                                  base_height = 9,
                                  base_width = 9))
@@ -198,8 +207,8 @@ with the file name “my_name”
    .. code:: r
 
       # Plot without saving
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = FALSE, return_plot = FALSE, show_plot = T)
 
    .. container:: cell-output-display
@@ -217,8 +226,8 @@ with the file name “my_name”
 
    .. code:: r
 
-      spatPlot(my_gobject, 
-               cell_color = 'ClusterName', 
+      spatPlot(my_gobject,
+               cell_color = 'ClusterName',
                save_plot = TRUE, return_plot = FALSE, show_plot = FALSE,
                save_param = list(save_name = 'only_save'))
 
@@ -242,29 +251,29 @@ with the file name “my_name”
          Matrix products: default
 
          locale:
-         [1] LC_COLLATE=English_United States.utf8 
-         [2] LC_CTYPE=English_United States.utf8   
+         [1] LC_COLLATE=English_United States.utf8
+         [2] LC_CTYPE=English_United States.utf8
          [3] LC_MONETARY=English_United States.utf8
-         [4] LC_NUMERIC=C                          
-         [5] LC_TIME=English_United States.utf8    
+         [4] LC_NUMERIC=C
+         [5] LC_TIME=English_United States.utf8
 
          attached base packages:
-         [1] stats     graphics  grDevices utils     datasets  methods   base     
+         [1] stats     graphics  grDevices utils     datasets  methods   base
 
          other attached packages:
-         [1] ggplot2_3.4.1    GiottoData_0.2.1 Giotto_3.2.1    
+         [1] ggplot2_3.4.1    GiottoData_0.2.1 Giotto_3.2.1
 
          loaded via a namespace (and not attached):
-          [1] Rcpp_1.0.10        RColorBrewer_1.1-3 pillar_1.9.0       compiler_4.2.2    
-          [5] tools_4.2.2        digest_0.6.30      jsonlite_1.8.3     evaluate_0.20     
-          [9] lifecycle_1.0.3    tibble_3.2.1       gtable_0.3.3       lattice_0.20-45   
-         [13] png_0.1-7          pkgconfig_2.0.3    rlang_1.1.0        Matrix_1.5-1      
-         [17] cli_3.4.1          rstudioapi_0.14    parallel_4.2.2     yaml_2.3.7        
-         [21] xfun_0.38          fastmap_1.1.0      terra_1.7-18       withr_2.5.0       
-         [25] dplyr_1.1.1        knitr_1.42         systemfonts_1.0.4  rappdirs_0.3.3    
-         [29] generics_0.1.3     vctrs_0.6.1        cowplot_1.1.1      grid_4.2.2        
-         [33] tidyselect_1.2.0   reticulate_1.26    glue_1.6.2         data.table_1.14.6 
-         [37] R6_2.5.1           textshaping_0.3.6  fansi_1.0.4        rmarkdown_2.21    
-         [41] farver_2.1.1       magrittr_2.0.3     scales_1.2.1       codetools_0.2-18  
-         [45] htmltools_0.5.4    colorspace_2.1-0   ragg_1.2.4         labeling_0.4.2    
-         [49] utf8_1.2.3         munsell_0.5.0     
+          [1] Rcpp_1.0.10        RColorBrewer_1.1-3 pillar_1.9.0       compiler_4.2.2
+          [5] tools_4.2.2        digest_0.6.30      jsonlite_1.8.3     evaluate_0.20
+          [9] lifecycle_1.0.3    tibble_3.2.1       gtable_0.3.3       lattice_0.20-45
+         [13] png_0.1-7          pkgconfig_2.0.3    rlang_1.1.0        Matrix_1.5-1
+         [17] cli_3.4.1          rstudioapi_0.14    parallel_4.2.2     yaml_2.3.7
+         [21] xfun_0.38          fastmap_1.1.0      terra_1.7-18       withr_2.5.0
+         [25] dplyr_1.1.1        knitr_1.42         systemfonts_1.0.4  rappdirs_0.3.3
+         [29] generics_0.1.3     vctrs_0.6.1        cowplot_1.1.1      grid_4.2.2
+         [33] tidyselect_1.2.0   reticulate_1.26    glue_1.6.2         data.table_1.14.6
+         [37] R6_2.5.1           textshaping_0.3.6  fansi_1.0.4        rmarkdown_2.21
+         [41] farver_2.1.1       magrittr_2.0.3     scales_1.2.1       codetools_0.2-18
+         [45] htmltools_0.5.4    colorspace_2.1-0   ragg_1.2.4         labeling_0.4.2
+         [49] utf8_1.2.3         munsell_0.5.0

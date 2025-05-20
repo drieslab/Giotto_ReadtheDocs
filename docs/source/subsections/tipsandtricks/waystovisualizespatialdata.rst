@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/visualizations.html');
+    }
+    </script>
+
 .. _global-instructions-and-save-plots:
 
 ########################################################
@@ -51,7 +60,7 @@ This section delves into the multiple different ways that Giotto provides to vis
 5. Both in 2D and 3D
 ***********************************************************************************************************
 
-Most functions both have a 2D and 3D version, like `spatDimPlot2D() <spatDimPlot2D>`__ and `spatDimPlot3D() <spatDimPlot3D>`__. In those cases the `spatDimPlot2D() <spatDimPlot2D>`__ is the same as `spatDimPlot() <spatDimPlot>`__. 
+Most functions both have a 2D and 3D version, like `spatDimPlot2D() <spatDimPlot2D>`__ and `spatDimPlot3D() <spatDimPlot3D>`__. In those cases the `spatDimPlot2D() <spatDimPlot2D>`__ is the same as `spatDimPlot() <spatDimPlot>`__.
 So only in case you want to plot your spatial or dimension reduction data in 3D, you need to specifically say so.
 
 ***********************************************************************************************************
@@ -59,7 +68,7 @@ So only in case you want to plot your spatial or dimension reduction data in 3D,
 ***********************************************************************************************************
 
 .. seealso::
-	Giotto Tips and Tricks: `How to visualize and save plots in Giotto? <visualize-data>`_ for more information. 
+	Giotto Tips and Tricks: `How to visualize and save plots in Giotto? <visualize-data>`_ for more information.
 
 All parameters available to `save_param() <save_param>`_ are found on the help page of **?Giotto::all_plots_save_function**
 
@@ -68,7 +77,7 @@ All parameters available to `save_param() <save_param>`_ are found on the help p
 7. *Hypothetical Example*
 ***************************
 
-.. code-block:: 
+.. code-block::
 
 	# 1. standard R way
 	pl = spatPlot(mygobject, cell_color = 'cell_types')

@@ -1,3 +1,12 @@
+.. raw:: html
+
+    <script type="text/javascript">
+    if (String(window.location).indexOf("readthedocs") !== -1) {
+        window.alert('This example has been moved. I will redirect you to the new location.');
+        window.location.replace('https://drieslab.github.io/Giotto_website/articles/xenium_breast_cancer.html');
+    }
+    </script>
+
 ==========================================
 10x Xenium Human Breast Cancer Pre-Release
 ==========================================
@@ -34,7 +43,7 @@
       # 2. set giotto python path
       # set python path to your preferred python version path
       # set python path to NULL if you want to automatically install (only the 1st time) and use the giotto miniconda environment
-      python_path = NULL 
+      python_path = NULL
       if(is.null(python_path)) {
         installGiottoEnvironment()
       }
@@ -138,8 +147,8 @@ The data from the first tissue replicate will be worked with.
       # feat_type
       #            Blank Codeword           Gene Expression
       #                       159                       313
-      #            Negative Control Codeword    Negative Control Probe 
-      #                                   41                        28 
+      #            Negative Control Codeword    Negative Control Probe
+      #                                   41                        28
 
 This dataset has 313 probes that are dedicated for gene expression
 transcript detection.
@@ -160,59 +169,59 @@ transcript detection.
 
    .. code:: r
 
-      #   [1] "ABCC11"   "ACTA2"    "ACTG2"    "ADAM9"    "ADGRE5"   "ADH1B"   
-      #   [7] "ADIPOQ"   "AGR3"     "AHSP"     "AIF1"     "AKR1C1"   "AKR1C3"  
+      #   [1] "ABCC11"   "ACTA2"    "ACTG2"    "ADAM9"    "ADGRE5"   "ADH1B"
+      #   [7] "ADIPOQ"   "AGR3"     "AHSP"     "AIF1"     "AKR1C1"   "AKR1C3"
       #  [13] "ALDH1A3"  "ANGPT2"   "ANKRD28"  "ANKRD29"  "ANKRD30A" "APOBEC3A"
-      #  [19] "APOBEC3B" "APOC1"    "AQP1"     "AQP3"     "AR"       "AVPR1A"  
-      #  [25] "BACE2"    "BANK1"    "BASP1"    "BTNL9"    "C15orf48" "C1QA"    
-      #  [31] "C1QC"     "C2orf42"  "C5orf46"  "C6orf132" "CAV1"     "CAVIN2"  
-      #  [37] "CCDC6"    "CCDC80"   "CCL20"    "CCL5"     "CCL8"     "CCND1"   
-      #  [43] "CCPG1"    "CCR7"     "CD14"     "CD163"    "CD19"     "CD1C"    
-      #  [49] "CD247"    "CD27"     "CD274"    "CD3D"     "CD3E"     "CD3G"    
-      #  [55] "CD4"      "CD68"     "CD69"     "CD79A"    "CD79B"    "CD80"    
-      #  [61] "CD83"     "CD86"     "CD8A"     "CD8B"     "CD9"      "CD93"    
-      #  [67] "CDC42EP1" "CDH1"     "CEACAM6"  "CEACAM8"  "CENPF"    "CLCA2"   
-      #  [73] "CLDN4"    "CLDN5"    "CLEC14A"  "CLEC9A"   "CLECL1"   "CLIC6"   
-      #  [79] "CPA3"     "CRHBP"    "CRISPLD2" "CSF3"     "CTH"      "CTLA4"   
-      #  [85] "CTSG"     "CTTN"     "CX3CR1"   "CXCL12"   "CXCL16"   "CXCL5"   
-      #  [91] "CXCR4"    "CYP1A1"   "CYTIP"    "DAPK3"    "DERL3"    "DMKN"    
-      #  [97] "DNAAF1"   "DNTTIP1"  "DPT"      "DSC2"     "DSP"      "DST"     
-      # [103] "DUSP2"    "DUSP5"    "EDN1"     "EDNRB"    "EGFL7"    "EGFR"    
-      # [109] "EIF4EBP1" "ELF3"     "ELF5"     "ENAH"     "EPCAM"    "ERBB2"   
-      # [115] "ERN1"     "ESM1"     "ESR1"     "FAM107B"  "FAM49A"   "FASN"    
-      # [121] "FBLIM1"   "FBLN1"    "FCER1A"   "FCER1G"   "FCGR3A"   "FGL2"    
-      # [127] "FLNB"     "FOXA1"    "FOXC2"    "FOXP3"    "FSTL3"    "GATA3"   
-      # [133] "GJB2"     "GLIPR1"   "GNLY"     "GPR183"   "GZMA"     "GZMB"    
-      # [139] "GZMK"     "HAVCR2"   "HDC"      "HMGA1"    "HOOK2"    "HOXD8"   
-      # [145] "HOXD9"    "HPX"      "IGF1"     "IGSF6"    "IL2RA"    "IL2RG"   
-      # [151] "IL3RA"    "IL7R"     "ITGAM"    "ITGAX"    "ITM2C"    "JUP"     
-      # [157] "KARS"     "KDR"      "KIT"      "KLF5"     "KLRB1"    "KLRC1"   
-      # [163] "KLRD1"    "KLRF1"    "KRT14"    "KRT15"    "KRT16"    "KRT23"   
-      # [169] "KRT5"     "KRT6B"    "KRT7"     "KRT8"     "LAG3"     "LARS"    
-      # [175] "LDHB"     "LEP"      "LGALSL"   "LIF"      "LILRA4"   "LPL"     
-      # [181] "LPXN"     "LRRC15"   "LTB"      "LUM"      "LY86"     "LYPD3"   
-      # [187] "LYZ"      "MAP3K8"   "MDM2"     "MEDAG"    "MKI67"    "MLPH"    
-      # [193] "MMP1"     "MMP12"    "MMP2"     "MMRN2"    "MNDA"     "MPO"     
-      # [199] "MRC1"     "MS4A1"    "MUC6"     "MYBPC1"   "MYH11"    "MYLK"    
-      # [205] "MYO5B"    "MZB1"     "NARS"     "NCAM1"    "NDUFA4L2" "NKG7"    
-      # [211] "NOSTRIN"  "NPM3"     "OCIAD2"   "OPRPN"    "OXTR"     "PCLAF"   
-      # [217] "PCOLCE"   "PDCD1"    "PDCD1LG2" "PDE4A"    "PDGFRA"   "PDGFRB"  
-      # [223] "PDK4"     "PECAM1"   "PELI1"    "PGR"      "PIGR"     "PIM1"    
-      # [229] "PLD4"     "POLR2J3"  "POSTN"    "PPARG"    "PRDM1"    "PRF1"    
-      # [235] "PTGDS"    "PTN"      "PTPRC"    "PTRHD1"   "QARS"     "RAB30"   
-      # [241] "RAMP2"    "RAPGEF3"  "REXO4"    "RHOH"     "RORC"     "RTKN2"   
-      # [247] "RUNX1"    "S100A14"  "S100A4"   "S100A8"   "SCD"      "SCGB2A1" 
+      #  [19] "APOBEC3B" "APOC1"    "AQP1"     "AQP3"     "AR"       "AVPR1A"
+      #  [25] "BACE2"    "BANK1"    "BASP1"    "BTNL9"    "C15orf48" "C1QA"
+      #  [31] "C1QC"     "C2orf42"  "C5orf46"  "C6orf132" "CAV1"     "CAVIN2"
+      #  [37] "CCDC6"    "CCDC80"   "CCL20"    "CCL5"     "CCL8"     "CCND1"
+      #  [43] "CCPG1"    "CCR7"     "CD14"     "CD163"    "CD19"     "CD1C"
+      #  [49] "CD247"    "CD27"     "CD274"    "CD3D"     "CD3E"     "CD3G"
+      #  [55] "CD4"      "CD68"     "CD69"     "CD79A"    "CD79B"    "CD80"
+      #  [61] "CD83"     "CD86"     "CD8A"     "CD8B"     "CD9"      "CD93"
+      #  [67] "CDC42EP1" "CDH1"     "CEACAM6"  "CEACAM8"  "CENPF"    "CLCA2"
+      #  [73] "CLDN4"    "CLDN5"    "CLEC14A"  "CLEC9A"   "CLECL1"   "CLIC6"
+      #  [79] "CPA3"     "CRHBP"    "CRISPLD2" "CSF3"     "CTH"      "CTLA4"
+      #  [85] "CTSG"     "CTTN"     "CX3CR1"   "CXCL12"   "CXCL16"   "CXCL5"
+      #  [91] "CXCR4"    "CYP1A1"   "CYTIP"    "DAPK3"    "DERL3"    "DMKN"
+      #  [97] "DNAAF1"   "DNTTIP1"  "DPT"      "DSC2"     "DSP"      "DST"
+      # [103] "DUSP2"    "DUSP5"    "EDN1"     "EDNRB"    "EGFL7"    "EGFR"
+      # [109] "EIF4EBP1" "ELF3"     "ELF5"     "ENAH"     "EPCAM"    "ERBB2"
+      # [115] "ERN1"     "ESM1"     "ESR1"     "FAM107B"  "FAM49A"   "FASN"
+      # [121] "FBLIM1"   "FBLN1"    "FCER1A"   "FCER1G"   "FCGR3A"   "FGL2"
+      # [127] "FLNB"     "FOXA1"    "FOXC2"    "FOXP3"    "FSTL3"    "GATA3"
+      # [133] "GJB2"     "GLIPR1"   "GNLY"     "GPR183"   "GZMA"     "GZMB"
+      # [139] "GZMK"     "HAVCR2"   "HDC"      "HMGA1"    "HOOK2"    "HOXD8"
+      # [145] "HOXD9"    "HPX"      "IGF1"     "IGSF6"    "IL2RA"    "IL2RG"
+      # [151] "IL3RA"    "IL7R"     "ITGAM"    "ITGAX"    "ITM2C"    "JUP"
+      # [157] "KARS"     "KDR"      "KIT"      "KLF5"     "KLRB1"    "KLRC1"
+      # [163] "KLRD1"    "KLRF1"    "KRT14"    "KRT15"    "KRT16"    "KRT23"
+      # [169] "KRT5"     "KRT6B"    "KRT7"     "KRT8"     "LAG3"     "LARS"
+      # [175] "LDHB"     "LEP"      "LGALSL"   "LIF"      "LILRA4"   "LPL"
+      # [181] "LPXN"     "LRRC15"   "LTB"      "LUM"      "LY86"     "LYPD3"
+      # [187] "LYZ"      "MAP3K8"   "MDM2"     "MEDAG"    "MKI67"    "MLPH"
+      # [193] "MMP1"     "MMP12"    "MMP2"     "MMRN2"    "MNDA"     "MPO"
+      # [199] "MRC1"     "MS4A1"    "MUC6"     "MYBPC1"   "MYH11"    "MYLK"
+      # [205] "MYO5B"    "MZB1"     "NARS"     "NCAM1"    "NDUFA4L2" "NKG7"
+      # [211] "NOSTRIN"  "NPM3"     "OCIAD2"   "OPRPN"    "OXTR"     "PCLAF"
+      # [217] "PCOLCE"   "PDCD1"    "PDCD1LG2" "PDE4A"    "PDGFRA"   "PDGFRB"
+      # [223] "PDK4"     "PECAM1"   "PELI1"    "PGR"      "PIGR"     "PIM1"
+      # [229] "PLD4"     "POLR2J3"  "POSTN"    "PPARG"    "PRDM1"    "PRF1"
+      # [235] "PTGDS"    "PTN"      "PTPRC"    "PTRHD1"   "QARS"     "RAB30"
+      # [241] "RAMP2"    "RAPGEF3"  "REXO4"    "RHOH"     "RORC"     "RTKN2"
+      # [247] "RUNX1"    "S100A14"  "S100A4"   "S100A8"   "SCD"      "SCGB2A1"
       # [253] "SDC4"     "SEC11C"   "SEC24A"   "SELL"     "SERHL2"   "SERPINA3"
-      # [259] "SERPINB9" "SFRP1"    "SFRP4"    "SH3YL1"   "SLAMF1"   "SLAMF7"  
-      # [265] "SLC25A37" "SLC4A1"   "SLC5A6"   "SMAP2"    "SMS"      "SNAI1"   
-      # [271] "SOX17"    "SOX18"    "SPIB"     "SQLE"     "SRPK1"    "SSTR2"   
-      # [277] "STC1"     "SVIL"     "TAC1"     "TACSTD2"  "TCEAL7"   "TCF15"   
-      # [283] "TCF4"     "TCF7"     "TCIM"     "TCL1A"    "TENT5C"   "TFAP2A"  
+      # [259] "SERPINB9" "SFRP1"    "SFRP4"    "SH3YL1"   "SLAMF1"   "SLAMF7"
+      # [265] "SLC25A37" "SLC4A1"   "SLC5A6"   "SMAP2"    "SMS"      "SNAI1"
+      # [271] "SOX17"    "SOX18"    "SPIB"     "SQLE"     "SRPK1"    "SSTR2"
+      # [277] "STC1"     "SVIL"     "TAC1"     "TACSTD2"  "TCEAL7"   "TCF15"
+      # [283] "TCF4"     "TCF7"     "TCIM"     "TCL1A"    "TENT5C"   "TFAP2A"
       # [289] "THAP2"    "TIFA"     "TIGIT"    "TIMP4"    "TMEM147"  "TNFRSF17"
-      # [295] "TOMM7"    "TOP2A"    "TPD52"    "TPSAB1"   "TRAC"     "TRAF4"   
-      # [301] "TRAPPC3"  "TRIB1"    "TUBA4A"   "TUBB2B"   "TYROBP"   "UCP1"    
-      # [307] "USP53"    "VOPP1"    "VWF"      "WARS"     "ZEB1"     "ZEB2"    
-      # [313] "ZNF562"  
+      # [295] "TOMM7"    "TOP2A"    "TPD52"    "TPSAB1"   "TRAC"     "TRAF4"
+      # [301] "TRAPPC3"  "TRIB1"    "TUBA4A"   "TUBB2B"   "TYROBP"   "UCP1"
+      # [307] "USP53"    "VOPP1"    "VWF"      "WARS"     "ZEB1"     "ZEB2"
+      # [313] "ZNF562"
 
 .. raw:: html
 
@@ -335,10 +344,10 @@ transcript detection.
       # [10] "NegControlProbe_00022" "NegControlProbe_00019" "NegControlProbe_00017"
       # [13] "NegControlProbe_00016" "NegControlProbe_00014" "NegControlProbe_00013"
       # [16] "NegControlProbe_00012" "NegControlProbe_00009" "NegControlProbe_00004"
-      # [19] "NegControlProbe_00003" "NegControlProbe_00002" "antisense_PROKR2"     
-      # [22] "antisense_ULK3"        "antisense_SCRIB"       "antisense_TRMU"       
-      # [25] "antisense_MYLIP"       "antisense_LGI3"        "antisense_BCL2L15"    
-      # [28] "antisense_ADCY4"   
+      # [19] "NegControlProbe_00003" "NegControlProbe_00002" "antisense_PROKR2"
+      # [22] "antisense_ULK3"        "antisense_SCRIB"       "antisense_TRMU"
+      # [25] "antisense_MYLIP"       "antisense_LGI3"        "antisense_BCL2L15"
+      # [28] "antisense_ADCY4"
 
 .. raw:: html
 
@@ -398,14 +407,14 @@ contains a QC Phred score for which this tutorial will set a cutoff at
    .. code:: r
 
       # Transcripts info available:
-      #   "transcript_id" "cell_id" "overlaps_nucleus" "feat_ID" "x" "y" "z_location" "qv" 
+      #   "transcript_id" "cell_id" "overlaps_nucleus" "feat_ID" "x" "y" "z_location" "qv"
       #  with 43664530 unfiltered detections
       #  and 34813341 filtered detections
-      # 
-      # Blank Codeword detections: 8805 
-      # Gene Expression detections: 34764833 
-      # Negative Control Codeword detections: 1855 
-      # Negative Control Probe detections: 37848 
+      #
+      # Blank Codeword detections: 8805
+      # Gene Expression detections: 34764833
+      # Negative Control Codeword detections: 1855
+      # Negative Control Probe detections: 37848
 
 | Giotto loads these filtered subcellular detections in as a
   ``giottoPoints`` object and determines the correct columns by looking
@@ -446,8 +455,8 @@ contains a QC Phred score for which this tutorial will set a cutoff at
    .. code:: r
 
       # feat_ID
-      #   KRT8  MS4A1 
-      # 530190  20926 
+      #   KRT8  MS4A1
+      # 530190  20926
 
 |image1| |image2| |image3| |image4|
 
@@ -569,7 +578,7 @@ Description:
    .. code:: r
 
       # A structured Xenium directory will be used
-      # 
+      #
       # Checking directory contents...
       #    > analysis info found
       #       └──Xenium_FFPE_Human_Breast_Cancer_Rep1_analysis.tar.gz
@@ -618,15 +627,15 @@ Description:
       #   [nucleus] bounds...
       #   Selecting col "cell_id" as poly_ID column
       #   Selecting cols "vertex_x" and "vertex_y" as x and y respectively
-      # 1. Start extracting polygon information 
-      # 2. Finished extracting polygon information 
-      # 3. Add centroid / spatial locations if available 
-      # 3. Finish adding centroid / spatial locations 
-      # 3. Start extracting spatial feature information 
-      # 4. Finished extracting spatial feature information 
+      # 1. Start extracting polygon information
+      # 2. Finished extracting polygon information
+      # 3. Add centroid / spatial locations if available
+      # 3. Finish adding centroid / spatial locations
+      # 3. Start extracting spatial feature information
+      # 4. Finished extracting spatial feature information
       # Calculating polygon centroids...
-      # Start centroid calculation for polygon information layer:  cell 
-      # Start centroid calculation for polygon information layer:  nucleus 
+      # Start centroid calculation for polygon information layer:  cell
+      # Start centroid calculation for polygon information layer:  nucleus
 
 .. raw:: html
 
@@ -663,7 +672,7 @@ Description:
    .. code:: r
 
       # A structured Xenium directory will be used
-      # 
+      #
       # Checking directory contents...
       #    > analysis info found
       #       └──Xenium_FFPE_Human_Breast_Cancer_Rep1_analysis.tar.gz
@@ -745,16 +754,16 @@ Description:
       #   .. ..@ x       : num [1:8404] 1 1 1 1 1 1 1 1 1 1 ...
       #   .. ..@ factors : list()
       # NULL
-      # list depth of 1 
+      # list depth of 1
       # finished expression data
       # List of 1
       #  $ raw:Classes ‘data.table’ and 'data.frame': 167782 obs. of  3 variables:
       #   ..$ x_centroid: num [1:167782] 378 382 320 259 371 ...
       #   ..$ y_centroid: num [1:167782] 844 859 869 852 865 ...
       #   ..$ cell_ID   : chr [1:167782] "1" "2" "3" "4" ...
-      #   ..- attr(*, ".internal.selfref")=<externalptr> 
+      #   ..- attr(*, ".internal.selfref")=<externalptr>
       # NULL
-      # list depth of 1 
+      # list depth of 1
       # There are non numeric or integer columns for the spatial location input at column position(s): 3
       #  The first non-numeric column will be considered as a cell ID to test for consistency with the expression matrix
       #  Other non numeric columns will be removed
@@ -792,54 +801,54 @@ Print the available spatial cell and nucleus boundary information
 
    .. code:: r
 
-      # For Spatial info:  cell 
-      # 
+      # For Spatial info:  cell
+      #
       # An object of class "giottoPolygon"
       # Slot "name":
       # [1] "cell"
-      # 
+      #
       # Slot "spatVector":
-      #  class       : SpatVector 
-      #  geometry    : polygons 
+      #  class       : SpatVector
+      #  geometry    : polygons
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 0, 7525.9, 0, 5478.038  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
-      # 
+      #  coord. ref. :
+      #
       # Slot "spatVectorCentroids":
-      #  class       : SpatVector 
-      #  geometry    : points 
+      #  class       : SpatVector
+      #  geometry    : points
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 2.189156, 7523.163, 1.406448, 5476.467  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
-      # 
+      #  coord. ref. :
+      #
       # Slot "overlaps":
       # NULL
-      # 
+      #
       # -----------------------------
-      #  
-      # For Spatial info:  nucleus 
-      # 
+      #
+      # For Spatial info:  nucleus
+      #
       # An object of class "giottoPolygon"
       # Slot "name":
       # [1] "nucleus"
-      # 
+      #
       # Slot "spatVector":
-      #  class       : SpatVector 
-      #  geometry    : polygons 
+      #  class       : SpatVector
+      #  geometry    : polygons
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 1.4875, 7524.413, 0, 5478.038  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
-      # 
+      #  coord. ref. :
+      #
       # Slot "spatVectorCentroids":
-      #  class       : SpatVector 
-      #  geometry    : points 
+      #  class       : SpatVector
+      #  geometry    : points
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 2.596845, 7523.503, 0.8111559, 5477.374  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
-      # 
+      #  coord. ref. :
+      #
       # Slot "overlaps":
       # NULL
-      # 
+      #
       # -----------------------------
 
 6.2 Spatial locations
@@ -862,7 +871,7 @@ aggregate information.
 
       # ├──Spatial unit "cell"
       # │  └──S4 spatLocsObj "raw" coordinates:   (167782 rows)
-      # │        An object of class spatLocsObj 
+      # │        An object of class spatLocsObj
       # │        provenance: cell
       # │            ------------------------
       # │           cell_ID    sdimx    sdimy
@@ -870,17 +879,17 @@ aggregate information.
       # │        2:       2 382.0902 858.9148
       # │        3:       3 319.8592 869.1546
       # │        4:       4 259.2721 851.8312
-      # │        
+      # │
       # │        ranges:
       # │                   sdimx       sdimy
       # │        [1,]    2.189156    1.406448
       # │        [2,] 7523.162860 5476.466538
-      # │        
-      # │        
-      # │     
+      # │
+      # │
+      # │
       # └──Spatial unit "nucleus"
       #    └──S4 spatLocsObj "raw" coordinates:   (167782 rows)
-      #          An object of class spatLocsObj 
+      #          An object of class spatLocsObj
       #          provenance: nucleus
       #              ------------------------
       #             cell_ID    sdimx    sdimy
@@ -888,7 +897,7 @@ aggregate information.
       #          2:       2 384.3298 858.9976
       #          3:       3 321.9175 869.2366
       #          4:       4 257.3259 851.5493
-      #          
+      #
       #          ranges:
       #                     sdimx        sdimy
       #          [1,]    2.596845    0.8111559
@@ -938,54 +947,54 @@ features that are overlapping the ``'cell'`` polygons. *Run on a server
 
    .. code:: r
 
-      # For Spatial info:  cell 
-      # 
+      # For Spatial info:  cell
+      #
       # An object of class "giottoPolygon"
       # Slot "name":
       # [1] "cell"
-      # 
+      #
       # Slot "spatVector":
-      #  class       : SpatVector 
-      #  geometry    : polygons 
+      #  class       : SpatVector
+      #  geometry    : polygons
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 0, 7525.9, 0, 5478.038  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
+      #  coord. ref. :
       #  names       : poly_ID
       #  type        :   <chr>
       #  values      :       1
       #                      2
       #                      3
-      # 
+      #
       # Slot "spatVectorCentroids":
-      #  class       : SpatVector 
-      #  geometry    : points 
+      #  class       : SpatVector
+      #  geometry    : points
       #  dimensions  : 167782, 1  (geometries, attributes)
       #  extent      : 2.189156, 7523.163, 1.406448, 5476.467  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
+      #  coord. ref. :
       #  names       : poly_ID
       #  type        :   <chr>
       #  values      :       1
       #                      2
       #                      3
-      # 
+      #
       # Slot "overlaps":
       # $rna
-      #  class       : SpatVector 
-      #  geometry    : points 
+      #  class       : SpatVector
+      #  geometry    : points
       #  dimensions  : 43664530, 3  (geometries, attributes)
       #  extent      : -1.874261, 7522.837, 4.415276, 5473.721  (xmin, xmax, ymin, ymax)
-      #  coord. ref. :  
+      #  coord. ref. :
       #  names       : poly_ID    feat_ID feat_ID_uniq
       #  type        :   <chr>      <chr>        <int>
       #  values      :   18790 BLANK_0180            1
       #                    370        LUM            2
       #                  18183     CLECL1            3
-      # 
-      # 
+      #
+      #
       # -----------------------------
-      #  
-      # For Spatial info:  nucleus 
-      #         ... 
+      #
+      # For Spatial info:  nucleus
+      #         ...
       #      truncated
 
 7.2 Assign polygon overlaps information to expression matrix
@@ -1015,27 +1024,27 @@ object’s ``expression`` slot. *Run on a server \| Time taken:
       # └──Spatial unit "cell"
       #    └──Feature type "rna"
       #       └──Expression data "raw" values:
-      #             An object of class exprObj 
-      #             for spatial unit: "cell" and feature type: "rna" 
-      #               Provenance:  cell 
-      #             
+      #             An object of class exprObj
+      #             for spatial unit: "cell" and feature type: "rna"
+      #               Provenance:  cell
+      #
       #             contains:
       #             313 x 167782 sparse Matrix of class "dgCMatrix"
-      #                                                    
+      #
       #             LUM   2 . 3 . 1 1  2 . . 2 . 5 . ......
       #             TCIM  1 1 . 4 1 1 13 . . . . . . ......
       #             RUNX1 . . . . . .  . . . . 1 . . ......
-      #             
+      #
       #              ..............................
-      #              ........suppressing 167769 columns and 307 rows 
+      #              ........suppressing 167769 columns and 307 rows
       #              ..............................
-      #                                                    
+      #
       #             CD1C   1 . . . . . . . . . . . . ......
       #             CYP1A1 . . . . . . . . . . . . . ......
       #             CRHBP  . . . . . . . . . . . . . ......
-      #             
+      #
       #              First four colnames:
-      #              1 2 3 4 
+      #              1 2 3 4
 
 7.3 Feature metadata
 --------------------
@@ -1066,7 +1075,7 @@ these metadata should be appended only to feat_type ‘rna’.
                                     by_column = TRUE,
                                     column_feat_ID = 'feat_ID')
 
-      # to return a specific metadata as data.table 
+      # to return a specific metadata as data.table
       # (spat_unit = 'cell', feat_type = 'rna' are default)
       # fDataDT(xenium_gobj)
 
@@ -1079,72 +1088,72 @@ these metadata should be appended only to feat_type ‘rna’.
 
       # ├──Spatial unit "cell"
       # │  ├──Feature type "rna"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │        feat_ID      Ensembl ID             Annotation
       # │  │     1:     LUM ENSG00000139329            Fibroblasts
       # │  │     2:    TCIM ENSG00000176907 Breast glandular cells
       # │  │     3:   RUNX1 ENSG00000159216          Breast cancer
       # │  │     4: RAPGEF3 ENSG00000079337             Adipocytes
-      # │  │  
+      # │  │
       # │  ├──Feature type "blank_code"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │           feat_ID
       # │  │     1: BLANK_0424
       # │  │     2: BLANK_0401
       # │  │     3: BLANK_0447
       # │  │     4: BLANK_0449
-      # │  │  
+      # │  │
       # │  ├──Feature type "neg_code"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │                        feat_ID
       # │  │     1: NegControlCodeword_0503
       # │  │     2: NegControlCodeword_0514
       # │  │     3: NegControlCodeword_0535
       # │  │     4: NegControlCodeword_0519
-      # │  │  
+      # │  │
       # │  └──Feature type "neg_probe"
-      # │        An object of class featMetaObj 
-      # │        Provenance: cell 
+      # │        An object of class featMetaObj
+      # │        Provenance: cell
       # │                         feat_ID
       # │        1: NegControlProbe_00003
       # │        2:       antisense_SCRIB
       # │        3: NegControlProbe_00012
       # │        4:        antisense_LGI3
-      # │     
+      # │
       # └──Spatial unit "nucleus"
       #    ├──Feature type "rna"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │        feat_ID      Ensembl ID             Annotation
       #    │     1:     LUM ENSG00000139329            Fibroblasts
       #    │     2:    TCIM ENSG00000176907 Breast glandular cells
       #    │     3:   RUNX1 ENSG00000159216          Breast cancer
       #    │     4: RAPGEF3 ENSG00000079337             Adipocytes
-      #    │  
+      #    │
       #    ├──Feature type "blank_code"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │           feat_ID
       #    │     1: BLANK_0424
       #    │     2: BLANK_0401
       #    │     3: BLANK_0447
       #    │     4: BLANK_0449
-      #    │  
+      #    │
       #    ├──Feature type "neg_code"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │                        feat_ID
       #    │     1: NegControlCodeword_0503
       #    │     2: NegControlCodeword_0514
       #    │     3: NegControlCodeword_0535
       #    │     4: NegControlCodeword_0519
-      #    │  
+      #    │
       #    └──Feature type "neg_probe"
-      #          An object of class featMetaObj 
-      #          Provenance: nucleus 
+      #          An object of class featMetaObj
+      #          Provenance: nucleus
       #                           feat_ID
       #          1: NegControlProbe_00003
       #          2:       antisense_SCRIB
@@ -1178,9 +1187,9 @@ minimum of 5 features detected to be included. *Run on a server \|
 
       #    truncated
       #      ...
-      # Feature type:  rna 
-      # Number of cells removed:  2945  out of  167782 
-      # Number of feats removed:  0  out of  313 
+      # Feature type:  rna
+      # Number of cells removed:  2945  out of  167782
+      # Number of feats removed:  0  out of  313
 
 7.5 Add data statistics
 -----------------------
@@ -1212,72 +1221,72 @@ minimum of 5 features detected to be included. *Run on a server \|
 
       # ├──Spatial unit "cell"
       # │  ├──Feature type "rna"
-      # │  │     An object of class cellMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class cellMetaObj
+      # │  │     Provenance: cell
       # │  │        cell_ID nr_feats perc_feats total_expr
       # │  │     1:       1       62   19.80831        156
       # │  │     2:       2       41   13.09904         63
       # │  │     3:       3       38   12.14058         54
       # │  │     4:       4       47   15.01597        114
-      # │  │  
+      # │  │
       # │  ├──Feature type "blank_code"
-      # │  │     An object of class cellMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class cellMetaObj
+      # │  │     Provenance: cell
       # │  │        cell_ID
       # │  │     1:       1
       # │  │     2:       2
       # │  │     3:       3
       # │  │     4:       4
-      # │  │  
+      # │  │
       # │  ├──Feature type "neg_code"
-      # │  │     An object of class cellMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class cellMetaObj
+      # │  │     Provenance: cell
       # │  │        cell_ID
       # │  │     1:       1
       # │  │     2:       2
       # │  │     3:       3
       # │  │     4:       4
-      # │  │  
+      # │  │
       # │  └──Feature type "neg_probe"
-      # │        An object of class cellMetaObj 
-      # │        Provenance: cell 
+      # │        An object of class cellMetaObj
+      # │        Provenance: cell
       # │           cell_ID
       # │        1:       1
       # │        2:       2
       # │        3:       3
       # │        4:       4
-      # │     
+      # │
       # └──Spatial unit "nucleus"
       #    ├──Feature type "rna"
-      #    │     An object of class cellMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class cellMetaObj
+      #    │     Provenance: nucleus
       #    │        cell_ID
       #    │     1:       1
       #    │     2:       2
       #    │     3:       3
       #    │     4:       4
-      #    │  
+      #    │
       #    ├──Feature type "blank_code"
-      #    │     An object of class cellMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class cellMetaObj
+      #    │     Provenance: nucleus
       #    │        cell_ID
       #    │     1:       1
       #    │     2:       2
       #    │     3:       3
       #    │     4:       4
-      #    │  
+      #    │
       #    ├──Feature type "neg_code"
-      #    │     An object of class cellMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class cellMetaObj
+      #    │     Provenance: nucleus
       #    │        cell_ID
       #    │     1:       1
       #    │     2:       2
       #    │     3:       3
       #    │     4:       4
-      #    │  
+      #    │
       #    └──Feature type "neg_probe"
-      #          An object of class cellMetaObj 
-      #          Provenance: nucleus 
+      #          An object of class cellMetaObj
+      #          Provenance: nucleus
       #             cell_ID
       #          1:       1
       #          2:       2
@@ -1306,8 +1315,8 @@ minimum of 5 features detected to be included. *Run on a server \|
 
       # ├──Spatial unit "cell"
       # │  ├──Feature type "rna"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │        feat_ID      Ensembl ID             Annotation nr_cells perc_cells
       # │  │     1:     LUM ENSG00000139329            Fibroblasts   101666  61.676687
       # │  │     2:    TCIM ENSG00000176907 Breast glandular cells    84842  51.470240
@@ -1318,65 +1327,65 @@ minimum of 5 features detected to be included. *Run on a server \|
       # │  │     2:     300377 1.8222668      3.540428
       # │  │     3:     229633 1.3930914      2.440671
       # │  │     4:      16645 0.1009785      1.252823
-      # │  │  
+      # │  │
       # │  ├──Feature type "blank_code"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │           feat_ID
       # │  │     1: BLANK_0424
       # │  │     2: BLANK_0401
       # │  │     3: BLANK_0447
       # │  │     4: BLANK_0449
-      # │  │  
+      # │  │
       # │  ├──Feature type "neg_code"
-      # │  │     An object of class featMetaObj 
-      # │  │     Provenance: cell 
+      # │  │     An object of class featMetaObj
+      # │  │     Provenance: cell
       # │  │                        feat_ID
       # │  │     1: NegControlCodeword_0503
       # │  │     2: NegControlCodeword_0514
       # │  │     3: NegControlCodeword_0535
       # │  │     4: NegControlCodeword_0519
-      # │  │  
+      # │  │
       # │  └──Feature type "neg_probe"
-      # │        An object of class featMetaObj 
-      # │        Provenance: cell 
+      # │        An object of class featMetaObj
+      # │        Provenance: cell
       # │                         feat_ID
       # │        1: NegControlProbe_00003
       # │        2:       antisense_SCRIB
       # │        3: NegControlProbe_00012
       # │        4:        antisense_LGI3
-      # │     
+      # │
       # └──Spatial unit "nucleus"
       #    ├──Feature type "rna"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │        feat_ID      Ensembl ID             Annotation
       #    │     1:     LUM ENSG00000139329            Fibroblasts
       #    │     2:    TCIM ENSG00000176907 Breast glandular cells
       #    │     3:   RUNX1 ENSG00000159216          Breast cancer
       #    │     4: RAPGEF3 ENSG00000079337             Adipocytes
-      #    │  
+      #    │
       #    ├──Feature type "blank_code"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │           feat_ID
       #    │     1: BLANK_0424
       #    │     2: BLANK_0401
       #    │     3: BLANK_0447
       #    │     4: BLANK_0449
-      #    │  
+      #    │
       #    ├──Feature type "neg_code"
-      #    │     An object of class featMetaObj 
-      #    │     Provenance: nucleus 
+      #    │     An object of class featMetaObj
+      #    │     Provenance: nucleus
       #    │                        feat_ID
       #    │     1: NegControlCodeword_0503
       #    │     2: NegControlCodeword_0514
       #    │     3: NegControlCodeword_0535
       #    │     4: NegControlCodeword_0519
-      #    │  
+      #    │
       #    └──Feature type "neg_probe"
-      #          An object of class featMetaObj 
-      #          Provenance: nucleus 
+      #          An object of class featMetaObj
+      #          Provenance: nucleus
       #                           feat_ID
       #          1: NegControlProbe_00003
       #          2:       antisense_SCRIB
@@ -1462,8 +1471,8 @@ will be set to ``NULL``.
    .. code:: r
 
       # Dim reduction on cells:
-      #  ------------------------- 
-      # 
+      #  -------------------------
+      #
       # .
       # └──Spatial unit "cell"
       #    └──Feature type "rna"
